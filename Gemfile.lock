@@ -88,6 +88,7 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
+    i18n_data (0.10.0)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
     listen (3.1.5)
@@ -225,6 +226,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   devise (~> 4.7)
+  i18n_data (~> 0.10.0)
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   pg (~> 1.2)

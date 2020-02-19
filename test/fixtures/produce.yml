@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+tomatoes:
+  name: Tomatoes
+  description: Glossy red, or occasionally yellow, pulpy edible fruits that are eaten as vegetables or in salads.
+  categories: one, two, three
+
+potatoes:
+  name: Potatoes
+  description: Starchy plant tubers which are one of the most important food crops, cooked and eaten as vegetables.
+  categories: two, three

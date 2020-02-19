@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Fruits
+  description: The sweet and fleshy product of a tree or other plant that contains seed and can be eaten as food.
+
+two:
+  name: Vegetables
+  description: A plant or part of a plant used as food, typically as accompaniment to meat or fish, such as a cabbage, potato, carrot, or bean.
+
+three:
+  name: Nightshades
+  description: The Solanaceae, or nightshades, are a family of flowering plants that ranges from annual and perennial herbs to vines, lianas, epiphytes, shrubs, and trees, and includes a number of agricultural crops, medicinal plants, spices, weeds, and ornamentals

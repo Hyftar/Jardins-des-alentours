@@ -42,4 +42,27 @@ class UserTest < ActiveSupport::TestCase
     user.password = 'test123'
     assert_not user.save
   end
+
+  test "should be invalid language code" do
+    user = User.new
+    user.first_name = 'John'
+    user.last_name = 'Doe'
+    user.email = 'john@exemple.com'
+    user.password = 'test123'
+    user.language = 'England'
+
+    assert_not user.save
+    assert_equal [I18n.t('invalid_language_code')], user.errors[:language]
+  end
+
+  test "should be valid language code" do
+    user = User.new
+    user.first_name = 'John'
+    user.last_name = 'Doe'
+    user.email = 'john@exemple.com'
+    user.password = 'test123'
+    user.language = 'en'
+
+    assert user.save
+  end
 end

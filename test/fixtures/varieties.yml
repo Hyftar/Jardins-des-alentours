@@ -1,0 +1,18 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Grape Tomatoes
+  description: Crisp and crunchy, grape tomatoes come in a vaerity of colors that range from sweet to tangy.
+  produce: tomatoes
+
+two:
+  name: Unspecified Tomatoes
+  produce: tomatoes
+
+three:
+  name: Unspecified Potatoes
+  produce: potatoes
+
+four:
+  name: Sweet Potatoes
+  produce: potatoes

@@ -58,3 +58,5 @@ gem "devise", "~> 4.7"
 
 
 gem "pg", "~> 1.2"
+
+gem "i18n_data", "~> 0.10.0"
