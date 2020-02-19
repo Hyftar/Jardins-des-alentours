@@ -1,0 +1,8 @@
+admin:
+  name: 'Admin'
+
+curator:
+  name: 'Curator'
+
+moderator:
+  name: 'Moderator'
