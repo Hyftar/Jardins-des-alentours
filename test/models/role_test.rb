@@ -24,6 +24,12 @@ class RoleTest < ActiveSupport::TestCase
     assert_not role.save
   end
 
+  test "should not be able to save role with name longer than 50 characters" do
+    role = Role.new
+    role.name = 'dsyhjgdsfghashjkfgsafhjksgfkjasgfkjaksjfhsakjfhsjsiodgsg'
+    assert_not role.save
+  end
+
   test "should be able to save valid role" do
     role = Role.new
     role.name = 'test_role_123'
