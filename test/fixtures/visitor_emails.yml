@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: lelabernoiscircuits@gmail.com
+  visitor: one
+
+two:
+  email: kevenaubin@gmail.com
+  visitor: two

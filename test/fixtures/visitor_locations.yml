@@ -1,0 +1,12 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+montreal:
+  longitude: -73.561664
+  latitude: 45.508887
+  visitor: one
+
+quebec:
+  longitude: -71.208052
+  latitude: 46.813885
+  visitor: two
+

@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  garden_variety: one
+  quantity: 5
+  unit: units
+
+two:
+  garden_variety: two
+  quantity: 300
+  unit: grams
