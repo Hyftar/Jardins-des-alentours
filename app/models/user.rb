@@ -2,7 +2,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { minimum: 2 }
   validates :last_name, presence: true, length: { minimum: 2 }
 
-  validates_with LanguageCodeValidator
+  validates :language, language_code: true
 
   has_and_belongs_to_many :roles
 
