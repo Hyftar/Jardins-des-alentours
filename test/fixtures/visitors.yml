@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  IP: '147.226.211.40'
+  request_count: 0
+
+two:
+  IP: '42.34.213.46'
+  request_count: 0

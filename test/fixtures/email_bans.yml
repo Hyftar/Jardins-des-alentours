@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: 123@example.com
+  user: one
+  banned_until: 1.day.from_now
+  reason: MyText
+
+two:
+  email: labernoiscircuits@gmail.com
+  user: one
+  banned_until: 1.day.from_now
+  reason: 

@@ -31,3 +31,5 @@
 
 en:
   invalid_language_code: "The specified language code is invalid"
+  invalid_email: "The specified email address is invalid"
+  date_future: "The specified date and time should be in the future"
