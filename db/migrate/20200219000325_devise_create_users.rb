@@ -5,8 +5,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
     create_table :users do |t|
       t.string :first_name, null: false, default: ""
       t.string :last_name, null: false, default: ""
-      
-      t.integer :score, default: 0, null: false 
+
+      t.integer :score, default: 0, null: false
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""
@@ -37,6 +37,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string   :unlock_token # Only if unlock strategy is :email or :both
       t.datetime :locked_at
 
+      t.string :language, null: false, default: 'en'
 
       t.timestamps null: false
     end

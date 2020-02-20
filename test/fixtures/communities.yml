@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+montreal_tomatoes:
+  region: one
+  produce: tomatoes
+
+quebec_tomatoes:
+  region: two
+  produce: tomatoes

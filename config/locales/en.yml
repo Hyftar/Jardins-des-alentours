@@ -30,4 +30,4 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  invalid_language_code: "The specified language code is invalid"
