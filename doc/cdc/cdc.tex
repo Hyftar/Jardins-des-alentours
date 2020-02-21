@@ -1,0 +1,402 @@
+\documentclass{scrreprt}
+\usepackage{listings}
+\usepackage{underscore}
+\usepackage{graphicx}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+
+\usepackage{array}
+\usepackage{cmap}
+
+\renewcommand{\contentsname}{Table des matières}
+\def\myversion{1.0}
+\def\projectname{Jardins des Alentours}
+\hypersetup{
+    bookmarks=false,    % show bookmarks bar?
+    pdftitle={Cahier des charges - \projectname},    % title
+    pdfauthor={Simon Landry, Nicholas Massé & Keven Aubin}, % author
+    pdfsubject={Cahier des charges pour jardins des alentours},  % subject of the document
+    pdfkeywords={},        % list of keywords
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=black,       % color of internal links
+    citecolor=black,       % color of links to bibliography
+    filecolor=black,       % color of file links
+    urlcolor=blue,         % color of external links
+    linktoc=page           % only page is linked
+}
+
+\usepackage{hyperref}
+\begin{document}
+\pagenumbering{gobble}
+\begin{flushright}
+ \rule{16cm}{5pt}\vskip1cm
+ \begin{bfseries}
+  \Huge{CAHIER DES \\ CHARGES}\\
+  \vspace{1.5cm}
+  pour\\
+  \vspace{1.5cm}
+  \projectname\\
+  \vspace{1.5cm}
+  \LARGE{Version \myversion}\\
+  \vspace{1.5cm}
+  Préparé par :\\
+  Simon Landry\\
+  Keven Aubin\\
+  et Nicholas Massé\\
+  \vspace{1cm}
+  Pour Programmation Breadsticks\\
+  \vspace{.5cm}
+  Février 2020\\
+ \end{bfseries}
+\end{flushright}
+\newpage
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+\chapter{Présentation du projet}
+
+\projectname{} se veut être une éloge informatisée, entièrement destinée aux végétaux.
+Née d'une passion pour la nature, il s'agira d'un médium par lequel tous et chacun
+pourront passer pour obtenir à la fois des informations utiles et du divertissement, tout
+en ayant la possibilité d'y faire du commerce.
+
+\paragraph{}
+Construit sur les bases d'une application web, le projet sera offert sur ordinateur de bureau, tablette, et téléphone
+et offrira la possibilité aux visiteurs de consulter, page par page, une myriade d'informations
+liées aux fruits et aux légumes de son choix. Les plus actifs pourront échanger sur les méthodes de culture de même que contribuer à l'agrandissement de la base de données.
+Les amateurs de produits hyperlocaux auront même accès à un panel renouvelé de jardiniers locaux
+vendant le produit en question.
+
+\paragraph{}
+Dans la même optique, \projectname{} se veut être un accès facile, autant
+pour les consommateurs que pour les cultivateurs, à l'échange et à l'achat de fruits et légumes.
+Dans le but de favoriser la consommation et la culture de produits locaux, la plateforme fournira,
+aux utilisateurs inscrits, des outils pour planifier, produire et vendre leurs produits. Les jardiniers
+en herbe auront évidemment à leur disposition toutes les informations sur les fruits et légumes de
+leur choix, fournies et centralisées par \projectname{}.
+
+\paragraph{}
+L'équipe derrière \projectname{} cultive aussi l'espoir que leur projet
+créera des liens solides à travers la population en générale, mais surtout à
+petite échelle, dans les quartiers résidentiels, là où, aujourd'hui, on ne retrouve
+en majorité que les éternels gazons verts, on pourra se promener et observer
+un nouvel écosystème avec une flore resplendissante.
+
+\chapter{Objectifs et environnements}
+\section{Objectifs}
+Le point fort de \projectname{} passe avant tout par l'accessibilité.
+S'il veut se démarquer de ses concurrents et élargir son auditoire, le projet
+devra intégrer un accès et une navigation aisée de même que vêtir une interface visuellement séductive.
+Il s'agit d'un facteur de la plus haute importance considérant que plusieurs aspects
+de l'application en dépendent, en particulier l'envergure de l'information disponible par rapport aux fruits et légumes,
+le flux d'interactions entre les utilisateurs et surtout la disponibilité des produits locaux, qui existe grâce aux jardiniers
+inscrits à l'application.
+
+\paragraph{}
+Une interface d'administration destinée à la fois aux administrateurs du site
+ainsi qu'aux contributeurs du site devra être mise en place pour que le projet puisse profiter
+d'une meilleure stabilité dans son développement à long terme. Celle-ci devra
+être instinctive et facile d'utilisation afin de s'assurer que les jardiniers
+contributeurs n'aient pas besoin de suivre une formation afin d'y contribuer.
+
+
+\section{Environnements}
+La mise en place de l'application web inclut trois branches
+principales: les environnements «Visiteur», «Jardinier» et «Administrateur».
+
+\paragraph{}
+L'environnement «Visiteur» est celui destiné à l'utilisateur client du site, qu'il soit inscrit ou non.
+Il s'agit de l'environnement le plus vaste, et donne accès à presque toute la plateforme, c'est-à-dire les multiples pages
+de produits, les questions et réponses et les jardiniers locaux. Lorsqu'il est inscrit, l'utilisateur pourra
+aussi échanger, commenter et discuter du légume en question.
+
+\paragraph{}
+L'environnement «Jardinier» permettra à un utilisateur, après sa soumission à certaines vérifications,
+d'accéder à une différente interface destinée à la culture et à la vente de ses fruits et légumes. Celle-ci
+inclura entre autres un étalage virtuel ainsi, qu'à l'avenir, divers outils tels qu'un calendrier de semis et un planificateur de jardins.
+
+\paragraph{}
+L'environnement «Administrateur» permettra à l'administrateur ou son mandataire
+de gérer le contenu mis en ligne et d'effectuer la modération par rapport aux utilisateurs inscrits.
+
+
+\chapter{Ressources allouées}
+\section{Financement et matériel}
+
+Pour \projectname{}, il ne s'agit que du début d'une aventure. Or, si le temps imparti
+pour le noyau de l'application est défini dans une limite temporelle de 5 semaines, la volonté de
+\projectname{} est de garder en tête son extensibilité puisque ses développeurs auront l'occasion de poursuivre
+son développement dans le futur.
+
+\paragraph{}
+De la même manière, le budget alloué pour l'instant au développement de l'application n'est que celui des ressources technologiques de base utilisées
+par les développeurs.
+
+\section{Équipe de développement}
+
+L'équipe de développement est composée de trois développeurs en herbe terminant leur formation de techniciens en informatique de gestion.
+Forts de quelques projets accomplis dans le passé, leurs intérêts communs les réunissent une fois de plus pour
+mener à bien le développement de cette nouvelle application web.
+
+\paragraph{}
+Ci-dessous se trouve un petit descriptif de chacun des membres de cette équipe.
+
+\subsection{Simon Landry}
+
+Simon Landry est un développeur back-end terminant sa formation au Collège de
+Maisonneuve. Son expertise en développement sur divers projets «Open Source»,
+qui s'échelonne sur plus d'une dizaine d'années, lui permettra de conseiller
+ses collègues sur les meilleures pratiques de développement et les multiples
+outils qui entourent le développement.
+
+\paragraph{}
+Expérimenté à la tâche de Scrum Master, Simon saura mener l'équipe dans
+ce rôle lors des scrums journaliers et saura protéger l'équipe des
+obstacles et distractions qui l'entourent. Après une année au sein des
+Forces Armées Canadiennes en tant qu'officier, ce développeur saura utiliser cette
+expérience en leadership pour mener le projet à terme.
+
+\newpage
+
+\subsection{Keven Aubin}
+
+Keven Aubin est un développeur web terminant sa formation au Collège de
+Maisonneuve. Son expérience en développement front-end et back-end en
+feront un membre polyvalent de l'équipe.
+Titulaire d'un diplôme de droit notarial, ce développeur utilise son
+expérience de la communication pour mieux communiquer avec le client et
+ainsi comprendre plus facilement les besoins et désirs du maître
+d'ouvrage.
+
+\subsection{Nicholas Massé}
+
+Issu du domaine de la restauration et de la sommellerie, Nicholas Massé finit
+présentement ses études en développement web au Collège de Maisonneuve et occupe également
+un poste de développeur dans le domaine du marketing en ligne.
+
+\paragraph{}
+Dans une plus grande mesure, Nicholas a effectué par le passé des voyages à
+l'étranger qui sont étroitement liés à l'agriculture biologique.
+Il s'adonne annuellement au jardinage sur son propre petit bout de lopin à
+la campagne et possède un savoir-faire indéniable dans ce domaine. Il
+sera donc une référence importante tout au long du projet lorsqu'il s'agira de
+bien définir les informations pertinentes concernant les produits et les intérêts
+des jardiniers de la plate-forme.
+
+\chapter{Besoins}
+Dans une première mesure, il est impératif, pour atteindre nos objectifs d'accessibilité,
+de rendre l'application disponible sur les principaux dispositifs d'accès à
+l'Internet, c'est-à-dire
+l'ordinateur de bureau, la tablette et le téléphone intelligent. Il est évident que
+notre application devra également s'adapter aux navigateurs web les plus populaires.
+
+\paragraph{}
+Dans le même ordre d'idées, \projectname{} devra être disponible dans un nombre
+maximal de langues afin de former des communautés de jardiniers
+provenant des quatre coins du monde, le tout dans le but de créer
+un contenu riche, de multiplier les échanges et de stimuler les communautés de jardiniers.
+
+\paragraph{}
+Au sujet de l'interface destinée aux visiteurs, elle devra rassembler en un endroit principal
+l'accès aux divers modules de l'application, tout en gardant à l'honneur
+le produit de la page en question. En naviguant vers ces modules,
+les visiteurs auront accès à des interfaces ultérieures, leur permettant d'obtenir
+des détails sur la culture du légume, l'interface de recherche de jardiniers locaux ainsi que l'accès
+à un système de conversations portant sur le légume en particulier.
+
+\paragraph{}
+Pour pallier à la complexité structurelle de l'application, \projectname{} incorpore
+le concept de communautés, qui permettra aux utilisateurs d'identifier à l'avance leur préférence
+en terme de géolocalisation et de produits. De cette manière, l'application
+personnalise l'expérience de l'utilisateur et approfondit son sentiment d'appartenance.
+
+\paragraph{}
+Lorsqu'inscrit, un utilisateur doit pouvoir consulter et modifier son profil et
+avoir accès à un maximum d'informations reliées à l'historique de ses activités.
+
+\paragraph{}
+L'interface du jardinier devra permettre à ce dernier de publier sur notre site
+les légumes qu'il désire mettre en vente via un étalage virtuel. Cet étalage lui
+demandera une certaine quantité d'information destinée à la vente du produit, qui lui devra être
+choisi au moyen d'une liste de variétés de fruits ou légumes, en synchronisation avec ceux qui
+apparaissent sur le site.
+
+\paragraph{}
+L'interface d'administration, quant à elle, devra permettre l'ajout de produits
+et variétés, à l'aide d'un système de contribution par les utilisateurs.
+L'administrateur aura également accès à une gestion sommaire des visiteurs,
+des jardiniers et des contributeurs.
+
+
+\chapter{Contraintes}
+Pour parvenir à construire l'écosystème informatique relativement complexe qu'incarne \projectname{},
+l'équipe de développement a choisi d'utiliser Ruby comme langage de programmation principal et Ruby on Rails comme framework principal.
+Ce choix a également été fait dans le but d'optimiser le temps de réalisation du projet.
+
+\paragraph{}
+Comme l'application nécessite la manipulation d'une bonne quantité d'information
+et que celle-ci peut s'avérer complexe, PostgreSQL a semblé
+s'imposer comme choix de base de données en raison de sa licence libre et de sa
+gratuité en terme de coûts. PostgreSQL est également un système de gestion de
+base de données qui s'incorpore très bien avec Ruby on Rails.
+
+\chapter{Fonctionnalités}
+
+\section{Interfaces}
+\begin{tabular}{|l|p{9cm}|r|}
+ \hline
+ \bfseries Code & \bfseries Fonctionnalité                             & \bfseries Réalisation \\
+ \hline
+ I1-1           & Page d'accueil                                       &                       \\
+ \hline
+ I2-1           & Affichage des communautés                            &                       \\
+ \hline
+ I2-2           & Questions et réponses d'une communauté               &                       \\
+ \hline
+ I2-3           & Discussions d'une communauté                         &                       \\
+ \hline
+ I2-4           & Géolocalisation de la communauté sur une carte       &                       \\
+ \hline
+ I3-1           & Affichage des pages des jardiniers                   &                       \\
+ \hline
+ I3-2           & Affichage des jardins et produits                    &                       \\
+ \hline
+ I3-3           & Affichage des marchés des jardiniers                 &                       \\
+ \hline
+ I3-4           & Géolocalisation des jardins et marchés sur une carte &                       \\
+ \hline
+ I4-1           & Signalement des visiteurs malveillants               &                       \\
+ \hline
+ I4-2           & Signalement des jardiniers malveillants              &                       \\
+ \hline
+\end{tabular}
+
+
+\section{Administration}
+\begin{tabular}{|l|p{9cm}|r|}
+ \hline
+ \bfseries Code & \bfseries Fonctionnalité                                 & \bfseries Réalisation \\
+ \hline
+ A1-1           & Gestion des communautés                                  &                       \\
+ \hline
+ A1-2           & Gestion des informations des produits et variétés        &                       \\
+ \hline
+ A1-3           & Gestion des jardiniers, administrateurs et contributeurs &                       \\
+ \hline
+ A2-1           & Suspension de visiteurs malveillants                     &                       \\
+ \hline
+ A2-2           & Suspension de jardiniers malveillants                    &                       \\
+ \hline
+\end{tabular}
+
+\section{Navigation}
+\begin{tabular}{|l|p{9cm}|r|}
+ \hline
+ \bfseries Code & \bfseries Fonctionnalité              & \bfseries Réalisation \\
+ \hline
+ N1-1           & Barre de navigation version mobile    &                       \\
+ \hline
+ N1-2           & Barre de navigation version bureau    &                       \\
+ \hline
+ N2-1           & Navigation par recherche              &                       \\
+ \hline
+ N3-1           & Aide à l'utilisation de la plateforme &                       \\
+ \hline
+\end{tabular}
+\section{Sécurité}
+\begin{tabular}{|l|p{9cm}|r|}
+ \hline
+ \bfseries Code & \bfseries Fonctionnalité                                                                           & \bfseries Réalisation \\
+ \hline
+ S1-1           & Application des techniques de validation de données                                                &                       \\
+ \hline
+ S2-1           & Protection des informations du compte administrateur à l'aide d'un système de rôles et permissions &                       \\
+ \hline
+\end{tabular}
+\section{Format}
+\begin{tabular}{|l|p{9cm}|r|}
+ \hline
+ \bfseries Code & \bfseries Fonctionnalité                                          & \bfseries Réalisation \\
+ \hline
+ F1-1           & Conception de type MVC (\textit{Model View Controller})           &                       \\
+ \hline
+ F2-1           & Hébergement du site web                                           &                       \\
+ \hline
+ F2-2           & Hébergement de la base de données centralisée                     &                       \\
+ \hline
+ F3-1           & Données minimales nécessaires à l'optimisation du contenu du site &                       \\
+ \hline
+\end{tabular}
+
+\chapter{Risques et priorités du projet}
+
+Les risques du projet \projectname{} ont été limités à un niveau raisonnable.
+Par contre, les technologies utilisées pour le projet sont nouvelles pour certains
+membres de l'équipe de développement. Ainsi, l'équipe sera confrontée à l'apprentissage
+de celles-ci dans un court délai.
+
+\paragraph{}
+Également, dans le passé, les membres de cette équipe ont fait preuve d'ambition
+démesurée face à la réalisation de projets ayant pu être simplifiés de manière significative.
+Dans le cadre de ce projet, afin de s'assurer que les fonctionnalités désirées
+soient réalisées dans les délais prévus, une d'analyse de l'essentiel sera
+primordiale.
+
+\paragraph{}
+Finalement, puisque les horaires de disponibilités des membres de l'équipe diffèrent,
+une importance particulière devra être accordée à la communication entre les membres
+de l'équipe afin de s'assurer que chacun soit informé de l'état d'avancement des
+diverses fonctionnalités.
+
+\chapter{Calendrier des livrables}
+\begin{tabular}{|l|p{9cm}|l|}
+ \hline
+ \bfseries Livrable & \bfseries Description  & \bfseries Date de fin \\
+ \hline
+ Étape 1            & Cahier des charges     & 23 Février 2020       \\
+ \hline
+ Étape 2            & Analyse                & 1 Mars 2020           \\
+ \hline
+ Étape 3            & Prototype              & 8 Mars 2020           \\
+ \hline
+ Étape 3            & Développement et tests & 20 Mars 2020          \\
+ \hline
+ Étape 4            & Documentation          & 20 Mars 2020          \\
+ \hline
+\end{tabular}
+
+\appendix
+
+\chapter{Fonctionnalités potentielles}
+Afin de respecter les délais alloués, un effort de sobriété a été fait dans
+l'élaboration du projet \projectname{}. Ainsi, certaines fonctionnalités,
+bien qu'intéressantes, ont été mises sur la glace le temps d'assurer le
+développement des fonctionnalités principales. Advenant la livraison du projet
+tel que présenté avant la date du 20 mars, certaines autres fonctionnalités
+pourraient être implémentées.
+
+\paragraph{}
+Diverses recettes pourraient être suggérées au sein des communautés. Ainsi,
+les produits disponibles sur la plateforme pourraient être mis en valeur.
+Cette fonctionnalité pourrait attirer de nouveaux visiteurs sur la plateforme
+et ainsi augmenter la visibilité de l'offre de produits disponibles dans les
+marchés.
+
+\paragraph{}
+Au sein des communautés, une discussion en temps réel sous forme de clavardage
+permettra d'augmenter le nombre d'interactions entre les jardiniers. Ceci
+créera un plus grand sentiment d'appartenance à la plateforme pour les jardiniers.
+
+\paragraph{}
+Un système de détection automatique de la zone de rusticité des jardins selon la
+géolocalisation permettra aux jardiniers novices d'obtenir automatiquement des informations
+adaptées à leur environnement de culture. Ils pourront ainsi connaître automatiquement
+quels produits peuvent être cultivés dans leur jardin et à quel moment de l'année
+la culture de ces derniers doit être commencée.
+
+\chapter{Répertoires de travail}
+Adresse du répertoire Github : \textbf{https://github.com/Hyftar/Jardins-des-alentours.git}
+
+\end{document}
