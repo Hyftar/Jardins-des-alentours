@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :language, language_code: true
 
   has_and_belongs_to_many :roles
-
+  has_many :user_messages
   has_many :gardens
 
   devise :database_authenticatable, :registerable,

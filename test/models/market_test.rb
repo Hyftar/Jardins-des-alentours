@@ -47,5 +47,5 @@ class MarketTest < ActiveSupport::TestCase
 
     assert m.save
   end
-  
+
 end

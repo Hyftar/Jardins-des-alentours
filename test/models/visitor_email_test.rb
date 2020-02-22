@@ -23,7 +23,7 @@ class VisitorEmailTest < ActiveSupport::TestCase
     e = VisitorEmail.new(
       visitor: visitors(:one)
     )
-    
+
     assert_not e.save
   end
 
@@ -32,7 +32,7 @@ class VisitorEmailTest < ActiveSupport::TestCase
       email: "lelabernoisc@ircuits@gmail.com",
       visitor: visitors(:one)
     )
-    
+
     assert_not e.save
   end
 
