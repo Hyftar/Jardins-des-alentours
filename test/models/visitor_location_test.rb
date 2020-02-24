@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class VisitorLocationTest < ActiveSupport::TestCase
   test "-181 should not be valid longitude" do
@@ -51,7 +51,7 @@ class VisitorLocationTest < ActiveSupport::TestCase
     assert l.save
   end
 
-  
+
   test "should not be valid visitor location without visitor" do
     l = VisitorLocation.new(
       longitude: 70.05,
@@ -60,5 +60,4 @@ class VisitorLocationTest < ActiveSupport::TestCase
 
     assert_not l.save
   end
-
 end

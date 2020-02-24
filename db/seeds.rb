@@ -14,27 +14,27 @@ locations = Location.create([
 ])
 
 regions = Region.create([
-  { name: 'Montréal', location: locations.first },
-  { name: 'Québec', location: locations.second },
-  { name: 'Val-d\'Or', location: locations.third },
-  { name: 'Paris', location: locations.fourth }
+  { name: "Montréal", location: locations.first },
+  { name: "Québec", location: locations.second },
+  { name: "Val-d'Or", location: locations.third },
+  { name: "Paris", location: locations.fourth }
 ])
 
 categories = Category.create([
   {
-    name: 'Fruits',
-    description: 'The sweet and fleshy product of a tree or other plant that contains seed and can be eaten as food.'
+    name: "Fruits",
+    description: "The sweet and fleshy product of a tree or other plant that contains seed and can be eaten as food."
   },
   {
-    name: 'Vegetables',
-    description: 'A plant or part of a plant used as food, typically as accompaniment to meat or fish, such as a cabbage, potato, carrot, or bean.'
+    name: "Vegetables",
+    description: "A plant or part of a plant used as food, typically as accompaniment to meat or fish, such as a cabbage, potato, carrot, or bean."
   }
 ])
 
 produce = Produce.create([
   {
-    name: 'Tomatoes',
-    description: 'Glossy red, or occasionally yellow, pulpy edible fruits that are eaten as vegetables or in salads.',
+    name: "Tomatoes",
+    description: "Glossy red, or occasionally yellow, pulpy edible fruits that are eaten as vegetables or in salads.",
     categories: [categories.first, categories.second]
   }
 ])
