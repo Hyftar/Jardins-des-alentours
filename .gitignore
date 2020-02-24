@@ -34,3 +34,10 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# Latex
+
+*.aux
+*.out
+*.toc
+*.log
