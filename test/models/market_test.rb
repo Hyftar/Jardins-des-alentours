@@ -1,11 +1,11 @@
-require 'test_helper'
+require "test_helper"
 
 class MarketTest < ActiveSupport::TestCase
   test "should be able to save market" do
     m = Market.new(
       garden_variety: garden_varieties(:one),
       quantity: 24,
-      unit: 'units'
+      unit: "units"
     )
 
     assert m.save
@@ -13,7 +13,7 @@ class MarketTest < ActiveSupport::TestCase
 
   test "should not be able to save market without gardien variety" do
     m = Market.new(
-      quantity:36,
+      quantity: 36,
       unit: "grams"
     )
 
@@ -24,7 +24,7 @@ class MarketTest < ActiveSupport::TestCase
     m = Market.new(
       garden_variety: garden_varieties(:one),
       quantity: -24,
-      unit: 'units'
+      unit: "units"
     )
 
     assert_not m.save
@@ -42,10 +42,9 @@ class MarketTest < ActiveSupport::TestCase
   test "should be able to save market without quantity" do
     m = Market.new(
       garden_variety: garden_varieties(:one),
-      unit: 'units'
+      unit: "units"
     )
 
     assert m.save
   end
-  
 end

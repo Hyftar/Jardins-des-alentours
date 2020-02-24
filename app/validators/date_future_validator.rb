@@ -6,7 +6,7 @@ class DateFutureValidator < ActiveModel::EachValidator
         :invalid,
         {
           value: value,
-          message: I18n.t('date_future')
+          message: I18n.t("date_future")
         }
       )
     end

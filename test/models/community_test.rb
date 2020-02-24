@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class CommunityTest < ActiveSupport::TestCase
   test "should not be able to save without region" do

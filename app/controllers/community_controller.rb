@@ -9,12 +9,11 @@ class CommunityController < ApplicationController
   end
 
   private
+    def get_community_info
+      @community = Community.find(params[:id])
+    end
 
-  def get_community_info
-    @community = Community.find(params[:id])
-  end
-
-  def get_10_most_relevant_communities
-    @communities = Community.order(score: :desc).limit(10)
-  end
+    def get_10_most_relevant_communities
+      @communities = Community.order(score: :desc).limit(10)
+    end
 end

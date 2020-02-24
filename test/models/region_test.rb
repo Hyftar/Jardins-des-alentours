@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class RegionTest < ActiveSupport::TestCase
   test "should not be able to save region without name" do
@@ -7,13 +7,13 @@ class RegionTest < ActiveSupport::TestCase
   end
 
   test "should not be able to save region without location" do
-    r = Region.new(name: 'Rive sud')
+    r = Region.new(name: "Rive sud")
     assert_not r.save
   end
 
   test "should be able to save region" do
     r = Region.new(
-      name: 'Rive sud',
+      name: "Rive sud",
       location: locations(:montreal)
     )
     assert r.save
@@ -21,11 +21,10 @@ class RegionTest < ActiveSupport::TestCase
 
   test "should be able to save region with description" do
     r = Region.new(
-      name: 'Rive sud',
+      name: "Rive sud",
       location: locations(:montreal),
-      description: 'La rive sud de Montréal'
+      description: "La rive sud de Montréal"
     )
     assert r.save
   end
-
 end
