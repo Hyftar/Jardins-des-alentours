@@ -1,9 +1,9 @@
-require 'test_helper'
+require "test_helper"
 
 class ProduceTest < ActiveSupport::TestCase
   test "should not be able to save a produce without category" do
     p = Produce.new(
-      name: 'Tomata'
+      name: "Tomata"
     )
 
     assert_not p.save
@@ -11,7 +11,7 @@ class ProduceTest < ActiveSupport::TestCase
 
   test "should not be able to save a produce without a name" do
     p = Produce.new(
-      description: 'Test',
+      description: "Test",
       categories: [categories(:one)]
     )
 
@@ -20,7 +20,7 @@ class ProduceTest < ActiveSupport::TestCase
 
   test "should be able to save a produce" do
     p = Produce.new(
-      name: 'Tomata',
+      name: "Tomata",
       categories: [categories(:one)]
     )
 

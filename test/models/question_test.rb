@@ -1,16 +1,16 @@
-require 'test_helper'
+require "test_helper"
 
 class QuestionTest < ActiveSupport::TestCase
   test "should be able to add tag to questions" do
     q = Question.create(
-      title: 'R tomato fruit?',
-      content: 'i wonderz',
+      title: "R tomato fruit?",
+      content: "i wonderz",
       user: users(:one),
       community: communities(:montreal_tomatoes)
     )
 
     t1 = Tag.create(
-      name: 'Tomato'
+      name: "Tomato"
     )
 
     q.tags << t1
@@ -19,7 +19,7 @@ class QuestionTest < ActiveSupport::TestCase
     assert_equal t1, q.tags.first
 
     t2 = Tag.create(
-      name: 'Fruit'
+      name: "Fruit"
     )
 
     q.tags << t2
@@ -33,8 +33,8 @@ class QuestionTest < ActiveSupport::TestCase
 
   test "should be able to use all the answer tags" do
     q = Question.create(
-      title: 'R tomato fruit?',
-      content: 'i wonderz',
+      title: "R tomato fruit?",
+      content: "i wonderz",
       user: users(:one),
       community: communities(:montreal_tomatoes)
     )
@@ -42,7 +42,7 @@ class QuestionTest < ActiveSupport::TestCase
     a = Answer.create(
       question: q,
       user: users(:two),
-      content: 'Yes.'
+      content: "Yes."
     )
 
     assert a.active?
@@ -56,8 +56,8 @@ class QuestionTest < ActiveSupport::TestCase
 
   test "should be able to use all the question tags" do
     q = Question.create(
-      title: 'R tomato fruit?',
-      content: 'i wonderz',
+      title: "R tomato fruit?",
+      content: "i wonderz",
       user: users(:one),
       community: communities(:montreal_tomatoes)
     )
@@ -94,8 +94,8 @@ class QuestionTest < ActiveSupport::TestCase
 
   test "should be able to save question" do
     q = Question.create(
-      title: 'R tomato fruit?',
-      content: 'i wonderz',
+      title: "R tomato fruit?",
+      content: "i wonderz",
       user: users(:one),
       community: communities(:montreal_tomatoes)
     )
@@ -105,8 +105,8 @@ class QuestionTest < ActiveSupport::TestCase
 
   test "should not be able to assign answer if it's not a question's child" do
     q = Question.create(
-      title: 'R tomato fruit?',
-      content: 'i wonderz',
+      title: "R tomato fruit?",
+      content: "i wonderz",
       user: users(:one),
       community: communities(:montreal_tomatoes)
     )
@@ -117,8 +117,8 @@ class QuestionTest < ActiveSupport::TestCase
 
   test "should be able to assign answer if it's a question's child" do
     q = Question.create(
-      title: 'R tomato fruit?',
-      content: 'i wonderz',
+      title: "R tomato fruit?",
+      content: "i wonderz",
       user: users(:one),
       community: communities(:montreal_tomatoes)
     )
@@ -126,7 +126,7 @@ class QuestionTest < ActiveSupport::TestCase
     a = Answer.create(
       question: q,
       user: users(:two),
-      content: 'Yes.'
+      content: "Yes."
     )
 
     assert a.save
