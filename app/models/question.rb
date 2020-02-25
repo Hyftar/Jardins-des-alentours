@@ -17,12 +17,13 @@ class Question < ApplicationRecord
   belongs_to :community
   belongs_to :selected_answer, class_name: "Answer", optional: true
 
-  def selected_answer_must_be_children_of_question
-    if selected_answer.present? && selected_answer.question != self
-      errors.add(
-        :selected_answer,
-        I18n.t("selected_answer_not_children_of_question")
-      )
+  private
+    def selected_answer_must_be_children_of_question
+      if selected_answer.present? && selected_answer.question != self
+        errors.add(
+          :selected_answer,
+          I18n.t("selected_answer_not_children_of_question")
+        )
+      end
     end
-  end
 end

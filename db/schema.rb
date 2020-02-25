@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_21_213510) do
+ActiveRecord::Schema.define(version: 2020_02_24_224532) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answer_votes", force: :cascade do |t|
+    t.bigint "answer_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "vote", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["answer_id"], name: "index_answer_votes_on_answer_id"
+    t.index ["user_id"], name: "index_answer_votes_on_user_id"
+  end
 
   create_table "answers", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -52,8 +63,8 @@ ActiveRecord::Schema.define(version: 2020_02_21_213510) do
   end
 
   create_table "email_bans", force: :cascade do |t|
-    t.string "email"
-    t.datetime "banned_until"
+    t.string "email", null: false
+    t.datetime "banned_until", null: false
     t.text "reason"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -101,6 +112,16 @@ ActiveRecord::Schema.define(version: 2020_02_21_213510) do
     t.integer "score", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "question_votes", force: :cascade do |t|
+    t.bigint "question_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "vote", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_question_votes_on_question_id"
+    t.index ["user_id"], name: "index_question_votes_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -222,6 +243,8 @@ ActiveRecord::Schema.define(version: 2020_02_21_213510) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "answer_votes", "answers"
+  add_foreign_key "answer_votes", "users"
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
   add_foreign_key "categories_produce", "categories"
@@ -233,6 +256,8 @@ ActiveRecord::Schema.define(version: 2020_02_21_213510) do
   add_foreign_key "garden_varieties", "varieties"
   add_foreign_key "gardens", "users"
   add_foreign_key "markets", "garden_varieties"
+  add_foreign_key "question_votes", "questions"
+  add_foreign_key "question_votes", "users"
   add_foreign_key "questions", "communities"
   add_foreign_key "questions", "users"
   add_foreign_key "regions", "locations"
