@@ -86,4 +86,14 @@ class ReportTest < ActiveSupport::TestCase
     assert_not r.save
   end
 
+  test "should be able to report email without an user" do
+    r = Report.new(
+      reporter_email: "test123@example.com",
+      reported_email: "test456@example.com",
+      reason: "There is something wrong with this user.",
+      status: 1
+    )
+    assert r.save
+  end
+
 end

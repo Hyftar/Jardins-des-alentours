@@ -5,6 +5,7 @@ class GardenTest < ActiveSupport::TestCase
     g = Garden.new(
       user: users(:one),
       description: "My common tomatoes garden",
+      location: locations(:montreal),
       varieties: [varieties(:two)]
     )
 
@@ -16,6 +17,7 @@ class GardenTest < ActiveSupport::TestCase
     g = Garden.new(
       name: "test1234",
       description: "My common tomatoes garden",
+      location: locations(:montreal),
       varieties: [varieties(:two)]
     )
 
@@ -27,6 +29,7 @@ class GardenTest < ActiveSupport::TestCase
       user: users(:one),
       name: "test1234",
       description: "My common tomatoes garden",
+      location: locations(:montreal),
       varieties: [varieties(:two)]
     )
 
@@ -39,9 +42,20 @@ class GardenTest < ActiveSupport::TestCase
     g = Garden.new(
       user: users(:one),
       name: "test1234",
-      description: "My common tomatoes garden"
+      description: "My common tomatoes garden",
+      location: locations(:montreal)
     )
 
     assert g.save
+  end
+
+  test "should not be able to save garden without location" do
+    g = Garden.new(
+      user: users(:one),
+      name: "test1234",
+      description: "My common tomatoes garden"
+    )
+
+    assert_not g.save
   end
 end
