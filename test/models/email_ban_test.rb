@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class EmailBanTest < ActiveSupport::TestCase
   test "should be able to save email ban" do
@@ -18,7 +18,7 @@ class EmailBanTest < ActiveSupport::TestCase
       banned_until: 1.day.from_now,
       user: users(:one)
     )
-    
+
     assert b.save
   end
 
@@ -28,7 +28,7 @@ class EmailBanTest < ActiveSupport::TestCase
       banned_until: 1.day.from_now,
       user: users(:one)
     )
-    
+
     assert_not b.save
   end
 

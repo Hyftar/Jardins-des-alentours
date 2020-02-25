@@ -33,3 +33,4 @@ en:
   invalid_language_code: "The specified language code is invalid"
   invalid_email: "The specified email address is invalid"
   date_future: "The specified date and time should be in the future"
+  selected_answer_not_children_of_question: The answer is not a children of the question

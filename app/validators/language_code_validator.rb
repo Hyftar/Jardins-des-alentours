@@ -6,7 +6,7 @@ class LanguageCodeValidator < ActiveModel::EachValidator
         :invalid,
         {
           value: value,
-          message: I18n.t('invalid_language_code')
+          message: I18n.t("invalid_language_code")
         }
       )
     end

@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class LocationTest < ActiveSupport::TestCase
   test "-181 should not be valid longitude" do

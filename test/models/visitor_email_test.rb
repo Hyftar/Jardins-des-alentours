@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class VisitorEmailTest < ActiveSupport::TestCase
   test "should be able to save visitor email" do
@@ -7,7 +7,6 @@ class VisitorEmailTest < ActiveSupport::TestCase
       visitor: visitors(:one)
     )
     assert e.save
-
   end
 
   test "should not be able to save visitor email with duplicate address" do
@@ -35,5 +34,4 @@ class VisitorEmailTest < ActiveSupport::TestCase
 
     assert_not e.save
   end
-
 end
