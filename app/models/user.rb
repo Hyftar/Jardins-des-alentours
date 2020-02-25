@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :user_messages
   has_many :gardens
 
+  has_and_belongs_to_many :communities
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :trackable
