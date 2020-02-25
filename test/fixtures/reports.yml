@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reporter_email: test1@exemple.org
+  reported_email: test2@exemple.org
+  reason: This user is evil incarnated.
+  status: 1
+  user: one
+
+two:
+  reporter_email: lelabernoiscircuits@gmail.com
+  reported_email: test2@exemple.org
+  reason: This farmer tried to steal my tomatoes !!!!!!!!!!!!
+  status: 1
+  user: one
