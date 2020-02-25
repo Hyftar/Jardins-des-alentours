@@ -62,6 +62,13 @@ ActiveRecord::Schema.define(version: 2020_02_25_010310) do
     t.index ["region_id"], name: "index_communities_on_region_id"
   end
 
+  create_table "communities_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "community_id"
+    t.index ["community_id"], name: "index_communities_users_on_community_id"
+    t.index ["user_id"], name: "index_communities_users_on_user_id"
+  end
+
   create_table "email_bans", force: :cascade do |t|
     t.string "email", null: false
     t.datetime "banned_until", null: false
@@ -70,13 +77,6 @@ ActiveRecord::Schema.define(version: 2020_02_25_010310) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_email_bans_on_user_id"
-  end
-
-  create_table "favorite_communities", force: :cascade do |t|
-    t.bigint "users_id"
-    t.bigint "communities_id"
-    t.index ["communities_id"], name: "index_favorite_communities_on_communities_id"
-    t.index ["users_id"], name: "index_favorite_communities_on_users_id"
   end
 
   create_table "garden_varieties", force: :cascade do |t|
@@ -201,6 +201,11 @@ ActiveRecord::Schema.define(version: 2020_02_25_010310) do
     t.index ["user_id"], name: "index_roles_users_on_user_id"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "score", default: 0, null: false
+  end
+
   create_table "user_messages", force: :cascade do |t|
     t.bigint "source_user_id", null: false
     t.bigint "recipient_user_id", null: false
@@ -209,11 +214,6 @@ ActiveRecord::Schema.define(version: 2020_02_25_010310) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["recipient_user_id"], name: "index_user_messages_on_recipient_user_id"
     t.index ["source_user_id"], name: "index_user_messages_on_source_user_id"
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "score", default: 0, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -298,9 +298,9 @@ ActiveRecord::Schema.define(version: 2020_02_25_010310) do
   add_foreign_key "categories_produce", "produce"
   add_foreign_key "communities", "produce"
   add_foreign_key "communities", "regions"
+  add_foreign_key "communities_users", "communities"
+  add_foreign_key "communities_users", "users"
   add_foreign_key "email_bans", "users"
-  add_foreign_key "favorite_communities", "communities", column: "communities_id"
-  add_foreign_key "favorite_communities", "users", column: "users_id"
   add_foreign_key "garden_varieties", "gardens"
   add_foreign_key "garden_varieties", "varieties"
   add_foreign_key "gardens", "users"
