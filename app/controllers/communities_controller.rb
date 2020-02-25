@@ -1,4 +1,4 @@
-class CommunityController < ApplicationController
+class CommunitiesController < ApplicationController
   before_action :get_10_most_relevant_communities, only: %i( index )
   before_action :get_community_info, only: %i( show )
 
