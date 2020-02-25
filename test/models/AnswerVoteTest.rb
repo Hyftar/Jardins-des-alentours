@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class AnswerVoteTest < ActiveSupport::TestCase
   test "points should be added on positive vote creation and removed on deletion" do

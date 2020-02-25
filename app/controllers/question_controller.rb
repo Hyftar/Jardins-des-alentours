@@ -15,5 +15,4 @@ class QuestionController < ApplicationController
     def get_question
       @question = Question.find(params[:id])
     end
-
 end

@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class VisitorMessageTest < ActiveSupport::TestCase
   test "should save visitor_message" do
@@ -33,5 +33,4 @@ class VisitorMessageTest < ActiveSupport::TestCase
     )
     assert_not m.save
   end
-
 end

@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class MarketNotificationTest < ActiveSupport::TestCase
   test "should be able to save market notification" do
@@ -61,5 +61,4 @@ class MarketNotificationTest < ActiveSupport::TestCase
     )
     assert_not m.save
   end
-
 end
