@@ -6,6 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+users = User.create([
+  {
+    first_name: 'John',
+    last_name: 'Doe',
+    email: 'john_doe@example.com',
+    password: 'test12345',
+    password_confirmation: 'test12345',
+    confirmed_at: DateTime.now
+  }
+])
+
 locations = Location.create([
   { longitude: -73.561667, latitude: 45.508889 }, # Montréal
   { longitude: -71.208056, latitude: 46.813889 }, # Québec city
