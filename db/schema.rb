@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_24_224532) do
+ActiveRecord::Schema.define(version: 2020_02_25_010310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,13 @@ ActiveRecord::Schema.define(version: 2020_02_24_224532) do
     t.index ["region_id"], name: "index_communities_on_region_id"
   end
 
+  create_table "communities_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "community_id"
+    t.index ["community_id"], name: "index_communities_users_on_community_id"
+    t.index ["user_id"], name: "index_communities_users_on_user_id"
+  end
+
   create_table "email_bans", force: :cascade do |t|
     t.string "email", null: false
     t.datetime "banned_until", null: false
@@ -95,6 +102,15 @@ ActiveRecord::Schema.define(version: 2020_02_24_224532) do
   create_table "locations", force: :cascade do |t|
     t.float "longitude", null: false
     t.float "latitude", null: false
+  end
+
+  create_table "market_notifications", force: :cascade do |t|
+    t.string "email", null: false
+    t.bigint "market_id"
+    t.integer "status", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["market_id"], name: "index_market_notifications_on_market_id"
   end
 
   create_table "markets", force: :cascade do |t|
@@ -162,6 +178,17 @@ ActiveRecord::Schema.define(version: 2020_02_24_224532) do
     t.index ["location_id"], name: "index_regions_on_location_id"
   end
 
+  create_table "reports", force: :cascade do |t|
+    t.string "reporter_email", null: false
+    t.string "reported_email", null: false
+    t.text "reason", null: false
+    t.integer "status", default: 0, null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_reports_on_user_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -177,6 +204,16 @@ ActiveRecord::Schema.define(version: 2020_02_24_224532) do
   create_table "tags", force: :cascade do |t|
     t.string "name", null: false
     t.integer "score", default: 0, null: false
+  end
+
+  create_table "user_messages", force: :cascade do |t|
+    t.bigint "source_user_id", null: false
+    t.bigint "recipient_user_id", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipient_user_id"], name: "index_user_messages_on_recipient_user_id"
+    t.index ["source_user_id"], name: "index_user_messages_on_source_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -236,6 +273,16 @@ ActiveRecord::Schema.define(version: 2020_02_24_224532) do
     t.index ["visitor_id"], name: "index_visitor_locations_on_visitor_id"
   end
 
+  create_table "visitor_messages", force: :cascade do |t|
+    t.bigint "source_visitor_email_id", null: false
+    t.bigint "recipient_user_id", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipient_user_id"], name: "index_visitor_messages_on_recipient_user_id"
+    t.index ["source_visitor_email_id"], name: "index_visitor_messages_on_source_visitor_email_id"
+  end
+
   create_table "visitors", force: :cascade do |t|
     t.inet "IP", null: false
     t.integer "request_count", default: 0
@@ -251,19 +298,27 @@ ActiveRecord::Schema.define(version: 2020_02_24_224532) do
   add_foreign_key "categories_produce", "produce"
   add_foreign_key "communities", "produce"
   add_foreign_key "communities", "regions"
+  add_foreign_key "communities_users", "communities"
+  add_foreign_key "communities_users", "users"
   add_foreign_key "email_bans", "users"
   add_foreign_key "garden_varieties", "gardens"
   add_foreign_key "garden_varieties", "varieties"
   add_foreign_key "gardens", "users"
+  add_foreign_key "market_notifications", "markets"
   add_foreign_key "markets", "garden_varieties"
   add_foreign_key "question_votes", "questions"
   add_foreign_key "question_votes", "users"
   add_foreign_key "questions", "communities"
   add_foreign_key "questions", "users"
   add_foreign_key "regions", "locations"
+  add_foreign_key "reports", "users"
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
+  add_foreign_key "user_messages", "users", column: "recipient_user_id"
+  add_foreign_key "user_messages", "users", column: "source_user_id"
   add_foreign_key "varieties", "produce"
   add_foreign_key "visitor_emails", "visitors"
   add_foreign_key "visitor_locations", "visitors"
+  add_foreign_key "visitor_messages", "users", column: "recipient_user_id"
+  add_foreign_key "visitor_messages", "visitor_emails", column: "source_visitor_email_id"
 end

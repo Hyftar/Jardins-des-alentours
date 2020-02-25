@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  source_user: one
+  recipient_user: two
+  content: I want two pounds of potatoes. Do you have some ?
+
+two:
+  source_user: two
+  recipient_user: one
+  content: I wanna buy 5 apples. Are they available ?
