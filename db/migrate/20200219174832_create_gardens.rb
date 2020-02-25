@@ -5,7 +5,6 @@ class CreateGardens < ActiveRecord::Migration[6.0]
       t.integer :score, null: false, default: 0
       t.string :name, null: false
       t.text :description
-
       t.timestamps
     end
   end

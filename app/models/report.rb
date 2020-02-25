@@ -1,5 +1,5 @@
 class Report < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   validates :reporter_email, presence: true, email: true
   validates :reported_email, presence: true, email: true
   validates :reason, presence: true, length: { maximum: 10_000 }
