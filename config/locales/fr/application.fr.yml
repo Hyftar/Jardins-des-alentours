@@ -1,0 +1,7 @@
+fr:
+  time_ago: "il y a %{time}"
+
+  invalid_language_code: Le code de langue spécifié est invalide
+  invalid_email: L'adresse email spécifiée est invalide
+  date_future: La date spécifiée devrait être dans l'avenir
+  selected_answer_not_children_of_question: La réponse spécifiée n'appartient pas à la question
