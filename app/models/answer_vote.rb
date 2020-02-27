@@ -4,6 +4,8 @@ class AnswerVote < Vote
   after_destroy :update_score_on_destroy
   after_update :update_score_on_update
 
+  validates_uniqueness_of :user_id, scope: :answer_id
+
   def update_score_on_update
     if saved_changes.include? :vote
       ApplicationHelper.update_score_of(

@@ -74,4 +74,32 @@ class QuestionVoteTest < ActiveSupport::TestCase
     assert_equal user_score_before, user_score_after, "User score has not been reset"
     assert_equal question_score_before, question_score_after, "Question score has not been reset"
   end
+
+  test "user should only be able to vote once per question" do
+    user = users(:one)
+    q1 = questions(:one)
+    q2 = questions(:two)
+
+    QuestionVote.create(
+      question: q1,
+      user: user,
+      vote: :up
+    ).save!
+
+    assert_raise do
+      QuestionVote.create(
+        question: q1,
+        user: user,
+        vote: :up
+      ).save!
+    end
+
+    assert_nothing_raised do
+      QuestionVote.create(
+        question: q2,
+        user: user,
+        vote: :up
+      ).save!
+    end
+  end
 end

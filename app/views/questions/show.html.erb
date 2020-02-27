@@ -1,0 +1,29 @@
+<div class="question">
+  <div class="question__top">
+    <div class="top__title">
+      <%= @question.title %>
+    </div>
+    <div class="top__ask-button">
+      <%= t 'questions.ask' %>
+    </div>
+    <div class="top__created-at">
+      <%= t 'questions.asked' %> <span><%= t 'time_ago', time: time_ago_in_words(@question.created_at) %></span>
+    </div>
+  </div>
+  <div class="question__body">
+    <div class="body__votes">
+      <div class="votes__up"></div>
+      <div class="votes__count"><%= @question.score %></div>
+      <div class="votes__down"></div>
+    </div>
+    <div class="body__content">
+      <%= @question.content %>
+    </div>
+  </div>
+</div>
+
+<div class="answers">
+  <div class="answers__count">
+    <%= @question.answers.size %> <%= Answer.model_name.human.pluralize %>
+  </div>
+</div>
