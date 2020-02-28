@@ -20,7 +20,7 @@
   width: 100%;
   grid-template:
     "left top  top" 2rem
-    "left body body" 5rem
+    "left body body" 10rem
     "left tags user" 3rem / 4rem 1fr 1fr;
 }
 
@@ -34,10 +34,12 @@
 
 .question__top {
   grid-area: top;
+  overflow: hidden;
 }
 
 .question__body {
   grid-area: body;
+  overflow: hidden;
 }
 
 .question__author {
@@ -46,6 +48,7 @@
 
 .question__tags {
   grid-area: tags;
+  overflow: hidden;
 }
 
 .left__score, .left__answers {

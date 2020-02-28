@@ -12,9 +12,9 @@
   </div>
   <div class="question__body">
     <div class="body__votes">
-      <div class="votes__up"></div>
-      <div class="votes__count"><%= @question.score %></div>
-      <div class="votes__down"></div>
+      <div id="question_vote_up" class="votes__up"></div>
+      <div id="question_score" class="votes__count"><%= @question.score %></div>
+      <div id="question_vote_down" class="votes__down"></div>
     </div>
     <div class="body__content">
       <%= @question.content %>
