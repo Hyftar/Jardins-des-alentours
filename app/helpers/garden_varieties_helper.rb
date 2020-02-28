@@ -1,0 +1,2 @@
+module GardenVarietiesHelper
+end
