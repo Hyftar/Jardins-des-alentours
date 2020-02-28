@@ -1,6 +1,8 @@
 :root {
   --arrow-dimension: 1em;
   --arrow-base-color: rgb(164,164,164);
+  --arrow-voted-up: rgb(97,172,78);
+  --arrow-voted-down: rgb(179,86,70);
 }
 
 .body__votes {
@@ -26,8 +28,18 @@
   border-top: var(--arrow-dimension) solid var(--arrow-base-color);
 }
 
+.votes__up[data-vote="remove"] {
+  border-bottom: var(--arrow-dimension) solid var(--arrow-voted-up);
+}
+
+.votes__down[data-vote="remove"] {
+  border-top: var(--arrow-dimension) solid var(--arrow-voted-down);
+}
+
+
 .question__top {
   display: grid;
+  margin-bottom: 1em;
   grid-template:
     "title title btn" 2fr
     "asked asked ." 1fr / 3fr 1fr;
@@ -37,7 +49,7 @@
   grid-area: title;
 }
 
-.top__ask-button {
+.top__answer-button {
   grid-area: btn;
 }
 
@@ -47,8 +59,7 @@
 
 .question__body {
   display: flex;
-  margin-top: 2em;
-  padding-top: 1.5em;
+  padding-top: 1em;
   border-top: 1px solid rgb(161,161,161);
 }
 
@@ -58,6 +69,7 @@
 
 .body__votes {
   width: 5em;
+  min-height: 8em;
 }
 
 .answers {

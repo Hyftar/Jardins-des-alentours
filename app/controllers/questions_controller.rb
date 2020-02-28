@@ -17,7 +17,10 @@ class QuestionsController < ApplicationController
       @vote.save!
     end
 
-    render json: { score_value: @question.reload.score }
+    render json: {
+      score: @question.reload.score,
+      vote: 'up' # Current user vote
+    }
   end
 
   def vote_down
@@ -32,24 +35,36 @@ class QuestionsController < ApplicationController
       @vote.save!
     end
 
-    render json: { score_value: @question.reload.score }
+    render json: {
+      score: @question.reload.score,
+      vote: 'down' # Current user vote
+    }
   end
 
   def remove_vote
     @vote.destroy! unless @vote.nil?
 
-    render json: { score_value: @question.reload.score }
+    render json: {
+      score: @question.reload.score,
+      vote: 'none' # Current user vote
+    }
   end
 
   def index
   end
 
   def show
+    @answer = Answer.new
   end
 
   private
     def get_user_vote
-      @question = Question.find_by!(id: params[:question_id])
+      @question =
+        Question.find_by!(
+          id: params[:question_id],
+          community: @community
+        )
+
       @vote =
         QuestionVote.find_by(
           user: current_user,
@@ -62,6 +77,17 @@ class QuestionsController < ApplicationController
         Question
           .includes(:user)
           .find_by!(id: params[:id], community: @community)
+
+      @answers =
+        Answer
+          .where(question: @question)
+          .with_rich_text_content_and_embeds
+
+      @vote =
+        QuestionVote.find_by(
+          user: current_user,
+          question: @question
+        )
     end
 
     def get_community

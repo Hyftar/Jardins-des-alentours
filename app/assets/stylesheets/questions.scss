@@ -19,8 +19,8 @@
   display: grid;
   width: 100%;
   grid-template:
-    "left top  top" 2rem
-    "left body body" 10rem
+    "left top  top" auto
+    "left body body" auto
     "left tags user" 3rem / 4rem 1fr 1fr;
 }
 
@@ -37,7 +37,7 @@
   overflow: hidden;
 }
 
-.question__body {
+.questions_container__question .question__body {
   grid-area: body;
   overflow: hidden;
 }

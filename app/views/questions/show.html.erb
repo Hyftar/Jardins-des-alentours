@@ -3,18 +3,15 @@
     <div class="top__title">
       <%= @question.title %>
     </div>
-    <div class="top__ask-button">
-      <%= t 'questions.ask' %>
-    </div>
     <div class="top__created-at">
       <%= t 'questions.asked' %> <span><%= t 'time_ago', time: time_ago_in_words(@question.created_at) %></span>
     </div>
   </div>
   <div class="question__body">
     <div class="body__votes">
-      <div id="question_vote_up" class="votes__up"></div>
+      <div id="question_vote_up" class="votes__up" data-vote="<%= @vote&.up? ? 'remove' : 'up'%>"></div>
       <div id="question_score" class="votes__count"><%= @question.score %></div>
-      <div id="question_vote_down" class="votes__down"></div>
+      <div id="question_vote_down" class="votes__down" data-vote="<%= @vote&.down? ? 'remove' : 'down'%>"></div>
     </div>
     <div class="body__content">
       <%= @question.content %>
@@ -26,4 +23,19 @@
   <div class="answers__count">
     <%= @question.answers.size %> <%= Answer.model_name.human.pluralize %>
   </div>
+  <hr>
+  <% @answers.each do |answer| %>
+    <div class="answer">
+      <%= answer.content %>
+    </div>
+  <% end %>
 </div>
+
+<% if user_signed_in? %>
+  <div class="post-answer">
+    <%= form_with url: community_question_answers_path(question_id: @question.id) do |f| %>
+      <%= f.rich_text_area :content %>
+      <%= f.submit 'Submit your answer'%>
+    <% end %>
+  </div>
+<% end %>

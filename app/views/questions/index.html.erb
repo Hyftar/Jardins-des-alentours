@@ -15,7 +15,7 @@
         <%= link_to question.title, community_question_path(@community, question) %>
       </div>
       <div class="question__body">
-        <%= question.content.truncate(180) %>
+        <%= question.content %>
       </div>
       <div class="question__tags">
       </div>
