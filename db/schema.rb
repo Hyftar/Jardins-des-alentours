@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_154826) do
     t.bigint "garden_variety_id", null: false
     t.integer "quantity", default: 0
     t.string "unit", null: false
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["garden_variety_id"], name: "index_markets_on_garden_variety_id"
