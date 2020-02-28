@@ -1,4 +1,5 @@
 class Location < ApplicationRecord
+  has_one :address
   validates :longitude,
     presence: true,
     numericality: {
