@@ -1,0 +1,41 @@
+<div>
+  Jardin <%= @garden.name %> de <%= @garden.user.first_name %> <%= @garden.user.last_name %>
+  <br>
+  Description : <%= @garden.description %>
+  <br>
+  <p>
+  <h2>Variétés cultivées :</h2>
+  <% @garden.garden_varieties.each do |garden_variety|%>
+    <% if garden_variety.is_active %>
+      <%= garden_variety.variety.name %>
+      <% if current_user == @garden.user %>
+        <%= link_to 'Remove from garden', garden_garden_variety_set_active_path(@garden, garden_variety.id), data: {confirm: t('garden_variety_confirm_before_inactive')}%>
+      <% end %> <br>
+    <% end %>
+  <% end %>
+  <h2>Variétés préalablement cultivées :</h2>
+  <% @garden.garden_varieties.each do |garden_variety|%>
+    <% if !garden_variety.is_active %>
+      <%= garden_variety.variety.name %>
+      <% if current_user == @garden.user %>
+        <%= link_to 'Add to garden', garden_garden_variety_set_active_path(@garden, garden_variety.id)%>
+      <% end %> <br>
+    <% end %>
+  <% end %>
+  </p>
+  <p>
+    <h2>Sur le marché :</h2>
+    <% @garden.markets.each do |market|%>
+      <% if market.is_active %>
+        <%= market.garden_variety.variety.name %> : <%= market.quantity %> <%= market.unit %>
+          <% if current_user == @garden.user %>
+            <%= link_to 'Edit', edit_garden_market_path(@garden, market) %>
+            <%= link_to 'Remove', garden_market_set_active_path(@garden, market), data: {confirm: t('confirm_before_delete')}%>
+          <% end %>
+          <% %>
+        <br>
+      <% end %>
+    <% end %>
+  </p>
+
+</div>

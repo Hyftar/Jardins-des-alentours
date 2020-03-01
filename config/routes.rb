@@ -1,4 +1,25 @@
 Rails.application.routes.draw do
-  get '', to: 'home#index'
-  devise_for :users
+  root to: "home#index"
+
+  resources :communities, only: %i( index show ) do
+    resources :questions, only: %i( index show ) do
+      resources :answers, only: %i( create )
+      post "vote_up", to: "questions#vote_up"
+      post "vote_down", to: "questions#vote_down"
+      post "remove_vote", to: "questions#remove_vote"
+    end
+  end
+
+  resources :gardens, only: [:index, :show, :edit, :update, :destroy] do
+    resources :markets, only: [:edit, :update] do
+      get "set_active", to: "markets#set_active"
+    end
+    resources :garden_varieties, only: [] do
+      get "set_active", to: "garden_varieties#set_active"
+    end
+  end
+
+  resources :users, only: [:show]
+
+  devise_for :users, path: "auth"
 end

@@ -1,0 +1,29 @@
+<div class="questions-container">
+  <% @questions.each do |question| %>
+    <div class="questions-container__question">
+      <div class="question__left">
+        <div class="left__score">
+          <div class="value"><%= question.score %></div>
+          <div class="label"><%= Question.human_attribute_name('score').pluralize %></div>
+        </div>
+        <div class="left__answers answers--<%= question.status %>">
+          <div class="value"><%= question.answers.size %></div>
+          <div class="label"><%= Answer.model_name.human.pluralize %></div>
+        </div>
+      </div>
+      <div class="question__top">
+        <%= link_to question.title, community_question_path(@community, question) %>
+      </div>
+      <div class="question__body">
+        <%= question.content %>
+      </div>
+      <div class="question__tags">
+      </div>
+      <div class="question__author">
+        <%= render 'question_author_preview', user: question.user %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= will_paginate @questions %>

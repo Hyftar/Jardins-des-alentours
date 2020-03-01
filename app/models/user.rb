@@ -5,8 +5,10 @@ class User < ApplicationRecord
   validates :language, language_code: true
 
   has_and_belongs_to_many :roles
-
+  has_many :user_messages
   has_many :gardens
+
+  has_and_belongs_to_many :communities
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,

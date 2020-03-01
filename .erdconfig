@@ -7,7 +7,7 @@ attributes:
 disconnected: true
 filename: doc/db_schema
 filetype: pdf
-indirect: true
+indirect: false
 inheritance: false
 markup: true
 notation: bachman
@@ -19,6 +19,6 @@ title: Schéma de Base de données - Jardins des alentours
 exclude: null
 only: null
 only_recursion_depth: null
-prepend_primary: false
+prepend_primary: true
 cluster: false
 splines: spline

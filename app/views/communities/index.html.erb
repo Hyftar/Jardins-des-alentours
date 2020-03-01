@@ -1,0 +1,6 @@
+<% @communities.each do |community| %>
+<div>
+  Communauté des <%= community.produce.name %> de <%= community.region.name %>
+  <%= link_to 'lien', community_path(community) %>
+</div>
+<% end %>

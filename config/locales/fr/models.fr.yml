@@ -1,0 +1,191 @@
+fr:
+  activerecord:
+    models:
+      answer: Réponse
+      answer_vote: Vote de réponse
+      category: Catégorie
+      community: Communauté
+      email_ban: Interdiction des e-mails
+      garden: Jardin
+      garden_variety: Variété de jardin
+      location: Emplacement
+      market: Marché
+      market_notification: Notification de marché
+      produce: Produit
+      question: Question
+      question_vote: Vote des questions
+      region: Région
+      report: rapport
+      role: Rôle
+      tag: Étiquette
+      user: Utilisateur
+      user_message: Message d'utilisateur
+      variety: Variété
+      visitor: Visiteur
+      visitor_email: Courriel du visiteur
+      visitor_location: Lieu du visiteur
+      visitor_message: Message du visiteur
+
+    attributes:
+      answer:
+        community: Communauté
+        content: Contenu
+        question: Question
+        score: Points
+        status: Statut
+        user: Auteur
+
+      answer_vote:
+        answer: Réponse
+        user: Utilisateur
+        vote: Vote
+
+      category:
+        description: La description
+        name: Nom
+        produce: Produit
+        score: Points
+
+      community:
+        produce: Produit
+        region: Région
+        score: Points
+        users: Utilisateurs
+
+      email_ban:
+        banned_until: Interdit jusqu'au
+        email: Email
+        reason: Raison
+        user: Utilisateur
+
+      garden:
+        description: La description
+        garden_varieties: Variétés de jardin
+        location: Emplacement
+        name: Nom
+        score: Points
+        user: Jardinier
+        varieties: Variétés
+
+      garden_variety:
+        garden: Jardin
+        is_active: Est actif
+        variety: Variété
+
+      location:
+        latitude: Latitude
+        longitude: Longitude
+
+      market:
+        garden_variety: Variétés
+        market_notifications: Notifications de marché
+        quantity: Quantité
+        unit: Unité
+
+      market_notification:
+        email: Email
+        market: Marché
+        status: Statut
+
+      produce:
+        categories: Les catégories
+        communities: Communautés
+        description: La description
+        name: Nom
+        score: Points
+
+      question:
+        answers: Réponses
+        community: Communauté
+        content: Contenu
+        score: Votes
+        selected_answer: Réponse choisie
+        status: Statut
+        tags: Étiquettes
+        title: Titre
+        user: Auteur
+        varieties: Variétés
+
+      question_vote:
+        question: Question
+        user: Utilisateur
+        vote: Vote
+
+      region:
+        communities: Communautés
+        description: La description
+        location: Emplacement
+        name: Nom
+
+      report:
+        reason: Raison
+        reported_email: E-mail signalé
+        reporter_email: Courriel du signaleur
+        status: Statut
+        user: Utilisateur
+
+      role:
+        description: La description
+        name: Nom
+        users: Utilisateurs
+
+      tag:
+        name: Nom
+        questions: Questions
+        score: Points
+
+      user:
+        communities: Communautés
+        confirmation_sent_at: Confirmation envoyée à
+        confirmation_token: Jeton de confirmation
+        confirmed_at: Confirmé à
+        current_sign_in_at: Connexion actuelle à
+        current_sign_in_ip: Connexion IP actuelle
+        email: Email
+        encrypted_password: Mot de passe crypté
+        failed_attempts: Tentatives ratées
+        first_name: Prénom
+        gardens: Jardins
+        language: Langue
+        last_name: Nom de famille
+        last_sign_in_at: Dernière connexion à
+        last_sign_in_ip: Dernière connexion IP
+        locked_at: Verrouillé à
+        remember_created_at: Rappelez-vous créé à
+        reset_password_sent_at: Réinitialiser le mot de passe envoyé à
+        reset_password_token: Jeton de réinitialisation de mot de passe
+        roles: Rôles
+        score: Points
+        unconfirmed_email: E-mail non confirmé
+        unlock_token: Jeton de déverrouillage
+        user_messages: Messages utilisateur
+
+      user_message:
+        content: Contenu
+        recipient_user: Recipient
+        source_user: Source
+
+      variety:
+        description: La description
+        garden_varieties: Variétés de jardin
+        gardens: Jardins
+        name: Nom
+        produce: Produit
+        score: Points
+
+      visitor:
+        IP: IP
+
+      visitor_email:
+        email: Email
+        visitor: Visiteur
+
+      visitor_location:
+        latitude: Latitude
+        longitude: Longitude
+        visitor: Visiteur
+
+      visitor_message:
+        content: Contenu
+        recipient_user: Recipient
+        source_visitor_email: Email du visiteur
