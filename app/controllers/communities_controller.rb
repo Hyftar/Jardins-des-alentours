@@ -10,7 +10,7 @@ class CommunitiesController < ApplicationController
 
   private
     def get_community_info
-      @community = Community.find(params[:id])
+      @community = Community.find_by!(id: params[:id])
     end
 
     def get_10_most_relevant_communities
