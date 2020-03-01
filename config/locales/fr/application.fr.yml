@@ -8,3 +8,32 @@ fr:
   record_not_accessible: Cet enregistrement est inaccessible, assurez-vous que vous avez les droits nécessaires.
   confirm_before_delete: Êtes-vous certain de vouloir supprimer cet article?
   garden_variety_confirm_before_inactive: Êtes-vous certain de vouloir indiquer cette variété comme inactive? Cela va enlever la variété correspondante de votre marché.
+
+  landing_page:
+    getting_started: "commencement"
+    veggies: "fruits & légumes"
+    gardens: "jardins"
+    recipes: "recettes"
+    communities: "communautés"
+    log_in: "connexion"
+    subscribe: "inscription"
+    app_title: "jardins des alentours"
+    slogan: "les légumes de votre quartier"
+    look_for_veggie: "trouvez votre légume favori"
+    info1_title: "Qu'est-ce que Jardins des Alentours ?"
+    info2_title: "Un geste pour l'environnement"
+    map_info_title: "Trouvez un jardin près de chez vous"
+    map_info_p: "Nous avons repéré pour vous les jardins à proximité. Choisissez-en un qui vous intéresse !"
+    communities_title: "Une histoire de communauté"
+    find_this_veggie: "Trouver"
+    community: "communauté"
+    forum: "forum"
+    info: "informations"
+    gardeners: "jardiniers"
+    clients: "clients"
+    contribution: "contribution"
+    contact: "contact"
+    about_us: "à propos"
+    careers: "carrière"
+    privacy: "confidentialité"
+    license: "license"
