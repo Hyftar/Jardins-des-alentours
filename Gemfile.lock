@@ -176,6 +176,7 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    spectre_css (0.1.6)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -235,6 +236,7 @@ DEPENDENCIES
   rails-erd
   sass-rails (>= 6)
   selenium-webdriver
+  spectre_css
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)

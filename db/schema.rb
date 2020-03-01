@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 2020_02_20_210336) do
   end
 
   create_table "email_bans", force: :cascade do |t|
-    t.string "email"
-    t.datetime "banned_until"
+    t.string "email", null: false
+    t.datetime "banned_until", null: false
     t.text "reason"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

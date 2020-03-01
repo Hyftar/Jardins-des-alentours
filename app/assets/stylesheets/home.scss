@@ -1,3 +1,416 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+* {
+
+  margin: 0;
+  padding: 0;
+
+}
+
+html, body {
+
+  overflow-x:hidden;
+  text-align: center;
+  scroll-behavior: smooth;
+
+  // generalities -------------------
+
+  .text-light {
+
+    color: #fff !important;
+
+  }
+
+  a.text-light:focus,
+  a.text-light:hover {
+
+    color: #d9d9d9 !important;
+
+  }
+
+  .sticky {
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+  }
+
+  .container{
+
+    position: relative;
+    width: 100%;
+
+  }
+
+  // navbar -------------------
+
+  .navbar_main {
+
+    background: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 10%;
+    padding: 0 1vw;
+    z-index: 3;
+
+    a {
+
+      font-size: 2vh !important;
+      margin: 0 3%;
+
+    }
+
+    i {
+
+      &:hover {
+
+        opacity: 0.8;
+
+      }
+
+      font-size: 5vh;
+      cursor: pointer;
+      transition-duration:0.5s;
+
+    }
+
+    .navbar-center {
+
+      i {
+
+        color:rgba(248,255,244,0.9);
+
+      }
+
+      ul {
+
+        display: none;
+
+      }
+    }
+  }
+
+  // split images ---------
+
+  #right-veggie {
+
+    background-image: url("carrots.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+    transition: right 0.1s;
+    position: fixed; top:0; right: 0; width:50%; height: 100%;
+
+  }
+
+  #left-veggie {
+
+    background-image: url("tomatoes.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+    transition: left 0.1s;
+    position: fixed; top:0; left: 0; width:50%; height: 100%;
+
+  }
+
+  // --- icons ---------------
+
+  .lp_pics {
+
+    flex-direction: column;
+
+    .fa-carrot {
+
+      color:#f5a26f;
+      font-size: 5em;
+      margin-left: 30vw;
+      margin-bottom: 20vh;
+      margin-top: 20vh;
+
+    }
+
+    .fa-pepper-hot {
+
+      color:#f57070;
+      font-size: 5em;
+      margin-left: 10vw;
+
+    }
+
+    .fa-apple-alt {
+
+      color:#f5a5b0;
+      font-size: 5em;
+      margin-right: 40vw;
+      margin-top: 60vh;
+
+    }
+
+    .fa-lemon {
+
+      color:#d1f58d;
+      font-size: 5em;
+      margin-right: 20vw;
+      margin-top: 20vh;
+
+    }
+
+  }
+
+  // -- main title --------
+
+  .title_main {
+
+    margin-top: 40vh;
+    background-color: rgba(0,0,0,0);
+    z-index: 2;
+
+    > div {
+
+      flex-direction: column;
+
+      > h1 {
+
+        color: white;
+        text-shadow: 0 0 10px #2E2F30;
+        font-size: 64px;
+        width: 50%;
+
+      }
+
+      > p {
+
+        color: white;
+        text-shadow: 2px 0 10px #2E2F30;
+        font-size: 36px;
+        width: 50%;
+
+      }
+
+      > div {
+
+        margin-top: 4%;
+
+        div > i {
+          color: #2E2F30;
+        }
+
+        button {
+
+          background-color: #2E2F30 !important;
+          border-color: black !important;
+
+        }
+
+      }
+
+    }
+
+    #blinking {
+
+      animation: blinking 2s infinite;
+      transition-duration: 1s;
+      background-color: rgba(46, 47, 48, 0.76);
+      padding: 3vh;
+      border-radius: 50%;
+      margin-top: 10vh !important;
+      cursor: pointer;
+      font-size: 3vh; font-weight: bold;
+
+    }
+
+    @keyframes blinking {
+
+      0% { color: #d9d9d9; }
+      50% { color: #2E2F30; }
+      100% { color: #d9d9d9; }
+
+    }
+
+  }
+
+  // -- sections ----------------------
+
+  // -- info 1
+
+  .p_info_1 {
+
+    margin-top: 30vh;
+    background-color: #f5a26f;
+
+    .column:first-of-type {
+
+      text-align: left;
+      padding: 8vw;
+
+      p {
+
+        font-size: large;
+
+      }
+
+    }
+
+    .carousel {
+
+      margin-left: -5vw;
+      margin-top: 5vh;
+
+    }
+
+  }
+
+  // -- info 2
+
+  .p_info_2 {
+
+    background-color: #f5a26f;
+    margin-bottom: -8vh;
+    margin-top: -8vh;
+
+    .column {
+
+      text-align: right;
+      padding: 10vw;
+
+    }
+
+    i {
+
+      color: rgb(198, 255, 221);
+      font-size: 7em;
+      margin-left: 20vw;
+
+    }
+
+  }
+
+  // -- map section
+
+  .map_container {
+
+    padding: 10vh 20vw 30vh 20vw;
+    background-color: #b3c2fe;
+    height: fit-content;
+    clip-path: polygon(0 0%, 0 100%, 100% 95%, 100% 5%);
+
+    .columns:first-of-type .column:first-of-type {
+
+      margin: 10vh;
+      text-align: left;
+      color: #2E2F30;
+
+    }
+
+  }
+
+  // -- communities
+
+  .communities_container {
+
+    height: fit-content;
+    clip-path: polygon(0 8%, 0 100%, 100% 100%, 100% 0%);
+    text-align: right;
+    padding: 10vw !important;
+    background-color: #effff9;
+    color: #666666;
+    margin-top: -6vw;
+
+    .columns:first-of-type {
+
+      margin-bottom: 5vh;
+
+      p {
+
+        font-size: large;
+
+      }
+
+    }
+
+    .card .btn-link {
+
+      white-space: initial;
+      text-align: right;
+
+    }
+
+  }
+
+  // -- footer
+
+  .footer {
+
+    padding: 10vh 4vw;
+
+    .columns .column {
+
+      flex-direction: column;
+      display: flex;
+      padding: 1vw;
+
+    }
+
+    i {
+
+      color:rgba(248,255,244,0.9);
+
+    }
+
+    a {
+
+      padding: 1vw;
+
+    }
+
+  }
+
+}
+
+
+
+@media screen and (max-width: 1080px) {
+
+
+
+  #navbar {
+
+    background-color: rgba(46, 47, 48, 0.81) !important;
+    height: fit-content !important;
+    padding: 2vh !important;
+
+    section > a {
+
+      display: none;
+
+    }
+
+    .navbar-center {
+
+      flex-direction: column;
+
+      ul {
+
+        display: none;
+
+        li {
+
+          list-style-type: none;
+          font-size: 4vh;
+          font-weight: bold;
+          margin: 2vh 0 !important;
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+

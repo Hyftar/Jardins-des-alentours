@@ -12,4 +12,10 @@
  *
  *= require_tree .
  *= require_self
+ *= require spectre.css
+ *= require spectre-exp.css
+ *= require spectre-icons.css
  */
+
+
+
