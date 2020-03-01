@@ -1,0 +1,191 @@
+en:
+  activerecord:
+    models:
+      answer: Answer
+      answer_vote: Vote
+      category: Category
+      community: Community
+      email_ban: Email ban
+      garden: Garden
+      garden_variety: Garden variety
+      location: Location
+      market: Market
+      market_notification: Market notification
+      produce: Produce
+      question: Question
+      question_vote: Vote
+      region: Region
+      report: Report
+      role: Role
+      tag: Tag
+      user: User
+      user_message: User message
+      variety: Variety
+      visitor: Visitor
+      visitor_email: Visitor email
+      visitor_location: Visitor Location
+      visitor_message: Visitor message
+
+    attributes:
+      answer:
+        community: Communauty
+        content: Content
+        question: Question
+        score: Votes
+        status: Status
+        user: Author
+
+      answer_vote:
+        answer: Answer
+        user: User
+        vote: Vote
+
+      category:
+        description: Description
+        name: Name
+        produce: Produce
+        score: Score
+
+      community:
+        produce: Produce
+        region: Region
+        score: Score
+        users: Users
+
+      email_ban:
+        banned_until: Banned until
+        email: Email
+        reason: Reason
+        user: User
+
+      garden:
+        description: Description
+        garden_varieties: Garden varieties
+        location: Location
+        name: Name
+        score: Score
+        user: Gardener
+        varieties: Varieties
+
+      garden_variety:
+        garden: Garden
+        is_active: Is active
+        variety: Variety
+
+      location:
+        latitude: Latitude
+        longitude: Longitude
+
+      market:
+        garden_variety: Variety
+        market_notifications: Market notifications
+        quantity: Quantity
+        unit: Unit
+
+      market_notification:
+        email: Email
+        market: Market
+        status: Status
+
+      produce:
+        categories: Categories
+        communities: Communauties
+        description: Description
+        name: Name
+        score: Score
+
+      question:
+        answers: Answers
+        community: Communauty
+        content: Content
+        score: Votes
+        selected_answer: Selected answer
+        status: Status
+        tags: Tags
+        title: Title
+        user: Author
+        varieties: Variety
+
+      question_vote:
+        question: Question
+        user: User
+        vote: Vote
+
+      region:
+        communities: Communauty
+        description: Description
+        location: Location
+        name: Name
+
+      report:
+        reason: Reason
+        reported_email: Reported email
+        reporter_email: Reporter email
+        status: Status
+        user: User
+
+      role:
+        description: Description
+        name: Name
+        users: Users
+
+      tag:
+        name: Name
+        questions: Questions
+        score: Score
+
+      user:
+        communities: Communauties
+        confirmation_sent_at: Confirmation sent at
+        confirmation_token: Confirmation token
+        confirmed_at: Confirmed at
+        current_sign_in_at: Current sign in at
+        current_sign_in_ip: Current sign in IP
+        email: Email
+        encrypted_password: Encrypted password
+        failed_attempts: Failed attempts
+        first_name: First name
+        gardens: Gardens
+        language: Language
+        last_name: Last name
+        last_sign_in_at: Last sign in at
+        last_sign_in_ip: Last sign in IP
+        locked_at: Locked at
+        remember_created_at: Remember me created at
+        reset_password_sent_at: Password reset token sent at
+        reset_password_token: Password reset token
+        roles: Roles
+        score: Score
+        unconfirmed_email: Unconfirmed email
+        unlock_token: Unlock token
+        user_messages: User messages
+
+      user_message:
+        content: Content
+        recipient_user: Recipient
+        source_user: Source
+
+      variety:
+        description: Description
+        garden_varieties: Garden varieties
+        gardens: Gardens
+        name: Name
+        produce: Produce
+        score: Score
+
+      visitor:
+        IP: IP
+
+      visitor_email:
+        email: Email
+        visitor: Visitor
+
+      visitor_location:
+        latitude: Latitude
+        longitude: Longitude
+        visitor: Visitor
+
+      visitor_message:
+        content: Content
+        recipient_user: Recipient
+        source_visitor_email: Visitor email

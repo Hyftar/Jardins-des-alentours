@@ -11,8 +11,11 @@ class Question < ApplicationRecord
 
   validate :selected_answer_must_be_children_of_question
 
+  has_rich_text :content
+
   has_and_belongs_to_many :tags
   has_and_belongs_to_many :varieties
+  has_many :answers
   belongs_to :user
   belongs_to :community
   belongs_to :selected_answer, class_name: "Answer", optional: true

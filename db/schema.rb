@@ -26,6 +26,35 @@ ActiveRecord::Schema.define(version: 2020_02_28_212704) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["location_id"], name: "index_addresses_on_location_id", unique: true
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
   create_table "answer_votes", force: :cascade do |t|
@@ -41,7 +70,6 @@ ActiveRecord::Schema.define(version: 2020_02_28_212704) do
   create_table "answers", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "question_id", null: false
-    t.text "content", null: false
     t.integer "score", default: 0, null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
@@ -159,13 +187,13 @@ ActiveRecord::Schema.define(version: 2020_02_28_212704) do
   create_table "questions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title", null: false
-    t.text "content", null: false
     t.integer "score", default: 0, null: false
     t.bigint "community_id", null: false
     t.bigint "selected_answer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status", default: 0, null: false
+    t.integer "answers_count"
     t.index ["community_id"], name: "index_questions_on_community_id"
     t.index ["selected_answer_id"], name: "index_questions_on_selected_answer_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
@@ -307,6 +335,7 @@ ActiveRecord::Schema.define(version: 2020_02_28_212704) do
   end
 
   add_foreign_key "addresses", "locations"
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answer_votes", "answers"
   add_foreign_key "answer_votes", "users"
   add_foreign_key "answers", "questions"

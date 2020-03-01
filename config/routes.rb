@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
   root to: "home#index"
 
-  resources :community, only: [:index, :show]
+  resources :communities, only: %i( index show ) do
+    resources :questions, only: %i( index show ) do
+      resources :answers, only: %i( create )
+      post "vote_up", to: "questions#vote_up"
+      post "vote_down", to: "questions#vote_down"
+      post "remove_vote", to: "questions#remove_vote"
+    end
+  end
 
   resources :gardens, only: [:index, :show, :edit, :update, :destroy] do
     resources :markets, only: [:edit, :update] do

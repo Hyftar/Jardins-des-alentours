@@ -63,6 +63,26 @@ communities = Community.create([
   produce: produce.first
 ])
 
+questions = Question.create([
+  {
+    title: "Les tomates sont des légumes ou des fruits?",
+    content: "J'ai observé que les tomates ont toutes les caractéristiques des fruits mais sont utilisées comme des légumes, alors elles sont le quel des deux?",
+    community: communities.first,
+    user: users.first
+  },
+  {
+    title: "Mes tomates ne sont pas rouges mais plutôt orange, que faire?",
+    content: "J'ai essayé de faire pousser une nouvelle variété de tomate et elle est sortie orangé au lieu du rouge tomate, est-ce normal?",
+    community: communities.first,
+    user: users.first
+  },
+  {
+    title: "J'ai mangé une tomate verte, vais-je mourir?",
+    content: "Je pensais qu'elle était mûre mais finalement elle l'était pas, est-ce grave?",
+    community: communities.first,
+    user: users.first
+  }
+])
 gardens = Garden.create([{
   user: users.first,
   name: "A Bird's Nest Garden",
