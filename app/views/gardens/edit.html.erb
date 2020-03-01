@@ -1,0 +1,23 @@
+<%= form_for(@garden) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<% @garden.markets.each do |market|%>
+  <%= market.garden_variety.variety.name %> : <%= market.quantity %> <%= market.unit %>
+  <% if current_user == @garden.user %>
+    <%= link_to 'Edit', edit_garden_market_path(@garden, market) %>
+    <%= link_to 'Delete', garden_market_path(@garden, market), method: :delete, data: {confirm: t('confirm_before_delete')}%>
+  <% end %>
+  <br>
+<% end %>
+

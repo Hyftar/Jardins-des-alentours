@@ -7,4 +7,5 @@ class Garden < ApplicationRecord
   belongs_to :location
   has_many :garden_varieties
   has_many :varieties, through: :garden_varieties
+  has_many :markets, through: :garden_varieties
 end

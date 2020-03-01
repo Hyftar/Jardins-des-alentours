@@ -14,6 +14,14 @@ users = User.create([
     password: 'test12345',
     password_confirmation: 'test12345',
     confirmed_at: DateTime.now
+  },
+  {
+    first_name: 'Jane',
+    last_name: 'Doe',
+    email: 'jane_doe@example.com',
+    password: 'test12345',
+    password_confirmation: 'test12345',
+    confirmed_at: DateTime.now
   }
 ])
 
@@ -54,3 +62,62 @@ communities = Community.create([
   region: regions.first,
   produce: produce.first
 ])
+
+gardens = Garden.create([{
+  user: users.first,
+  name: "A Bird's Nest Garden",
+  description: "My cozy first garden, where I intend to learn all about tomato culture.",
+  location: locations.first
+},
+{
+  user: users.first,
+  name: "Gardens of Babylone",
+  description: "A more ambitious garden in my neighbour's backyard. *not actually in Babylone.",
+  location: locations.fourth
+},
+{
+  user: users.second,
+  name: "Patches of Vegetables",
+  description: "Small gardens on my property.",
+  location: locations.second
+}])
+
+varieties = Variety.create([{
+  name: "Beefsteak Tomatoes",
+  description: "Beefsteak tomatoes are 10 cm (4 in) or more in diameter, often used for sandwiches and similar applications. Their kidney-bean shape, thinner skin, and shorter shelf life makes commercial use impractical.",
+  produce: produce.first
+},
+{
+  name: "Plum Tomatoes",
+  description: "Plum tomatoes, or paste tomatoes (including pear tomatoes), are bred with a lower water /higher solids content for use in tomato sauce and paste, for canning and sauces and are usually oblong 7–9 cm (3–4 in) long and 4–5 cm (1.6–2.0 in) diameter; like the Roma-type tomatoes, important cultivars in the Sacramento Valley.",
+  produce: produce.first
+},
+{
+  name: "Cherry Tomatoes",
+  description: "Cherry tomatoes are small and round, often sweet tomatoes, about the same 1–2 cm (0.4–0.8 in) size as the wild tomato.",
+  produce: produce.first
+}])
+
+garden_varieties = GardenVariety.create([{
+  garden: gardens.first,
+  variety: varieties.second
+},
+{
+  garden: gardens.first,
+  variety: varieties.third
+},
+{
+  garden: gardens.second,
+  variety: varieties.first
+}])
+
+markets = Market.create([{
+  garden_variety: garden_varieties.first,
+  quantity: 15,
+  unit: "units"
+},
+{
+  garden_variety: garden_varieties.third,
+  quantity: 5,
+  unit: "pounds"
+}])

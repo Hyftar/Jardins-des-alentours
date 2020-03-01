@@ -20,7 +20,6 @@ class GardenTest < ActiveSupport::TestCase
       location: locations(:montreal),
       varieties: [varieties(:two)]
     )
-
     assert_not g.save
   end
 

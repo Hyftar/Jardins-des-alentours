@@ -1,0 +1,21 @@
+<table style="width:100%">
+  <tr>
+    <th>Garden name</th>
+    <th>Gardener</th>
+    <th>Options</th>
+  </tr>
+  <% @gardens.each do |garden| %>
+    <tr>
+      <td><%= garden.name %></td>
+      <td><%= garden.user.first_name %> <%= garden.user.last_name %></td>
+      <td>
+        <%= link_to 'More details', garden_path(garden) %>
+        <% if current_user == garden.user %>
+          <%= link_to 'Edit', edit_garden_path(garden) %>
+          <%= link_to 'Delete', garden_path(garden), method: :delete, data: {confirm: t('confirm_before_delete')}%>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  <caption>List of all gardens</caption>
+</table>
