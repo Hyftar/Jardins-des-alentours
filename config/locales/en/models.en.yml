@@ -18,7 +18,7 @@ en:
       report: Report
       role: Role
       tag: Tag
-      user: User
+      user: Gardener
       user_message: User message
       variety: Variety
       visitor: Visitor
@@ -50,7 +50,7 @@ en:
         produce: Produce
         region: Region
         score: Score
-        users: Users
+        users: Gardeners
 
       email_ban:
         banned_until: Banned until
