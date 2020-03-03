@@ -10,13 +10,13 @@ fr:
   garden_variety_confirm_before_inactive: Êtes-vous certain de vouloir indiquer cette variété comme inactive? Cela va enlever la variété correspondante de votre marché.
 
   landing_page:
-    getting_started: "commencement"
+    account: "mon compte"
+    getting_started: "débuter"
     veggies: "fruits & légumes"
-    gardens: "jardins"
     recipes: "recettes"
-    communities: "communautés"
     log_in: "connexion"
-    subscribe: "inscription"
+    log_out: "deconnexion"
+    register: "inscription"
     app_title: "jardins des alentours"
     slogan: "les légumes de votre quartier"
     look_for_veggie: "trouvez votre légume favori"
@@ -26,10 +26,8 @@ fr:
     map_info_p: "Nous avons repéré pour vous les jardins à proximité. Choisissez-en un qui vous intéresse !"
     communities_title: "Une histoire de communauté"
     find_this_veggie: "Trouver"
-    community: "communauté"
     forum: "forum"
     info: "informations"
-    gardeners: "jardiniers"
     clients: "clients"
     contribution: "contribution"
     contact: "contact"

@@ -1,34 +1,3 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
   time_ago: "%{time} ago"
 
@@ -41,13 +10,13 @@ en:
   garden_variety_confirm_before_inactive: Are you sure you want to set this variety to inactive? All markets related to this variety in your garden will be deleted.
 
   landing_page:
+    account: "my account"
     getting_started: "getting started"
     veggies: "veggies"
-    gardens: "gardens"
     recipes: "recipes"
-    communities: "communities"
     log_in: "log in"
-    subscribe: "subscribe"
+    log_out: "log out"
+    register: "subscribe"
     app_title: "jardins des alentours"
     slogan: "your neighborhood's garden"
     look_for_veggie: "look for your favorite veggie"
@@ -57,10 +26,8 @@ en:
     map_info_p: "We've found a couple gardens near your position. Pick the one you prefer!"
     communities_title: "A community matter"
     find_this_veggie: "Find this veggie"
-    community: "community"
     forum: "forum"
     info: "information"
-    gardeners: "gardeners"
     clients: "clients"
     contribution: "contribution"
     contact: "contact"

@@ -18,7 +18,7 @@ fr:
       report: rapport
       role: Rôle
       tag: Étiquette
-      user: Utilisateur
+      user: Jardiniers
       user_message: Message d'utilisateur
       variety: Variété
       visitor: Visiteur
@@ -50,7 +50,7 @@ fr:
         produce: Produit
         region: Région
         score: Points
-        users: Utilisateurs
+        users: Jardiniers
 
       email_ban:
         banned_until: Interdit jusqu'au
