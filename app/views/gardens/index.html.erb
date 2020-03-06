@@ -20,10 +20,3 @@
   <caption>List of all gardens</caption>
 </table>
 <%= link_to 'Add a new garden', new_garden_path() %>
-<ul>
-  <% @allGardens.each do |garden| %>
-    <li>
-      <%= garden.location.nil? ? "addresse inconnue" : garden.location.city %>
-    </li>
-  <% end %>
-</ul>
