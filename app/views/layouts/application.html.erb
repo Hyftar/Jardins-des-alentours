@@ -1,20 +1,74 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Jardins Des Alentours</title>
+    <title><%= I18n.t('landing_page.app_title').titleize %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/bd5c550147.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
-    <nav>
-      <ul class="hmenu">
-        <%= render 'devise/menu/registration_items' %>
+  <body class="bg-dark">
+    <header id="navbar" class="navbar navbar_main sticky">
+      <section class="navbar-section">
+        <a href="#" class="btn btn-link text-light">
+          <%= t('landing_page.getting_started').titleize %>
+        </a>
+        <a href="#" class="btn btn-link text-light">
+          <%= t('landing_page.veggies').titleize %>
+        </a>
+        <%= link_to gardens_path, class: 'btn btn-link text-light' do %>
+          <%= Garden.model_name.human.pluralize.titleize %>
+        <% end %>
+        <a href="#" class="btn btn-link text-light">
+          <%= t('landing_page.recipes').titleize %>
+        </a>
+      </section>
+      <section class="navbar-center">
+        <i id="app_icon" class="fas fa-seedling"></i>
+        <ul id="mobile_menu">
+          <li>
+            <a href="#" class="btn btn-link text-light">
+              <%= t('landing_page.getting_started').titleize %>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="btn btn-link text-light">
+              <%= t('landing_page.veggies').titleize %>
+            </a>
+          </li>
+          <li>
+            <%= link_to gardens_path, class: 'btn btn-link text-light' do %>
+              <%= Garden.model_name.human.pluralize.titleize %>
+            <% end %>
+          </li>
+          <li>
+            <a href="#" class="btn btn-link text-light">
+              <%= t('landing_page.recipes').titleize %>
+            </a>
+          </li>
+          <li>
+            <%= link_to communities_path, class: 'btn btn-link text-light' do %>
+              <%= Community.model_name.human.pluralize.titleize %>
+            <% end %>
+          </li>
+          <li>
+            <%= render 'devise/menu/login_items' %>
+          </li>
+          <li>
+            <%= render 'devise/menu/registration_items' %>
+          </li>
+        </ul>
+      </section>
+      <section class="navbar-section">
+        <%= link_to communities_path, class: 'btn btn-link text-light' do %>
+          <%= Community.model_name.human.pluralize.titleize %>
+        <% end %>
         <%= render 'devise/menu/login_items' %>
-      </ul>
-    </nav>
+        <%= render 'devise/menu/registration_items' %>
+      </section>
+    </header>
     <%= yield %>
   </body>
 </html>

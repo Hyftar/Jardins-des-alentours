@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
-  <li>
-    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-  </li>
+  <%= link_to(destroy_user_session_path, method: :delete, class: 'btn btn-link text-light') do %>
+    <%= t('landing_page.log_out').titleize %>
+  <% end %>
 <% else %>
-  <li>
-    <%= link_to('Login', new_user_session_path) %>
-  </li>
+  <%= link_to(new_user_session_path, class: 'btn btn-link text-light') do %>
+    <%= t('landing_page.log_in').titleize %>
+  <% end %>
 <% end %>

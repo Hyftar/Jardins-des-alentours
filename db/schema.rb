@@ -46,6 +46,19 @@ ActiveRecord::Schema.define(version: 2020_03_03_144311) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "addresses", force: :cascade do |t|
+    t.string "address_line_1", null: false
+    t.string "address_line_2"
+    t.string "city", null: false
+    t.string "province", null: false
+    t.string "country", null: false
+    t.string "postal_code"
+    t.bigint "location_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["location_id"], name: "index_addresses_on_location_id", unique: true
+  end
+
   create_table "answer_votes", force: :cascade do |t|
     t.bigint "answer_id", null: false
     t.bigint "user_id", null: false
@@ -161,7 +174,6 @@ ActiveRecord::Schema.define(version: 2020_03_03_144311) do
     t.bigint "garden_variety_id", null: false
     t.integer "quantity", default: 0
     t.string "unit", null: false
-    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["garden_variety_id"], name: "index_markets_on_garden_variety_id"
@@ -336,6 +348,7 @@ ActiveRecord::Schema.define(version: 2020_03_03_144311) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "addresses", "locations"
   add_foreign_key "answer_votes", "answers"
   add_foreign_key "answer_votes", "users"
   add_foreign_key "answers", "questions"
