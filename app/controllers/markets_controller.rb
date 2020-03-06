@@ -20,7 +20,12 @@ class MarketsController < ApplicationController
   end
 
   def update
+    @market_original = @market.dup
     if @market.update_attributes(market_param)
+      if @market_original.unit != @market.unit || @market_original.quantity != @market.quantity
+        @market_notifications = MarketNotification.where(market: @market)
+        MarketMailer.with(market: @market, market_notifications: @market_notifications).market_disponibility_update_email.deliver_later
+      end
       redirect_to garden_path(@market.garden_variety.garden)
     else
        render :action => 'edit'
