@@ -21,10 +21,12 @@ class MarketsController < ApplicationController
 
   def update
     @market_original = @market.dup
-    if @market.update_attributes(market_param)
+    if @market.update(market_param)
       if @market_original.unit != @market.unit || @market_original.quantity != @market.quantity
         @market_notifications = MarketNotification.where(market: @market)
-        MarketMailer.with(market: @market, market_notifications: @market_notifications).market_disponibility_update_email.deliver_later
+        @market_notifications.each do |notification|
+          MarketMailer.with(market: @market, market_notification: notification).market_disponibility_update_email.deliver_later
+        end
       end
       redirect_to garden_path(@market.garden_variety.garden)
     else

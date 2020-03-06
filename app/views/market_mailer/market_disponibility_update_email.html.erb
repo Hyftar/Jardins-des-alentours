@@ -31,6 +31,7 @@
     <p>
     ----------
     </p>
-    <a href="localhost:3000/gardens/<%= @market.garden_variety.garden.id %>"><%= t('mailer.subject_update_order_email.to_communicate') %></a>
+    <%= t('mailer.subject_update_order_email.to_communicate') %>
+    <a href="localhost:3000/<%= @market.garden_variety.garden.id %>">localhost:3000/<%= @market.garden_variety.garden.id %></a>
   </body>
 </html>

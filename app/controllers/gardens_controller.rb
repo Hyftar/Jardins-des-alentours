@@ -46,7 +46,7 @@ class GardensController < ApplicationController
   end
 
   def update
-    if @garden.update_attributes(garden_param)
+    if @garden.update(garden_param)
        redirect_to :action => 'show', :id => @garden
     else
        render :action => 'edit'
