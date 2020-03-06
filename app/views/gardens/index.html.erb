@@ -4,7 +4,7 @@
     <th>Gardener</th>
     <th>Options</th>
   </tr>
-  <% @gardens.each do |garden| %>
+  <% @allGardens.each do |garden| %>
     <tr>
       <td><%= garden.name %></td>
       <td><%= garden.user.first_name %> <%= garden.user.last_name %></td>
@@ -19,3 +19,11 @@
   <% end %>
   <caption>List of all gardens</caption>
 </table>
+<%= link_to 'Add a new garden', new_garden_path() %>
+<ul>
+  <% @allGardens.each do |garden| %>
+    <li>
+      <%= garden.location.nil? ? "addresse inconnue" : garden.location.city %>
+    </li>
+  <% end %>
+</ul>

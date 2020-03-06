@@ -10,22 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_28_212704) do
+ActiveRecord::Schema.define(version: 2020_03_03_144311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "addresses", force: :cascade do |t|
-    t.string "address_line_1", null: false
-    t.string "address_line_2"
-    t.string "city", null: false
-    t.string "province", null: false
-    t.string "country", null: false
-    t.string "postal_code"
-    t.bigint "location_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["location_id"], name: "index_addresses_on_location_id", unique: true
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -143,8 +132,20 @@ ActiveRecord::Schema.define(version: 2020_02_28_212704) do
   end
 
   create_table "locations", force: :cascade do |t|
-    t.float "longitude", null: false
-    t.float "latitude", null: false
+    t.float "longitude"
+    t.float "latitude"
+    t.string "house_number"
+    t.string "road"
+    t.string "neighbourhood"
+    t.string "suburb"
+    t.string "county"
+    t.string "additional_informations"
+    t.string "city"
+    t.string "province"
+    t.string "region"
+    t.string "country"
+    t.string "country_code"
+    t.string "postal_code"
   end
 
   create_table "market_notifications", force: :cascade do |t|
@@ -334,7 +335,6 @@ ActiveRecord::Schema.define(version: 2020_02_28_212704) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "addresses", "locations"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answer_votes", "answers"
   add_foreign_key "answer_votes", "users"

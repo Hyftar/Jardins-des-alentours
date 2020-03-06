@@ -66,3 +66,5 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "will_paginate", "~> 3.2"
 
 gem "image_processing", "~> 1.10"
+
+gem "geocoder", "~> 1.6"

@@ -1,11 +1,19 @@
 class MarketsController < ApplicationController
-  before_action :validate_user, only: %i( edit update destroy )
+  before_action :is_owner, only: %i( edit update destroy )
+  before_action :is_owner_new_market, only: %i( new create )
 
   def new
-    Market.new
+    @garden_variety = GardenVariety.find_by!(id: params[:id], is_active: true)
+    @market = Market.new
   end
 
   def create
+    @garden_variety = GardenVariety.find_by!(id: params["market"]["garden_variety"], is_active: true)
+    if Market.create(quantity: market_param["quantity"], unit: market_param["unit"], garden_variety: @garden_variety)
+      redirect_to garden_path(@garden_variety.garden)
+    else
+       render :action => 'new'
+    end
   end
 
   def edit
@@ -13,7 +21,7 @@ class MarketsController < ApplicationController
 
   def update
     if @market.update_attributes(market_param)
-       redirect_to garden_path(@market.garden_variety.garden)
+      redirect_to garden_path(@market.garden_variety.garden)
     else
        render :action => 'edit'
     end
@@ -36,13 +44,17 @@ class MarketsController < ApplicationController
 
   private
     def market_param
-      params.require(:market).permit(:quantity, :unit)
+      params.require(:market).permit(:quantity, :unit, :is_active, :garden_variety)
     end
 
-    def validate_user
+    def is_owner
       @market = Market.find_by!(id: params[:id])
       @garden_variety = GardenVariety.find_by!(id: @market.garden_variety)
       @garden = Garden.find_by!(id: @garden_variety.garden, user: current_user)
+    end
+
+    def is_owner_new_market
+      @garden = Garden.find_by!(id: params[:garden_id])
     end
 
 end
