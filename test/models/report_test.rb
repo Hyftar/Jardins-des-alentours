@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class ReportTest < ActiveSupport::TestCase
   test "should be able to report an email" do
@@ -23,17 +23,17 @@ class ReportTest < ActiveSupport::TestCase
     assert r.save
   end
 
-    test "should not be able to save report without valid status" do
-    assert_raise do
-      r = Report.new(
-        reporter_email: "test123@example.com",
-        reported_email: "test456@example.com",
-        reason: "There is something wrong with this user.",
-        status: "test",
-        user: users(:one)
-      )
-    end
+  test "should not be able to save report without valid status" do
+  assert_raise do
+    r = Report.new(
+      reporter_email: "test123@example.com",
+      reported_email: "test456@example.com",
+      reason: "There is something wrong with this user.",
+      status: "test",
+      user: users(:one)
+    )
   end
+end
 
   test "should not be able to report an email without reporter" do
     r = Report.new(
@@ -95,5 +95,4 @@ class ReportTest < ActiveSupport::TestCase
     )
     assert r.save
   end
-
 end

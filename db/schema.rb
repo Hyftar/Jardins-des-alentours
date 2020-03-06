@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_28_212704) do
-
+ActiveRecord::Schema.define(version: 2020_03_06_004814) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -162,6 +161,7 @@ ActiveRecord::Schema.define(version: 2020_02_28_212704) do
     t.bigint "garden_variety_id", null: false
     t.integer "quantity", default: 0
     t.string "unit", null: false
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["garden_variety_id"], name: "index_markets_on_garden_variety_id"
@@ -194,7 +194,7 @@ ActiveRecord::Schema.define(version: 2020_02_28_212704) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status", default: 0, null: false
-    t.integer "answers_count"
+    t.integer "answers_count", default: 0, null: false
     t.index ["community_id"], name: "index_questions_on_community_id"
     t.index ["selected_answer_id"], name: "index_questions_on_selected_answer_id"
     t.index ["user_id"], name: "index_questions_on_user_id"

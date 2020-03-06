@@ -2,4 +2,14 @@ fr:
   questions:
     ask: Poser une question
     answer: Répondre à la question
+    answers:
+      zero: 'Aucune réponse jusqu''à présent'
+      one: '1 réponse'
+      other: '%{count} réponses'
     asked: Posé
+    report: Signaler la question
+    edit: Modifier
+    delete: Supprimer
+
+  answers:
+    submit: Envoyer la réponse

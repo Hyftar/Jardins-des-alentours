@@ -13,9 +13,9 @@ class GardenVarietiesController < ApplicationController
 
   def update
     if @garden_variety.update_attributes(garden_variety_param)
-       redirect_to garden_path(@garden_variety.garden)
+      redirect_to garden_path(@garden_variety.garden)
     else
-       render :action => 'edit'
+      render action: "edit"
     end
   end
 

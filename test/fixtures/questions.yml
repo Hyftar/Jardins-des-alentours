@@ -2,12 +2,10 @@
 
 one:
   title: Les tomates sont des légumes ou des fruits?
-  content: J'ai observé que les tomates ont toutes les caractéristiques des fruits mais sont utilisées comme des légumes, alors elles sont le quel des deux?
   community: montreal_tomatoes
   user: two
 
 two:
   title: Mes tomates ne sont pas rouges mais plutôt orange, que faire?
-  content: J'ai essayé de faire pousser une nouvelle variété de tomate et elle est sortie orangé au lieu du rouge tomate, est-ce normal?
   community: montreal_tomatoes
   user: one

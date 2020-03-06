@@ -1,0 +1,11 @@
+<% if user_signed_in? %>
+  <div id="answer_<%= answer.id %>_vote_up" class="answer_vote_action votes__up" data-answer-id="<%= answer.id %>" data-vote="<%= answer.vote == 1 ? 'remove' : 'up' %>"></div>
+  <div id="answer_<%= answer.id %>_score" class="votes__count"><%= answer.score %></div>
+  <div id="answer_<%= answer.id %>_vote_down" class="answer_vote_action votes__down" data-answer-id="<%= answer.id %>" data-vote="<%= answer.vote == -1 ? 'remove' : 'down' %>"></div>
+<% else %>
+  <a href="<%= new_user_session_path %>" class="votes__up"></a>
+  <div class="votes__count"><%= answer.score %></div>
+  <a href="<%= new_user_session_path %>" class="votes__down"></a>
+<% end %>
+<div id="answer_<%= answer.id %>_select" data-answer-id="<%= answer.id %>" class="answer_select_action <%= 'selected' if answer == selected_answer %>">
+</div>

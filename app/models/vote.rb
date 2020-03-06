@@ -1,5 +1,8 @@
 class Vote < ApplicationRecord
+  include ActiveModel::Dirty
+
   self.abstract_class = true
+
   belongs_to :user
   enum vote: { down: -1, up: 1 }
 

@@ -1,0 +1,9 @@
+<h1><%= t('questions.ask')%></h1>
+<div class="question-form-container">
+  <%= form_with url: community_questions_path(@community), model: @question do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.rich_text_area :content %>
+    <%= f.submit t('answers.submit'), class: 'btn btn-success'%>
+  <% end %>
+</div>

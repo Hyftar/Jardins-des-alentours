@@ -8,6 +8,18 @@
 // We need to override trix.css’s image gallery styles to accommodate the
 // <action-text-attachment> element we wrap around attachments. Otherwise,
 // images in galleries will be squished by the max-width: 33%; rule.
+trix-editor {
+  background-color: white;
+  text-align: left;
+  color: black;
+  min-height: 12.5em;
+  margin-bottom: 1em;
+}
+
+trix-toolbar .trix-button {
+  background-color: white;
+}
+
 .trix-content {
   .attachment-gallery {
     > action-text-attachment,

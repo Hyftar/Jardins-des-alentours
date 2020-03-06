@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class AddressTest < ActiveSupport::TestCase
   test "should be able to save address" do
@@ -91,7 +91,4 @@ class AddressTest < ActiveSupport::TestCase
     )
     assert a.save
   end
-
-
-
 end

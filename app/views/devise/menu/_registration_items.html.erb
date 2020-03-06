@@ -1,9 +1,0 @@
-<% if user_signed_in? %>
-  <%= link_to(edit_user_registration_path, class: 'btn btn-link text-light') do %>
-    <%= t('landing_page.account').titleize %>
-  <% end %>
-<% else %>
-  <%= link_to(new_user_registration_path, class: 'btn btn-link text-light') do %>
-    <%= t('landing_page.register').titleize %>
-  <% end %>
-<% end %>

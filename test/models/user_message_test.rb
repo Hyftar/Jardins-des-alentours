@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class UserMessageTest < ActiveSupport::TestCase
   test "should save user_message" do

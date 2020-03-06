@@ -17,5 +17,6 @@
  *= require spectre-icons.css
  */
 
-
-
+.hidden {
+  display: none;
+}
