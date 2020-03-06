@@ -1,0 +1,26 @@
+<%= t('mailer.subject_update_order_email.introduction') %>
+<%= t('mailer.subject_update_order_email.reason') %>
+<%= t('mailer.subject_update_order_email.product') %>
+--------------------------
+
+<%= @market.garden_variety.variety.name %>
+<%= @market.quantity %>
+<%= @market.unit %>
+----------
+
+<%= t('mailer.subject_update_order_email.gardener') %>
+--------------------------
+
+<%= @market.garden_variety.garden.name %>
+<%= @market.garden_variety.garden.description %>
+----------
+
+<%= @market.garden_variety.garden.location.house_number %> <%= @market.garden_variety.garden.location.road %>
+<%= @market.garden_variety.garden.location.city %>
+<%= @market.garden_variety.garden.location.province %>
+<%= @market.garden_variety.garden.location.country %>
+<%= @market.garden_variety.garden.location.postal_code %>
+----------
+
+<%= t('mailer.subject_update_order_email.to_communicate') %>
+localhost:3000/gardens/<%= @market.garden_variety.garden.id %>
