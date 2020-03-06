@@ -33,7 +33,9 @@
     <% end %>
   <% end %>
   </p>
-  <%= link_to 'Add a new garden variety', new_garden_garden_variety_path(@garden.id) %>
+  <% if current_user == @garden.user %>
+    <%= link_to 'Add a new garden variety', new_garden_garden_variety_path(@garden.id) %>
+  <% end %>
   <p>
     <h2>Sur le marché :</h2>
     <% @garden.markets.each do |market|%>
