@@ -25,11 +25,19 @@ users = User.create([
   }
 ])
 
-locations = Location.create([
+locations = Location.create!([
   { longitude: -73.561667, latitude: 45.508889 }, # Montréal
   { longitude: -71.208056, latitude: 46.813889 }, # Québec city
   { longitude: -77.783333, latitude: 48.1 }, # Val-d'Or
-  { longitude: 2.352222, latitude: 48.856613 } # Paris
+  { longitude: 2.352222, latitude: 48.856613 }, # Paris
+  {
+    house_number: '124',
+    road: "Rue Prince-Arthur Est",
+    city: "Montreal",
+    province: "Quebec",
+    country: "Canada",
+    postal_code: "H2X 1B5"
+  }
 ])
 
 regions = Region.create([
@@ -129,6 +137,10 @@ garden_varieties = GardenVariety.create([{
 {
   garden: gardens.second,
   variety: varieties.first
+},
+{
+  garden: gardens.second,
+  variety: varieties.second
 }])
 
 markets = Market.create([{
@@ -140,4 +152,10 @@ markets = Market.create([{
   garden_variety: garden_varieties.third,
   quantity: 5,
   unit: "pounds"
+},
+{
+  garden_variety: garden_varieties.fourth,
+  quantity: 12,
+  unit: "units"
 }])
+
