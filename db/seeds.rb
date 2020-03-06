@@ -159,3 +159,16 @@ markets = Market.create([{
   unit: "units"
 }])
 
+market_notifications = MarketNotification.create([{
+  email: "kevenaubin@gmail.com",
+  market: markets.first,
+  status: 0,
+  language: "en"
+},
+{
+  email: "keven081@live.ca",
+  market: markets.first,
+  status: 0,
+  language: "fr"
+}])
+
