@@ -72,3 +72,5 @@ gem "i18n_data", "~> 0.10.0"
 gem 'spectre_css'
 
 gem "image_processing", "~> 1.10"
+
+gem "geocoder", "~> 1.6"

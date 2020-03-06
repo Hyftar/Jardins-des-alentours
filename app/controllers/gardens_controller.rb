@@ -1,14 +1,9 @@
 class GardensController < ApplicationController
-  before_action :authenticate_user!, only: %i( index_own edit update new create )
+  before_action :authenticate_user!, only: %i( edit update new create destroy )
 
-  before_action :get_user_gardens, only: %i( indexId )
   before_action :get_gardens, only: %i( index )
   before_action :get_garden, only: %i( show )
-  before_action :valid_user, only: %i( destroy edit update )
-
-
-  def indexId
-  end
+  before_action :is_owner, only: %i( destroy edit update )
 
   def show
   end
@@ -18,9 +13,25 @@ class GardensController < ApplicationController
 
   def new
     @garden = Garden.new
+    @garden.build_location
   end
 
   def create
+    @location = Location.new(
+      house_number: garden_param["location_attributes"]["house_number"],
+      road: garden_param["location_attributes"]["road"],
+      additional_informations: garden_param["location_attributes"]["additional_informations"],
+      city: garden_param["location_attributes"]["city"],
+      province: garden_param["location_attributes"]["province"],
+      country: garden_param["location_attributes"]["country"],
+      postal_code: garden_param["location_attributes"]["postal_code"])
+    @garden = Garden.new(name: garden_param["name"], description: garden_param["description"], user: current_user, location: @location)
+    if @location.save && @garden.save
+      redirect_to :action => 'show', :id => @garden
+    else
+      ActiveRecord::Rollback
+      render :action => 'new'
+    end
   end
 
   def destroy
@@ -56,14 +67,14 @@ class GardensController < ApplicationController
     end
 
     def get_gardens
-      @gardens = Garden.all
+      @allGardens = Garden.all
     end
 
     def garden_param
-      params.require(:garden).permit(:name, :description)
+      params.require(:garden).permit(:name, :description, location_attributes: %i( house_number road additional_informations city province country postal_code))
     end
 
-    def valid_user
+    def is_owner
       @garden = Garden.find_by!(id: params[:id], user: current_user)
     end
 

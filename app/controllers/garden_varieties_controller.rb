@@ -2,20 +2,22 @@ class GardenVarietiesController < ApplicationController
   before_action :get_garden_variety, only: %i( edit update destroy set_active )
 
   def new
-    GardenVariety.new
+    @garden = Garden.find_by!(user: current_user, id: params[:garden_id])
+    @garden_varieties = GardenVariety.where(garden_id: @garden.id)
+    @varieties = Variety.find_varieties_unused_in_garden(@garden.id)
+    @garden_variety = GardenVariety.new
   end
+
+  #how to get varieties not in garden_varieties for this garden
 
   def create
-  end
-
-  def edit
-  end
-
-  def update
-    if @garden_variety.update_attributes(garden_variety_param)
-       redirect_to garden_path(@garden_variety.garden)
+    @variety = Variety.find_by!(id: params["garden_variety"]["variety"])
+    @garden = Garden.find_by!(id: params["garden_variety"]["garden"], user: current_user)
+    if !GardenVariety.find_by(garden: @garden, variety: @variety) && GardenVariety.create(garden: @garden, variety: @variety)
+      redirect_to garden_path(@garden)
     else
-       render :action => 'edit'
+      @garden_variety = GardenVariety.new
+      render :action => 'new'
     end
   end
 
