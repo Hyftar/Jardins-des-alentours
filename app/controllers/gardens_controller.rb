@@ -47,9 +47,9 @@ class GardensController < ApplicationController
 
   def update
     if @garden.update_attributes(garden_param)
-       redirect_to :action => 'show', :id => @garden
+      redirect_to action: "show", id: @garden
     else
-       render :action => 'edit'
+      render action: "edit"
     end
   end
 
@@ -77,5 +77,4 @@ class GardensController < ApplicationController
     def is_owner
       @garden = Garden.find_by!(id: params[:id], user: current_user)
     end
-
 end

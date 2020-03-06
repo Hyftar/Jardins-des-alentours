@@ -2,4 +2,14 @@ en:
   questions:
     ask: Ask Question
     answer: Post your answer
+    answers:
+      zero: 'No answer yet'
+      one: '1 answer'
+      other: '%{count} answers'
     asked: Asked
+    report: Report question
+    edit: Edit
+    delete: Delete
+
+  answers:
+    submit: Submit the answer

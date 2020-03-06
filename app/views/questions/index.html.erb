@@ -1,4 +1,7 @@
 <div class="questions-container">
+  <div class="questions__actions">
+    <%= link_to t('questions.ask'), new_community_question_path(@community), class: 'btn btn-primary' %>
+  </div>
   <% @questions.each do |question| %>
     <div class="questions-container__question">
       <div class="question__left">
@@ -7,7 +10,7 @@
           <div class="label"><%= Question.human_attribute_name('score').pluralize %></div>
         </div>
         <div class="left__answers answers--<%= question.status %>">
-          <div class="value"><%= question.answers.size %></div>
+          <div class="value"><%= question.answers_count %></div>
           <div class="label"><%= Answer.model_name.human.pluralize %></div>
         </div>
       </div>
@@ -15,12 +18,12 @@
         <%= link_to question.title, community_question_path(@community, question) %>
       </div>
       <div class="question__body">
-        <%= question.content %>
+        <%= question.content.to_plain_text.truncate(120) %>
       </div>
       <div class="question__tags">
       </div>
       <div class="question__author">
-        <%= render 'question_author_preview', user: question.user %>
+        <%= render 'author_preview', user: question.user %>
       </div>
     </div>
   <% end %>

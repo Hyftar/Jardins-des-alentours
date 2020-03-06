@@ -4,14 +4,27 @@
       <%= @question.title %>
     </div>
     <div class="top__created-at">
-      <%= t 'questions.asked' %> <span><%= t 'time_ago', time: time_ago_in_words(@question.created_at) %></span>
+      <%= t 'questions.asked' %>
+      <span><%= t 'time_ago', time: time_ago_in_words(@question.created_at) %></span>
+    </div>
+    <div class="top__actions">
+      <% if user_signed_in? && @current_user_has_not_yet_answered %>
+      <button id="actions__post-answer" class="btn btn-primary"><%= t('questions.answer') %></button>
+      <% end %>
+      <button class="btn btn-error"><%= t('questions.report') %></button>
     </div>
   </div>
   <div class="question__body">
     <div class="body__votes">
-      <div id="question_vote_up" class="votes__up" data-vote="<%= @vote&.up? ? 'remove' : 'up'%>"></div>
-      <div id="question_score" class="votes__count"><%= @question.score %></div>
-      <div id="question_vote_down" class="votes__down" data-vote="<%= @vote&.down? ? 'remove' : 'down'%>"></div>
+      <% if user_signed_in? %>
+        <div id="question_vote_up" class="votes__up" data-vote="<%= @vote&.up? ? 'remove' : 'up'%>"></div>
+        <div id="question_score" class="votes__count"><%= @question.score %></div>
+        <div id="question_vote_down" class="votes__down" data-vote="<%= @vote&.down? ? 'remove' : 'down'%>"></div>
+      <% else %>
+        <a href="<%= new_user_session_path %>" id="question_vote_up" class="votes__up"></a>
+        <div id="question_score" class="votes__count"><%= @question.score %></div>
+        <a href="<%= new_user_session_path %>" id="question_vote_down" class="votes__down"></a>
+      <% end %>
     </div>
     <div class="body__content">
       <%= @question.content %>
@@ -21,21 +34,47 @@
 
 <div class="answers">
   <div class="answers__count">
-    <%= @question.answers.size %> <%= Answer.model_name.human.pluralize %>
+    <%= t('questions.answers', count: @question.answers_count)%>
   </div>
   <hr>
-  <% @answers.each do |answer| %>
-    <div class="answer">
+<% @answers.each do |answer| %>
+  <div class="answer">
+    <div class="answer__vote">
+      <%= render 'answer_vote', answer: answer, selected_answer: @question.selected_answer %>
+    </div>
+
+    <div class="answer__content">
       <%= answer.content %>
     </div>
-  <% end %>
+
+    <div class="answer__actions">
+      <% if answer.user == current_user %>
+      <div class="edit_answer actions__edit" data-answer-id="<%= answer.id %>"><%= t('questions.edit') %></div>
+      <%= link_to t('questions.delete'), community_question_answer_path(question_id: @question.id, id: answer.id), method: :delete, class: 'actions__delete', confirm: 'Are you sure?' %>
+      <% end %>
+    </div>
+
+    <div data-answer-id="<%= answer.id %>" class="answer__editor hidden">
+      <% if answer.user == current_user %>
+      <%= form_with url: community_question_answer_path(question_id: @question.id, id: answer.id), model: answer do |f| %>
+        <%= f.rich_text_area :content %>
+        <%= f.submit t('questions.edit') %>
+      <% end %>
+      <% end %>
+    </div>
+
+    <div class="answer__author">
+      <%= render 'author_preview', user: answer.user %>
+    </div>
+  </div>
+<% end %>
 </div>
 
-<% if user_signed_in? %>
-  <div class="post-answer">
-    <%= form_with url: community_question_answers_path(question_id: @question.id) do |f| %>
-      <%= f.rich_text_area :content %>
-      <%= f.submit 'Submit your answer'%>
-    <% end %>
-  </div>
+<% if user_signed_in? && @current_user_has_not_yet_answered %>
+<div id="post-answer" class="post-answer">
+  <%= form_with url: community_question_answers_path(question_id: @question.id), model: @answer do |f| %>
+    <%= f.rich_text_area :content %>
+    <%= f.submit t('answers.submit'), class: 'btn btn-success'%>
+  <% end %>
+</div>
 <% end %>

@@ -28,7 +28,7 @@ class MarketsController < ApplicationController
       end
       redirect_to garden_path(@market.garden_variety.garden)
     else
-       render :action => 'edit'
+      render action: "edit"
     end
   end
 

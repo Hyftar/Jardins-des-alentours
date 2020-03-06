@@ -8,19 +8,19 @@
 
 users = User.create([
   {
-    first_name: 'John',
-    last_name: 'Doe',
-    email: 'john_doe@example.com',
-    password: 'test12345',
-    password_confirmation: 'test12345',
+    first_name: "John",
+    last_name: "Doe",
+    email: "john_doe@example.com",
+    password: "test12345",
+    password_confirmation: "test12345",
     confirmed_at: DateTime.now
   },
   {
-    first_name: 'Jane',
-    last_name: 'Doe',
-    email: 'jane_doe@example.com',
-    password: 'test12345',
-    password_confirmation: 'test12345',
+    first_name: "Jane",
+    last_name: "Doe",
+    email: "jane_doe@example.com",
+    password: "test12345",
+    password_confirmation: "test12345",
     confirmed_at: DateTime.now
   }
 ])
