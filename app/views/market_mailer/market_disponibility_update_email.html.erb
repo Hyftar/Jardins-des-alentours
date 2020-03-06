@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p><%= t('mailer.subject_update_order_email.introduction') %></p>
+    <p><%= t('mailer.subject_update_order_email.reason') %></p>
+    <p><%= t('mailer.subject_update_order_email.product') %><br>
+    --------------------------
+    </p>
+    <p><%= @market.garden_variety.variety.name %></p>
+    <p><%= @market.quantity %></p>
+    <p><%= @market.unit %></p>
+    <p>
+    ----------
+    </p>
+    <p><%= t('mailer.subject_update_order_email.gardener') %><br>
+    --------------------------
+    </p>
+    <p><%= @market.garden_variety.garden.name %></p>
+    <p><%= @market.garden_variety.garden.description %></p>
+    <p>
+    ----------
+    </p>
+    <p><%= @market.garden_variety.garden.location.house_number %> <%= @market.garden_variety.garden.location.road %></p>
+    <p><%= @market.garden_variety.garden.location.city %></p>
+    <p><%= @market.garden_variety.garden.location.province %></p>
+    <p><%= @market.garden_variety.garden.location.country %></p>
+    <p><%= @market.garden_variety.garden.location.postal_code %></p>
+    <p>
+    ----------
+    </p>
+    <a href="localhost:3000/gardens/<%= @market.garden_variety.garden.id %>"><%= t('mailer.subject_update_order_email.to_communicate') %></a>
+  </body>
+</html>
