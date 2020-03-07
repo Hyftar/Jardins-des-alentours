@@ -150,7 +150,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_004814) do
   create_table "market_notifications", force: :cascade do |t|
     t.string "email", null: false
     t.bigint "market_id"
-    t.integer "status", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "language"

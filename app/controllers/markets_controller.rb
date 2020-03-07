@@ -1,5 +1,5 @@
 class MarketsController < ApplicationController
-  before_action :is_owner, only: %i( edit update destroy )
+  before_action :is_owner, only: %i( edit update )
   before_action :is_owner_new_market, only: %i( new create )
 
   def new
@@ -22,8 +22,8 @@ class MarketsController < ApplicationController
   def update
     @market_original = @market.dup
     if @market.update(market_param)
-      if @market_original.unit != @market.unit || @market_original.quantity != @market.quantity
-        @market_notifications = MarketNotification.where(market: @market)
+      if @market_original.unit != @market.unit || @market_original.quantity != @market.quantity || @market_original.is_active != @market.is_active
+        @market_notifications = MarketNotification.where(market: @market, status: "active")
         @market_notifications.each do |notification|
           MarketMailer.with(market: @market, market_notification: notification).market_disponibility_update_email.deliver_later
         end
@@ -35,9 +35,10 @@ class MarketsController < ApplicationController
   end
 
   def set_active
-    @market = Market.find_by!(id: params[:market_id])
+    @market = Market.find_by!(id: params["market_id"])
     @garden_variety = GardenVariety.find_by!(id: @market.garden_variety)
     @garden = Garden.find_by!(id: @garden_variety.garden, user: current_user)
+    @market_original = @market.dup
     @market.is_active = !@market.is_active
     @market.save
     redirect_to garden_path(@garden)
@@ -45,6 +46,7 @@ class MarketsController < ApplicationController
 
   def destroy
     @garden = @market.garden_variety.garden
+    MarketNotification.where(market:@market).destroy
     @market.destroy
     redirect_to garden_path(@garden)
   end
