@@ -59,7 +59,12 @@ class GardensController < ApplicationController
 
   private
     def get_garden
-      @garden = Garden.find(params[:id])
+      @garden = Garden.includes(:location, garden_varieties: [:markets, :variety]).find(params[:id])
+      if (user_signed_in?)
+        @market_notifications = MarketNotification.where(email: current_user.email).map{ |m| [m.market_id, m.status] }
+      else
+        @market_notifications
+      end
     end
 
     def get_user_gardens

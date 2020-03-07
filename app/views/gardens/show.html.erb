@@ -44,6 +44,12 @@
           <% if current_user == @garden.user %>
             <%= link_to 'Edit', edit_garden_market_path(@garden, market) %>
             <%= link_to 'Remove', garden_market_set_active_path(@garden, market), data: {confirm: t('confirm_before_delete')}%>
+          <% elsif user_signed_in? && [market.id, "paused"].in?(@market_notifications) %>
+            <%= link_to t('garden.activate_market_notification'), garden_market_market_notification_status_path(@garden, market) %>
+          <% elsif user_signed_in? && [market.id, "active"].in?(@market_notifications) %>
+            <%= link_to t('garden.pause_market_notification'), garden_market_market_notification_status_path(@garden, market) %>
+          <% elsif !user_signed_in? || !market.id.in?(@market_notifications) %>
+            <%= link_to t('garden.new_market_notififaction'), new_garden_market_market_notification_path(@garden, market) %>
           <% end %>
           <% %>
         <br>
@@ -56,6 +62,7 @@
     <div><%= @garden.location.road %></div>
     <div><%= @garden.location.additional_informations %></div>
     <div><%= @garden.location.city %></div>
+    <div><%= @garden.location.province %></div>
     <div><%= @garden.location.country %></div>
     <div><%= @garden.location.postal_code %></div>
   </p>

@@ -33,7 +33,7 @@ class Location < ApplicationRecord
   end
 
   def address_join
-    @test = [house_number, road, city, province, country].compact.join(', ')
+    @test = [house_number, road, city, province, country, postal_code].compact.join(', ')
   end
 
   reverse_geocoded_by :latitude, :longitude do |obj, results|

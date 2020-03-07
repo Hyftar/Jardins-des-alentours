@@ -1,0 +1,11 @@
+<%= form_for [@garden, @market, @market_notification] do |f| %>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <%= hidden_field_tag "market_notification[market]", @market.id %>
+  <%= hidden_field_tag "market_notification[garden]", @garden.id %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
