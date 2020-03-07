@@ -27,10 +27,10 @@ class GardensController < ApplicationController
       postal_code: garden_param["location_attributes"]["postal_code"])
     @garden = Garden.new(name: garden_param["name"], description: garden_param["description"], user: current_user, location: @location)
     if @location.save && @garden.save
-      redirect_to :action => 'show', :id => @garden
+      redirect_to action: "show", id: @garden
     else
       ActiveRecord::Rollback
-      render :action => 'new'
+      render action: "new"
     end
   end
 
@@ -46,7 +46,7 @@ class GardensController < ApplicationController
   end
 
   def update
-    if @garden.update_attributes(garden_param)
+    if @garden.update(garden_param)
       redirect_to action: "show", id: @garden
     else
       render action: "edit"
@@ -60,8 +60,8 @@ class GardensController < ApplicationController
   private
     def get_garden
       @garden = Garden.includes(:location, garden_varieties: [:markets, :variety]).find(params[:id])
-      if (user_signed_in?)
-        @market_notifications = MarketNotification.where(email: current_user.email).map{ |m| [m.market_id, m.status] }
+      if user_signed_in?
+        @market_notifications = MarketNotification.where(email: current_user.email).map { |m| [m.market_id, m.status] }
       else
         @market_notifications
       end

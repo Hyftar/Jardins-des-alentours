@@ -31,7 +31,7 @@ locations = Location.create!([
   { longitude: -77.783333, latitude: 48.1 }, # Val-d'Or
   { longitude: 2.352222, latitude: 48.856613 }, # Paris
   {
-    house_number: '124',
+    house_number: "124",
     road: "Rue Prince-Arthur Est",
     city: "Montreal",
     province: "Quebec",
@@ -171,4 +171,3 @@ market_notifications = MarketNotification.create([{
   status: 0,
   language: "fr"
 }])
-

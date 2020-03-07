@@ -12,7 +12,7 @@ class MarketsController < ApplicationController
     if Market.create(quantity: market_param["quantity"], unit: market_param["unit"], garden_variety: @garden_variety)
       redirect_to garden_path(@garden_variety.garden)
     else
-       render :action => 'new'
+      render action: "new"
     end
   end
 
@@ -46,7 +46,7 @@ class MarketsController < ApplicationController
 
   def destroy
     @garden = @market.garden_variety.garden
-    MarketNotification.where(market:@market).destroy
+    MarketNotification.where(market: @market).destroy
     @market.destroy
     redirect_to garden_path(@garden)
   end
@@ -65,5 +65,4 @@ class MarketsController < ApplicationController
     def is_owner_new_market
       @garden = Garden.find_by!(id: params[:garden_id])
     end
-
 end
