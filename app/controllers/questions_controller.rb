@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
 
     render json: {
       score: @question.reload.score,
-      vote: 'up' # Current user vote
+      vote: "up" # Current user vote
     }
   end
 
@@ -37,7 +37,7 @@ class QuestionsController < ApplicationController
 
     render json: {
       score: @question.reload.score,
-      vote: 'down' # Current user vote
+      vote: "down" # Current user vote
     }
   end
 
@@ -46,7 +46,7 @@ class QuestionsController < ApplicationController
 
     render json: {
       score: @question.reload.score,
-      vote: 'none' # Current user vote
+      vote: "none" # Current user vote
     }
   end
 

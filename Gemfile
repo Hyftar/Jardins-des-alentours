@@ -69,7 +69,7 @@ gem "pg", "~> 1.2"
 
 gem "i18n_data", "~> 0.10.0"
 
-gem 'spectre_css'
+gem "spectre_css"
 
 gem "image_processing", "~> 1.10"
 

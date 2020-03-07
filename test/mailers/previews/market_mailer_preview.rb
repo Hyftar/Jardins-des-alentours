@@ -4,5 +4,4 @@ class MarketMailerPreview < ActionMailer::Preview
     @market_notifications = [MarketNotification.new(email: "test@example.com", market: Market.first, status: 0), MarketNotification.new(email: "test2@example.com", market: Market.first, status: 0)]
     MarketMailer.with(market: Market.first, market_notifications: @market_notifications).market_disponibility_update_email
   end
-
 end

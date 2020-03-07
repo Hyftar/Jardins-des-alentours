@@ -23,5 +23,4 @@ class AnswersController < ApplicationController
     def permit_params
       params.require(:content)
     end
-
 end

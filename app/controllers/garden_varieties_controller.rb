@@ -8,7 +8,7 @@ class GardenVarietiesController < ApplicationController
     @garden_variety = GardenVariety.new
   end
 
-  #how to get varieties not in garden_varieties for this garden
+  # how to get varieties not in garden_varieties for this garden
 
   def create
     @variety = Variety.find_by!(id: params["garden_variety"]["variety"])
@@ -17,7 +17,7 @@ class GardenVarietiesController < ApplicationController
       redirect_to garden_path(@garden)
     else
       @garden_variety = GardenVariety.new
-      render :action => 'new'
+      render action: "new"
     end
   end
 
