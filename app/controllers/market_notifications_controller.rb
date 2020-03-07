@@ -14,7 +14,7 @@ class MarketNotificationsController < ApplicationController
   def create_from_user(market, garden)
     @market_existing = MarketNotification.where(market: @market, email: current_user.email)
     if @market_existing.length == 0
-      @market_notification = MarketNotification.create(market: market, email: current_user.email)
+      @market_notification = MarketNotification.create(market: market, email: current_user.email, language: current_user.language)
     end
     redirect_to garden_path(@garden)
   end
@@ -24,7 +24,7 @@ class MarketNotificationsController < ApplicationController
     @market = Market.find_by!(id: params["market_notification"]["market"])
     @market_existing = MarketNotification.where(market: @market, email: params["market_notification"]["email"])
     if !user_signed_in? && @market_existing.length == 0
-      @market_notification = MarketNotification.create(market: @market, email: params["market_notification"]["email"])
+      @market_notification = MarketNotification.create(market: @market, email: params["market_notification"]["email"], language: locale)
     end
     redirect_to garden_path(@garden)
   end
