@@ -171,3 +171,4 @@ market_notifications = MarketNotification.create([{
   status: 0,
   language: "fr"
 }])
+
