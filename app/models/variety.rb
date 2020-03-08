@@ -9,6 +9,12 @@ class Variety < ApplicationRecord
 
   private
     def self.find_varieties_unused_in_garden(garden_id)
-      @varieties = Variety.find_by_sql ["SELECT * FROM varieties WHERE varieties.id NOT IN (SELECT v.id FROM varieties as v INNER JOIN garden_varieties ON garden_varieties.variety_id = varieties.id WHERE garden_varieties.garden_id = ?)", garden_id]
+      query_string = <<-EOF
+      SELECT * FROM varieties WHERE varieties.id
+      NOT IN (SELECT v.id FROM varieties as v
+      INNER JOIN garden_varieties ON garden_varieties.variety_id = varieties.id
+      WHERE garden_varieties.garden_id = ?)
+      EOF
+      @varieties = Variety.find_by_sql [query_string, garden_id]
     end
 end

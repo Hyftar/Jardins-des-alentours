@@ -14,7 +14,9 @@ class Location < ApplicationRecord
     allow_nil: true
 
   geocoded_by :address_join do |obj, results|
+    # sleep to reduce number of calls to api to 1 per second
     sleep(1)
+    byebug
     if geo = results.first
       obj.latitude = geo.latitude
       obj.longitude = geo.longitude
@@ -37,6 +39,7 @@ class Location < ApplicationRecord
   end
 
   reverse_geocoded_by :latitude, :longitude do |obj, results|
+    # sleep to reduce number of calls to api to 1 per second
     sleep(1)
     if geo = results.first
       obj.house_number = geo.house_number

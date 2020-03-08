@@ -103,4 +103,16 @@ class AnswersController < ApplicationController
         user: current_user
       )
     end
+
+    def get_question
+      @question = Question.find_by!(
+        id: params[:question_id],
+        community_id: params[:community_id]
+      )
+    end
+
+    def answer_params
+      params.require(:answer).permit(:content)
+    end
+
 end

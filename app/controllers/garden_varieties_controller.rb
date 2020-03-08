@@ -11,8 +11,8 @@ class GardenVarietiesController < ApplicationController
   # how to get varieties not in garden_varieties for this garden
 
   def create
-    @variety = Variety.find_by!(id: params["garden_variety"]["variety"])
-    @garden = Garden.find_by!(id: params["garden_variety"]["garden"], user: current_user)
+    @variety = Variety.find_by!(id: market_param["variety"])
+    @garden = Garden.find_by!(id: market_param["garden"], user: current_user)
     if !GardenVariety.find_by(garden: @garden, variety: @variety) && GardenVariety.create(garden: @garden, variety: @variety)
       redirect_to garden_path(@garden)
     else
@@ -29,7 +29,7 @@ class GardenVarietiesController < ApplicationController
 
   private
     def market_param
-      params.require(:garden_variety).permit(:quantity, :unit)
+      params.require(:garden_variety).permit(:variety, :garden)
     end
 
     def get_garden_variety

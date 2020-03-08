@@ -1,4 +1,4 @@
-<%= form_for [@garden, @market, @market_notification] do |f| %>
+<%= form_with model: @market_notification, url: [@garden, @market, @market_notification] do |f| %>
   <div class="field">
     <%= f.label :email %><br>
     <%= f.text_field :email %>

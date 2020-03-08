@@ -22,4 +22,4 @@
 <%= @market.garden_variety.garden.location.postal_code %>
 ----------
 
-<%= t('mailer.subject_update_order_email.to_communicate') %>
+<%= link_to t('mailer.subject_update_order_email.to_communicate'), garden_url(@market.garden_variety.garden)%>

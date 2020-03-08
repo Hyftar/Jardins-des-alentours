@@ -1,4 +1,4 @@
-<%= form_for [@garden, @garden_variety] do |f| %>
+<%= form_with model: @garden_variety, url:[@garden, @garden_variety] do |f| %>
   <div class="field">
     <%= f.label :variety %><br>
     <%= collection_select("garden_variety","variety", @varieties, :id, :name, :prompt => t('garden_varieties.prompt_variety')) %>

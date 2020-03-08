@@ -196,7 +196,7 @@
   <div class="columns flex-centered">
     <div class="column col-2">
       <a class="btn btn-link text-light"><%= Community.model_name.human.pluralize.titleize %></a>
-      <a class="btn btn-link text-light" href="http://localhost:3000/gardens"><%= Garden.model_name.human.pluralize.titleize %></a>
+      <%= link_to Garden.model_name.human.pluralize.titleize, gardens_path %>
       <a class="btn btn-link text-light"><%= t('landing_page.recipes').titleize %></a>
       <a class="btn btn-link text-light"><%= t('landing_page.forum').titleize %></a>
       <a class="btn btn-link text-light"><%= t('landing_page.info').titleize %></a>

@@ -20,11 +20,11 @@ class MarketNotificationsController < ApplicationController
   end
 
   def create
-    @garden = Garden.find_by!(id: params["market_notification"]["garden"])
-    @market = Market.find_by!(id: params["market_notification"]["market"])
-    @market_existing = MarketNotification.where(market: @market, email: params["market_notification"]["email"])
+    @garden = Garden.find_by!(id: market_param["garden"])
+    @market = Market.find_by!(id: market_param["market"])
+    @market_existing = MarketNotification.where(market: @market, email: market_param["email"])
     if !user_signed_in? && @market_existing.length == 0
-      @market_notification = MarketNotification.create(market: @market, email: params["market_notification"]["email"], language: locale)
+      @market_notification = MarketNotification.create(market: @market, email: market_param["email"], language: locale)
     end
     redirect_to garden_path(@garden)
   end
@@ -39,8 +39,12 @@ class MarketNotificationsController < ApplicationController
   end
 
   private
+    def market_param
+      params.require(:market_notification).permit(:garden, :market, :email)
+    end
+
     def is_owner
-      @garden = Garden.find_by(id: params["market_notification"]["garden"])
+      @garden = Garden.find_by(id: market_param["garden"])
       if current_user == @garden.user
         redirect_to garden_path(@garden)
       end

@@ -1,4 +1,4 @@
-<%= form_for(@garden) do |f| %>
+<%= form_with model: @garden do |f| %>
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
