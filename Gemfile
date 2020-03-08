@@ -19,7 +19,9 @@ gem "jbuilder", "~> 2.7"
 
 # User account
 gem "devise", "~> 4.7"
+
 gem "i18n_data", "~> 0.10.0"
+
 # Use PostgreSQL for database
 gem "pg", "~> 1.2"
 
@@ -65,10 +67,8 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "will_paginate", "~> 3.2"
 
-gem "pg", "~> 1.2"
-
-gem "i18n_data", "~> 0.10.0"
-
-gem 'spectre_css'
+gem "spectre_css"
 
 gem "image_processing", "~> 1.10"
+
+gem "counter_culture", "~> 2.3"

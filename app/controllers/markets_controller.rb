@@ -13,9 +13,9 @@ class MarketsController < ApplicationController
 
   def update
     if @market.update_attributes(market_param)
-       redirect_to garden_path(@market.garden_variety.garden)
+      redirect_to garden_path(@market.garden_variety.garden)
     else
-       render :action => 'edit'
+      render action: "edit"
     end
   end
 
@@ -44,5 +44,4 @@ class MarketsController < ApplicationController
       @garden_variety = GardenVariety.find_by!(id: @market.garden_variety)
       @garden = Garden.find_by!(id: @garden_variety.garden, user: current_user)
     end
-
 end

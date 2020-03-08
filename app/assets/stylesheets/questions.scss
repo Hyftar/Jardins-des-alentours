@@ -32,12 +32,17 @@
   align-items: center;
 }
 
-.question__top {
+.questions-container__question .question__top {
   grid-area: top;
+  padding-bottom: 1em;
   overflow: hidden;
+  font-size: 24px;
+  > a, > a:visited {
+    color: rgb(244,170,110);
+  }
 }
 
-.questions_container__question .question__body {
+.questions-container__question .question__body {
   grid-area: body;
   overflow: hidden;
 }

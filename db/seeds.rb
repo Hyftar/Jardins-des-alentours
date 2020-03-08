@@ -8,19 +8,19 @@
 
 users = User.create([
   {
-    first_name: 'John',
-    last_name: 'Doe',
-    email: 'john_doe@example.com',
-    password: 'test12345',
-    password_confirmation: 'test12345',
+    first_name: "John",
+    last_name: "Doe",
+    email: "john_doe@example.com",
+    password: "test12345",
+    password_confirmation: "test12345",
     confirmed_at: DateTime.now
   },
   {
-    first_name: 'Jane',
-    last_name: 'Doe',
-    email: 'jane_doe@example.com',
-    password: 'test12345',
-    password_confirmation: 'test12345',
+    first_name: "Jane",
+    last_name: "Doe",
+    email: "jane_doe@example.com",
+    password: "test12345",
+    password_confirmation: "test12345",
     confirmed_at: DateTime.now
   }
 ])
@@ -118,26 +118,30 @@ varieties = Variety.create([{
   produce: produce.first
 }])
 
-garden_varieties = GardenVariety.create([{
-  garden: gardens.first,
-  variety: varieties.second
-},
-{
-  garden: gardens.first,
-  variety: varieties.third
-},
-{
-  garden: gardens.second,
-  variety: varieties.first
-}])
+garden_varieties = GardenVariety.create([
+  {
+    garden: gardens.first,
+    variety: varieties.second
+  },
+  {
+    garden: gardens.first,
+    variety: varieties.third
+  },
+  {
+    garden: gardens.second,
+    variety: varieties.first
+  }
+])
 
-markets = Market.create([{
-  garden_variety: garden_varieties.first,
-  quantity: 15,
-  unit: "units"
-},
-{
-  garden_variety: garden_varieties.third,
-  quantity: 5,
-  unit: "pounds"
-}])
+markets = Market.create([
+  {
+    garden_variety: garden_varieties.first,
+    quantity: 15,
+    unit: "units"
+  },
+  {
+    garden_variety: garden_varieties.third,
+    quantity: 5,
+    unit: "pounds"
+  }
+])

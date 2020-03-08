@@ -6,5 +6,4 @@ class Address < ApplicationRecord
   validates :province, presence: true, length: { minimum: 1, maximum: 120 }
   validates :country, presence: true, length: { minimum: 1, maximum: 120 }
   validates :postal_code, length: { maximum: 20 }
-
 end

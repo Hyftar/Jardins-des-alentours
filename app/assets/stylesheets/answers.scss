@@ -1,0 +1,84 @@
+.answers {
+  margin-top: 2em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.answer {
+  display: grid;
+  grid-template:
+    "vote   content content content" minmax(4em, 4fr)
+    "vote   actions    .    author" minmax(2em, 2fr)
+    "editor editor  editor  editor" auto / 1fr 1fr 2fr 5fr
+}
+
+.answer__author {
+  grid-area: author;
+}
+
+.answer__vote {
+  grid-area: vote;
+}
+
+.answer__actions {
+  grid-area: actions;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.answer__content {
+  grid-area: content;
+  min-height: 10em;
+  padding-top: 1em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.answer__editor {
+  grid-area: editor;
+}
+
+.answer__actions > * {
+  cursor: pointer;
+  color: #bfbfbf;
+
+  &:hover {
+    color: #f2a26f;
+    text-decoration: none;
+  }
+}
+
+.answer_select_action {
+  position: relative;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    width: 2.5em;
+    height: 0.4em;
+    background-color: grey;
+    position: absolute;
+    transform: rotateZ(-45deg);
+    left: -1em;
+    top: -1em;
+  }
+
+  &::after {
+    content: '';
+    width: 1em;
+    height: 0.4em;
+    background-color: grey;
+    position: absolute;
+    transform:  rotateZ(45deg);
+    left: -1.22em;
+    top: -0.5em;
+  }
+}
+
+.answer_select_action.selected {
+  &::before, &::after {
+    background-color: green;
+  }
+}
