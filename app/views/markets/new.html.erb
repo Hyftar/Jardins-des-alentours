@@ -1,8 +1,9 @@
-<%= form_for [@market.garden_variety.garden, @market] do |f| %>
+<%= form_with model: @market, url: [@garden, @market] do |f| %>
   <div class="field">
     <%= f.label :quantity %><br>
     <%= f.text_field :quantity %>
   </div>
+  <%= hidden_field_tag "market[garden_variety]", @garden_variety.id %>
   <div class="field">
     <%= f.text_field :unit, list: "unitList" %>
     <datalist id="unitList">

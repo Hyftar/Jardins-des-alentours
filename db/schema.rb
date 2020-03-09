@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_06_004814) do
+ActiveRecord::Schema.define(version: 2020_03_06_192838) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,19 +43,6 @@ ActiveRecord::Schema.define(version: 2020_03_06_004814) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
-  end
-
-  create_table "addresses", force: :cascade do |t|
-    t.string "address_line_1", null: false
-    t.string "address_line_2"
-    t.string "city", null: false
-    t.string "province", null: false
-    t.string "country", null: false
-    t.string "postal_code"
-    t.bigint "location_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["location_id"], name: "index_addresses_on_location_id", unique: true
   end
 
   create_table "answer_votes", force: :cascade do |t|
@@ -144,16 +131,29 @@ ActiveRecord::Schema.define(version: 2020_03_06_004814) do
   end
 
   create_table "locations", force: :cascade do |t|
-    t.float "longitude", null: false
-    t.float "latitude", null: false
+    t.float "longitude"
+    t.float "latitude"
+    t.string "house_number"
+    t.string "road"
+    t.string "neighbourhood"
+    t.string "suburb"
+    t.string "county"
+    t.string "additional_informations"
+    t.string "city"
+    t.string "province"
+    t.string "region"
+    t.string "country"
+    t.string "country_code"
+    t.string "postal_code"
   end
 
   create_table "market_notifications", force: :cascade do |t|
     t.string "email", null: false
     t.bigint "market_id"
-    t.integer "status", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "language"
     t.index ["market_id"], name: "index_market_notifications_on_market_id"
   end
 
@@ -336,7 +336,6 @@ ActiveRecord::Schema.define(version: 2020_03_06_004814) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "addresses", "locations"
   add_foreign_key "answer_votes", "answers"
   add_foreign_key "answer_votes", "users"
   add_foreign_key "answers", "questions"

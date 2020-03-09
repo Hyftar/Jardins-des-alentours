@@ -10,6 +10,16 @@
       <%= garden_variety.variety.name %>
       <% if current_user == @garden.user %>
         <%= link_to 'Remove from garden', garden_garden_variety_set_active_path(@garden, garden_variety.id), data: {confirm: t('garden_variety_confirm_before_inactive')}%>
+        <% if garden_variety.markets.present? %>
+          <% if garden_variety.markets.first.is_active?%>
+            <%= link_to 'Edit market', edit_garden_market_path(@garden, garden_variety.markets.first) %>
+            <%= link_to 'Remove market', garden_market_set_active_path(@garden, garden_variety.markets.first), data: {confirm: t('confirm_before_delete')}%>
+          <% else %>
+            <%= link_to 'Reactivate market', edit_garden_market_path(@garden, garden_variety.markets.first) %>
+          <% end %>
+        <% else %>
+          <%= link_to 'New', garden_market_new_path(@garden.id, garden_variety.id) %>
+        <% end %>
       <% end %> <br>
     <% end %>
   <% end %>
@@ -23,6 +33,9 @@
     <% end %>
   <% end %>
   </p>
+  <% if current_user == @garden.user %>
+    <%= link_to 'Add a new garden variety', new_garden_garden_variety_path(@garden.id) %>
+  <% end %>
   <p>
     <h2>Sur le marché :</h2>
     <% @garden.markets.each do |market|%>
@@ -31,11 +44,26 @@
           <% if current_user == @garden.user %>
             <%= link_to 'Edit', edit_garden_market_path(@garden, market) %>
             <%= link_to 'Remove', garden_market_set_active_path(@garden, market), data: {confirm: t('confirm_before_delete')}%>
+          <% elsif user_signed_in? && [market.id, "paused"].in?(@market_notifications) %>
+            <%= link_to t('garden.activate_market_notification'), garden_market_market_notification_status_path(@garden, market) %>
+          <% elsif user_signed_in? && [market.id, "active"].in?(@market_notifications) %>
+            <%= link_to t('garden.pause_market_notification'), garden_market_market_notification_status_path(@garden, market) %>
+          <% elsif !user_signed_in? || !market.id.in?(@market_notifications) %>
+            <%= link_to t('garden.new_market_notififaction'), new_garden_market_market_notification_path(@garden, market) %>
           <% end %>
           <% %>
         <br>
       <% end %>
     <% end %>
   </p>
-
+  <p>
+  <h2>Coordonnées</h2>
+    <div><%= @garden.location.house_number %></div>
+    <div><%= @garden.location.road %></div>
+    <div><%= @garden.location.additional_informations %></div>
+    <div><%= @garden.location.city %></div>
+    <div><%= @garden.location.province %></div>
+    <div><%= @garden.location.country %></div>
+    <div><%= @garden.location.postal_code %></div>
+  </p>
 </div>

@@ -25,11 +25,19 @@ users = User.create([
   }
 ])
 
-locations = Location.create([
+locations = Location.create!([
   { longitude: -73.561667, latitude: 45.508889 }, # Montréal
   { longitude: -71.208056, latitude: 46.813889 }, # Québec city
   { longitude: -77.783333, latitude: 48.1 }, # Val-d'Or
-  { longitude: 2.352222, latitude: 48.856613 } # Paris
+  { longitude: 2.352222, latitude: 48.856613 }, # Paris
+  {
+    house_number: "124",
+    road: "Rue Prince-Arthur Est",
+    city: "Montreal",
+    province: "Quebec",
+    country: "Canada",
+    postal_code: "H2X 1B5"
+  }
 ])
 
 regions = Region.create([
@@ -118,30 +126,49 @@ varieties = Variety.create([{
   produce: produce.first
 }])
 
-garden_varieties = GardenVariety.create([
-  {
-    garden: gardens.first,
-    variety: varieties.second
-  },
-  {
-    garden: gardens.first,
-    variety: varieties.third
-  },
-  {
-    garden: gardens.second,
-    variety: varieties.first
-  }
-])
+garden_varieties = GardenVariety.create([{
+  garden: gardens.first,
+  variety: varieties.second
+},
+{
+  garden: gardens.first,
+  variety: varieties.third
+},
+{
+  garden: gardens.second,
+  variety: varieties.first
+},
+{
+  garden: gardens.second,
+  variety: varieties.second
+}])
 
-markets = Market.create([
-  {
-    garden_variety: garden_varieties.first,
-    quantity: 15,
-    unit: "units"
-  },
-  {
-    garden_variety: garden_varieties.third,
-    quantity: 5,
-    unit: "pounds"
-  }
-])
+markets = Market.create([{
+  garden_variety: garden_varieties.first,
+  quantity: 15,
+  unit: "units"
+},
+{
+  garden_variety: garden_varieties.third,
+  quantity: 5,
+  unit: "pounds"
+},
+{
+  garden_variety: garden_varieties.fourth,
+  quantity: 12,
+  unit: "units"
+}])
+
+market_notifications = MarketNotification.create([{
+  email: "kevenaubin@gmail.com",
+  market: markets.first,
+  status: 0,
+  language: "en"
+},
+{
+  email: "keven081@live.ca",
+  market: markets.first,
+  status: 0,
+  language: "fr"
+}])
+

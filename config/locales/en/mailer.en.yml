@@ -1,0 +1,9 @@
+en:
+  mailer:
+    subject_update_order: "Update on a product you were interested in"
+    subject_update_order_email:
+      introduction: "There has been an update concerning a product you were interested in."
+      reason: "As of the time of this email, the item was set as available."
+      product: "Product"
+      gardener: "Gardener"
+      to_communicate: "To communicate with the gardener or to unsuscribe from this product alert, use the following link."

@@ -1,0 +1,9 @@
+fr:
+  mailer:
+    subject_update_order: "Mise à jour au sujet d'un produit qui vous intéresse"
+    subject_update_order_email:
+      introduction: "Il y a eu une mise à jour concernant un produit qui vous intéressait."
+      reason: "Au moment de recevoir ce courriel, ce produit a été mis disponible à la vente par le jardinier."
+      product: "Produit"
+      gardener: "Jardinier"
+      to_communicate: "Pour communiquer avec le jardinier ou pour se désinscrire de cette alerte, veuillez suivre ce lien."

@@ -1,18 +1,33 @@
 class MarketsController < ApplicationController
-  before_action :validate_user, only: %i( edit update destroy )
+  before_action :is_owner, only: %i( edit update )
+  before_action :is_owner_new_market, only: %i( new create )
 
   def new
-    Market.new
+    @garden_variety = GardenVariety.find_by!(id: params[:id], is_active: true)
+    @market = Market.new
   end
 
   def create
+    @garden_variety = GardenVariety.find_by!(id: market_param["garden_variety"], is_active: true)
+    if Market.create(quantity: market_param["quantity"], unit: market_param["unit"], garden_variety: @garden_variety)
+      redirect_to garden_path(@garden_variety.garden)
+    else
+      render action: "new"
+    end
   end
 
   def edit
   end
 
   def update
-    if @market.update_attributes(market_param)
+    @market_original = @market.dup
+    if @market.update(market_param)
+      if @market_original.unit != @market.unit || @market_original.quantity != @market.quantity || @market_original.is_active != @market.is_active
+        @market_notifications = MarketNotification.where(market: @market, status: "active")
+        @market_notifications.each do |notification|
+          MarketMailer.with(market: @market, market_notification: notification).market_disponibility_update_email.deliver_later
+        end
+      end
       redirect_to garden_path(@market.garden_variety.garden)
     else
       render action: "edit"
@@ -20,9 +35,10 @@ class MarketsController < ApplicationController
   end
 
   def set_active
-    @market = Market.find_by!(id: params[:market_id])
+    @market = Market.find_by!(id: params["market_id"])
     @garden_variety = GardenVariety.find_by!(id: @market.garden_variety)
     @garden = Garden.find_by!(id: @garden_variety.garden, user: current_user)
+    @market_original = @market.dup
     @market.is_active = !@market.is_active
     @market.save
     redirect_to garden_path(@garden)
@@ -30,18 +46,23 @@ class MarketsController < ApplicationController
 
   def destroy
     @garden = @market.garden_variety.garden
+    MarketNotification.where(market: @market).destroy
     @market.destroy
     redirect_to garden_path(@garden)
   end
 
   private
     def market_param
-      params.require(:market).permit(:quantity, :unit)
+      params.require(:market).permit(:quantity, :unit, :is_active, :garden_variety)
     end
 
-    def validate_user
+    def is_owner
       @market = Market.find_by!(id: params[:id])
       @garden_variety = GardenVariety.find_by!(id: @market.garden_variety)
       @garden = Garden.find_by!(id: @garden_variety.garden, user: current_user)
+    end
+
+    def is_owner_new_market
+      @garden = Garden.find_by!(id: params[:garden_id])
     end
 end

@@ -8,4 +8,5 @@ class Garden < ApplicationRecord
   has_many :garden_varieties
   has_many :varieties, through: :garden_varieties
   has_many :markets, through: :garden_varieties
+  accepts_nested_attributes_for :location
 end

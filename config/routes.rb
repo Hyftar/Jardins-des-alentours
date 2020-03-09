@@ -15,16 +15,19 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :gardens, only: [:index, :show, :edit, :update, :destroy] do
-    resources :markets, only: [:edit, :update] do
+  resources :gardens do
+    get "/markets/new/:id", to: "markets#new", as: "market_new"
+    resources :markets, only: %i( edit update create ) do
       get "set_active", to: "markets#set_active"
+      get "/market_notifications/status", to: "market_notifications#status", as: "market_notification_status"
+      resources :market_notifications, only: %i( new create )
     end
-    resources :garden_varieties, only: [] do
+    resources :garden_varieties, only: %i( new create ) do
       get "set_active", to: "garden_varieties#set_active"
     end
   end
 
-  resources :users, only: [:show]
+  resources :users, only: %i( show )
 
   devise_for :users, path: "auth"
 end

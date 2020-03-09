@@ -1,0 +1,10 @@
+<%= form_with model: @garden_variety, url:[@garden, @garden_variety] do |f| %>
+  <div class="field">
+    <%= f.label :variety %><br>
+    <%= collection_select("garden_variety","variety", @varieties, :id, :name, :prompt => t('garden_varieties.prompt_variety')) %>
+  </div>
+  <%= hidden_field_tag "garden_variety[garden]", @garden.id %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
