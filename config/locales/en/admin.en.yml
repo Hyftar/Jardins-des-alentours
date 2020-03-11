@@ -1,0 +1,7 @@
+en:
+  roles:
+    name: "%{name} of the community of %{community_name}"
+    no_result: No result found
+    search: Search
+    change_successful: Changed %{name}'s roles successfully
+    error: An error occurred preventing the role change

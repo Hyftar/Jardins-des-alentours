@@ -1,0 +1,56 @@
+body {
+  min-height: 100vh;
+}
+
+.roles-checkboxes__role > label {
+  user-select: none;
+  cursor: pointer;
+}
+
+[disabled="disabled"] ~ label,
+[disabled] ~ label {
+  color: grey;
+  cursor: default;
+}
+
+.roles-checkboxes::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 0.75em solid transparent;
+  border-right: 0.75em solid transparent;
+  border-bottom: 0.75em solid white;
+  top: -0.70em;
+  position: absolute;
+  left: 4.5em;
+}
+
+.roles-checkboxes:not(.hidden) {
+  z-index: 10;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  top: 3em;
+  left: -4em;
+  width: 25em;
+  background-color: white;
+  padding: 0.5em;
+  color: black;
+  border-radius: 0.5em;
+  font-size: 1.20em;
+}
+
+.roles-checkboxes-container {
+  position: relative;
+}
+
+.roles-checkboxes__role {
+  white-space: nowrap;
+}
+
+.results__user {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

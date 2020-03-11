@@ -1,0 +1,35 @@
+<% if users.nil? || users.empty? %>
+  <%= t('roles.no_result') %>
+<% else %>
+  <% users.each do |user| %>
+    <div class="results__user">
+      <div class="user__name">
+        <%= user.first_name %> <%= user.last_name %>
+      </div>
+      <div class="roles-checkboxes-container">
+        <button class="btn btn-primary show-roles-btn">Roles</button>
+        <div class="roles-checkboxes hidden">
+          <% roles.each do |role| %>
+          <div class="roles-checkboxes__role">
+            <input
+              data-role-id="<%= role.id %>"
+              data-user-id="<%= user.id %>"
+              type="checkbox"
+              class="role-checkbox"
+              value="<%= role.id %>"
+              <%= 'disabled="disabled"' if user == current_user %>
+              <%= 'checked="checked"' if role.in? user.roles %>
+            />
+            <% if role.community.nil? %>
+            <label><%= role.name.capitalize %></label>
+            <% else %>
+            <label><%= t('roles.name', name: role.name, community_name: role.community.produce.name).capitalize %></label>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <%= will_paginate users %>
+<% end %>
