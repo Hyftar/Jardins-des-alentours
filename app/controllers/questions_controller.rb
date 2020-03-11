@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!, only: %i( select_answer vote_up vote_down remove_vote )
+  before_action :authenticate_user!, only: %i( new create select_answer vote_up vote_down remove_vote )
   before_action :get_community
   before_action :get_question, only: %i( show )
   before_action :get_questions, only: %i( index )
@@ -19,8 +19,13 @@ class QuestionsController < ApplicationController
   end
 
   def select_answer
-    if @question.nil? || @answer.nil? || @question.deleted? || @question.removed?
+    if @question.nil? ||
+        @answer.nil? ||
+        @question.deleted? ||
+        @question.removed? ||
+        @question.user != current_user
       render status: :bad_request, json: { selected: nil }
+      return
     end
 
     new_selected_answer = @question.selected_answer == @answer ? nil : @answer

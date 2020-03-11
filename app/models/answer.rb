@@ -28,6 +28,7 @@ class Answer < ApplicationRecord
           LEFT OUTER JOIN answer_votes
           ON answers.id = answer_votes.answer_id AND answer_votes.user_id = ?
           WHERE answers.question_id = ? AND status = 0
+          ORDER BY answers.score DESC
         ',
         user&.id,
         question&.id

@@ -50,9 +50,12 @@
   }
 }
 
+.answer_select_action.selectable {
+  cursor: pointer;
+}
+
 .answer_select_action {
   position: relative;
-  cursor: pointer;
 
   &::before {
     content: '';
