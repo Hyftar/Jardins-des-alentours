@@ -12,11 +12,11 @@ $(document).on('turbolinks:load', () => {
 
   // MOBILE MENU TOGGLE
   function triggerIconClick(mediaQuery) {
-    const icon = document.getElementById('app_icon')
+    const navbar = document.getElementById('navbar')
     if (mediaQuery.matches) {
-      icon.addEventListener('click', toggleMenu)
+      navbar.addEventListener('click', toggleMenu)
     } else {
-      icon.removeEventListener('click', toggleMenu)
+      navbar.removeEventListener('click', toggleMenu)
     }
   }
 

@@ -21,6 +21,10 @@ html {
     color: #fff !important;
   }
 
+  a {
+    font-weight: bold;
+  }
+
   a.text-light:focus,
   a.text-light:hover {
     color: #d9d9d9 !important;
@@ -54,6 +58,7 @@ html {
       &:hover {
         opacity: 0.8;
       }
+
       font-size: 5vh;
       cursor: pointer;
       transition-duration: 0.5s;
@@ -61,7 +66,7 @@ html {
 
     .navbar-center {
       i {
-        color: rgba(248,255,244,0.9);
+        color: rgba(248, 255, 244, 0.9);
       }
 
       ul {
@@ -69,6 +74,7 @@ html {
       }
     }
   }
+
   // split images ---------
   #right-veggie {
     background-image: url("carrots.jpeg");
@@ -95,6 +101,7 @@ html {
     width: 50%;
     height: 100%;
   }
+
   // --- icons ---------------
   .lp_pics {
     flex-direction: column;
@@ -127,10 +134,11 @@ html {
       margin-top: 20vh;
     }
   }
+
   // -- main title --------
   .title_main {
     margin-top: 18vh;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     z-index: 2;
 
     > div {
@@ -175,6 +183,7 @@ html {
       font-size: 1.5em;
       font-weight: bold;
     }
+
     @keyframes blinking {
       0% {
         color: #d9d9d9;
@@ -210,6 +219,7 @@ html {
       margin-top: 5vh;
     }
   }
+
   // -- info 2
   .p_info_2 {
     background-color: #f5a26f;
@@ -227,6 +237,7 @@ html {
       margin-left: 20vw;
     }
   }
+
   // -- map section
   .map_container {
     padding: 10vh 20vw 30vh;
@@ -240,6 +251,7 @@ html {
       color: #2E2F30;
     }
   }
+
   // -- communities
   .communities_container {
     height: fit-content;
@@ -263,6 +275,7 @@ html {
       text-align: right;
     }
   }
+
   // -- footer
   .footer {
     padding: 10vh 4vw;
@@ -274,7 +287,7 @@ html {
     }
 
     i {
-      color: rgba(248,255,244,0.9);
+      color: rgba(248, 255, 244, 0.9);
     }
 
     a {
@@ -282,6 +295,11 @@ html {
     }
   }
 }
+
+.fa-bars {
+  display: none !important;
+}
+
 @media screen and (max-width: 1080px) {
   #app_icon {
     display: block;
@@ -311,10 +329,8 @@ html {
       }
     }
   }
-}
 
-@media (min-width: 1080px) {
-  #app_icon {
-    display: none;
+  .fa-bars {
+    display: block !important;
   }
 }
