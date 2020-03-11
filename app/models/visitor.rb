@@ -11,7 +11,6 @@ class Visitor < ApplicationRecord
     @visitor = Visitor.find_by(IP: ip)
     if @visitor.nil?
       @visitor = Visitor.create(IP: ip)
-      byebug
     else
       @visitor.request_count += 1
       @visitor.save

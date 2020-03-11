@@ -12,9 +12,7 @@ class MarketMailer < ApplicationMailer
     @message = params[:message]
     @email = params[:email]
     @varieties = params[:varieties]
-    byebug
     I18n.with_locale(@garden.user.language) do
-      byebug
       mail(from: @email, to: @garden.user.email, subject: I18n.t("mailer.market_inquiry_email.subject"))
     end
   end

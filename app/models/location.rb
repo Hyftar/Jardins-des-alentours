@@ -16,7 +16,6 @@ class Location < ApplicationRecord
   geocoded_by :address_join do |obj, results|
     # sleep to reduce number of calls to api to 1 per second
     sleep(1)
-    byebug
     if geo = results.first
       obj.latitude = geo.latitude
       obj.longitude = geo.longitude
