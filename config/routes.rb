@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
   root to: "home#index"
 
+  scope "admin" do
+    get "", to: "admin#home"
+    scope "roles" do
+      get '', to: "roles#index"
+      post '', to: "roles#search"
+      post 'set_role', to: "roles#set_role"
+    end
+  end
+
   resources :communities, only: %i( index show ) do
     resources :questions, only: %i( index show new create update destroy ) do
       post "vote_up", to: "questions#vote_up"
@@ -29,5 +38,5 @@ Rails.application.routes.draw do
 
   resources :users, only: %i( show )
 
-  devise_for :users, path: "auth"
+  devise_for :users, path: "auth", controllers: { sessions: 'users/sessions' }
 end

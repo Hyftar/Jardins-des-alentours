@@ -9,6 +9,12 @@ fr:
   confirm_before_delete: Êtes-vous certain de vouloir supprimer cet article?
   garden_variety_confirm_before_inactive: Êtes-vous certain de vouloir indiquer cette variété comme inactive? Cela va enlever la variété correspondante de votre marché.
 
+
+  flash:
+    permission_denied: Permission refusée
+    welcome: Bienvenue %{name}!
+    goodbye: À la prochaine!
+
   landing_page:
     account: "mon compte"
     getting_started: "débuter"

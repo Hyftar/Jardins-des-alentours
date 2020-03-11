@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_06_192838) do
+ActiveRecord::Schema.define(version: 2020_03_06_195048) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -237,6 +237,8 @@ ActiveRecord::Schema.define(version: 2020_03_06_192838) do
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.bigint "community_id"
+    t.index ["community_id"], name: "index_roles_on_community_id"
   end
 
   create_table "roles_users", force: :cascade do |t|
@@ -359,6 +361,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_192838) do
   add_foreign_key "questions", "users"
   add_foreign_key "regions", "locations"
   add_foreign_key "reports", "users"
+  add_foreign_key "roles", "communities"
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
   add_foreign_key "user_messages", "users", column: "recipient_user_id"

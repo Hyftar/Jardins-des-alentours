@@ -35,4 +35,20 @@ class RoleTest < ActiveSupport::TestCase
     role.name = "test_role_123"
     assert role.save
   end
+
+  test "should not be able to save two roles with the same scope" do
+    assert_raise do
+      Role.create!([
+        { name: "Blah" },
+        { name: "Blah" }
+      ])
+    end
+
+    assert_nothing_raised do
+      Role.create!([
+        { name: "Bleh", community: Community.first },
+        { name: "Bleh", community: nil }
+      ])
+    end
+  end
 end

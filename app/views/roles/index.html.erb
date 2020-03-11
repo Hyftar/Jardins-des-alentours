@@ -1,0 +1,11 @@
+<h1>Users roles management</h1>
+<div class="manage_user">
+  <%= form_with id: 'user_role_search_form', remote: true do |form| %>
+    <%= form.text_field :search, placeholder: 'Johnny Appleseed' %>
+    <%= form.submit t('roles.search') %>
+  <% end %>
+
+  <div id="user_role_results" class="results">
+    <%= render 'users_search_results', users: @users, roles: @roles %>
+  </div>
+</div>

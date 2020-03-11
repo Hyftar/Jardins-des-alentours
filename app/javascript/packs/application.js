@@ -7,10 +7,14 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require('jquery')
+require("jquery")
 require("landing_page")
 require("questions")
+<<<<<<< HEAD
 require("communities")
+=======
+require("admin")
+>>>>>>> 1703583b0ac53f6e4670d5a9ca8b6481f6ed42bd
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -21,3 +25,5 @@ require("communities")
 
 require("trix")
 require("@rails/actiontext")
+
+global.toastr = require("toastr")
