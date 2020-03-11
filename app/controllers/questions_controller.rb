@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!, only: %i( select_answer vote_up vote_down remove_vote )
+  before_action :authenticate_user!, only: %i( new create select_answer vote_up vote_down remove_vote )
   before_action :get_community
   before_action :get_question, only: %i( show )
   before_action :get_questions, only: %i( index )
