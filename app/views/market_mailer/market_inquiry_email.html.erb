@@ -21,6 +21,6 @@
       <% end %>
     </ul>
     <p><%= t('mailer.market_inquiry_email.sender') %></p>
-    <a href=<% "mailto:" + @email %> target="_top"><%= @email%></a>
+    <a href="<% "mailto:" + @email %>" target="_top"><%= @email%></a>
   </body>
 </html>

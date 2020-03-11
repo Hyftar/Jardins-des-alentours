@@ -65,6 +65,7 @@ class MarketsController < ApplicationController
     end
     @message = params["description"]
     @email = params["email"]["user"]
+    save_visitor_email(@email)
     if @email != @garden.user.email
       MarketMailer.with(garden: @garden, varieties: @list_checkbox, message: @message, email: @email).market_inquiry_email.deliver_later
     end
@@ -85,4 +86,21 @@ class MarketsController < ApplicationController
     def is_owner_new_market
       @garden = Garden.find_by!(id: params[:garden_id])
     end
+
+    def save_visitor_email(email)
+      unless user_signed_in?
+        ip = request.remote_ip
+        @visitor = Visitor.find_by(IP: ip)
+        if @visitor.nil?
+          @visitor = Visitor.create(IP: ip)
+          results = Geocoder.search(@visitor.IP)
+          @visitor_location = VisitorLocation.create(longitude: results.first.coordinates.second, latitude: results.first.coordinates.first, visitor: @visitor)
+        end
+        @visitor_email = VisitorEmail.find_by(email: email, visitor: @visitor)
+        if @visitor_email.nil?
+          VisitorEmail.create(email: email, visitor: @visitor)
+        end
+      end
+    end
+
 end
