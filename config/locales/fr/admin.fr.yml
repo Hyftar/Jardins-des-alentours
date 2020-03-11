@@ -1,0 +1,7 @@
+fr:
+  roles:
+    name: "%{name} de la communauté des %{community_name}"
+    no_result: Aucun résultat trouvé
+    search: Rechercher
+    change_successful: Les rôles de %{name} ont été changés avec succès
+    error: Une erreur est survenue empêchant le changement de rôles
