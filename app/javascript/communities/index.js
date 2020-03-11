@@ -28,8 +28,8 @@ function selectSeason() {
     default:
       season = 'Toutes les saisons';
       let items = $('.filter-item');
-      items.each((x) => {
-        items.eq(x).removeClass('not-in-season');
+      items.each((index, elem) => {
+        elem.classList.remove('not-in-season');
       });
       break;
   }
@@ -38,11 +38,11 @@ function selectSeason() {
 
 function chooseSeason(season) {
   let items = $('.filter-item');
-  items.each((x) => {
-    if (items.eq(x).attr('data-season').includes(season)) {
-      items.eq(x).removeClass('not-in-season');
+  items.each((index, elem) => {
+    if (elem.attributes['data-season'].value.indexOf(season) != -1) {
+      elem.classList.remove('not-in-season');
     } else {
-      items.eq(x).addClass('not-in-season');
+      elem.classList.add('not-in-season');
     }
   });
 }

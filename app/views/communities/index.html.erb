@@ -1,9 +1,3 @@
-<%# @communities.each do |community| %>
-<!--  <div>-->
-<!--    Communauté des <%#= community.produce.name %> de <%#= community.region.name %>-->
-<%#= link_to 'lien', community_path(community) %>
-<!--  </div>-->
-<%# end %>
 <div class="columns bread-container">
   <div class="column col-2">
     <ul class="breadcrumb">
@@ -16,12 +10,12 @@
     </ul>
   </div>
 </div>
-<h1 id="lol">
+<h1 id="communities-header">
   <svg viewBox="0 0 100 80" fill="white">
-    <path id="curve" d="M-300,80
-             Q50,0 400,80"/>
+    <path id="curve" d="M-300,80Q50,0 400,80"/>
     <text width="1500">
-      <textPath xlink:href="#curve"><%= t('communities.index_title').titleize %>
+      <textPath xlink:href="#curve">
+        <%= t('communities.index_title').titleize %>
       </textPath>
     </text>
   </svg>
