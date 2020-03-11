@@ -1,0 +1,15 @@
+<%= t('mailer.market_inquiry_email.introduction') %>
+    <address>
+<%= @garden.name %>
+<%= @garden.location.house_number %>
+<%= @garden.location.road %>
+<%= @garden.location.city %>
+<%= @message %>
+<%= t('mailer.market_inquiry_email.interested_in') %>
+<% @garden.markets.each do |market| %>
+  <% if @varieties.include?(market.garden_variety.id.to_s) %>
+    <%= market.garden_variety.variety.name %>
+  <% end %>
+<% end %>
+<%= t('mailer.market_inquiry_email.sender') %>
+<%= @email %>

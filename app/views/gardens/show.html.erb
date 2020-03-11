@@ -38,9 +38,15 @@
   <% end %>
   <p>
     <h2>Sur le marché :</h2>
+    <% if current_user != @garden.user %>
+      <p><%= link_to 'Contact the gardener about those produce', garden_write_email_path(@garden.id) %></p>
+    <% end %>
     <% @garden.markets.each do |market|%>
-      <% if market.is_active %>
+      <% if market.is_active && market.garden_variety.is_active %>
         <%= market.garden_variety.variety.name %> : <%= market.quantity %> <%= market.unit %>
+          <% unless market.price.nil?%>
+            at price of <%= market.price %> per <%= market.unit %>
+          <% end %>
           <% if current_user == @garden.user %>
             <%= link_to 'Edit', edit_garden_market_path(@garden, market) %>
             <%= link_to 'Remove', garden_market_set_active_path(@garden, market), data: {confirm: t('confirm_before_delete')}%>

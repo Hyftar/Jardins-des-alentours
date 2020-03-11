@@ -13,6 +13,10 @@
       <option value="bunch"></option>
     </datalist>
   </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= number_field(:price, nil, min: 0, max: 999.99, step: 0.01) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

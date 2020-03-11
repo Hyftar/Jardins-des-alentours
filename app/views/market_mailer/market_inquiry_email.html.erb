@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p><%= t('mailer.market_inquiry_email.introduction') %></p>
+    <address>
+      <p><%= @garden.name %></p>
+      <p><%= @garden.location.house_number %></p>
+      <p><%= @garden.location.road %></p>
+      <p><%= @garden.location.city %></p>
+    </address>
+    <q><%= @message %></q>
+    <p><%= t('mailer.market_inquiry_email.interested_in') %></p>
+    <ul>
+      <% @garden.markets.each do |market| %>
+        <% if @varieties.include?(market.garden_variety.id.to_s) %>
+          <li><%= market.garden_variety.variety.name %></li>
+        <% end %>
+      <% end %>
+    </ul>
+    <p><%= t('mailer.market_inquiry_email.sender') %></p>
+    <a href=<% "mailto:" + @email %> target="_top"><%= @email%></a>
+  </body>
+</html>

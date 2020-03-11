@@ -47,4 +47,38 @@ class MarketTest < ActiveSupport::TestCase
 
     assert m.save
   end
+
+  test "should be able to save market with decimal price" do
+    m = Market.new(
+      garden_variety: garden_varieties(:one),
+      unit: "units",
+      quantity: 10,
+      price: 2.12
+    )
+
+    assert m.save
+  end
+
+  test "should not be able to save market with price lower than 0" do
+    m = Market.new(
+      garden_variety: garden_varieties(:one),
+      unit: "units",
+      quantity: 10,
+      price: -1
+    )
+
+    assert_not m.save
+  end
+
+  test "should not be able to save market with price higher or equal to 1000" do
+    m = Market.new(
+      garden_variety: garden_varieties(:one),
+      unit: "units",
+      quantity: 10,
+      price: 1000
+    )
+
+    assert_not m.save
+  end
+
 end

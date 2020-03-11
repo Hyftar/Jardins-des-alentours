@@ -1,5 +1,6 @@
 en:
   mailer:
+    default_from: "jardinsdesalentours@gmail.com"
     subject_update_order: "Update on a product you were interested in"
     subject_update_order_email:
       introduction: "There has been an update concerning a product you were interested in."
@@ -7,3 +8,10 @@ en:
       product: "Product"
       gardener: "Gardener"
       to_communicate: "To communicate with the gardener or to unsuscribe from this product alert, use the following link."
+    market_inquiry_email:
+      subject: "Interest in you produce"
+      introduction: "Dear gardener of Jardins des alentours, a user has manifested his intentest in the produce offered in on of your garden."
+      interested_in: "The user has show interest in those produce:"
+      sender: "If you are interested, you can contact the user at this address :"
+      available: "available"
+

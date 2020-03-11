@@ -1,5 +1,6 @@
 fr:
   mailer:
+    default_from: "jardinsdesalentours@gmail.com"
     subject_update_order: "Mise à jour au sujet d'un produit qui vous intéresse"
     subject_update_order_email:
       introduction: "Il y a eu une mise à jour concernant un produit qui vous intéressait."
@@ -7,3 +8,12 @@ fr:
       product: "Produit"
       gardener: "Jardinier"
       to_communicate: "Pour communiquer avec le jardinier ou pour se désinscrire de cette alerte, veuillez suivre ce lien."
+  market_inquiry_email:
+    subject: "Intérêt pour vos produits"
+    introduction: "Cher jardinier de Jardins des alentours, un utilisateur du site s'est manitesté au sujet de produits indiqués disponibles au jardin suivant:"
+    interested_in: "L'utilisateur a démontré de l'intérêt pour ces produits:"
+    sender: "Si vous êtes intéressé, vous pouvez contacter l'utilisateur à cette addresse:"
+    available: "disponible"
+
+
+

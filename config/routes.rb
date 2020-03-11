@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   resources :gardens do
     get "/markets/new/:id", to: "markets#new", as: "market_new"
+    get "write_email", to: "markets#write_email"
+    post "send_email", to: "markets#send_email"
     resources :markets, only: %i( edit update create ) do
       get "set_active", to: "markets#set_active"
       get "/market_notifications/status", to: "market_notifications#status", as: "market_notification_status"
