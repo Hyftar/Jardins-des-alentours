@@ -7,5 +7,7 @@
   <div class="votes__count"><%= answer.score %></div>
   <a href="<%= new_user_session_path %>" class="votes__down"></a>
 <% end %>
-<div id="answer_<%= answer.id %>_select" data-answer-id="<%= answer.id %>" class="answer_select_action <%= 'selected' if answer == selected_answer %>">
+<% if current_user == question.user %>
+<div id="answer_<%= answer.id %>_select" data-answer-id="<%= answer.id %>" class="answer_select_action <%= 'selected' if answer == question.selected_answer %>">
 </div>
+<% end %>

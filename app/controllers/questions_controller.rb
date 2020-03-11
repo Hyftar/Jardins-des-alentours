@@ -19,8 +19,13 @@ class QuestionsController < ApplicationController
   end
 
   def select_answer
-    if @question.nil? || @answer.nil? || @question.deleted? || @question.removed?
+    if @question.nil? ||
+        @answer.nil? ||
+        @question.deleted? ||
+        @question.removed? ||
+        @question.user != current_user
       render status: :bad_request, json: { selected: nil }
+      return
     end
 
     new_selected_answer = @question.selected_answer == @answer ? nil : @answer
