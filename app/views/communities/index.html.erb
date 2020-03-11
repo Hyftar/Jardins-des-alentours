@@ -8,10 +8,10 @@
   <div class="column col-2">
     <ul class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="#" class="text-light">Home</a>
+        <a href="#" class="text-light"><%= t('communities.home').titleize %></a>
       </li>
       <li class="breadcrumb-item text-light">
-        Communities
+        <%= t('communities.communities').titleize %>
       </li>
     </ul>
   </div>
@@ -21,7 +21,7 @@
     <path id="curve" d="M-300,80
              Q50,0 400,80"/>
     <text width="1500">
-      <textPath xlink:href="#curve">Jardins Des Alentour's Communities
+      <textPath xlink:href="#curve"><%= t('communities.index_title').titleize %>
       </textPath>
     </text>
   </svg>
@@ -29,7 +29,7 @@
 <div class="columns flex-centered paragraph">
   <div class="column col-8">
     <h3>
-      D'où que vous soyez, vous faites partie de la communauté <i class="fas fa-heart"></i>
+      <%= t('communities.paragraph_title') %> <i class="fas fa-heart"></i>
     </h3>
     <p>
       Clabulares crescere in azureus gandavum! Onus messiss, tanquam emeritis verpa.
@@ -51,13 +51,13 @@
       <input type="radio" id="tag-6" class="filter-tag" name="filter-radio" hidden>
 
       <div class="filter-nav text-center">
-        <label class="chip" for="tag-0">All</label>
-        <label class="chip" for="tag-1">North America</label>
-        <label class="chip" for="tag-2">Europe</label>
-        <label class="chip" for="tag-3">South America</label>
-        <label class="chip" for="tag-4">Africa</label>
-        <label class="chip" for="tag-5">Asia</label>
-        <label class="chip" for="tag-6">Australia</label>
+        <label class="chip" for="tag-0"><%= t('communities.all').capitalize %></label>
+        <label class="chip" for="tag-1"><%= t('communities.north_america') %></label>
+        <label class="chip" for="tag-2"><%= t('communities.europe') %></label>
+        <label class="chip" for="tag-3"><%= t('communities.south_america') %></label>
+        <label class="chip" for="tag-4"><%= t('communities.africa') %></label>
+        <label class="chip" for="tag-5"><%= t('communities.asia') %></label>
+        <label class="chip" for="tag-6"><%= t('communities.australia') %></label>
       </div>
 
       <div class="columns flex-centered">
@@ -119,7 +119,7 @@
               </div>
               <div class="card-body">Ubi est nobilis torquis? Ubi est ferox caesium? Classis magnum orgia est.</div>
               <div class="card-footer">
-                <button class="btn btn-primary">Enter</button>
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
               </div>
             </div>
           </div>
@@ -140,7 +140,7 @@
               </div>
               <div class="card-body">Clemens, raptus equisos saepe examinare de gratis, azureus diatria!</div>
               <div class="card-footer">
-                <button class="btn btn-primary">Enter</button>
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
               </div>
             </div>
           </div>
@@ -161,7 +161,7 @@
               </div>
               <div class="card-body">Nobilis, mirabilis orgias aegre desiderium de emeritis, bassus vortex!</div>
               <div class="card-footer">
-                <button class="btn btn-primary">Enter</button>
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
               </div>
             </div>
           </div>
@@ -182,7 +182,7 @@
               </div>
               <div class="card-body">Planeta, vox, et cannabis. Homo de flavum poeta, reperire cannabis!</div>
               <div class="card-footer">
-                <button class="btn btn-primary">Enter</button>
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
               </div>
             </div>
           </div>
@@ -204,7 +204,7 @@
               </div>
               <div class="card-body">Ubi est nobilis torquis? Ubi est ferox caesium? Classis magnum orgia est.</div>
               <div class="card-footer">
-                <button class="btn btn-primary">Enter</button>
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
               </div>
             </div>
           </div>
@@ -225,7 +225,7 @@
               </div>
               <div class="card-body">Clemens, raptus equisos saepe examinare de gratis, azureus diatria!</div>
               <div class="card-footer">
-                <button class="btn btn-primary">Enter</button>
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
               </div>
             </div>
           </div>
@@ -246,7 +246,7 @@
               </div>
               <div class="card-body">Nobilis, mirabilis orgias aegre desiderium de emeritis, bassus vortex!</div>
               <div class="card-footer">
-                <button class="btn btn-primary">Enter</button>
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
               </div>
             </div>
           </div>
@@ -267,7 +267,7 @@
               </div>
               <div class="card-body">Planeta, vox, et cannabis. Homo de flavum poeta, reperire cannabis!</div>
               <div class="card-footer">
-                <button class="btn btn-primary">Enter</button>
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
               </div>
             </div>
           </div>
@@ -289,7 +289,7 @@
               </div>
               <div class="card-body">Ubi est nobilis torquis? Ubi est ferox caesium? Classis magnum orgia est.</div>
               <div class="card-footer">
-                <button class="btn btn-primary">Enter</button>
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
               </div>
             </div>
           </div>
@@ -310,7 +310,7 @@
               </div>
               <div class="card-body">Clemens, raptus equisos saepe examinare de gratis, azureus diatria!</div>
               <div class="card-footer">
-                <button class="btn btn-primary">Enter</button>
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
               </div>
             </div>
           </div>
@@ -331,7 +331,7 @@
               </div>
               <div class="card-body">Nobilis, mirabilis orgias aegre desiderium de emeritis, bassus vortex!</div>
               <div class="card-footer">
-                <button class="btn btn-primary">Enter</button>
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
               </div>
             </div>
           </div>
@@ -352,7 +352,7 @@
               </div>
               <div class="card-body">Planeta, vox, et cannabis. Homo de flavum poeta, reperire cannabis!</div>
               <div class="card-footer">
-                <button class="btn btn-primary">Enter</button>
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
               </div>
             </div>
           </div>
@@ -374,7 +374,7 @@
               </div>
               <div class="card-body">Ubi est nobilis torquis? Ubi est ferox caesium? Classis magnum orgia est.</div>
               <div class="card-footer">
-                <button class="btn btn-primary">Enter</button>
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
               </div>
             </div>
           </div>
@@ -395,7 +395,7 @@
               </div>
               <div class="card-body">Clemens, raptus equisos saepe examinare de gratis, azureus diatria!</div>
               <div class="card-footer">
-                <button class="btn btn-primary">Enter</button>
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
               </div>
             </div>
           </div>
