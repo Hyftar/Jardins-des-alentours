@@ -59,13 +59,24 @@ class MarketsController < ApplicationController
   def send_email
     @garden = Garden.includes(:location, garden_varieties: [:markets, :variety]).find(params[:garden_id])
     @list_checkbox = []
-    params["checkbox"].each do |key, value|
-      @list_checkbox << key
+    if params["checkbox"].present?
+      params["checkbox"].each do |key, value|
+        @list_checkbox << key
+      end
     end
     @message = params["description"]
-    @email = params["email"]["user"]
-    save_visitor_email(@email)
+    if user_signed_in?
+      @email = params["email"]
+    else
+      @email = params["email"]["user"]
+    end
     if @email != @garden.user.email
+      if user_signed_in?
+        UserMessage.save_user_message(@message, current_user, @garden.user)
+      else
+        save_visitor_email(@email)
+        VisitorMessage.save_visitor_message(@message, @visitor_email, @garden.user)
+      end
       MarketMailer.with(garden: @garden, varieties: @list_checkbox, message: @message, email: @email).market_inquiry_email.deliver_later
     end
     redirect_to garden_path(@garden)
@@ -87,18 +98,16 @@ class MarketsController < ApplicationController
     end
 
     def save_visitor_email(email)
-      unless user_signed_in?
-        ip = request.remote_ip
-        @visitor = Visitor.find_by(IP: ip)
-        if @visitor.nil?
-          @visitor = Visitor.create(IP: ip)
-          results = Geocoder.search(@visitor.IP)
-          @visitor_location = VisitorLocation.create(longitude: results.first.coordinates.second, latitude: results.first.coordinates.first, visitor: @visitor)
-        end
-        @visitor_email = VisitorEmail.find_by(email: email, visitor: @visitor)
-        if @visitor_email.nil?
-          VisitorEmail.create(email: email, visitor: @visitor)
-        end
+      ip = request.remote_ip
+      @visitor = Visitor.find_by(IP: ip)
+      if @visitor.nil?
+        @visitor = Visitor.create(IP: ip)
+        results = Geocoder.search(@visitor.IP)
+        @visitor_location = VisitorLocation.create(longitude: results.first.coordinates.second, latitude: results.first.coordinates.first, visitor: @visitor)
+      end
+      @visitor_email = VisitorEmail.find_by(email: email, visitor: @visitor)
+      if @visitor_email.nil?
+        @visitor_email =VisitorEmail.create(email: email, visitor: @visitor)
       end
     end
 
