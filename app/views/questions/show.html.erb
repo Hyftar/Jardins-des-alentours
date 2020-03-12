@@ -40,7 +40,7 @@
 <% @answers.each do |answer| %>
   <div class="answer">
     <div class="answer__vote">
-      <%= render 'answer_vote', answer: answer, selected_answer: @question.selected_answer %>
+      <%= render 'answer_vote', answer: answer, question: @question %>
     </div>
 
     <div class="answer__content">

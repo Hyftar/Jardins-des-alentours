@@ -1,6 +1,405 @@
-<% @communities.each do |community| %>
-<div>
-  Communauté des <%= community.produce.name %> de <%= community.region.name %>
-  <%= link_to 'lien', community_path(community) %>
+<div class="columns bread-container">
+  <div class="column col-2">
+    <ul class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="#" class="text-light"><%= t('communities.home').titleize %></a>
+      </li>
+      <li class="breadcrumb-item text-light">
+        <%= t('communities.communities').titleize %>
+      </li>
+    </ul>
+  </div>
 </div>
-<% end %>
+<h1 id="communities-header">
+  <svg viewBox="0 0 100 80" fill="white">
+    <path id="curve" d="M-300,80Q50,0 400,80"/>
+    <text width="1500">
+      <textPath xlink:href="#curve">
+        <%= t('communities.index_title').titleize %>
+      </textPath>
+    </text>
+  </svg>
+</h1>
+<div class="columns flex-centered paragraph">
+  <div class="column col-8">
+    <h3>
+      <%= t('communities.paragraph_title') %> <i class="fas fa-heart"></i>
+    </h3>
+    <p>
+      Clabulares crescere in azureus gandavum! Onus messiss, tanquam emeritis verpa.
+      Diatrias volare, tanquam fortis advena. Est superbus glos, cesaris. Parma peritus solitudo est.
+      Speciess potus! Nunquam perdere barcas. Noster, bassus aonidess sapienter manifestum de clemens, talis turpis.
+    </p>
+  </div>
+</div>
+
+<div class="columns filter-container">
+  <div class="column col-12 flex-centered">
+    <div class="filter">
+      <input type="radio" id="tag-0" class="filter-tag" name="filter-radio" hidden checked>
+      <input type="radio" id="tag-1" class="filter-tag" name="filter-radio" hidden>
+      <input type="radio" id="tag-2" class="filter-tag" name="filter-radio" hidden>
+      <input type="radio" id="tag-3" class="filter-tag" name="filter-radio" hidden>
+      <input type="radio" id="tag-4" class="filter-tag" name="filter-radio" hidden>
+      <input type="radio" id="tag-5" class="filter-tag" name="filter-radio" hidden>
+      <input type="radio" id="tag-6" class="filter-tag" name="filter-radio" hidden>
+
+      <div class="filter-nav text-center">
+        <label class="chip" for="tag-0"><%= t('communities.all').capitalize %></label>
+        <label class="chip" for="tag-1"><%= t('communities.north_america') %></label>
+        <label class="chip" for="tag-2"><%= t('communities.europe') %></label>
+        <label class="chip" for="tag-3"><%= t('communities.south_america') %></label>
+        <label class="chip" for="tag-4"><%= t('communities.africa') %></label>
+        <label class="chip" for="tag-5"><%= t('communities.asia') %></label>
+        <label class="chip" for="tag-6"><%= t('communities.australia') %></label>
+      </div>
+
+      <div class="columns flex-centered">
+        <div class="column col-6">
+          <input id="slider" class="slider tooltip" type="range" min="0" max="4" value="0">
+          <div class="columns icons">
+            <div class="column col-1">
+              <i class="fas fa-globe"></i>
+            </div>
+            <div class="column col-1">
+              <i class="fas fa-sun"></i>
+            </div>
+            <div class="column col-1">
+              <i class="fab fa-canadian-maple-leaf"></i>
+            </div>
+            <div class="column col-1">
+              <i class="fas fa-snowflake"></i>
+            </div>
+            <div class="column col-1">
+              <i class="fas fa-seedling"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-body flex-centered">
+        <div class="filter-item card col-2 popover" data-season="winter fall" data-tag="tag-1 tag-2 tag-6">
+          <div class="card-image"><%= image_tag('citrouille.jpg', :class => "img-responsive") %></div>
+          <div class="card-footer">
+            <a class="btn btn-link" href="#">Pumpkin <%= Community.model_name.human.capitalize %></a>
+          </div>
+          <div class="popover-container">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title h5">Citrouille</div>
+                <div class="card-subtitle text-gray">Cucurbitaceae</div>
+              </div>
+              <div class="card-body">Planeta, vox, et cannabis. Homo de flavum poeta, reperire cannabis!</div>
+              <div class="card-footer">
+                <button class="btn btn-primary">Enter</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            Domus velox vita est.
+          </div>
+
+        </div>
+        <div class="filter-item card col-2 popover" data-season="fall summer" data-tag="tag-1 tag-2 tag-3 tag-4 tag-5 tag-6" style="color: #2E2F30">
+          <div class="card-image"><%= image_tag('poivrons.jpg', :class => "img-responsive") %></div>
+          <div class="card-footer">
+            <a class="btn btn-link" href="#cards">Bell Pepper <%= Community.model_name.human.capitalize %></a>
+          </div>
+          <div class="popover-container">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title h5">Poivron</div>
+                <div class="card-subtitle text-gray">Capsicum</div>
+              </div>
+              <div class="card-body">Ubi est nobilis torquis? Ubi est ferox caesium? Classis magnum orgia est.</div>
+              <div class="card-footer">
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            Est altus nixus, cesaris.
+          </div>
+        </div>
+        <div class="filter-item card col-2 popover" data-season="summer spring" data-tag="tag-3 tag-4 tag-5 tag-6" >
+          <div class="card-image"><%= image_tag('oranges.jpg', :class => "img-responsive") %></div>
+          <div class="card-footer">
+            <a class="btn btn-link" href="#cards">Orange <%= Community.model_name.human.capitalize %></a>
+          </div>
+          <div class="popover-container">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title h5">Orange</div>
+                <div class="card-subtitle text-gray">Citrus Sinensis</div>
+              </div>
+              <div class="card-body">Clemens, raptus equisos saepe examinare de gratis, azureus diatria!</div>
+              <div class="card-footer">
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            Primus bursas ducunt ad visus.
+          </div>
+        </div>
+        <div class="filter-item card col-2 popover" data-season="spring summer" data-tag="tag-1 tag-2 tag-5" >
+          <div class="card-image"><%= image_tag('asparagus.jpg', :class => "img-responsive") %></div>
+          <div class="card-footer">
+            <a class="btn btn-link" href="#cards">Asparagus <%= Community.model_name.human.capitalize %></a>
+          </div>
+          <div class="popover-container">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title h5">Asparagus</div>
+                <div class="card-subtitle text-gray">Asparagus Officinalis</div>
+              </div>
+              <div class="card-body">Nobilis, mirabilis orgias aegre desiderium de emeritis, bassus vortex!</div>
+              <div class="card-footer">
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            Nunquam visum historia.
+          </div>
+        </div>
+        <div class="filter-item card col-2 popover" data-season="winter fall" data-tag="tag-1 tag-2 tag-6" style="color: #2E2F30;">
+          <div class="card-image"><%= image_tag('citrouille.jpg', :class => "img-responsive") %></div>
+          <div class="card-footer">
+            <a class="btn btn-link" href="#">Pumpkin <%= Community.model_name.human.capitalize %></a>
+          </div>
+          <div class="popover-container">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title h5">Citrouille</div>
+                <div class="card-subtitle text-gray">Cucurbitaceae</div>
+              </div>
+              <div class="card-body">Planeta, vox, et cannabis. Homo de flavum poeta, reperire cannabis!</div>
+              <div class="card-footer">
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            Domus velox vita est.
+          </div>
+
+        </div>
+        <div class="filter-item card col-2 popover" data-season="fall summer" data-tag="tag-1 tag-2 tag-3 tag-4 tag-5 tag-6" >
+          <div class="card-image"><%= image_tag('poivrons.jpg', :class => "img-responsive") %></div>
+          <div class="card-footer">
+            <a class="btn btn-link" href="#cards">Bell Pepper <%= Community.model_name.human.capitalize %></a>
+          </div>
+          <div class="popover-container">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title h5">Poivron</div>
+                <div class="card-subtitle text-gray">Capsicum</div>
+              </div>
+              <div class="card-body">Ubi est nobilis torquis? Ubi est ferox caesium? Classis magnum orgia est.</div>
+              <div class="card-footer">
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            Est altus nixus, cesaris.
+          </div>
+        </div>
+        <div class="filter-item card col-2 popover" data-season="summer spring" data-tag="tag-3 tag-4 tag-5 tag-6" >
+          <div class="card-image"><%= image_tag('oranges.jpg', :class => "img-responsive") %></div>
+          <div class="card-footer">
+            <a class="btn btn-link" href="#cards">Orange <%= Community.model_name.human.capitalize %></a>
+          </div>
+          <div class="popover-container">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title h5">Orange</div>
+                <div class="card-subtitle text-gray">Citrus Sinensis</div>
+              </div>
+              <div class="card-body">Clemens, raptus equisos saepe examinare de gratis, azureus diatria!</div>
+              <div class="card-footer">
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            Primus bursas ducunt ad visus.
+          </div>
+        </div>
+        <div class="filter-item card col-2 popover" data-season="spring summer" data-tag="tag-1 tag-2 tag-5" >
+          <div class="card-image"><%= image_tag('asparagus.jpg', :class => "img-responsive") %></div>
+          <div class="card-footer">
+            <a class="btn btn-link" href="#cards">Asparagus <%= Community.model_name.human.capitalize %></a>
+          </div>
+          <div class="popover-container">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title h5">Asparagus</div>
+                <div class="card-subtitle text-gray">Asparagus Officinalis</div>
+              </div>
+              <div class="card-body">Nobilis, mirabilis orgias aegre desiderium de emeritis, bassus vortex!</div>
+              <div class="card-footer">
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            Nunquam visum historia.
+          </div>
+        </div>
+        <div class="filter-item card col-2 popover" data-season="winter fall" data-tag="tag-1 tag-2 tag-6" style="color: #2E2F30;">
+          <div class="card-image"><%= image_tag('citrouille.jpg', :class => "img-responsive") %></div>
+          <div class="card-footer">
+            <a class="btn btn-link" href="#">Pumpkin <%= Community.model_name.human.capitalize %></a>
+          </div>
+          <div class="popover-container">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title h5">Citrouille</div>
+                <div class="card-subtitle text-gray">Cucurbitaceae</div>
+              </div>
+              <div class="card-body">Planeta, vox, et cannabis. Homo de flavum poeta, reperire cannabis!</div>
+              <div class="card-footer">
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            Domus velox vita est.
+          </div>
+
+        </div>
+        <div class="filter-item card col-2 popover" data-season="fall summer" data-tag="tag-1 tag-2 tag-3 tag-4 tag-5 tag-6" >
+          <div class="card-image"><%= image_tag('poivrons.jpg', :class => "img-responsive") %></div>
+          <div class="card-footer">
+            <a class="btn btn-link" href="#cards">Bell Pepper <%= Community.model_name.human.capitalize %></a>
+          </div>
+          <div class="popover-container">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title h5">Poivron</div>
+                <div class="card-subtitle text-gray">Capsicum</div>
+              </div>
+              <div class="card-body">Ubi est nobilis torquis? Ubi est ferox caesium? Classis magnum orgia est.</div>
+              <div class="card-footer">
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            Est altus nixus, cesaris.
+          </div>
+        </div>
+        <div class="filter-item card col-2 popover" data-season="summer spring" data-tag="tag-3 tag-4 tag-5 tag-6" >
+          <div class="card-image"><%= image_tag('oranges.jpg', :class => "img-responsive") %></div>
+          <div class="card-footer">
+            <a class="btn btn-link" href="#cards">Orange <%= Community.model_name.human.capitalize %></a>
+          </div>
+          <div class="popover-container">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title h5">Orange</div>
+                <div class="card-subtitle text-gray">Citrus Sinensis</div>
+              </div>
+              <div class="card-body">Clemens, raptus equisos saepe examinare de gratis, azureus diatria!</div>
+              <div class="card-footer">
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            Primus bursas ducunt ad visus.
+          </div>
+        </div>
+        <div class="filter-item card col-2 popover" data-season="spring summer" data-tag="tag-1 tag-2 tag-5" >
+          <div class="card-image"><%= image_tag('asparagus.jpg', :class => "img-responsive") %></div>
+          <div class="card-footer">
+            <a class="btn btn-link" href="#cards">Asparagus <%= Community.model_name.human.capitalize %></a>
+          </div>
+          <div class="popover-container">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title h5">Asparagus</div>
+                <div class="card-subtitle text-gray">Asparagus Officinalis</div>
+              </div>
+              <div class="card-body">Nobilis, mirabilis orgias aegre desiderium de emeritis, bassus vortex!</div>
+              <div class="card-footer">
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            Nunquam visum historia.
+          </div>
+        </div>
+        <div class="filter-item card col-2 popover" data-season="winter fall" data-tag="tag-1 tag-2 tag-6" style="color: #2E2F30;">
+          <div class="card-image"><%= image_tag('citrouille.jpg', :class => "img-responsive") %></div>
+          <div class="card-footer">
+            <a class="btn btn-link" href="#">Pumpkin <%= Community.model_name.human.capitalize %></a>
+          </div>
+          <div class="popover-container">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title h5">Citrouille</div>
+                <div class="card-subtitle text-gray">Cucurbitaceae</div>
+              </div>
+              <div class="card-body">Planeta, vox, et cannabis. Homo de flavum poeta, reperire cannabis!</div>
+              <div class="card-footer">
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            Domus velox vita est.
+          </div>
+
+        </div>
+        <div class="filter-item card col-2 popover" data-season="fall summer" data-tag="tag-1 tag-2 tag-3 tag-4 tag-5 tag-6" >
+          <div class="card-image"><%= image_tag('poivrons.jpg', :class => "img-responsive") %></div>
+          <div class="card-footer">
+            <a class="btn btn-link" href="#cards">Bell Pepper <%= Community.model_name.human.capitalize %></a>
+          </div>
+          <div class="popover-container">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title h5">Poivron</div>
+                <div class="card-subtitle text-gray">Capsicum</div>
+              </div>
+              <div class="card-body">Ubi est nobilis torquis? Ubi est ferox caesium? Classis magnum orgia est.</div>
+              <div class="card-footer">
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            Est altus nixus, cesaris.
+          </div>
+        </div>
+        <div class="filter-item card col-2 popover" data-season="summer spring" data-tag="tag-3 tag-4 tag-5 tag-6" >
+          <div class="card-image"><%= image_tag('oranges.jpg', :class => "img-responsive") %></div>
+          <div class="card-footer">
+            <a class="btn btn-link" href="#cards">Orange <%= Community.model_name.human.capitalize %></a>
+          </div>
+          <div class="popover-container">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title h5">Orange</div>
+                <div class="card-subtitle text-gray">Citrus Sinensis</div>
+              </div>
+              <div class="card-body">Clemens, raptus equisos saepe examinare de gratis, azureus diatria!</div>
+              <div class="card-footer">
+                <button class="btn btn-primary"><%= t('communities.enter') %></button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            Primus bursas ducunt ad visus.
+          </div>
+        </div>
+
+        <!-- Filter items -->
+      </div>
+    </div>
+  </div>
+</div>

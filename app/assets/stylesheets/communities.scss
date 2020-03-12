@@ -1,0 +1,116 @@
+// ------ communities
+
+
+// --- breadcrums
+.bread-container {
+
+  padding-bottom: 3vh;
+  margin-bottom: 5vh;
+  margin-left: 1vw;
+
+}
+
+
+// -- communities title
+#communities-header {
+  position: absolute;
+  top: 14vh;
+  left: 50%;
+  margin-left: - 40vw;
+
+  svg {
+    width:80vw;
+    height:6vw;
+
+    path {
+      fill:transparent;
+    }
+
+    text {
+      text-shadow: 0 0 15px black;
+    }
+
+  }
+
+}
+
+// -- main text ------
+.paragraph {
+  margin-top: 10vh;
+  background-color:#e6e0f5;
+  padding-top: 5vh;
+
+  .column.col-8 {
+    text-align: center;
+    color: #2E2F30;
+    margin: 5vh 5vw;
+
+    h3 {
+      margin-bottom: 5vh;
+
+    }
+  }
+}
+
+
+// -- filtered items -----------
+.filter-container {
+  background-color:#e6e0f5;
+  padding-top: 2vh;
+
+  .filter-nav {
+    margin: 5vh 5vw !important;
+
+  }
+
+  .columns {
+    background-color: #e6e0f5;
+
+  }
+
+  #slider {
+    cursor: pointer;
+  }
+
+  .icons {
+    justify-content: space-between;
+
+    > .column {
+      width: fit-content;
+      padding:1vh 0;
+
+      i {
+        font-size: 2em;
+        color: #564f5c;
+
+      }
+    }
+  }
+
+  .filter-item {
+    border: none;
+    box-shadow: 0 0 10px 5px rgba(217, 217, 217, 0.53);
+    margin: 6vh 3vw;
+    color: #2E2F30;
+
+    a {
+      white-space: initial;
+    }
+  }
+}
+
+.not-in-season {
+  display:none !important;
+}
+
+
+
+@media screen and (max-width: 1080px) {
+  .filter-item {
+    width: 40vw !important;
+  }
+
+  .breadcrumb {
+    display: none;
+  }
+}

@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', () => {
-  $('.answer_select_action').each((index, elem) => {
+  $('.answer_select_action.selectable').each((index, elem) => {
     const answer_id = elem.attributes['data-answer-id'].value
     const url = location.pathname + '/select_answer'
 

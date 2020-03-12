@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   scope "admin" do
-    get "", to: "admin#home"
+    get "", to: "admin#home", as: 'admin'
     scope "roles" do
-      get '', to: "roles#index"
+      get '', to: "roles#index", as: 'roles'
       post '', to: "roles#search"
       post 'set_role', to: "roles#set_role"
     end

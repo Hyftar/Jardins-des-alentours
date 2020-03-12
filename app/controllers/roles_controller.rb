@@ -34,7 +34,7 @@ class RolesController < ApplicationController
   def search
     render partial: 'users_search_results',
       layout: false,
-      locals: { users: @users, roles: @roles }
+      locals: { users: @users, roles: @roles, search: @search }
   end
 
   private
@@ -49,13 +49,14 @@ class RolesController < ApplicationController
 
     def find_users
       @roles = Role.all
+      @search = params[:search]
       @users = User
         .where(
           "LOWER(CONCAT(first_name, ' ', last_name)) LIKE LOWER(:search)",
-          search: "%#{params[:search]}%"
+          search: "%#{@search}%"
         )
         .order(score: :desc)
         .includes(roles: [{ community: :produce }])
-        .paginate(page: params[:page], per_page: 1)
+        .paginate(page: params[:page], per_page: 10)
     end
 end
