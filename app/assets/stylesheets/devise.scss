@@ -1,0 +1,17 @@
+.login-main {
+  margin-top:10vh;
+}
+
+.login-helpers {
+  display: flex;
+  flex-direction: column;
+  margin-top: 12vh;
+
+  a {
+    padding: 1vh 1vw;
+
+    &:hover {
+      text-decoration: none !important;
+    }
+  }
+}
