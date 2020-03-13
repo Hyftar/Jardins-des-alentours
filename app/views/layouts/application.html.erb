@@ -71,7 +71,7 @@
   </section>
 </header>
 <%= yield %>
-<%- if controller_name != 'sessions' %>
+<%- if controller_name != 'sessions' && controller_name != 'registrations' %>
   <div class="footer bg-dark">
     <div class="columns flex-centered">
       <div class="column col-2">
