@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   scope "admin" do
-    get "", to: "admin#home", as: 'admin'
+    get "", to: "admin#home", as: "admin"
     scope "roles" do
-      get '', to: "roles#index", as: 'roles'
-      post '', to: "roles#search"
-      post 'set_role', to: "roles#set_role"
+      get "", to: "roles#index", as: "roles"
+      post "", to: "roles#search"
+      post "set_role", to: "roles#set_role"
     end
   end
 
@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
   resources :gardens do
     get "/markets/new/:id", to: "markets#new", as: "market_new"
+    get "write_email", to: "markets#write_email"
+    post "send_email", to: "markets#send_email"
     resources :markets, only: %i( edit update create ) do
       get "set_active", to: "markets#set_active"
       get "/market_notifications/status", to: "market_notifications#status", as: "market_notification_status"
@@ -38,5 +40,5 @@ Rails.application.routes.draw do
 
   resources :users, only: %i( show )
 
-  devise_for :users, path: "auth", controllers: { sessions: 'users/sessions' }
+  devise_for :users, path: "auth", controllers: { sessions: "users/sessions" }
 end

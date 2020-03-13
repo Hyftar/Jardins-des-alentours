@@ -81,6 +81,7 @@ fr:
         market_notifications: Notifications de marché
         quantity: Quantité
         unit: Unité
+        price: Prix
 
       market_notification:
         email: Email

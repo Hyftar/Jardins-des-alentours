@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_06_195048) do
+ActiveRecord::Schema.define(version: 2020_03_11_033809) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -164,6 +164,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_195048) do
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "price", precision: 5, scale: 2
     t.index ["garden_variety_id"], name: "index_markets_on_garden_variety_id"
   end
 

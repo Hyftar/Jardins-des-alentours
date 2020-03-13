@@ -9,7 +9,7 @@ class MarketsController < ApplicationController
 
   def create
     @garden_variety = GardenVariety.find_by!(id: market_param["garden_variety"], is_active: true)
-    if Market.create(quantity: market_param["quantity"], unit: market_param["unit"], garden_variety: @garden_variety)
+    if Market.create(quantity: market_param["quantity"], unit: market_param["unit"], garden_variety: @garden_variety, price: params["price"])
       redirect_to garden_path(@garden_variety.garden)
     else
       render action: "new"
@@ -51,9 +51,41 @@ class MarketsController < ApplicationController
     redirect_to garden_path(@garden)
   end
 
+  # Users of visitors can write a message to the gardener to share their interest in buying produce
+  def write_email
+    @garden = Garden.includes(:location, garden_varieties: [:markets, :variety]).find(params[:garden_id])
+    render action: "write_email"
+  end
+
+  def send_email
+    @garden = Garden.includes(:location, garden_varieties: [:markets, :variety]).find(params[:garden_id])
+    @list_checkbox = []
+    if params["checkbox"].present?
+      params["checkbox"].each do |key, value|
+        @list_checkbox << key
+      end
+    end
+    @message = params["description"]
+    if user_signed_in?
+      @email = params["email"]
+    else
+      @email = params["email"]["user"]
+    end
+    if @email != @garden.user.email
+      if user_signed_in?
+        UserMessage.save_user_message(@message, current_user, @garden.user)
+      else
+        save_visitor_email(@email)
+        VisitorMessage.save_visitor_message(@message, @visitor_email, @garden.user)
+      end
+      MarketMailer.with(garden: @garden, varieties: @list_checkbox, message: @message, email: @email).market_inquiry_email.deliver_later
+    end
+    redirect_to garden_path(@garden)
+  end
+
   private
     def market_param
-      params.require(:market).permit(:quantity, :unit, :is_active, :garden_variety)
+      params.require(:market).permit(:quantity, :unit, :is_active, :price, :garden_variety)
     end
 
     def is_owner
@@ -64,5 +96,20 @@ class MarketsController < ApplicationController
 
     def is_owner_new_market
       @garden = Garden.find_by!(id: params[:garden_id])
+    end
+
+    # The visitor's submitted email is saved if not in the databse
+    def save_visitor_email(email)
+      ip = request.remote_ip
+      @visitor = Visitor.find_by(IP: ip)
+      if @visitor.nil?
+        @visitor = Visitor.create(IP: ip)
+        results = Geocoder.search(@visitor.IP)
+        @visitor_location = VisitorLocation.create(longitude: results.first.coordinates.second, latitude: results.first.coordinates.first, visitor: @visitor)
+      end
+      @visitor_email = VisitorEmail.find_by(email: email, visitor: @visitor)
+      if @visitor_email.nil?
+        @visitor_email =VisitorEmail.create(email: email, visitor: @visitor)
+      end
     end
 end

@@ -11,12 +11,12 @@ class RolesController < ApplicationController
     if @user == current_user
       render status: :bad_request,
         json: {
-          message: I18n.t('roles.error')
+          message: I18n.t("roles.error")
         }
       return
     end
 
-    if params[:status] == 'true'
+    if params[:status] == "true"
       @user.roles << @role
     else
       @user.roles.delete(@role)
@@ -25,14 +25,14 @@ class RolesController < ApplicationController
     render status: :ok,
       json: {
         message: I18n.t(
-          'roles.change_successful',
+          "roles.change_successful",
           name: "#{@user.first_name} #{@user.last_name}"
         )
       }
   end
 
   def search
-    render partial: 'users_search_results',
+    render partial: "users_search_results",
       layout: false,
       locals: { users: @users, roles: @roles, search: @search }
   end
