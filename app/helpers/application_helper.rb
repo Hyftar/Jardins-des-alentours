@@ -1,7 +1,7 @@
 module ApplicationHelper
   def toastr_flash
     flash.each_with_object([]) do |(type, message), flash_messages|
-      type = type == 'notice' ? 'success' : 'error'
+      type = type == "notice" ? "success" : "error"
       text = "<script>toastr.#{type}('#{message}', '', { closeButton: true, progressBar: true, positionClass: 'toast-bottom-right' })</script>"
       flash_messages << text.html_safe if message
     end.join("\n").html_safe

@@ -21,7 +21,8 @@ class MarketsController < ApplicationController
 
   def update
     @market_original = @market.dup
-    if @market.update(quantity: market_param["quantity"], unit: market_param["unit"], price: params["price"])
+    byebug
+    if @market.update(market_param)
       if @market_original.unit != @market.unit || @market_original.quantity != @market.quantity || @market_original.is_active != @market.is_active
         @market_notifications = MarketNotification.where(market: @market, status: "active")
         @market_notifications.each do |notification|
@@ -51,6 +52,7 @@ class MarketsController < ApplicationController
     redirect_to garden_path(@garden)
   end
 
+  # Users of visitors can write a message to the gardener to share their interest in buying produce
   def write_email
     @garden = Garden.includes(:location, garden_varieties: [:markets, :variety]).find(params[:garden_id])
     render action: "write_email"
@@ -97,6 +99,7 @@ class MarketsController < ApplicationController
       @garden = Garden.find_by!(id: params[:garden_id])
     end
 
+    # The visitor's submitted email is saved if not in the databse
     def save_visitor_email(email)
       ip = request.remote_ip
       @visitor = Visitor.find_by(IP: ip)
@@ -110,5 +113,4 @@ class MarketsController < ApplicationController
         @visitor_email =VisitorEmail.create(email: email, visitor: @visitor)
       end
     end
-
 end

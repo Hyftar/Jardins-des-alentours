@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   scope "admin" do
-    get "", to: "admin#home", as: 'admin'
+    get "", to: "admin#home", as: "admin"
     scope "roles" do
-      get '', to: "roles#index", as: 'roles'
-      post '', to: "roles#search"
-      post 'set_role', to: "roles#set_role"
+      get "", to: "roles#index", as: "roles"
+      post "", to: "roles#search"
+      post "set_role", to: "roles#set_role"
     end
   end
 
@@ -40,5 +40,5 @@ Rails.application.routes.draw do
 
   resources :users, only: %i( show )
 
-  devise_for :users, path: "auth", controllers: { sessions: 'users/sessions' }
+  devise_for :users, path: "auth", controllers: { sessions: "users/sessions" }
 end

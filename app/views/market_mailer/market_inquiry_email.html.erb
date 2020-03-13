@@ -6,10 +6,10 @@
   <body>
     <p><%= t('mailer.market_inquiry_email.introduction') %></p>
     <address>
-      <p><%= @garden.name %></p>
-      <p><%= @garden.location.house_number %></p>
-      <p><%= @garden.location.road %></p>
-      <p><%= @garden.location.city %></p>
+      <%= @garden.name %><br>
+      <%= @garden.location.house_number %><br>
+      <%= @garden.location.road %><br>
+      <%= @garden.location.city %>
     </address>
     <q><%= @message %></q>
     <p><%= t('mailer.market_inquiry_email.interested_in') %></p>

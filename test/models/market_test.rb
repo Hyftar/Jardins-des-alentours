@@ -80,5 +80,4 @@ class MarketTest < ActiveSupport::TestCase
 
     assert_not m.save
   end
-
 end

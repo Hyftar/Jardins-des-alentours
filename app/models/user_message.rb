@@ -4,8 +4,7 @@ class UserMessage < ApplicationRecord
   belongs_to :recipient_user, class_name: "User"
 
   protected
-  def self.save_user_message(message, source_user, recipient_user)
-    UserMessage.create(source_user: source_user, recipient_user: recipient_user, content: message)
-  end
-
+    def self.save_user_message(message, source_user, recipient_user)
+      UserMessage.create(source_user: source_user, recipient_user: recipient_user, content: message)
+    end
 end

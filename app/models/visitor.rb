@@ -16,5 +16,4 @@ class Visitor < ApplicationRecord
       @visitor.save
     end
   end
-
 end

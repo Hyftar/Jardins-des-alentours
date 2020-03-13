@@ -11,6 +11,7 @@ class MarketNotificationsController < ApplicationController
     @market_notification = MarketNotification.new
   end
 
+  # Notifications made using a user account use the user's email address
   def create_from_user(market, garden)
     @market_existing = MarketNotification.where(market: @market, email: current_user.email)
     if @market_existing.length == 0
@@ -19,11 +20,11 @@ class MarketNotificationsController < ApplicationController
     redirect_to garden_path(@garden)
   end
 
+  # Notifications made from a unregistered visitor use the submited email address
   def create
     @garden = Garden.find_by!(id: market_param["garden"])
     @market = Market.find_by!(id: market_param["market"])
-    @market_existing = MarketNotification.where(market: @market, email: market_param["email"])
-    if !user_signed_in? && @market_existing.length == 0
+    if !user_signed_in? && MarketNotification.where(market: @market, email: market_param["email"]).exists?
       save_visitor_email(market_param["email"])
       @market_notification = MarketNotification.create(market: @market, email: market_param["email"], language: locale)
     end
@@ -51,19 +52,20 @@ class MarketNotificationsController < ApplicationController
       end
     end
 
+    # The visitor's submitted email is saved if not in the databse
     def save_visitor_email(email)
-      unless user_signed_in?
-        ip = request.remote_ip
-        @visitor = Visitor.find_by(IP: ip)
-        if @visitor.nil?
-          @visitor = Visitor.create(IP: ip)
-          results = Geocoder.search(@visitor.IP)
-          @visitor_location = VisitorLocation.create(longitude: results.first.coordinates.second, latitude: results.first.coordinates.first, visitor: @visitor)
-        end
-        @visitor_email = VisitorEmail.find_by(email: email, visitor: @visitor)
-        if @visitor_email.nil?
-          VisitorEmail.create(email: email, visitor: @visitor)
-        end
+      return if user_signed_in?
+
+      ip = request.remote_ip
+      @visitor = Visitor.find_by(IP: ip)
+      if @visitor.nil?
+        @visitor = Visitor.create(IP: ip)
+        results = Geocoder.search(@visitor.IP)
+        @visitor_location = VisitorLocation.create(longitude: results.first.coordinates.second, latitude: results.first.coordinates.first, visitor: @visitor)
+      end
+      @visitor_email = VisitorEmail.find_by(email: email, visitor: @visitor)
+      if @visitor_email.nil?
+        VisitorEmail.create(email: email, visitor: @visitor)
       end
     end
 end

@@ -3,7 +3,7 @@ class MarketMailer < ApplicationMailer
     @market = params[:market]
     market_notification = params[:market_notification]
     I18n.with_locale(market_notification.language) do
-      mail(from: I18n.t('mailer.default_from'), to: market_notification.email, subject: I18n.t("mailer.subject_update_order"))
+      mail(from: I18n.t("mailer.default_from"), to: market_notification.email, subject: I18n.t("mailer.subject_update_order"))
     end
   end
 

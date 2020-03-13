@@ -33,19 +33,22 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])
     end
 
+
+    # Enregistre l'addresse IP de l'utilisateur qui se connecte et tente de deviner sa position géographique
     def save_visitor
-      unless user_signed_in?
-        ip = request.remote_ip
-        @visitor = Visitor.find_by(IP: ip)
-        if @visitor.nil?
-          @visitor = Visitor.create(IP: ip)
-          results = Geocoder.search(@visitor.IP)
-          @visitor_location = VisitorLocation.create(longitude: results.first.coordinates.second, latitude: results.first.coordinates.first, visitor: @visitor)
-        else
-          @visitor.request_count += 1
-          @visitor.save
-        end
+      return if user_signed_in?
+
+      ip = request.remote_ip
+      @visitor = Visitor.find_by(IP: ip)
+      if @visitor.nil?
+        @visitor = Visitor.create(IP: ip)
+        results = Geocoder.search(@visitor.IP)
+        @visitor_location = VisitorLocation.create(longitude: results.first.coordinates.second,
+          latitude: results.first.coordinates.first,
+          visitor: @visitor)
+      else
+        @visitor.request_count += 1
+        @visitor.save
       end
     end
-
 end
