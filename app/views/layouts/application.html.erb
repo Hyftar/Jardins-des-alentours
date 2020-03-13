@@ -71,7 +71,7 @@
   </section>
 </header>
 <%= yield %>
-<%- if controller_name != 'sessions' && controller_name != 'registrations' %>
+<%- unless %w(sessions registrations confirmations mailer unlocks passwords).include?(controller_name) %>
   <div class="footer bg-dark">
     <div class="columns flex-centered">
       <div class="column col-2">
