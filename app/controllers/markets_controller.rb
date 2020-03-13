@@ -21,7 +21,6 @@ class MarketsController < ApplicationController
 
   def update
     @market_original = @market.dup
-    byebug
     if @market.update(market_param)
       if @market_original.unit != @market.unit || @market_original.quantity != @market.quantity || @market_original.is_active != @market.is_active
         @market_notifications = MarketNotification.where(market: @market, status: "active")
