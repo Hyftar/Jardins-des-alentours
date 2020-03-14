@@ -1,26 +1,35 @@
-<h2>Log in</h2>
+<div class="columns flex-centered login-main">
+  <div class="column col-3">
+    <h2><%= t('landing_page.log_in').titleize %></h2>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field form-group">
+        <%= f.label :email, t('devise.sessions.email'), :class => 'form-label' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-input' %>
+      </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="field form-group">
+        <%= f.label :password, t('devise.sessions.password'), :class => 'form-label' %>
+        <%= f.password_field :password, autocomplete: "current-password", :class => 'form-input' %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field form-group">
+          <%= f.label :remember_me, :class => 'form-checkbox' do %>
+            <%= f.check_box :remember_me %>
+            <i class="form-icon"></i> <%= t('devise.sessions.remember_me') %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit t('landing_page.log_in').titleize, :class => 'btn' %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
