@@ -41,3 +41,11 @@ en:
     careers: "careers"
     privacy: "privacy"
     license: "license"
+    address_search: "Enter an address..."
+    use_position: "Use my position"
+    no_address: "No garden found near this address"
+    no_location: "No garden found near this location"
+    address_not_found: "The address wasn't found. Please try a different spelling"
+    geo_not_supported: "Geolocalisation is not supported by your browser"
+    error_location: "Unable to retrieve your location"
+

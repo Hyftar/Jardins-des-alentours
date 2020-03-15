@@ -38,6 +38,10 @@ Rails.application.routes.draw do
     end
   end
 
+  get "geolocalise", to: "gardens#find_near_position"
+  get "geolocalise_address", to: "gardens#find_near_address"
+
+
   resources :users, only: %i( show )
 
   devise_for :users, path: "auth", controllers: { sessions: "users/sessions" }

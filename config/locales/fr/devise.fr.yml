@@ -4,6 +4,7 @@ fr:
       confirmed: "Votre compte a été validé."
       send_instructions: "Vous allez recevoir les instructions nécessaires à la confirmation de votre compte dans quelques minutes."
       send_paranoid_instructions: "Si votre e-mail existe dans notre base de données, vous allez bientôt recevoir un e-mail contenant les instructions de confirmation de votre compte."
+      resend_confirmation: "Ré-envoyer les instructions de confirmation"
     failure:
       already_authenticated: "Vous êtes déjà connecté."
       inactive: "Votre compte n'est pas encore activé."
@@ -17,10 +18,12 @@ fr:
     mailer:
       confirmation_instructions:
         subject: "Instructions de confirmation"
+        link: "Aucune instruction de confirmation reçue ?"
       reset_password_instructions:
         subject: "Instructions pour changer le mot de passe"
       unlock_instructions:
         subject: "Instructions pour déverrouiller le compte"
+        link: "Aucune instruction de déverouillage reçue ?"
       email_changed:
         subject: "Votre adresse e-mail a été modifiée avec succès"
       password_change:
@@ -34,6 +37,8 @@ fr:
       send_paranoid_instructions: "Si votre e-mail existe dans notre base de données, vous allez recevoir un lien de réinitialisation par e-mail."
       updated: "Votre mot de passe a été édité avec succès, vous êtes maintenant connecté."
       updated_not_active: "Votre mot de passe a été changé avec succès."
+      forgot_password: "Mot de passe oublié ?"
+      send_reset_password: "Restaurer mon mot de passe"
     registrations:
       destroyed: "Votre compte a été supprimé avec succès. Nous espérons vous revoir bientôt."
       signed_up: "Bienvenue, vous êtes connecté."
@@ -43,14 +48,30 @@ fr:
       update_needs_confirmation: "Votre compte a bien été mis à jour mais nous devons vérifier votre nouvelle adresse email. Merci de vérifier vos emails et de cliquer sur le lien de confirmation pour finaliser la validation de votre nouvelle adresse."
       updated: "Votre compte a été modifié avec succès."
       updated_but_not_signed_in: "Votre compte a été modifié avec succès. Merci de vous reconnecter."
+      sign_up: "inscription"
+      first_name: "prénom"
+      last_name: "Nom de famille"
+      password_confirmation: "Confirmation du mot de passe"
+      min_char: "caractères minimum"
+      current_password: "Ancien mot de passe"
+      update_btn: "Mettre à jour"
+      unhappy: "Insatisfait ?"
+      back: "Retour"
+      leave_blank_if: "laisser vide pour ne pas changer"
+      need_current_pass: "afin de confirmer vos changements"
+      cancel_btn: "Supprimer mon compte"
     sessions:
       signed_in: "Connecté."
       signed_out: "Déconnecté."
       already_signed_out: "Déconnecté."
+      email: "Courriel"
+      password: "Mot de passe"
+      remember_me: "Se souvenir de moi"
     unlocks:
       send_instructions: "Vous allez recevoir les instructions nécessaires au déverrouillage de votre compte dans quelques instants."
       send_paranoid_instructions: "Si votre compte existe, vous allez bientôt recevoir un email contenant les instructions pour le déverrouiller."
       unlocked: "Votre compte a été déverrouillé avec succès, vous êtes maintenant connecté."
+      resend_unlocks: "Ré-envoyer les instructions de déverouillage"
   errors:
     messages:
       already_confirmed: "a déjà été validé(e), veuillez essayer de vous connecter"

@@ -1,3 +1,7 @@
+<script>
+  let geo_not_supported = "<%= @geo_not_supported %>"
+  let error_location = "<%= @error_location %>"
+</script>
 <div id="right-veggie"></div>
 <div id="left-veggie"></div>
 <div class="columns">
@@ -113,10 +117,15 @@
     </div>
   </div>
   <div class="columns">
-    <div class="column col-12">
-      <iframe class="map_main"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11214.786077361028!2d-73.47535251461896!3d45.354938092581584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc90b9c970f89d9%3A0xf85144fc45616702!2sSaint-Philippe%2C%20QC%20J0L%202K0!5e0!3m2!1sen!2sca!4v1582494751752!5m2!1sen!2sca"
-        width="90%" height="600px" style="border:0;" allowfullscreen=""></iframe>
+    <div class="column col-12 search-bar">
+      <div class="search search-address input-group">
+        <input type="text" id="search-address" placeholder="<%= t('landing_page.address_search') %>" name="search-address">
+        <button id="search-button" class="btn btn-primary input-group-btn btn-lg"><i class="fa fa-search"></i></button>
+      </div>
+      <button id="locate-me" class="btn btn-primary btn-lg search search-location" type="button"><%= t('landing_page.use_position') %></button>
+    </div>
+    <div class="column col-12 map-contener">
+      <div id="mapid"></div>
     </div>
   </div>
 </div>

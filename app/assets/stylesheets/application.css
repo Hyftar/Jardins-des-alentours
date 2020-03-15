@@ -16,6 +16,7 @@
  *= require spectre-exp.css
  *= require spectre-icons.css
  *= require toastr
+ *= require leaflet
  */
 
 .hidden {

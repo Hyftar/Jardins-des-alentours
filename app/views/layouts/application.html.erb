@@ -7,102 +7,113 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/bd5c550147.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+    crossorigin=""></script>
+
   </head>
 
-  <body class="bg-dark">
-    <header id="navbar" class="navbar navbar_main sticky">
-      <section class="navbar-section">
-        <i class="fas fa-bars"></i>
-        <a href="/" class="btn btn-link text-light">
+<body class="bg-dark">
+<header id="navbar" class="navbar navbar_main sticky">
+  <section class="navbar-section">
+    <i class="fas fa-bars"></i>
+    <a href="/" class="btn btn-link text-light">
+      <%= t('landing_page.getting_started').titleize %>
+    </a>
+    <a href="#" class="btn btn-link text-light">
+      <%= t('landing_page.veggies').titleize %>
+    </a>
+    <%= link_to gardens_path, class: 'btn btn-link text-light' do %>
+      <%= Garden.model_name.human.pluralize.titleize %>
+    <% end %>
+    <a href="#" class="btn btn-link text-light">
+      <%= t('landing_page.recipes').titleize %>
+    </a>
+  </section>
+  <section class="navbar-center">
+    <i id="app_icon" class="fas fa-seedling"></i>
+    <ul id="mobile_menu">
+      <li>
+        <a href="#" class="btn btn-link text-light">
           <%= t('landing_page.getting_started').titleize %>
         </a>
+      </li>
+      <li>
         <a href="#" class="btn btn-link text-light">
           <%= t('landing_page.veggies').titleize %>
         </a>
+      </li>
+      <li>
         <%= link_to gardens_path, class: 'btn btn-link text-light' do %>
           <%= Garden.model_name.human.pluralize.titleize %>
         <% end %>
+      </li>
+      <li>
         <a href="#" class="btn btn-link text-light">
           <%= t('landing_page.recipes').titleize %>
         </a>
-      </section>
-      <section class="navbar-center">
-        <i id="app_icon" class="fas fa-seedling"></i>
-        <ul id="mobile_menu">
-          <li>
-            <a href="#" class="btn btn-link text-light">
-              <%= t('landing_page.getting_started').titleize %>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="btn btn-link text-light">
-              <%= t('landing_page.veggies').titleize %>
-            </a>
-          </li>
-          <li>
-            <%= link_to gardens_path, class: 'btn btn-link text-light' do %>
-              <%= Garden.model_name.human.pluralize.titleize %>
-            <% end %>
-          </li>
-          <li>
-            <a href="#" class="btn btn-link text-light">
-              <%= t('landing_page.recipes').titleize %>
-            </a>
-          </li>
-          <li>
-            <%= link_to communities_path, class: 'btn btn-link text-light' do %>
-              <%= Community.model_name.human.pluralize.titleize %>
-            <% end %>
-          </li>
-          <li>
-            <%= render 'devise/menu/login_items' %>
-          </li>
-          <li>
-            <%= render 'devise/menu/registration_items' %>
-          </li>
-        </ul>
-      </section>
-      <section class="navbar-section">
+      </li>
+      <li>
         <%= link_to communities_path, class: 'btn btn-link text-light' do %>
           <%= Community.model_name.human.pluralize.titleize %>
         <% end %>
+      </li>
+      <li>
         <%= render 'devise/menu/login_items' %>
+      </li>
+      <li>
         <%= render 'devise/menu/registration_items' %>
-      </section>
-    </header>
-    <%= yield %>
-    <div class="footer bg-dark">
-      <div class="columns flex-centered">
-        <div class="column col-2">
-          <a class="btn btn-link text-light"><%= Community.model_name.human.pluralize.titleize %></a>
-          <a class="btn btn-link text-light"><%= Garden.model_name.human.pluralize.titleize %></a>
-          <a class="btn btn-link text-light"><%= t('landing_page.recipes').titleize %></a>
-          <a class="btn btn-link text-light"><%= t('landing_page.forum').titleize %></a>
-          <a class="btn btn-link text-light"><%= t('landing_page.info').titleize %></a>
-        </div>
-        <div class="column col-2">
-          <a class="btn btn-link text-light"><%= t('landing_page.clients').titleize %></a>
-          <a class="btn btn-link text-light"><%= User.model_name.human.pluralize.titleize %></a>
-          <a class="btn btn-link text-light"><%= t('landing_page.contribution').titleize %></a>
-        </div>
-        <div class="column col-4">
-          <i class="fas fa-seedling"></i>
-          <h5><a class="btn btn-link text-light"><%= t('landing_page.app_title').titleize %> &copy;</a></h5>
-        </div>
-        <div class="column col-2">
-          <a class="btn btn-link text-light"><%= t('landing_page.contact').titleize %></a>
-          <a class="btn btn-link text-light"><%= t('landing_page.about_us').titleize %></a>
-          <a class="btn btn-link text-light"><%= t('landing_page.careers').titleize %></a>
-        </div>
-        <div class="column col-2">
-          <a class="btn btn-link text-light"><%= t('landing_page.privacy').titleize %></a>
-          <a class="btn btn-link text-light"><%= t('landing_page.license').titleize %></a>
-          <a class="btn btn-link text-light">Github</a>
-          <a class="btn btn-link text-light">Facebook</a>
-          <a class="btn btn-link text-light">Twitter</a>
-        </div>
+      </li>
+    </ul>
+  </section>
+  <section class="navbar-section">
+    <%= link_to communities_path, class: 'btn btn-link text-light' do %>
+      <%= Community.model_name.human.pluralize.titleize %>
+    <% end %>
+    <%= render 'devise/menu/login_items' %>
+    <%= render 'devise/menu/registration_items' %>
+  </section>
+</header>
+<%= yield %>
+<%- unless %w(sessions registrations confirmations mailer unlocks passwords).include?(controller_name) %>
+  <div class="footer bg-dark">
+    <div class="columns flex-centered">
+      <div class="column col-2">
+        <a class="btn btn-link text-light"><%= Community.model_name.human.pluralize.titleize %></a>
+        <a class="btn btn-link text-light"><%= Garden.model_name.human.pluralize.titleize %></a>
+        <a class="btn btn-link text-light"><%= t('landing_page.recipes').titleize %></a>
+        <a class="btn btn-link text-light"><%= t('landing_page.forum').titleize %></a>
+        <a class="btn btn-link text-light"><%= t('landing_page.info').titleize %></a>
+      </div>
+      <div class="column col-2">
+        <a class="btn btn-link text-light"><%= t('landing_page.clients').titleize %></a>
+        <a class="btn btn-link text-light"><%= User.model_name.human.pluralize.titleize %></a>
+        <a class="btn btn-link text-light"><%= t('landing_page.contribution').titleize %></a>
+      </div>
+      <div class="column col-4">
+        <i class="fas fa-seedling"></i>
+        <h5><a class="btn btn-link text-light"><%= t('landing_page.app_title').titleize %> &copy;</a></h5>
+      </div>
+      <div class="column col-2">
+        <a class="btn btn-link text-light"><%= t('landing_page.contact').titleize %></a>
+        <a class="btn btn-link text-light"><%= t('landing_page.about_us').titleize %></a>
+        <a class="btn btn-link text-light"><%= t('landing_page.careers').titleize %></a>
+      </div>
+      <div class="column col-2">
+        <a class="btn btn-link text-light"><%= t('landing_page.privacy').titleize %></a>
+        <a class="btn btn-link text-light"><%= t('landing_page.license').titleize %></a>
+        <a class="btn btn-link text-light">Github</a>
+        <a class="btn btn-link text-light">Facebook</a>
+        <a class="btn btn-link text-light">Twitter</a>
       </div>
     </div>
-    <%= toastr_flash %>
-  </body>
+  </div>
+<% end %>
+<%= toastr_flash %>
+</body>
 </html>
