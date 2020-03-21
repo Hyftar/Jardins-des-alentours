@@ -3,4 +3,9 @@ en:
     new_market_notififaction: Be informed by email for increased availability.
     activate_market_notification: You were previously getting informed about this variety. Click on this link to be once again updated by about changes to this variety's availability.
     pause_market_notification: You are suscribed to this variety. Click here to unsuscribe. You won't be updated about this variety's availability.
-
+    submits:
+      add_garden: Add this garden
+      edit_garden: Edit this garden
+      add_garden_variety: Add this variety
+      add_market: Offer this product for sale
+      edit_market: Edit this offer

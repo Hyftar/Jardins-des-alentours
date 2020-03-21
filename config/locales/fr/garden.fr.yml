@@ -3,4 +3,9 @@ fr:
     new_market_notififaction: Recevoir des mises à jour par courriel d'un changement de stock.
     activate_market_notification: Vous étiez précédemment inscrits à cette variété. Cliquez ici pour vous inscrire à nouveau et recevoir des courriels lors de la mise à jour de cette variété.
     pause_market_notification: Vous êtes inscrits à ce marché. Cliquez ici pour vous désinscrire. Vous ne serez plus mis à jour des changements de cette variété.
-
+    submits:
+      add_garden: Ajouter ce jardin
+      edit_garden: Modifier ce jardin
+      add_garden_variety: Ajouter cette variété
+      add_market: Offrir ce produit à la vente
+      edit_market: Modifier cette offre

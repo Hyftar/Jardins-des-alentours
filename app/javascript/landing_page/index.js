@@ -10,6 +10,8 @@ $(document).on('turbolinks:load', () => {
     $y.css('left', -st * 1.5);
   })
 
+  // Permet de lancer la recherche dans la barre de recherche,
+  // au clic de la touche entrer
   $('#search-address').keypress(function(e){
     if(e.keyCode==13)
     $('#search-button').click();

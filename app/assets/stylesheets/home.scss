@@ -309,6 +309,7 @@ html {
 .search-location {
   width: 30%;
   margin: 0 auto;
+  min-width: 175px;
 }
 
 .search-address input {
@@ -319,6 +320,7 @@ html {
   width: 70%;
   min-width: 300px;
   margin: 0 auto;
+  margin-bottom: 5px;
 }
 
 .search-address input {
