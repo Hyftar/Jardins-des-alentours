@@ -65,7 +65,7 @@ class GardensController < ApplicationController
         .joins(:garden)
     end
       unless @address.empty?
-        render json: { garden: @gardens, latitude: @address.first.latitude, longitude: @address.first.longitude, message: I18n.t("landing_page.no_address") }
+        render json: { garden: @gardens, latitude: @address.first.latitude, longitude: @address.first.longitude, message: I18n.t("landing_page.no_address"), url: request.base_url + "/gardens/"}
       else
         render json: { garden: @gardens, message: I18n.t("landing_page.address_not_found") }
       end
@@ -75,7 +75,7 @@ class GardensController < ApplicationController
     @gardens = Location.near([params["latitude"], params["longitude"]],
       params["distance"], units: :km, select: "gardens.*, locations.*, gardens.id AS garden_id")
       .joins(:garden)
-    render json: { garden: @gardens, message: I18n.t("landing_page.no_location") }
+    render json: { garden: @gardens, message: I18n.t("landing_page.no_location"), url: request.base_url + "/gardens/" }
   end
 
   private

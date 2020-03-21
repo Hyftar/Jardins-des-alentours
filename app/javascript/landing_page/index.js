@@ -72,7 +72,7 @@ $(document).on('turbolinks:load', () => {
 
               let link = document.createElement("a")
               link.innerHTML = "Visit the garden"
-              link.href = "localhost:3000/gardens/" + obj.garden_id
+              link.href = data.url + obj.garden_id
               link.setAttribute('target', '_blank');
               contener.appendChild(link)
 
@@ -135,7 +135,7 @@ $(document).on('turbolinks:load', () => {
 
                 let link = document.createElement("a")
                 link.innerHTML = "Visit the garden"
-                link.href = "localhost:3000/gardens/" + obj.garden_id
+                link.href = data.url + obj.garden_id
                 link.setAttribute('target', '_blank');
                 contener.appendChild(link)
 
