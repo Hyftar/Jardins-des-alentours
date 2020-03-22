@@ -9,3 +9,14 @@ en:
       add_garden_variety: Add this variety
       add_market: Offer this product for sale
       edit_market: Edit this offer
+    distance: In km, within
+    details_garden: Details
+    edit_garden: Edit this garden
+    delete_garden: Delete this garden
+    own_gardens: Show and modify my own gardens
+    garden_name: Garden name
+    garden_options: Options
+    add_new: Add a new garden
+    no_own_garden: You have no garden yet! Now's the time to start one.
+    access_my_gardens: Show me my gardens
+    or: or

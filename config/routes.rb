@@ -43,6 +43,7 @@ Rails.application.routes.draw do
 
 
   resources :users, only: %i( show )
+  get "mygardens", to: "gardens#own_gardens"
 
   devise_for :users, path: "auth", controllers: { sessions: "users/sessions" }
 end

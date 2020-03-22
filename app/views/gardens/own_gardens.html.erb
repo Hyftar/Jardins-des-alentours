@@ -1,0 +1,34 @@
+  <div class="container own_gardens">
+    <div class="columns">
+      <div class="column col-8">
+        <h2><%= t('garden.own_gardens') %></h2>
+      </div>
+    </div>
+    <div class="table-gardens">
+      <table style="width:100%">
+        <%if @gardenUser.nil? %>
+          <tr class="own_garden-row">
+            <td><%= t('garden.no_own_garden') %></td>
+          </tr>
+        <% else %>
+          <tr>
+            <th><%= t('garden.garden_name') %></th>
+            <th colspan="3"><%= t('garden.garden_options') %></th>
+          </tr>
+          <% @gardensUser.each do |garden| %>
+            <tr class="own_garden-row">
+              <td><%= garden.name %></td>
+              <td class="table-options">
+                <%= link_to t('garden.details_garden'), garden_path(garden) %>
+                <br>
+                <%= link_to t('garden.edit_garden'), edit_garden_path(garden) %>
+                <br>
+                <%= link_to t('garden.delete_garden'), garden_path(garden), method: :delete, data: {confirm: t('confirm_before_delete')}%>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+      <%= link_to t('garden.add_new'), new_garden_path(), class:"btn btn-primary" %>
+    </div>
+  </div>

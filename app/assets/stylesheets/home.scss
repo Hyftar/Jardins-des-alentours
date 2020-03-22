@@ -309,7 +309,7 @@ html {
 .search-location {
   width: 30%;
   margin: 0 auto;
-  min-width: 175px;
+  min-width: 180px;
 }
 
 .search-address input {
@@ -331,7 +331,8 @@ html {
   margin-top: 1em;
 }
 
-#mapid {
+#mapid,
+#map_garden {
   height: 300px;
 }
 

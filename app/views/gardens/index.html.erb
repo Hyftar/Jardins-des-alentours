@@ -1,22 +1,28 @@
-<table style="width:100%">
-  <tr>
-    <th>Garden name</th>
-    <th>Gardener</th>
-    <th>Options</th>
-  </tr>
-  <% @allGardens.each do |garden| %>
-    <tr>
-      <td><%= garden.name %></td>
-      <td><%= garden.user.first_name %> <%= garden.user.last_name %></td>
-      <td>
-        <%= link_to 'More details', garden_path(garden) %>
-        <% if current_user == garden.user %>
-          <%= link_to 'Edit', edit_garden_path(garden) %>
-          <%= link_to 'Delete', garden_path(garden), method: :delete, data: {confirm: t('confirm_before_delete')}%>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-  <caption>List of all gardens</caption>
-</table>
-<%= link_to 'Add a new garden', new_garden_path() %>
+<div class="container map_container map_container-gardens">
+  <div class="columns">
+    <div class="column col-8">
+      <h2><%= t('landing_page.map_info_title') %></h2>
+      <p><%= t('landing_page.map_info_p') %></p>
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column col-12 search-bar">
+      <div class="search search-address input-group">
+        <input type="text" id="search-address" placeholder="<%= t('landing_page.address_search') %>" name="search-address">
+        <button id="search-button-gardens" class="btn btn-primary input-group-btn btn-lg"><i class="fa fa-search"></i></button>
+      </div>
+      <button id="locate-me-gardens" class="btn btn-primary btn-lg search search-location" type="button"><%= t('landing_page.use_position') %></button>
+    </div>
+    <div class="column col-12 search-distance">
+      <%= label_tag(:distance, t('garden.distance')) %>
+      <%= number_field_tag(:distance, value = 20, in: 0..200, step: 5) %>
+    </div>
+    <div class="column col-12 map-contener">
+      <div id="map_garden"></div>
+    </div>
+  </div>
+  <div class="my_gardens-container">
+    <p>- <%= t('garden.or') %> -</p>
+    <%= link_to t('garden.access_my_gardens'), mygardens_path(), class:"btn btn-primary" %>
+  </div>
+</div>
