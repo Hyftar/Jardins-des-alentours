@@ -1,7 +1,7 @@
 <script>
-  const geo_not_supported = "<%= t("landing_page.geo_not_supported") %>"
-  const error_location = "<%= t("landing_page.error_location") %>"
-  const visit_garden = "<%= t("garden.visit_garden") %>"
+  const geo_not_supported_garden = "<%= t("landing_page.geo_not_supported") %>"
+  const error_location_garden = "<%= t("landing_page.error_location") %>"
+  const visit_garden_garden = "<%= t("garden.visit_garden") %>"
 </script>
 <div class="container map_container map_container-gardens">
   <div class="columns">
@@ -22,6 +22,10 @@
       <%= label_tag(:distance, t('garden.distance')) %>
       <%= number_field_tag(:distance, value = 20, in: 0..200, step: 5) %>
       <%= label_tag(:distance, t('garden.distance_unit')) %>
+    </div>
+    <div class="column col-12 search-markets">
+      <%= label_tag(:markets, t('garden.search_markets')) %>
+      <%= check_box_tag(:markets) %>
     </div>
     <div class="column col-12 map-contener">
       <div id="map_garden"></div>

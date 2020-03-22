@@ -47,18 +47,20 @@ $(document).on('turbolinks:load', () => {
     function success(position) {
       const latitude  = position.coords.latitude;
       const longitude = position.coords.longitude;
-      let distance = document.getElementById("distance").value
+      const distance = document.getElementById("distance").value
+      const markets = document.getElementById("markets").checked
       $.ajax({
         url: "/geolocalise",
         dataType: "json",
-        data: { latitude: latitude, longitude: longitude, distance: distance },
+        data: { latitude: latitude, longitude: longitude, distance: distance, markets: markets },
         method: 'GET',
         success: (data) => {
           landing_page_map.setView([latitude,longitude], 12)
-          let gardens = data.garden
+          const gardens = data.garden
+          landing_markers.clearLayers()
           if (gardens.length > 0){
             gardens.forEach(obj =>{
-              const marker = L.marker([obj.latitude, obj.longitude]).addTo(landing_page_map);
+              const marker = L.marker([obj.latitude, obj.longitude]).addTo(landing_markers);
 
               const contener = document.createElement("div")
 
@@ -78,6 +80,7 @@ $(document).on('turbolinks:load', () => {
 
               marker.bindPopup(contener)
             })
+            landing_page_map.addLayer(landing_markers)
           }
           else {
             toastr.warning(data.message, '', { closeButton: true, progressBar: true, positionClass: 'toast-bottom-right' })
@@ -105,24 +108,27 @@ $(document).on('turbolinks:load', () => {
     }).addTo(landing_page_map);
   }
 
-  let locate = document.querySelector('#locate-me')
+  let landing_markers = new L.FeatureGroup();
+
+  const locate = document.querySelector('#locate-me')
   if (locate !== null){
     locate.addEventListener('click', findMe)
   }
 
-  let search_button = document.querySelector("#search-button")
+  const search_button = document.querySelector("#search-button")
   if (search_button !== null){
     search_button.addEventListener("click", findAddress)
   }
 
   function findAddress(){
-    let address = document.getElementById("search-address").value
-    let distance = document.getElementById("distance").value
+    const address = document.getElementById("search-address").value
+    const distance = document.getElementById("distance").value
+    const markets = document.getElementById("markets").checked
     if (address != ""){
       $.ajax({
         url: "/geolocalise_address",
         dataType: "json",
-        data: { address: address, distance: distance },
+        data: { address: address, distance: distance, markets: markets },
         method: 'GET',
         success: (data) => {
           const gardens = data.garden
@@ -131,9 +137,10 @@ $(document).on('turbolinks:load', () => {
           }
           else {
             landing_page_map.setView([data.latitude,data.longitude], 12)
+            landing_markers.clearLayers()
             if (gardens.length > 0){
               gardens.forEach(obj =>{
-                const marker = L.marker([obj.latitude, obj.longitude]).addTo(landing_page_map);
+                const marker = L.marker([obj.latitude, obj.longitude]).addTo(landing_markers);
                 const contener = document.createElement("div")
 
                 const title = document.createElement("h5")
@@ -152,6 +159,7 @@ $(document).on('turbolinks:load', () => {
 
                 marker.bindPopup(contener)
               })
+              landing_page_map.addLayer(landing_markers)
             }
             else {
               toastr.warning(data.message, '', { closeButton: true, progressBar: true, positionClass: 'toast-bottom-right' })

@@ -130,6 +130,10 @@
       <%= number_field_tag(:distance, value = 20, in: 0..200, step: 5) %>
       <%= label_tag(:distance, t('garden.distance_unit')) %>
     </div>
+    <div class="column col-12 search-markets">
+      <%= label_tag(:markets, t('garden.search_markets')) %>
+      <%= check_box_tag(:markets) %>
+    </div>
     <div class="column col-12 map-contener">
       <div id="mapid"></div>
     </div>
