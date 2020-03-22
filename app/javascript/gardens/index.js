@@ -34,7 +34,7 @@ $(document).on('turbolinks:load', () => {
               contener.appendChild(p)
 
               let link = document.createElement("a")
-              link.innerHTML = "Visit the garden"
+              link.innerHTML = visit_garden
               link.href = data.url + obj.garden_id
               link.setAttribute('target', '_blank');
               contener.appendChild(link)
@@ -48,7 +48,6 @@ $(document).on('turbolinks:load', () => {
         }
       })
     }
-
     function failure() {
       toastr.warning(error_location, '', { closeButton: true, progressBar: true, positionClass: 'toast-bottom-right' })
     }
@@ -94,7 +93,7 @@ $(document).on('turbolinks:load', () => {
                 contener.appendChild(p)
 
                 let link = document.createElement("a")
-                link.innerHTML = "Visit the garden"
+                link.innerHTML = visit_garden
                 link.href = data.url + obj.garden_id
                 link.setAttribute('target', '_blank');
                 contener.appendChild(link)

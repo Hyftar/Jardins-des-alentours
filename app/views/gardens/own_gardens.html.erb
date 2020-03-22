@@ -6,7 +6,7 @@
     </div>
     <div class="table-gardens">
       <table style="width:100%">
-        <%if @gardenUser.nil? %>
+        <%if @gardensUser.empty? %>
           <tr class="own_garden-row">
             <td><%= t('garden.no_own_garden') %></td>
           </tr>

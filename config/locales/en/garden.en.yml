@@ -2,14 +2,15 @@ en:
   garden:
     new_market_notififaction: Be informed by email for increased availability.
     activate_market_notification: You were previously getting informed about this variety. Click on this link to be once again updated by about changes to this variety's availability.
-    pause_market_notification: You are suscribed to this variety. Click here to unsuscribe. You won't be updated about this variety's availability.
+    pause_market_notification: You are subscribed to this variety. Click here to unsubscribe. You won't be updated about this variety's availability.
     submits:
       add_garden: Add this garden
       edit_garden: Edit this garden
       add_garden_variety: Add this variety
       add_market: Offer this product for sale
       edit_market: Edit this offer
-    distance: In km, within
+    distance: Within
+    distance_unit: kilometers
     details_garden: Details
     edit_garden: Edit this garden
     delete_garden: Delete this garden
@@ -20,3 +21,5 @@ en:
     no_own_garden: You have no garden yet! Now's the time to start one.
     access_my_gardens: Show me my gardens
     or: or
+    search_markets: Show only markets
+    visit_garden: Visit this garden

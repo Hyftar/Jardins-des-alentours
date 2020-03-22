@@ -1,6 +1,7 @@
 <script>
-  const geo_not_supported = "<%= @geo_not_supported %>"
-  const error_location = "<%= t('') %>"
+  const geo_not_supported = "<%= t("landing_page.geo_not_supported") %>"
+  const error_location = "<%= t("landing_page.error_location") %>"
+  const visit_garden = "<%= t("garden.visit_garden") %>"
 </script>
 <div id="right-veggie"></div>
 <div id="left-veggie"></div>
@@ -123,6 +124,11 @@
         <button id="search-button" class="btn btn-primary input-group-btn btn-lg"><i class="fa fa-search"></i></button>
       </div>
       <button id="locate-me" class="btn btn-primary btn-lg search search-location" type="button"><%= t('landing_page.use_position') %></button>
+    </div>
+    <div class="column col-12 search-distance">
+      <%= label_tag(:distance, t('garden.distance')) %>
+      <%= number_field_tag(:distance, value = 20, in: 0..200, step: 5) %>
+      <%= label_tag(:distance, t('garden.distance_unit')) %>
     </div>
     <div class="column col-12 map-contener">
       <div id="mapid"></div>

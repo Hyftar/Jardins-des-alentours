@@ -47,10 +47,11 @@ $(document).on('turbolinks:load', () => {
     function success(position) {
       const latitude  = position.coords.latitude;
       const longitude = position.coords.longitude;
+      let distance = document.getElementById("distance").value
       $.ajax({
         url: "/geolocalise",
         dataType: "json",
-        data: { latitude: latitude, longitude: longitude, distance: 30 },
+        data: { latitude: latitude, longitude: longitude, distance: distance },
         method: 'GET',
         success: (data) => {
           landing_page_map.setView([latitude,longitude], 12)
@@ -70,13 +71,13 @@ $(document).on('turbolinks:load', () => {
               contener.appendChild(p)
 
               const link = document.createElement("a")
-              link.innerHTML = "Visit the garden"
+              link.innerHTML = visit_garden
               link.href = data.url + obj.garden_id
               link.setAttribute('target', '_blank');
               contener.appendChild(link)
 
               marker.bindPopup(contener)
-          })
+            })
           }
           else {
             toastr.warning(data.message, '', { closeButton: true, progressBar: true, positionClass: 'toast-bottom-right' })
@@ -116,11 +117,12 @@ $(document).on('turbolinks:load', () => {
 
   function findAddress(){
     let address = document.getElementById("search-address").value
+    let distance = document.getElementById("distance").value
     if (address != ""){
       $.ajax({
         url: "/geolocalise_address",
         dataType: "json",
-        data: { address: address, distance: 30 },
+        data: { address: address, distance: distance },
         method: 'GET',
         success: (data) => {
           const gardens = data.garden
@@ -143,7 +145,7 @@ $(document).on('turbolinks:load', () => {
                 contener.appendChild(p)
 
                 const link = document.createElement("a")
-                link.innerHTML = "Visit the garden"
+                link.innerHTML = visit_garden
                 link.href = data.url + obj.garden_id
                 link.setAttribute('target', '_blank');
                 contener.appendChild(link)

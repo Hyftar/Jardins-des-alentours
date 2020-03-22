@@ -9,7 +9,8 @@ fr:
       add_garden_variety: Ajouter cette variété
       add_market: Offrir ce produit à la vente
       edit_market: Modifier cette offre
-    distance: En km, dans un rayon de
+    distance: Dans un rayon de
+    distance_unit: km
     details_garden: Détails
     edit_garden: Modifier ce jardin
     delete_garden: Supprimer ce jardin
@@ -20,3 +21,5 @@ fr:
     no_own_garden: Vous n'avez pas encore de jardin! C'est le temps parfait pour en créer un.
     access_my_gardens: Montrez-moi mes jardins
     or: ou encore
+    search_markets: Montrez uniquement les marchés
+    visit_garden: Visiter ce jardin
