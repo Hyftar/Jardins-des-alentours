@@ -23,3 +23,23 @@ fr:
     or: ou encore
     search_markets: Chercher uniquement les marchés
     visit_garden: Visiter ce jardin
+    garden_of: Jardin de
+    description: Description
+    cultivar: Variétés cultivées
+    remove_variety_garden: Retirer du jardin
+    edit_market: Modifier
+    remove_market: Retirer
+    reactivate_market: Réactiver
+    new_market: Ajouter au marché
+    variety: Variété
+    on_market: Le marché
+    available_market: Disponible
+    not_available_market: Non disponible
+    located_at: Situé au
+    previous_variety: Variétés préalablement cultivées
+    add_back_variety: Ajouter à nouveau au jardin
+    new_variety: Ajouter une nouvelle variété au jardin
+    offered_market: Offert sur le marché
+    contact_gardener: Communiquez avec le jardinier à propos des variétés offertes
+    market_price: au prix de
+    market_unit: par

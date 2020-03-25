@@ -42,6 +42,27 @@ input[type='number']{
   border-top: 1px solid white;
 }
 
+.garden-row td{
+  border-bottom: 1px solid white;
+}
+
 .my_gardens-container{
   padding-top: 1em;
+}
+
+.garden_details {
+  padding: 10vh 20vw 30vh;
+  background-color: #171731;
+  height: fit-content;
+  clip-path: polygon(0 3%, 0 95%, 100% 100%, 100% 0%);
+
+  .columns:first-of-type .column:first-of-type {
+    margin: 10vh;
+    text-align: left;
+    color: #2E2F30;
+  }
+}
+
+.spacer-garden{
+  margin-top: 1em;
 }

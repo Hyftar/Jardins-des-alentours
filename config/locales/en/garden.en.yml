@@ -23,3 +23,23 @@ en:
     or: or
     search_markets: Search only for markets
     visit_garden: Visit this garden
+    garden_of: Garden of user
+    description: Description
+    cultivar: Varieties cultivated
+    remove_variety_garden: Remove from garden
+    edit_market: Edit
+    remove_market: Remove
+    reactivate_market: Reactivate
+    new_market: Add to the market
+    variety: Variety
+    on_market: The market
+    available_market: Available
+    not_available_market: Not available
+    located_at: Located at
+    previous_variety: Varieties previously cultivated
+    add_back_variety: Add back to garden
+    new_variety: Add a new variety to the garden
+    offered_market: Offered on the market
+    contact_gardener: Contact the gardener about these produce
+    market_price: at price of
+    market_unit: per
