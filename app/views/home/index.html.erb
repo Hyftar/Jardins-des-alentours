@@ -1,3 +1,8 @@
+<script>
+  const geo_not_supported = "<%= t("landing_page.geo_not_supported") %>"
+  const error_location = "<%= t("landing_page.error_location") %>"
+  const visit_garden = "<%= t("garden.visit_garden") %>"
+</script>
 <div id="right-veggie"></div>
 <div id="left-veggie"></div>
 <div class="columns">
@@ -113,11 +118,29 @@
     </div>
   </div>
   <div class="columns">
-    <div class="column col-12">
-      <iframe class="map_main"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11214.786077361028!2d-73.47535251461896!3d45.354938092581584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc90b9c970f89d9%3A0xf85144fc45616702!2sSaint-Philippe%2C%20QC%20J0L%202K0!5e0!3m2!1sen!2sca!4v1582494751752!5m2!1sen!2sca"
-        width="90%" height="600px" style="border:0;" allowfullscreen=""></iframe>
+    <div class="column col-12 search-bar">
+      <div class="search search-address input-group">
+        <input type="text" id="search-address" placeholder="<%= t('landing_page.address_search') %>" name="search-address">
+        <button id="search-button" class="btn btn-primary input-group-btn btn-lg"><i class="fa fa-search"></i></button>
+      </div>
+      <button id="locate-me" class="btn btn-primary btn-lg search search-location" type="button"><%= t('landing_page.use_position') %></button>
     </div>
+    <div class="column col-12 search-distance">
+      <%= label_tag(:distance, t('garden.distance')) %>
+      <%= number_field_tag(:distance, value = 20, in: 0..200, step: 5) %>
+      <%= label_tag(:distance, t('garden.distance_unit')) %>
+    </div>
+    <div class="column col-12 search-markets">
+      <%= label_tag(:markets, t('garden.search_markets')) %>
+      <%= check_box_tag(:markets) %>
+    </div>
+    <div class="column col-12 map-contener">
+      <div id="mapid"></div>
+    </div>
+  </div>
+  <div class="my_gardens-container">
+    <p>- <%= t('garden.or') %> -</p>
+    <%= link_to t('garden.access_my_gardens'), mygardens_path(), class:"btn btn-primary" %>
   </div>
 </div>
 <div class="container communities_container">

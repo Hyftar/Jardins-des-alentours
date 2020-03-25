@@ -15,9 +15,9 @@
   </div>
   <div class="field">
     <%= f.label :price %><br>
-    <%= number_field(:price, nil, min: 0, max: 999.99, step: 0.01) %>
+    <%= number_field(:price, nil, min: 0, max: 999.99, step: 0.05) %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t('garden.submits.add_market') %>
   </div>
 <% end %>

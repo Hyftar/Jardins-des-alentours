@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%= I18n.t('landing_page.app_title').titleize %></title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <script src="https://kit.fontawesome.com/bd5c550147.js" crossorigin="anonymous"></script>
-</head>
+  <head>
+    <title><%= I18n.t('landing_page.app_title').titleize %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/bd5c550147.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+
+  </head>
 
 <body class="bg-dark">
 <header id="navbar" class="navbar navbar_main sticky">

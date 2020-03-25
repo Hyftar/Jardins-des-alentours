@@ -1,3 +1,68 @@
 // Place all the styles related to the Gardens controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.search-distance{
+  margin: 5px auto;
+}
+
+input[type='number']{
+  text-align: center;
+}
+
+// -- map section
+.map_container.map_container-gardens {
+  background-color: #5fa090;
+}
+
+.own_gardens {
+  padding: 10vh 20vw 30vh;
+  background-color: #d19359;
+  height: fit-content;
+  clip-path: polygon(0 0%, 0 100%, 100% 95%, 100% 5%);
+
+  .columns:first-of-type .column:first-of-type {
+    margin: 10vh;
+    text-align: left;
+    color: #2E2F30;
+  }
+}
+
+.table-gardens{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.table-gardens td,
+.table-gardens th{
+  padding: 10px 0;
+}
+
+.own_garden-row td{
+  border-top: 1px solid white;
+}
+
+.garden-row td{
+  border-bottom: 1px solid white;
+}
+
+.my_gardens-container{
+  padding-top: 1em;
+}
+
+.garden_details {
+  padding: 10vh 20vw 30vh;
+  background-color: #171731;
+  height: fit-content;
+  clip-path: polygon(0 3%, 0 95%, 100% 100%, 100% 0%);
+
+  .columns:first-of-type .column:first-of-type {
+    margin: 10vh;
+    text-align: left;
+    color: #2E2F30;
+  }
+}
+
+.spacer-garden{
+  margin-top: 1em;
+}

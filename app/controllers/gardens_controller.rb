@@ -1,9 +1,10 @@
 class GardensController < ApplicationController
-  before_action :authenticate_user!, only: %i( edit update new create destroy )
+  before_action :authenticate_user!, only: %i( edit update new create destroy own_gardens )
 
-  before_action :get_gardens, only: %i( index )
+  before_action :get_gardens, only: %i(  )
   before_action :get_garden, only: %i( show )
   before_action :is_owner, only: %i( destroy edit update )
+  before_action :get_user_gardens, only: %i( own_gardens )
 
   def show
   end
@@ -54,7 +55,40 @@ class GardensController < ApplicationController
   end
 
   def index_own
-    @gardens = Garden.where(user: current_user)
+  end
+
+  def find_near_address
+    @address = Geocoder.search(params["address"])
+    unless @address.empty?
+        if params["markets"] == "true"
+          @gardens = Location.near(@address.first.coordinates,params["distance"],
+          units: :km, select: "gardens.*, locations.*, gardens.id AS garden_id").
+          joins(garden: :markets)
+        else
+          @gardens = Location.near(@address.first.coordinates,
+          params["distance"], units: :km, select: "gardens.*, locations.*, gardens.id AS garden_id")
+          .joins(:garden)
+        end
+      render json: { garden: @gardens, latitude: @address.first.latitude, longitude: @address.first.longitude, message: I18n.t("landing_page.no_address"), url: request.base_url + "/gardens/"}
+    else
+      render json: { message: I18n.t("landing_page.address_not_found") }
+    end
+  end
+
+  def find_near_position
+    if params["markets"] == "true"
+      @gardens = Location.near([params["latitude"], params["longitude"]],
+      params["distance"], units: :km, select: "gardens.*, locations.*, gardens.id AS garden_id")
+      .joins(garden: :markets)
+    else
+      @gardens = Location.near([params["latitude"], params["longitude"]],
+      params["distance"], units: :km, select: "gardens.*, locations.*, gardens.id AS garden_id")
+      .joins(:garden)
+    end
+    render json: { garden: @gardens, message: I18n.t("landing_page.no_location"), url: request.base_url + "/gardens/", edit: request.base_url + "/" }
+  end
+
+  def own_gardens
   end
 
   private

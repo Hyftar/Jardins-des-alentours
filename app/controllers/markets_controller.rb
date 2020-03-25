@@ -9,7 +9,7 @@ class MarketsController < ApplicationController
 
   def create
     @garden_variety = GardenVariety.find_by!(id: market_param["garden_variety"], is_active: true)
-    if Market.create(quantity: market_param["quantity"], unit: market_param["unit"], garden_variety: @garden_variety, price: params["price"])
+    if Market.create(quantity: market_param["quantity"], unit: market_param["unit"], garden_variety: @garden_variety, price: market_param["price"])
       redirect_to garden_path(@garden_variety.garden)
     else
       render action: "new"

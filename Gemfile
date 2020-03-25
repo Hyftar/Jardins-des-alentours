@@ -74,3 +74,5 @@ gem "image_processing", "~> 1.10"
 gem "geocoder", "~> 1.6"
 
 gem "counter_culture", "~> 2.3"
+
+gem "leaflet-rails", "~> 1.6"

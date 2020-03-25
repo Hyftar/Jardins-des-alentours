@@ -13,6 +13,9 @@ class Location < ApplicationRecord
     },
     allow_nil: true
 
+
+  has_one :garden
+
   geocoded_by :address_join do |obj, results|
     # sleep to reduce number of calls to api to 1 per second
     sleep(1)
