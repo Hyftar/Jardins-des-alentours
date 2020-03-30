@@ -13,16 +13,13 @@ body {
 
 body,
 html {
+  min-width: 720px;
   overflow-x: hidden;
   text-align: center;
   scroll-behavior: smooth;
   // generalities -------------------
   .text-light {
     color: #fff !important;
-  }
-
-  a {
-    font-weight: bold;
   }
 
   a.text-light:focus,
@@ -34,6 +31,7 @@ html {
     position: fixed;
     top: 0;
     width: 100%;
+    min-width: 720px;
   }
 
   .container {
@@ -43,7 +41,7 @@ html {
 
   // navbar -------------------
   .navbar_main {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.6);
     width: 100%;
     height: 10%;
     padding: 0 1vw;

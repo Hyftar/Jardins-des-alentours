@@ -1,4 +1,343 @@
-<div>
-  <%= link_to 'retour', communities_path %>
-  <%= link_to Question.model_name.human.pluralize, community_questions_path(@community) %>
+<!--<div>-->
+<%#= link_to 'retour', communities_path %>
+<%#= link_to Question.model_name.human.pluralize, community_questions_path(@community) %>
+<!--</div>-->
+<div class="columns bread-container">
+  <div class="column col-2">
+    <ul class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="#" class="text-light"><%= t('communities.home').titleize %></a>
+      </li>
+      <li class="breadcrumb-item text-light">
+        <%= link_to t('communities.communities').titleize, "#", class: 'text-light' %>:
+        <%= link_to "Tomato", "#", class: 'text-light' %>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="column community_title">
+  <h1>
+    Bienvenue dans la communauté de la Tomate !
+  </h1>
+</div>
+<div class="column veggie-container">
+  <div class="columns">
+    <div class="column col-6 veggie">
+      <div class="columns">
+        <div class="column title_container">
+          <h1>
+            Tomato
+          </h1>
+          <p class="text-italic">
+            Solanum lycopersicum
+          </p>
+        </div>
+      </div>
+      <div class="columns flex-centered icons-container">
+        <div class="column col-2 icons-info flex-centered">
+          <i class="fas fa-arrows-alt-h tooltip" data-tooltip="Espacement / Hauteur">
+            <span class="tooltip-data">30 cm.</span>
+          </i>
+          <i class="fas fa-hands-helping tooltip" data-tooltip="Associations">
+            <span class="tooltip-data">Cucurbitacae</span>
+          </i>
+        </div>
+        <div class="column col-4 icons-info flex-centered">
+          <i class="fas fa-thermometer-half tooltip" data-tooltip="Rusticité">
+            <span class="tooltip-data">Zone 5</span>
+          </i>
+          <%= image_tag('tomato-logo.jpg', :class => "img-responsive rounded veggie-logo circle") %>
+          <i class="fas fa-seedling tooltip" data-tooltip="Temps de germination">
+            <span class="tooltip-data">10 jours</span>
+          </i>
+        </div>
+        <div class="column col-2 icons-info flex-centered">
+          <i class="fas fa-calendar-alt tooltip" data-tooltip="Saison de culture">
+            <span class="tooltip-data">Mars - Septembre</span>
+          </i>
+          <i class="fas fa-sun tooltip" data-tooltip="Ensoleillement">
+            <span class="tooltip-data">Ensoleillé</span>
+          </i>
+        </div>
+      </div>
+      <p><a>En savoir plus sur la culture de la tomate</a> <i class="fas fa-info-circle"></i></p>
+    </div>
+    <div class="column col-4 did-you-know">
+      <div class="columns">
+        <div class="column text-left">
+          <h3>Did you know ?</h3>
+          <p>Nunquam quaestio mensa? Favere semper ducunt ad brevis aonides. Domesticus spatiis ducunt ad torquis.
+            Ubi est salvus armarium? Est germanus nix, cesaris. Cacula de magnum decor, consumere idoleum!
+          <p>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <div class="carousel">
+            <!-- carousel locator -->
+            <input class="carousel-locator" id="slide-1" type="radio" name="carousel-radio" hidden="" checked="">
+            <input class="carousel-locator" id="slide-2" type="radio" name="carousel-radio" hidden="">
+            <input class="carousel-locator" id="slide-3" type="radio" name="carousel-radio" hidden="">
+            <input class="carousel-locator" id="slide-4" type="radio" name="carousel-radio" hidden="">
+
+            <!-- carousel container -->
+            <div class="carousel-container">
+              <!-- carousel item -->
+              <figure class="carousel-item">
+                <label class="item-prev btn btn-action btn-lg" for="slide-4"><i class="icon icon-arrow-left"></i></label>
+                <label class="item-next btn btn-action btn-lg" for="slide-2"><i class="icon icon-arrow-right"></i></label>
+                <%= image_tag('tomato1.jpg', :class => "img-responsive rounded") %>
+              </figure>
+              <figure class="carousel-item">
+                <label class="item-prev btn btn-action btn-lg" for="slide-1"><i class="icon icon-arrow-left"></i></label>
+                <label class="item-next btn btn-action btn-lg" for="slide-3"><i class="icon icon-arrow-right"></i></label>
+                <%= image_tag('tomato2.jpg', :class => "img-responsive rounded") %>
+              </figure>
+              <figure class="carousel-item">
+                <label class="item-prev btn btn-action btn-lg" for="slide-2"><i class="icon icon-arrow-left"></i></label>
+                <label class="item-next btn btn-action btn-lg" for="slide-4"><i class="icon icon-arrow-right"></i></label>
+                <%= image_tag('tomato3.jpg', :class => "img-responsive rounded") %>
+              </figure>
+              <figure class="carousel-item">
+                <label class="item-prev btn btn-action btn-lg" for="slide-3"><i class="icon icon-arrow-left"></i></label>
+                <label class="item-next btn btn-action btn-lg" for="slide-1"><i class="icon icon-arrow-right"></i></label>
+                <%= image_tag('tomato4.jpg', :class => "img-responsive rounded") %>
+              </figure>
+            </div>
+            <!-- carousel navigation -->
+            <div class="carousel-nav">
+              <label class="nav-item text-hide c-hand" for="slide-1">1</label>
+              <label class="nav-item text-hide c-hand" for="slide-2">2</label>
+              <label class="nav-item text-hide c-hand" for="slide-3">3</label>
+              <label class="nav-item text-hide c-hand" for="slide-4">4</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex-centered columns">
+    <div class="column">
+      <h2 class="veggie-sub">
+        La tomate de votre voisin est meilleure que la vôtre
+      </h2>
+      <i class="icon icon-arrow-down"></i>
+    </div>
+  </div>
+  <div class="columns panels">
+    <div class="column col-4">
+      <div class="panel text-left flex-centered">
+        <div class="panel-header text-center">
+          <figure class="avatar avatar-xl">
+            <%= image_tag('forum.png', :class => "img-responsive rounded") %>
+          </figure>
+          <div class="panel-title h5">Talk about it</div>
+        </div>
+        <div class="panel-body">
+          <div class="tile">
+            <div class="tile-icon">
+              <figure class="avatar avatar-xl">
+                <%= image_tag('avatar.png', :class => "img-responsive rounded") %>
+              </figure>
+            </div>
+            <div class="tile-content">
+              <p class="tile-title text-bold">Thor Odinson</p>
+              <p class="tile-subtitle">Earth's Mightiest Heroes joined forces to take on threats that were too big for
+                any one hero to tackle...</p>
+              <div class="text-right">
+                <button class="btn text-light">See conversation</button>
+              </div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="tile">
+            <div class="tile-icon">
+              <figure class="avatar avatar-xl">
+                <%= image_tag('avatar.png', :class => "img-responsive rounded") %>
+              </figure>
+            </div>
+            <div class="tile-content">
+              <p class="tile-title text-bold">Bruce Banner</p>
+              <p class="tile-subtitle">The Strategic Homeland Intervention, Enforcement, and Logistics Division...</p>
+              <div class="text-right">
+                <button class="btn text-light">See conversation</button>
+              </div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="tile">
+            <div class="tile-icon">
+              <figure class="avatar avatar-xl">
+                <%= image_tag('avatar.png', :class => "img-responsive rounded") %>
+              </figure>
+            </div>
+            <div class="tile-content">
+              <p class="tile-title text-bold">Tony Stark</p>
+              <p class="tile-subtitle">Earth's Mightiest Heroes joined forces to take on threats that were too big for
+                any one hero to tackle...</p>
+              <div class="text-right">
+                <button class="btn text-light">See conversation</button>
+              </div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="tile">
+            <div class="tile-icon">
+              <figure class="avatar avatar-xl">
+                <%= image_tag('avatar.png', :class => "img-responsive rounded") %>
+              </figure>
+            </div>
+            <div class="tile-content">
+              <p class="tile-title text-bold">Steve Rogers</p>
+              <p class="tile-subtitle">The Strategic Homeland Intervention, Enforcement, and Logistics Division...</p>
+              <div class="text-right">
+                <button class="btn text-light">See conversation</button>
+              </div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="tile">
+            <div class="tile-icon">
+              <figure class="avatar avatar-xl">
+                <%= image_tag('avatar.png', :class => "img-responsive rounded") %>
+              </figure>
+            </div>
+            <div class="tile-content">
+              <p class="tile-title text-bold">Natasha Romanoff</p>
+              <p class="tile-subtitle">Earth's Mightiest Heroes joined forces to take on threats that were too big for
+                any one hero to tackle...</p>
+              <div class="text-right">
+                <button class="btn text-light">See conversation</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer flex-centered col-8">
+          <i class="icon icon-arrow-down"></i>
+          <button class="btn btn-primary btn-block wrap">See more conversations about Tomatoes</button>
+        </div>
+      </div>
+    </div>
+    <div class="column col-4">
+      <div class="panel flex-centered">
+        <div class="panel-header">
+          <figure class="avatar avatar-xl">
+            <%= image_tag('cutlery.jpg', :class => "img-responsive rounded") %>
+          </figure>
+          <div class="panel-title"><h5>Cook it</h5></div>
+        </div>
+        <div class="panel-nav">
+          <!-- navigation components: tabs, breadcrumbs or pagination -->
+          <p>La tomate a un goût sucré et acide. Elle accompagnie bien Talis rumor acceleratrix reperires bubo est.</p>
+        </div>
+        <div class="panel-body">
+          <!-- contents -->
+          <div class="card recipe-card">
+            <div class="card-image">
+              <%= image_tag('tomato2.jpg', :class => "img-responsive rounded") %>
+            </div>
+            <div class="card-header">
+              <div class="card-title h5">Tomates cerises braisées à l'érable</div>
+              <div class="card-subtitle text-gray">3h</div>
+            </div>
+            <div class="card-body">
+              Ces tomates cerises sont délicieuses et parfaites à l'occasion
+              du temps des fêtes. [...]
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary">Découvrir</button>
+            </div>
+          </div>
+          <div class="card recipe-card">
+            <div class="card-image">
+              <%= image_tag('tomato-recipe.jpg', :class => "img-responsive rounded") %>
+            </div>
+            <div class="card-header">
+              <div class="card-title h5">Sauce tomate & basilic</div>
+              <div class="card-subtitle text-gray">50 minutes</div>
+            </div>
+            <div class="card-body">
+              Un classique que vous répéterez souvent. Cette
+              sauce tomate & basilic rappelle [...]
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary">Découvrir</button>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer col-8 flex-centered">
+          <!-- buttons or inputs -->
+          <i class="icon icon-arrow-down"></i>
+          <button class="btn btn-primary btn-block wrap">Découvrir plus de recettes avec la Tomate</button>
+        </div>
+      </div>
+    </div>
+    <div class="column col-4">
+      <div class="panel flex-centered">
+        <div class="panel-header">
+          <figure class="avatar avatar-xl">
+            <%= image_tag('market.jpg', :class => "img-responsive rounded") %>
+          </figure>
+          <div class="panel-title"><h5>Find it</h5></div>
+        </div>
+        <div class="panel-nav">
+          <p>Trouvez la tomate dans les jardins de vos alentours !</p>
+        </div>
+        <div class="panel-body">
+          <!-- contents -->
+          <div class="card garden-card">
+            <div class="card-header">
+              <div class="card-title h5">Jardins de l'Amitié</div>
+              <div class="card-subtitle text-gray">Variétés de tomate : 3</div>
+            </div>
+            <div class="card-image"><%= image_tag('garden1.jpg', :class => "img-responsive rounded") %></div>
+            <div class="card-body">To make a contribution to the world by making tools for the mind that advance
+              humankind.
+            </div>
+            <div class="card-footer flex-centered">
+              <div class="btn-group btn-group-block col-6">
+                <button class="btn btn-primary">Visiter</button>
+              </div>
+            </div>
+          </div>
+          <div class="card garden-card">
+            <div class="card-header">
+              <div class="card-title h5">Le Jardin Secret</div>
+              <div class="card-subtitle text-gray">Variétés de tomate : 4</div>
+            </div>
+            <div class="card-image"><%= image_tag('garden2.jpeg', :class => "img-responsive rounded") %></div>
+            <div class="card-body">To make a contribution to the world by making tools for the mind that advance
+              humankind.
+            </div>
+            <div class="card-footer flex-centered">
+              <div class="btn-group btn-group-block col-6">
+                <button class="btn btn-primary">Visiter</button>
+              </div>
+            </div>
+          </div>
+          <div class="card garden-card">
+            <div class="card-header">
+              <div class="card-title h5">Le Bonheur de la Terre</div>
+              <div class="card-subtitle text-gray">Variétés de tomate : 2</div>
+            </div>
+            <div class="card-image"><%= image_tag('garden3.jpg', :class => "img-responsive rounded") %></div>
+            <div class="card-body">To make a contribution to the world by making tools for the mind that advance
+              humankind.
+            </div>
+            <div class="card-footer flex-centered">
+              <div class="btn-group btn-group-block col-6">
+                <button class="btn btn-primary">Visiter</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="panel-footer col-6 flex-centered">
+          <!-- buttons or inputs -->
+          <i class="icon icon-arrow-down"></i>
+          <button class="btn btn-primary btn-block wrap">Visitez plus de jardins avec des tomates</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

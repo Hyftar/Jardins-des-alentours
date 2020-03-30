@@ -1,3 +1,9 @@
+<% @communities.each do |community| %>
+  <div>
+    Communauté des <%= community.produce.name %> de <%= community.region.name %>
+    <%= link_to 'lien', community_path(community) %>
+  </div>
+<% end %>
 <div class="columns bread-container">
   <div class="column col-2">
     <ul class="breadcrumb">
@@ -12,7 +18,7 @@
 </div>
 <h1 id="communities-header">
   <svg viewBox="0 0 100 80" fill="white">
-    <path id="curve" d="M-300,80Q50,0 400,80"/>
+    <path id="curve" d="M-250,80Q50,0 400,80"/>
     <text width="1500">
       <textPath xlink:href="#curve">
         <%= t('communities.index_title').titleize %>
@@ -121,7 +127,7 @@
             Est altus nixus, cesaris.
           </div>
         </div>
-        <div class="filter-item card col-2 popover" data-season="summer spring" data-tag="tag-3 tag-4 tag-5 tag-6" >
+        <div class="filter-item card col-2 popover" data-season="summer spring" data-tag="tag-3 tag-4 tag-5 tag-6">
           <div class="card-image"><%= image_tag('oranges.jpg', :class => "img-responsive") %></div>
           <div class="card-footer">
             <a class="btn btn-link" href="#cards">Orange <%= Community.model_name.human.capitalize %></a>
@@ -142,7 +148,7 @@
             Primus bursas ducunt ad visus.
           </div>
         </div>
-        <div class="filter-item card col-2 popover" data-season="spring summer" data-tag="tag-1 tag-2 tag-5" >
+        <div class="filter-item card col-2 popover" data-season="spring summer" data-tag="tag-1 tag-2 tag-5">
           <div class="card-image"><%= image_tag('asparagus.jpg', :class => "img-responsive") %></div>
           <div class="card-footer">
             <a class="btn btn-link" href="#cards">Asparagus <%= Community.model_name.human.capitalize %></a>
@@ -185,7 +191,7 @@
           </div>
 
         </div>
-        <div class="filter-item card col-2 popover" data-season="fall summer" data-tag="tag-1 tag-2 tag-3 tag-4 tag-5 tag-6" >
+        <div class="filter-item card col-2 popover" data-season="fall summer" data-tag="tag-1 tag-2 tag-3 tag-4 tag-5 tag-6">
           <div class="card-image"><%= image_tag('poivrons.jpg', :class => "img-responsive") %></div>
           <div class="card-footer">
             <a class="btn btn-link" href="#cards">Bell Pepper <%= Community.model_name.human.capitalize %></a>
@@ -206,7 +212,7 @@
             Est altus nixus, cesaris.
           </div>
         </div>
-        <div class="filter-item card col-2 popover" data-season="summer spring" data-tag="tag-3 tag-4 tag-5 tag-6" >
+        <div class="filter-item card col-2 popover" data-season="summer spring" data-tag="tag-3 tag-4 tag-5 tag-6">
           <div class="card-image"><%= image_tag('oranges.jpg', :class => "img-responsive") %></div>
           <div class="card-footer">
             <a class="btn btn-link" href="#cards">Orange <%= Community.model_name.human.capitalize %></a>
@@ -227,7 +233,7 @@
             Primus bursas ducunt ad visus.
           </div>
         </div>
-        <div class="filter-item card col-2 popover" data-season="spring summer" data-tag="tag-1 tag-2 tag-5" >
+        <div class="filter-item card col-2 popover" data-season="spring summer" data-tag="tag-1 tag-2 tag-5">
           <div class="card-image"><%= image_tag('asparagus.jpg', :class => "img-responsive") %></div>
           <div class="card-footer">
             <a class="btn btn-link" href="#cards">Asparagus <%= Community.model_name.human.capitalize %></a>
@@ -270,7 +276,7 @@
           </div>
 
         </div>
-        <div class="filter-item card col-2 popover" data-season="fall summer" data-tag="tag-1 tag-2 tag-3 tag-4 tag-5 tag-6" >
+        <div class="filter-item card col-2 popover" data-season="fall summer" data-tag="tag-1 tag-2 tag-3 tag-4 tag-5 tag-6">
           <div class="card-image"><%= image_tag('poivrons.jpg', :class => "img-responsive") %></div>
           <div class="card-footer">
             <a class="btn btn-link" href="#cards">Bell Pepper <%= Community.model_name.human.capitalize %></a>
@@ -291,7 +297,7 @@
             Est altus nixus, cesaris.
           </div>
         </div>
-        <div class="filter-item card col-2 popover" data-season="summer spring" data-tag="tag-3 tag-4 tag-5 tag-6" >
+        <div class="filter-item card col-2 popover" data-season="summer spring" data-tag="tag-3 tag-4 tag-5 tag-6">
           <div class="card-image"><%= image_tag('oranges.jpg', :class => "img-responsive") %></div>
           <div class="card-footer">
             <a class="btn btn-link" href="#cards">Orange <%= Community.model_name.human.capitalize %></a>
@@ -312,7 +318,7 @@
             Primus bursas ducunt ad visus.
           </div>
         </div>
-        <div class="filter-item card col-2 popover" data-season="spring summer" data-tag="tag-1 tag-2 tag-5" >
+        <div class="filter-item card col-2 popover" data-season="spring summer" data-tag="tag-1 tag-2 tag-5">
           <div class="card-image"><%= image_tag('asparagus.jpg', :class => "img-responsive") %></div>
           <div class="card-footer">
             <a class="btn btn-link" href="#cards">Asparagus <%= Community.model_name.human.capitalize %></a>
@@ -355,7 +361,7 @@
           </div>
 
         </div>
-        <div class="filter-item card col-2 popover" data-season="fall summer" data-tag="tag-1 tag-2 tag-3 tag-4 tag-5 tag-6" >
+        <div class="filter-item card col-2 popover" data-season="fall summer" data-tag="tag-1 tag-2 tag-3 tag-4 tag-5 tag-6">
           <div class="card-image"><%= image_tag('poivrons.jpg', :class => "img-responsive") %></div>
           <div class="card-footer">
             <a class="btn btn-link" href="#cards">Bell Pepper <%= Community.model_name.human.capitalize %></a>
@@ -376,7 +382,7 @@
             Est altus nixus, cesaris.
           </div>
         </div>
-        <div class="filter-item card col-2 popover" data-season="summer spring" data-tag="tag-3 tag-4 tag-5 tag-6" >
+        <div class="filter-item card col-2 popover" data-season="summer spring" data-tag="tag-3 tag-4 tag-5 tag-6">
           <div class="card-image"><%= image_tag('oranges.jpg', :class => "img-responsive") %></div>
           <div class="card-footer">
             <a class="btn btn-link" href="#cards">Orange <%= Community.model_name.human.capitalize %></a>
