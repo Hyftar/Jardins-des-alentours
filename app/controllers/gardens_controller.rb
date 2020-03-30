@@ -1,7 +1,6 @@
 class GardensController < ApplicationController
   before_action :authenticate_user!, only: %i( edit update new create destroy own_gardens )
 
-  before_action :get_gardens, only: %i(  )
   before_action :get_garden, only: %i( show )
   before_action :is_owner, only: %i( destroy edit update )
   before_action :get_user_gardens, only: %i( own_gardens )
@@ -18,20 +17,50 @@ class GardensController < ApplicationController
   end
 
   def create
-    @location = Location.new(
-      house_number: garden_param["location_attributes"]["house_number"],
-      road: garden_param["location_attributes"]["road"],
-      additional_informations: garden_param["location_attributes"]["additional_informations"],
-      city: garden_param["location_attributes"]["city"],
-      province: garden_param["location_attributes"]["province"],
-      country: garden_param["location_attributes"]["country"],
-      postal_code: garden_param["location_attributes"]["postal_code"])
-    @garden = Garden.new(name: garden_param["name"], description: garden_param["description"], user: current_user, location: @location)
-    if @location.save && @garden.save
-      redirect_to action: "show", id: @garden
+    @search = [
+      garden_param["location_attributes"]["house_number"],
+      garden_param["location_attributes"]["road"],
+      garden_param["location_attributes"]["city"],
+      garden_param["location_attributes"]["province"],
+      garden_param["location_attributes"]["country"]
+    ].compact.join(", ")
+
+    @results = Geocoder.search(@search)
+    @locations = []
+    @results.each do|geo|
+      @location = Location.create(
+        house_number: geo.house_number,
+        road: geo.street,
+        neighbourhood: geo.data["address"]["neighbourhood"],
+        additional_informations: garden_param["location_attributes"]["additional_informations"],
+        region: geo.data["address"]["region"],
+        county: geo.data["address"]["county"],
+        city: geo.city,
+        province: geo.state,
+        country: geo.country,
+        country_code: geo.country_code,
+        postal_code: geo.postal_code,
+        latitude: geo.latitude,
+        longitude: geo.longitude
+      )
+      @locations << @location
+    end
+
+    respond_to do |format|
+      format.html{ render partial: "address_choice" }
+    end
+  end
+
+  def create_garden
+    @location = Location.find(params["location"]);
+    @garden = Garden.new(name: params["name"], description: params["description"], user: current_user, location: @location)
+    if @garden.save
+      data = {
+        :url => request.base_url + "/gardens/" + @garden.id.to_s
+      }
+      render :json => data
     else
       ActiveRecord::Rollback
-      render action: "new"
     end
   end
 

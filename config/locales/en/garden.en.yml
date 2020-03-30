@@ -43,3 +43,7 @@ en:
     contact_gardener: Contact the gardener about these produce
     market_price: at price of
     market_unit: per
+    address_research_results: Address search results
+    address_research_results_description: Based on your indications, please select the correct address. If the correct address hasn't been found, please press cancel and try another address or spelling
+    creation_error: Sorry, but there was an error in the creation of this garden. Please try again later.
+    cancel: Cancel

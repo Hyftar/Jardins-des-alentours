@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   get "geolocalise", to: "gardens#find_near_position"
   get "geolocalise_address", to: "gardens#find_near_address"
 
+  post "create_garden", to: "gardens#create_garden"
 
   resources :users, only: %i( show )
   get "mygardens", to: "gardens#own_gardens"

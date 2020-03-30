@@ -67,43 +67,99 @@ input[type='number']{
   margin-top: 1em;
 }
 
-// Modal style, implemented from w3schools
-// https://www.w3schools.com/howto/howto_css_modals.asp
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
+#modal-addresses{
   color: black;
-  text-decoration: none;
-  cursor: pointer;
+  p{
+    text-align: left;
+  }
+}
+
+.address-button{
+  background-color: #3b2918;
+  border: none;
+  color: white;
+  width: 80%;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.address-buttonLhover{
+  background-color: #22180e;
+  padding: 5px 10px;
+}
+
+.garden_creation {
+  padding: 10vh 20vw 30vh;
+  background-color: #08271f;
+  height: fit-content;
+  clip-path: polygon(0 3%, 0 95%, 100% 100%, 100% 0%);
+
+  .columns:first-of-type .column:first-of-type {
+    margin: 10vh;
+    text-align: left;
+    color: #2E2F30;
+  }
+
+  input {
+    width: 80%;
+    max-width: 500px;
+    margin-top: 5px;
+    text-align: center;
+    padding: 5px 10px;
+  }
+
+  textarea{
+    resize: none;
+    width: 80%;
+    max-width: 500px;
+    margin-top: 5px;
+    padding: 5px 10px;
+  }
+
+  .field {
+    margin-bottom: 1em;
+  }
+
+  input[type=submit]{
+    max-width: 250px;
+  }
+}
+
+.garden_modification {
+  padding: 10vh 20vw 30vh;
+  background-color: #270908;
+  height: fit-content;
+  clip-path: polygon(0 3%, 0 95%, 100% 100%, 100% 0%);
+
+  .columns:first-of-type .column:first-of-type {
+    margin: 10vh;
+    text-align: left;
+    color: #2E2F30;
+  }
+
+  input {
+    width: 80%;
+    max-width: 500px;
+    margin-top: 5px;
+    text-align: center;
+    padding: 5px 10px;
+  }
+
+  textarea{
+    resize: none;
+    width: 80%;
+    max-width: 500px;
+    margin-top: 5px;
+    padding: 5px 10px;
+  }
+
+  .field {
+    margin-bottom: 1em;
+  }
+
+  input[type=submit]{
+    max-width: 250px;
+  }
 }

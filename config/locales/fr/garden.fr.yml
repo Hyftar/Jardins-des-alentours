@@ -43,3 +43,7 @@ fr:
     contact_gardener: Communiquez avec le jardinier à propos des variétés offertes
     market_price: au prix de
     market_unit: par
+    address_research_results: Résultats de la recherche d'adresse
+    address_research_results_description: Selon les informations soumises, veuillez choisir l'addresse correspondante. Si aucune d'elles n'est adéquate, veuillez appuyer sur annuler et essayez une autre ortographe ou une autre adresse.
+    creation_error: Désolé, mais une erreur est survenue lors de la création du jardin. Veuillez recommencer plus tard.
+    cancel: Annuler

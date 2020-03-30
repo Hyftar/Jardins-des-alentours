@@ -1,5 +1,39 @@
 $(document).on('turbolinks:load', () => {
 
+  $(document).ajaxStart(function(){
+    // Show loading
+    document.getElementById("modal-loading").classList.add('active')
+  });
+
+  $(document).ajaxComplete(function(){
+    // Hide loading
+    document.getElementById("modal-loading").classList.remove('active')
+  });
+
+  $('[data-new-locations]').on("ajax:success", function(event){
+    document.getElementById('addresses-content').innerHTML = new XMLSerializer().serializeToString(event.detail[0]);
+    document.getElementById("modal-addresses").classList.add('active')
+    $(".address-button").click(function() {
+      var button = $(this).val();
+      save_garden(button);
+    })
+  })
+
+  function save_garden(location) {
+    name = document.getElementById("garden_name").value;
+    description = document.getElementById("garden_description").value;
+    $.ajax({
+      url: "/create_garden",
+      dataType: "json",
+      data: { name: name, description: description, location: location },
+      method: 'POST',
+      success: (data) => {
+        document.getElementById("modal-addresses").classList.remove('active')
+        window.location.replace(data.url)
+      }
+    })
+  }
+
   function findMeDistance() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success, failure);
@@ -129,35 +163,13 @@ $(document).on('turbolinks:load', () => {
       accessToken: 'pk.eyJ1Ijoia2V2ZW44MSIsImEiOiJjazdyNDQ3YXQwYTZzM2twNHJ2M2kxdXFtIn0.Vl_ZHudjkrDMIstvKBn53w'
     }).addTo(gardens_page_map);
   }
-  // Modal script, implemented from w3schools
-  // https://www.w3schools.com/howto/howto_css_modals.asp
 
-  // Get the modal
-  var modal = document.getElementById("myModal");
+  // Close the modal
+  $("#close-modal-addresses").click(function() {
+    let modal = document.getElementById("modal-addresses");
+    modal.classList.remove('active');
+  })
 
-  // Get the button that opens the modal
-  var btn = document.getElementById("myBtn");
-
-  // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName("close")[0];
-
-  // When the user clicks on the button, open the modal
-  btn.onclick = function() {
-    modal.style.display = "block";
-    modal.style.zIndex = "1000";
-  }
-
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
-    modal.style.display = "none";
-  }
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
 })
 
 
