@@ -47,3 +47,10 @@ en:
     address_research_results_description: Based on your indications, please select the correct address. If the correct address hasn't been found, please press cancel and try another address or spelling
     creation_error: Sorry, but there was an error in the creation of this garden. Please try again later.
     cancel: Cancel
+    placeholder_unit: Please enter an unit type
+    go_back: Return to the garden
+    set_price: Price per unit. Optional
+    add_variety_to: Add this variety to
+    be_notified: "Be informed of a change in availability of:"
+    enter_email: Enter an email address here
+    for_garden: "for garden:"

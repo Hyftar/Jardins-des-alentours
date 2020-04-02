@@ -85,11 +85,14 @@
       <% if count_markets != 0 %>
         <h2 class="spacer-garden"><%= t('garden.offered_market') %></h2>
         <% if current_user != @garden.user %>
-          <p><%= link_to t('garden.contact_gardener'), garden_write_email_path(@garden.id) %></p>
+          <div class="contact-gardener">
+            <%= link_to t('garden.contact_gardener'), garden_write_email_path(@garden.id) %>
+          </div>
         <% end %>
         <% @garden.markets.each do |market|%>
           <% if market.is_active && market.garden_variety.is_active %>
-            <%= market.garden_variety.variety.name %> : <%= market.quantity %> <%= market.unit %>
+            <div class="market-item">
+              <span><%= market.garden_variety.variety.name %> : <%= market.quantity %> <%= market.unit %></span>
               <% unless market.price.nil?%>
                 <%= t('garden.market_price') %> <%= market.price %> <%= t('garden.market_unit') %> <%= market.unit %>
               <% end %>
@@ -103,8 +106,7 @@
               <% elsif !user_signed_in? || !market.id.in?(@market_notifications) %>
                 <%= link_to t('garden.new_market_notififaction'), new_garden_market_market_notification_path(@garden, market) %>
               <% end %>
-              <% %>
-            <br>
+            </div>
           <% end %>
         <% end %>
       <% end %>

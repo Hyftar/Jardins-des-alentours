@@ -3,7 +3,7 @@ class MarketsController < ApplicationController
   before_action :is_owner_new_market, only: %i( new create )
 
   def new
-    @garden_variety = GardenVariety.find_by!(id: params[:id], is_active: true)
+    @garden_variety = GardenVariety.joins(:variety).find_by!(id: params[:id], is_active: true)
     @market = Market.new
   end
 

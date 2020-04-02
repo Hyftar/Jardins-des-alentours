@@ -3,13 +3,13 @@
   <%= form_with model: @garden do |f| %>
     <div class="field">
       <%= f.label :name %><br>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, :required => 'required' %>
     </div>
     <div class="field">
       <%= f.label :description %><br>
-      <%= f.text_area :description %>
+      <%= f.text_area :description, :required => 'required' %>
     </div>
-      <%= f.fields_for :location do |l| %>
+<!--      <%= f.fields_for :location do |l| %>
       <div class="field">
         <%= l.label :house_number %><br>
         <%= l.text_field :house_number %>
@@ -39,7 +39,7 @@
         <%= l.text_field :postal_code %>
       </div>
     <% end %>
-
+-->
     <div class="actions">
       <%= f.submit t('garden.submits.edit_garden'), :class => "btn btn-success" %>
     </div>

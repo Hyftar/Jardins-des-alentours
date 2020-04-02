@@ -47,3 +47,10 @@ fr:
     address_research_results_description: Selon les informations soumises, veuillez choisir l'addresse correspondante. Si aucune d'elles n'est adéquate, veuillez appuyer sur annuler et essayez une autre ortographe ou une autre adresse.
     creation_error: Désolé, mais une erreur est survenue lors de la création du jardin. Veuillez recommencer plus tard.
     cancel: Annuler
+    placeholder_unit: Veuillez entrer un type d'unité
+    go_back: Retourner au jardin
+    set_price: Prix par unité. Optionnel
+    add_variety_to: Ajouter cette variété au jardin
+    be_notified: "Soyez informé d'un changement de disponibilité de :"
+    enter_email: Entrez une adresse courriel ici
+    for_garden: "pour le jardin :"
