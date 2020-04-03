@@ -13,22 +13,25 @@
         <% else %>
           <tr>
             <th><%= t('garden.garden_name') %></th>
-            <th colspan="3"><%= t('garden.garden_options') %></th>
+            <th><%= t('garden.garden_options') %></th>
           </tr>
           <% @gardensUser.each do |garden| %>
             <tr class="own_garden-row">
-              <td><%= garden.name %></td>
+              <td class="own_gardens-name"><%= garden.name %></td>
               <td class="table-options">
-                <%= link_to t('garden.details_garden'), garden_path(garden) %>
-                <br>
-                <%= link_to t('garden.edit_garden'), edit_garden_path(garden) %>
-                <br>
-                <%= link_to t('garden.delete_garden'), garden_path(garden), method: :delete, data: {confirm: t('confirm_before_delete')}%>
+                <div class="btn-group btn-group-block">
+                  <%= link_to t('garden.details_garden'), garden_path(garden), class: "btn btn-success" %>
+                  <%= link_to t('garden.edit_garden'), edit_garden_path(garden), class: "btn btn-success" %>
+                  <%= link_to t('garden.delete_garden'), garden_path(garden), method: :delete, data: {confirm: t('confirm_before_delete')}, class: "btn btn-error"%>
+                </div>
               </td>
             </tr>
           <% end %>
         <% end %>
       </table>
-      <%= link_to t('garden.add_new'), new_garden_path(), class:"btn btn-primary" %>
+      <div class="direct-back">
+        <%= link_to t('garden.add_new'), new_garden_path(), class:"btn btn-primary" %><br>
+        <%= link_to t('garden.search_page'), gardens_path(), class:"btn em_top" %>
+      </div>
     </div>
   </div>

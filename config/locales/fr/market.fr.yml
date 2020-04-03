@@ -6,5 +6,6 @@ fr:
     market_email_form_notes: "Message au jardinier"
     market_email_form_choices: "Veuillez indiquer les produits qui vous intéressent"
     market_email_form_submit: "Envoyer le courriel"
-    market_email_form_email: "Veuillez entrer l'addresse courriel à laquelle vous désirez être contacté."
+    market_email_form_email: "Veuillez entrer l'addresse courriel à laquelle vous désirez être contacté:"
     market_email_form_available: "disponible"
+    market_remove: "Enlever"

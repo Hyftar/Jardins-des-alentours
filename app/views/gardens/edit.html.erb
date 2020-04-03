@@ -44,4 +44,7 @@
       <%= f.submit t('garden.submits.edit_garden'), :class => "btn btn-success" %>
     </div>
   <% end %>
+  <div class="direct-back">
+    <%= link_to t('garden.go_back'), garden_path(@garden), class: "btn" %>
+  </div>
 </div>

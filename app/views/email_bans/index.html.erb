@@ -1,0 +1,38 @@
+<div class="container email_bans_index">
+  <h2><%= t('email_bans.title_index') %></h2>
+  <div class="email_bans_index_content">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= t('email_bans.table_email') %></th>
+          <th><%= t('email_bans.table_date') %></th>
+          <th><%= t('email_bans.table_actions') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @email_bans.empty? %>
+          <tr>
+            <td colspan = "3"><%= t('email_bans.table_no_result') %></td>
+          </tr>
+        <% else %>
+          <% @email_bans.each do |email_ban|%>
+            <tr>
+              <td><%= email_ban.email %></td>
+              <td><%= email_ban.banned_until %></td>
+              <td>
+                <div class="btn-group btn-group-block">
+                  <%= link_to t('email_bans.detail'), email_ban_path(email_ban), class: "btn btn-success" %>
+                  <%= link_to t('email_bans.update'), edit_email_ban_path(email_ban), class: "btn btn-success" %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @email_bans %>
+    <div class="direct-back">
+      <%= link_to t('email_bans.create_email_ban'), new_email_ban_path(), class: "btn btn-success" %>
+    </div>
+  </div>
+</div>

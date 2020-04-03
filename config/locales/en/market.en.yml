@@ -6,6 +6,6 @@ en:
     market_email_form_notes: "Message to the gardener"
     market_email_form_choices: "Please select produce you're interested in."
     market_email_form_submit: "Send email"
-    market_email_form_email: "Please enter the email address you wish to be contacted on."
+    market_email_form_email: "Please enter the email address you wish to be contacted on:"
     market_email_form_available: "available"
-
+    market_remove: "Remove"

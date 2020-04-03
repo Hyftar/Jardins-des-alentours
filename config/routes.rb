@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :email_bans, only: %i( index show new edit update)
+
+  post "/email_bans/create", to: "email_bans#create"
+
   resources :communities, only: %i( index show ) do
     resources :questions, only: %i( index show new create update destroy ) do
       post "vote_up", to: "questions#vote_up"

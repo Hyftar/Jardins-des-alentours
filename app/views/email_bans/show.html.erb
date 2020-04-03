@@ -1,0 +1,25 @@
+<div class="container email_ban_show">
+  <h2><%= t('email_bans.title_show') %></h2>
+  <div>
+    <%= t('email_bans.for_email')%><br>
+    <%= @email_ban.email%>
+  </div>
+  <div>
+    <%= t('email_bans.created_on')%><br>
+    <%= @email_ban.created_at%><br>
+  </div>
+  <div>
+    <%= t('email_bans.banned_until')%><br>
+    <%= @email_ban.banned_until%><br>
+  </div>
+  <div>
+    <textarea readonly><%= @email_ban.reason%></textarea><br>
+  </div>
+  <div>
+    <%= t('email_bans.last_updated_by')%><br>
+    <%= @email_ban.user.first_name %> <%= @email_ban.user.last_name %>
+  </div>
+  <div class="direct-back">
+    <%= link_to t('email_bans.return_index'), email_bans_path(), class: "btn" %>
+  </div>
+</div>

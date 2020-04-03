@@ -1,0 +1,19 @@
+fr:
+  email_bans:
+    title_show: Adresse courriel bannie
+    title_index: Gestion des adresses courriel bannies
+    table_email: Adresse courriel
+    table_date: Banni jusqu'à
+    table_actions: Actions
+    table_no_result: Aucun courriel trouvé. Tout se passe parfaitement!
+    create_email_ban: Ajouter une nouvelle adresse bannie
+    for_email: pour l'adresse
+    created_on: ajouté le
+    banned_until: bannie jusqu'au
+    last_updated_by: par l'administrateur(ice)
+    return_index: Retourner à la liste
+    create: Ajouter une nouvelle adresse bannie
+    submit_create: Ajouter
+    detail: Détails
+    update: Modifier
+    update_ban: Modifier l'adresse banie
