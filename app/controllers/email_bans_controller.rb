@@ -1,9 +1,11 @@
 class EmailBansController < ApplicationController
 
+  # Email bans are verified before sending emails
   def show
     @email_ban = EmailBan.includes(:user).find(params[:id])
   end
 
+  # A maximum of 30 items are shown per page
   def index
     @email_bans = EmailBan.order(created_at: :desc).paginate(page: params[:page], per_page: 30)
   end

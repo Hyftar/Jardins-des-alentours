@@ -57,6 +57,7 @@ class MarketsController < ApplicationController
     render action: "write_email"
   end
 
+  # The email is sent, using the information submited
   def send_email
     @garden = Garden.includes(:location, garden_varieties: [:markets, :variety]).find(params[:garden_id])
     @list_checkbox = []

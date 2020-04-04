@@ -31,6 +31,7 @@ class MarketNotificationsController < ApplicationController
     redirect_to garden_path(@garden)
   end
 
+  # Flips the status from active to paused, or vice-versa
   def status
     @market = Market.find_by!(id: params["market_id"])
     @garden = Garden.find_by!(id: params["garden_id"])

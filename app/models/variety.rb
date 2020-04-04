@@ -8,6 +8,7 @@ class Variety < ApplicationRecord
   has_many :gardens, through: :garden_varieties
 
   private
+    # Get varieties not presently in the garden
     def self.find_varieties_unused_in_garden(garden_id)
       query_string = <<-EOF
       SELECT * FROM varieties WHERE varieties.id
