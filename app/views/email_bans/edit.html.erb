@@ -7,7 +7,7 @@
     </div>
     <div class="field">
       <%= f.label :banned_until %><br>
-      <%= f.datetime_field :banned_until, min: Date.today, :required => 'required' %>
+      <%= f.datetime_field :banned_until, :required => 'required', placeholder: "yyyy-mm-dd --:-- --" %>
     </div>
     <div class="field">
       <%= f.label :reason %><br>

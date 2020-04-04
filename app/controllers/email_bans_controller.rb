@@ -12,13 +12,12 @@ class EmailBansController < ApplicationController
   end
 
   def create
-    EmailBan.create(
-      email: email_ban_param['email'],
-      banned_until: email_ban_param['banned_until'],
-      reason: email_ban_param['reason'],
-      user: current_user
-    )
-    redirect_to email_bans_path()
+    if EmailBan.create!(email: email_ban_param['email'], banned_until: email_ban_param['banned_until'],
+      reason: email_ban_param['reason'], user: current_user)
+      redirect_to email_bans_path()
+    else
+      render action: "new"
+    end
   end
 
   def edit
