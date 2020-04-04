@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load', () => {
 
+  // Display of an loading screen when waiting for ajax
   $(document).ajaxStart(function(){
     // Show loading
     document.getElementById("modal-loading").classList.add('active')
@@ -10,9 +11,12 @@ $(document).on('turbolinks:load', () => {
     document.getElementById("modal-loading").classList.remove('active')
   });
 
+  // Submit the new garden address
   $('[data-new-locations]').on("ajax:success", function(event){
+    // The locations are sent to the user
     document.getElementById('addresses-content').innerHTML = new XMLSerializer().serializeToString(event.detail[0]);
     document.getElementById("modal-addresses").classList.add('active')
+    // On click, the location and the garden informations are sent
     $(".address-button").click(function() {
       var button = $(this).val();
       save_garden(button);
@@ -34,6 +38,7 @@ $(document).on('turbolinks:load', () => {
     })
   }
 
+  // Send an ajax request and shows on the map the available gardens, based on the visitor's localisation
   function findMeDistance() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success, failure);
@@ -52,10 +57,12 @@ $(document).on('turbolinks:load', () => {
         data: { latitude: latitude, longitude: longitude, distance: distance, markets: markets },
         method: 'GET',
         success: (data) => {
+          // Previous results are removed
           garden_markers.clearLayers()
           gardens_page_map.setView([latitude,longitude], 12)
           const gardens = data.garden
           if (gardens.length > 0){
+            // For each garden, create a marker and bind it in a layer
             gardens.forEach(obj =>{
               const marker = L.marker([obj.latitude, obj.longitude]).addTo(garden_markers);
 
@@ -77,6 +84,7 @@ $(document).on('turbolinks:load', () => {
 
               marker.bindPopup(contener)
            })
+           // Add layer of gardens to the map
             gardens_page_map.addLayer(garden_markers)
           }
           else {
@@ -100,6 +108,7 @@ $(document).on('turbolinks:load', () => {
     search_button_garden.addEventListener("click", findAddressDistance)
   }
 
+  // Send an ajax request and shows on the map the available gardens, based on the address entered
   function findAddressDistance(){
     const address = document.getElementById("search-address").value
     const distance = document.getElementById("distance").value
@@ -150,6 +159,7 @@ $(document).on('turbolinks:load', () => {
     }
   }
 
+  // Map creation
   let garden_markers = new L.FeatureGroup();
   let gardens_page_map
   if (document.getElementById('map_garden')){

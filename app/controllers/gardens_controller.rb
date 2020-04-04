@@ -17,6 +17,7 @@ class GardensController < ApplicationController
   end
 
   def create
+    # Search array for Geocoder
     @search = [
       garden_param["location_attributes"]["house_number"],
       garden_param["location_attributes"]["road"],
@@ -25,6 +26,7 @@ class GardensController < ApplicationController
       garden_param["location_attributes"]["country"]
     ].compact.join(", ")
 
+    # All Geocoder results are saved in locations. They are then sent back to the user by ajax
     @results = Geocoder.search(@search)
     @locations = []
     @results.each do|geo|
@@ -51,6 +53,7 @@ class GardensController < ApplicationController
     end
   end
 
+  # The garden is created using the selected location
   def create_garden
     @location = Location.find(params["location"]);
     @garden = Garden.new(name: params["name"], description: params["description"], user: current_user, location: @location)
@@ -86,9 +89,11 @@ class GardensController < ApplicationController
   def index_own
   end
 
+  # Find gardens near the visitor submitted address
   def find_near_address
     @address = Geocoder.search(params["address"])
     unless @address.empty?
+        # If the market checkbox is checked, will return only gardens that offer products for sale
         if params["markets"] == "true"
           @gardens = Location.near(@address.first.coordinates,params["distance"],
           units: :km, select: "gardens.*, locations.*, gardens.id AS garden_id").
@@ -104,6 +109,7 @@ class GardensController < ApplicationController
     end
   end
 
+  # Find gardens near the visitor submitted position, using HTML5 Geolocation
   def find_near_position
     if params["markets"] == "true"
       @gardens = Location.near([params["latitude"], params["longitude"]],

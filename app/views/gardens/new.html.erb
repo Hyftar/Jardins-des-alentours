@@ -9,7 +9,6 @@
       <%= f.label :description %><br>
       <%= f.text_area :description, :required => 'required', :rows => 5 %>
     </div>
-
     <%= f.fields_for :location do |l| %>
       <div class="field">
         <%= l.label :house_number %><br>
@@ -48,7 +47,7 @@
     <%= link_to t('garden.go_back_index'), mygardens_path(current_user), class: "btn em_top" %>
   </div>
 </div>
-
+  <!-- Modal for location selection -->
   <div class="modal" id="modal-addresses">
     <div class="modal-container">
       <div class="modal-header">
