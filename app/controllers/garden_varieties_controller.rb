@@ -4,11 +4,10 @@ class GardenVarietiesController < ApplicationController
   def new
     @garden = Garden.find_by!(user: current_user, id: params[:garden_id])
     @garden_varieties = GardenVariety.where(garden_id: @garden.id)
+  # Get varieties not in garden_varieties for this garden (from the variety model)
     @varieties = Variety.find_varieties_unused_in_garden(@garden.id)
     @garden_variety = GardenVariety.new
   end
-
-  # how to get varieties not in garden_varieties for this garden
 
   def create
     @variety = Variety.find_by!(id: market_param["variety"])
@@ -21,6 +20,7 @@ class GardenVarietiesController < ApplicationController
     end
   end
 
+  # Flips the active status of the garden_variety
   def set_active
     @garden_variety.is_active = !@garden_variety.is_active
     @garden_variety.save

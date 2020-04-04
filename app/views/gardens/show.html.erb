@@ -1,75 +1,119 @@
-<div>
-  Jardin <%= @garden.name %> de <%= @garden.user.first_name %> <%= @garden.user.last_name %>
-  <br>
-  Description : <%= @garden.description %>
-  <br>
-  <p>
-  <h2>Variétés cultivées :</h2>
-  <% @garden.garden_varieties.each do |garden_variety|%>
-    <% if garden_variety.is_active %>
-      <%= garden_variety.variety.name %>
-      <% if current_user == @garden.user %>
-        <%= link_to 'Remove from garden', garden_garden_variety_set_active_path(@garden, garden_variety.id), data: {confirm: t('garden_variety_confirm_before_inactive')}%>
-        <% if garden_variety.markets.present? %>
-          <% if garden_variety.markets.first.is_active?%>
-            <%= link_to 'Edit market', edit_garden_market_path(@garden, garden_variety.markets.first) %>
-            <%= link_to 'Remove market', garden_market_set_active_path(@garden, garden_variety.markets.first), data: {confirm: t('confirm_before_delete')}%>
-          <% else %>
-            <%= link_to 'Reactivate market', edit_garden_market_path(@garden, garden_variety.markets.first) %>
-          <% end %>
-        <% else %>
-          <%= link_to 'New', garden_market_new_path(@garden.id, garden_variety.id) %>
+<div class="container garden_details">
+  <div>
+    <div>
+      <h1><%= @garden.name %></h1>
+      <h2><%= t('garden.garden_of') %> <%= @garden.user.first_name %> <%= @garden.user.last_name %></h2>
+      <p><%= t('garden.description') %> : <%= @garden.description %></p>
+      <%= link_to t('garden.modify_informations'), edit_garden_path(@garden), class: "btn btn-success" %>
+      <address class="em_top">
+        <h2><%= t('garden.located_at') %></h2>
+        <%= @garden.location.house_number %>, <%= @garden.location.road %><br>
+        <% if !@garden.location.additional_informations.nil? && !@garden.location.additional_informations.empty? %>
+          <%= @garden.location.additional_informations %><br>
         <% end %>
-      <% end %> <br>
-    <% end %>
-  <% end %>
-  <h2>Variétés préalablement cultivées :</h2>
-  <% @garden.garden_varieties.each do |garden_variety|%>
-    <% if !garden_variety.is_active %>
-      <%= garden_variety.variety.name %>
-      <% if current_user == @garden.user %>
-        <%= link_to 'Add to garden', garden_garden_variety_set_active_path(@garden, garden_variety.id)%>
-      <% end %> <br>
-    <% end %>
-  <% end %>
-  </p>
-  <% if current_user == @garden.user %>
-    <%= link_to 'Add a new garden variety', new_garden_garden_variety_path(@garden.id) %>
-  <% end %>
-  <p>
-    <h2>Sur le marché :</h2>
-    <% if current_user != @garden.user %>
-      <p><%= link_to 'Contact the gardener about those produce', garden_write_email_path(@garden.id) %></p>
-    <% end %>
-    <% @garden.markets.each do |market|%>
-      <% if market.is_active && market.garden_variety.is_active %>
-        <%= market.garden_variety.variety.name %> : <%= market.quantity %> <%= market.unit %>
-          <% unless market.price.nil?%>
-            at price of <%= market.price %> per <%= market.unit %>
+        <%= @garden.location.city %>, <%= @garden.location.province %>
+        <%= @garden.location.country %>, <%= @garden.location.postal_code %>
+      </address>
+    </div>
+    <% if !@garden.garden_varieties.nil? && !@garden.garden_varieties.empty? %>
+      <div class="spacer-garden">
+        <h2><%= t('garden.cultivar') %> :</h2>
+        <table class="table-gardens">
+          <tr>
+            <th colspan="2"><%= t('garden.variety') %></th>
+            <th><%= t('garden.on_market') %></th>
+          </tr>
+          <% @garden.garden_varieties.each do |garden_variety|%>
+            <tr class="garden-row">
+              <% if garden_variety.is_active %>
+                <td><%= garden_variety.variety.name %></td>
+                <% if current_user == @garden.user %>
+                  <td><%= link_to t('garden.remove_variety_garden'), garden_garden_variety_set_active_path(@garden, garden_variety.id), data: {confirm: t('garden_variety_confirm_before_inactive')}, class: "btn btn-error"%></td>
+                  <% if garden_variety.markets.present? %>
+                    <% if garden_variety.markets.first.is_active?%>
+                      <td>
+                        <%= link_to t('garden.edit_market'), edit_garden_market_path(@garden, garden_variety.markets.first), class: "btn btn-success" %>
+                        <%= link_to t('garden.remove_market'), garden_market_set_active_path(@garden, garden_variety.markets.first), data: {confirm: t('confirm_before_delete')}, class: "btn btn-error"%>
+                      </td>
+                    <% else %>
+                      <td><%= link_to t('garden.reactivate_market'), edit_garden_market_path(@garden, garden_variety.markets.first), class: "btn btn-success" %></td>
+                    <% end %>
+                  <% else %>
+                    <td><%= link_to t('garden.new_market'), garden_market_new_path(@garden.id, garden_variety.id), class: "btn btn-success" %></td>
+                  <% end %>
+                <% elsif garden_variety.markets.present? %>
+                  <td></td>
+                  <td><%= t('garden.available_market') %></td>
+                <% else %>
+                  <td></td>
+                  <td><%= t('garden.not_available_market') %></td>
+                <% end %>
+              <% end %>
+            </tr>
           <% end %>
-          <% if current_user == @garden.user %>
-            <%= link_to 'Edit', edit_garden_market_path(@garden, market) %>
-            <%= link_to 'Remove', garden_market_set_active_path(@garden, market), data: {confirm: t('confirm_before_delete')}%>
-          <% elsif user_signed_in? && [market.id, "paused"].in?(@market_notifications) %>
-            <%= link_to t('garden.activate_market_notification'), garden_market_market_notification_status_path(@garden, market) %>
-          <% elsif user_signed_in? && [market.id, "active"].in?(@market_notifications) %>
-            <%= link_to t('garden.pause_market_notification'), garden_market_market_notification_status_path(@garden, market) %>
-          <% elsif !user_signed_in? || !market.id.in?(@market_notifications) %>
-            <%= link_to t('garden.new_market_notififaction'), new_garden_market_market_notification_path(@garden, market) %>
-          <% end %>
-          <% %>
-        <br>
+        </table>
+      </div>
+    <% end %>
+    <div>
+      <% count_varieties = 0 %>
+      <% @garden.garden_varieties.each do |garden_variety|%>
+        <% if !garden_variety.is_active %>
+          <% count_varieties += 1 %>
+        <% end %>
       <% end %>
-    <% end %>
-  </p>
-  <p>
-  <h2>Coordonnées</h2>
-    <div><%= @garden.location.house_number %></div>
-    <div><%= @garden.location.road %></div>
-    <div><%= @garden.location.additional_informations %></div>
-    <div><%= @garden.location.city %></div>
-    <div><%= @garden.location.province %></div>
-    <div><%= @garden.location.country %></div>
-    <div><%= @garden.location.postal_code %></div>
-  </p>
+      <% if count_varieties != 0 %>
+        <h2 class="spacer-garden"><%= t('garden.previous_variety') %></h2>
+        <% @garden.garden_varieties.each do |garden_variety|%>
+          <% if !garden_variety.is_active %>
+            <%= garden_variety.variety.name %> :
+            <% if current_user == @garden.user %>
+              <%= link_to t('garden.add_back_variety'), garden_garden_variety_set_active_path(@garden, garden_variety.id), class: "btn btn-success"%>
+            <% end %> <br>
+          <% end %>
+        <% end %>
+      <% end %>
+      <% if current_user == @garden.user %>
+        <%= link_to t('garden.new_variety'), new_garden_garden_variety_path(@garden.id), class:"btn btn-success spacer-garden " %>
+      <% end %>
+    </div>
+    <div>
+      <% count_markets = 0 %>
+      <% @garden.markets.each do |market|%>
+        <% if market.is_active && market.garden_variety.is_active %>
+          <% count_markets += 1 %>
+        <% end %>
+      <% end %>
+      <% if count_markets != 0 %>
+        <h2 class="spacer-garden"><%= t('garden.offered_market') %></h2>
+        <% if current_user != @garden.user %>
+          <div class="contact-gardener">
+            <%= link_to t('garden.contact_gardener'), garden_write_email_path(@garden.id), class: "btn btn-success" %>
+          </div>
+        <% end %>
+        <% @garden.markets.each do |market|%>
+          <% if market.is_active && market.garden_variety.is_active %>
+            <div class="market-item">
+              <span><%= market.garden_variety.variety.name %> : <%= market.quantity %> <%= market.unit %></span>
+              <% unless market.price.nil?%>
+                <%= t('garden.market_price') %> <%= market.price %> <%= t('garden.market_unit') %> <%= market.unit %>
+              <% end %>
+              <% if current_user == @garden.user %>
+                <%= link_to t('garden.edit_market'), edit_garden_market_path(@garden, market), class: "btn btn-success"%>
+                <%= link_to t('market.market_remove'), garden_market_set_active_path(@garden, market), data: {confirm: t('confirm_before_delete')}, class: "btn btn-error"%>
+              <% elsif user_signed_in? && [market.id, "paused"].in?(@market_notifications) %>
+                <%= link_to t('garden.activate_market_notification'), garden_market_market_notification_status_path(@garden, market), class: "btn btn-success" %>
+              <% elsif user_signed_in? && [market.id, "active"].in?(@market_notifications) %>
+                <%= link_to t('garden.pause_market_notification'), garden_market_market_notification_status_path(@garden, market), class: "btn btn-error" %>
+              <% elsif !user_signed_in? || !market.id.in?(@market_notifications) %>
+                <%= link_to t('garden.new_market_notififaction'), new_garden_market_market_notification_path(@garden, market), class: "btn btn-success" %>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="direct-back">
+    <%= link_to t('garden.go_back_index'), mygardens_path(current_user), class: "btn em_top" %>
+  </div>
 </div>

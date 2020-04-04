@@ -13,9 +13,14 @@ class Location < ApplicationRecord
     },
     allow_nil: true
 
+
+  has_one :garden
+
+  # Search on geocoder with an address
   geocoded_by :address_join do |obj, results|
     # sleep to reduce number of calls to api to 1 per second
     sleep(1)
+    # get informations from the Geocoder results
     if geo = results.first
       obj.latitude = geo.latitude
       obj.longitude = geo.longitude
@@ -33,10 +38,12 @@ class Location < ApplicationRecord
     end
   end
 
+  # Create the Geocoder search string
   def address_join
     @test = [house_number, road, city, province, country].compact.join(", ")
   end
 
+  # Search on geocoder with coordinates
   reverse_geocoded_by :latitude, :longitude do |obj, results|
     # sleep to reduce number of calls to api to 1 per second
     sleep(1)
@@ -55,11 +62,13 @@ class Location < ApplicationRecord
     end
   end
 
+  # If information is changed about latitude and longitude, search for updated address
   after_validation :reverse_geocode, if: ->(obj) {
     (obj.latitude.present? && obj.latitude_changed?)||
     (obj.longitude.present? && obj.longitude_changed?)
   }
 
+  # If information is changed about an address, search for updated coordinates
   after_validation :geocode, if: ->(obj) {
     (obj.house_number.present? && obj.house_number_changed?)||
     (obj.road.present? && obj.road_changed?)||

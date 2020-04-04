@@ -1,0 +1,37 @@
+  <div class="container own_gardens">
+    <div class="columns">
+      <div class="column col-8">
+        <h2><%= t('garden.own_gardens') %></h2>
+      </div>
+    </div>
+    <div class="table-gardens">
+      <table style="width:100%">
+        <%if @gardensUser.empty? %>
+          <tr class="own_garden-row">
+            <td><%= t('garden.no_own_garden') %></td>
+          </tr>
+        <% else %>
+          <tr>
+            <th><%= t('garden.garden_name') %></th>
+            <th><%= t('garden.garden_options') %></th>
+          </tr>
+          <% @gardensUser.each do |garden| %>
+            <tr class="own_garden-row">
+              <td class="own_gardens-name"><%= garden.name %></td>
+              <td class="table-options">
+                <div class="btn-group btn-group-block">
+                  <%= link_to t('garden.details_garden'), garden_path(garden), class: "btn btn-success" %>
+                  <%= link_to t('garden.edit_garden'), edit_garden_path(garden), class: "btn btn-success" %>
+                  <%= link_to t('garden.delete_garden'), garden_path(garden), method: :delete, data: {confirm: t('confirm_before_delete')}, class: "btn btn-error"%>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+      <div class="direct-back">
+        <%= link_to t('garden.add_new'), new_garden_path(), class:"btn btn-primary" %><br>
+        <%= link_to t('garden.search_page'), gardens_path(), class:"btn em_top" %>
+      </div>
+    </div>
+  </div>

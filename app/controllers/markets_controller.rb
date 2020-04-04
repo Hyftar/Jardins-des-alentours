@@ -3,13 +3,13 @@ class MarketsController < ApplicationController
   before_action :is_owner_new_market, only: %i( new create )
 
   def new
-    @garden_variety = GardenVariety.find_by!(id: params[:id], is_active: true)
+    @garden_variety = GardenVariety.joins(:variety).find_by!(id: params[:id], is_active: true)
     @market = Market.new
   end
 
   def create
     @garden_variety = GardenVariety.find_by!(id: market_param["garden_variety"], is_active: true)
-    if Market.create(quantity: market_param["quantity"], unit: market_param["unit"], garden_variety: @garden_variety, price: params["price"])
+    if Market.create(quantity: market_param["quantity"], unit: market_param["unit"], garden_variety: @garden_variety, price: market_param["price"])
       redirect_to garden_path(@garden_variety.garden)
     else
       render action: "new"
@@ -57,6 +57,7 @@ class MarketsController < ApplicationController
     render action: "write_email"
   end
 
+  # The email is sent, using the information submited
   def send_email
     @garden = Garden.includes(:location, garden_varieties: [:markets, :variety]).find(params[:garden_id])
     @list_checkbox = []

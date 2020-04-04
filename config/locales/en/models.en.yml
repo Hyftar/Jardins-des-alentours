@@ -75,6 +75,13 @@ en:
       location:
         latitude: Latitude
         longitude: Longitude
+        house_number: House number
+        road: Road
+        additional_informations: Additional informations
+        city: City
+        province: Province or state
+        country: Country
+        postal_code: Postal code or zip code
 
       market:
         garden_variety: Variety

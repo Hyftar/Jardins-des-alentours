@@ -298,6 +298,63 @@ html {
   display: none !important;
 }
 
+.search-bar {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.search-location {
+  width: 30%;
+  margin: 0 auto;
+  min-width: 180px;
+}
+
+.search-address input {
+  width: 80%
+}
+
+.search-address {
+  width: 70%;
+  min-width: 300px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+}
+
+.search-address input {
+  padding: 2px;
+}
+
+.map-contener {
+  margin-top: 1em;
+}
+
+#mapid,
+#map_garden {
+  height: 300px;
+}
+
+.buttonPopUp {
+  padding-top: 10px;
+	box-shadow:inset 0px 1px 3px 0px #91b8b3;
+	background-color:#768d87;
+	border-radius:5px;
+	border:1px solid #4e7a6c;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 10px;
+	text-decoration:none;
+  text-shadow:0px -1px 0px #2b665e;
+}
+
+.buttonPopUp:hover {
+	background-color:#6c7c7c;
+}
+
 @media screen and (max-width: 1080px) {
   #app_icon {
     display: block;
@@ -331,4 +388,10 @@ html {
   .fa-bars {
     display: block !important;
   }
+
+}
+
+@media screen and (max-width: 800px) {
+
+
 }

@@ -41,7 +41,7 @@ fr:
         vote: Vote
 
       category:
-        description: La description
+        description: Description
         name: Nom
         produce: Produit
         score: Points
@@ -59,7 +59,7 @@ fr:
         user: Utilisateur
 
       garden:
-        description: La description
+        description: Description
         garden_varieties: Variétés de jardin
         location: Emplacement
         name: Nom
@@ -75,6 +75,13 @@ fr:
       location:
         latitude: Latitude
         longitude: Longitude
+        house_number: Numéro de porte
+        road: Rue
+        additional_informations: Informations additionelles
+        city: Ville
+        province: Province ou état
+        country: Pays
+        postal_code: Code postal
 
       market:
         garden_variety: Variétés
@@ -91,7 +98,7 @@ fr:
       produce:
         categories: Les catégories
         communities: Communautés
-        description: La description
+        description: Description
         name: Nom
         score: Points
 
@@ -114,7 +121,7 @@ fr:
 
       region:
         communities: Communautés
-        description: La description
+        description: Description
         location: Emplacement
         name: Nom
 
@@ -126,7 +133,7 @@ fr:
         user: Utilisateur
 
       role:
-        description: La description
+        description: Description
         name: Nom
         users: Utilisateurs
 
@@ -167,7 +174,7 @@ fr:
         source_user: Source
 
       variety:
-        description: La description
+        description: Description
         garden_varieties: Variétés de jardin
         gardens: Jardins
         name: Nom

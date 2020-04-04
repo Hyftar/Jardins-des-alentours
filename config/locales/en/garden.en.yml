@@ -2,5 +2,58 @@ en:
   garden:
     new_market_notififaction: Be informed by email for increased availability.
     activate_market_notification: You were previously getting informed about this variety. Click on this link to be once again updated by about changes to this variety's availability.
-    pause_market_notification: You are suscribed to this variety. Click here to unsuscribe. You won't be updated about this variety's availability.
-
+    pause_market_notification: You are subscribed to this variety. Click here to unsubscribe. You won't be updated about this variety's availability.
+    submits:
+      add_garden: Add this garden
+      edit_garden: Edit this garden
+      add_garden_variety: Add this variety
+      add_market: Offer this product for sale
+      edit_market: Edit this offer
+    distance: Within
+    distance_unit: kilometers
+    details_garden: Details
+    edit_garden: Edit this garden
+    delete_garden: Delete this garden
+    own_gardens: Show and modify my own gardens
+    garden_name: Garden name
+    garden_options: Options
+    add_new: Add a new garden
+    no_own_garden: You have no garden yet! Now's the time to start one.
+    access_my_gardens: Show me my gardens
+    or: or
+    search_markets: Search only for markets
+    visit_garden: Visit this garden
+    garden_of: Garden of user
+    description: Description
+    cultivar: Varieties cultivated
+    remove_variety_garden: Remove from garden
+    edit_market: Edit
+    remove_market: Remove
+    reactivate_market: Reactivate
+    new_market: Add to the market
+    variety: Variety
+    on_market: The market
+    available_market: Available
+    not_available_market: Not available
+    located_at: Located at
+    previous_variety: Varieties previously cultivated
+    add_back_variety: Add back to garden
+    new_variety: Add a new variety to the garden
+    offered_market: Offered on the market
+    contact_gardener: Contact the gardener about these produce
+    market_price: at price of
+    market_unit: per
+    address_research_results: Address search results
+    address_research_results_description: Based on your indications, please select the correct address. If the correct address hasn't been found, please press cancel and try another address or spelling
+    creation_error: Sorry, but there was an error in the creation of this garden. Please try again later.
+    cancel: Cancel
+    placeholder_unit: Please enter an unit type
+    go_back: Return to the garden
+    set_price: Price per unit. Optional
+    add_variety_to: Add this variety to
+    be_notified: "Be informed of a change in availability of:"
+    enter_email: Enter an email address here
+    for_garden: "for garden:"
+    go_back_index: Return to your own gardens index
+    modify_informations: Modify those informations
+    search_page: Search for gardens

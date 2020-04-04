@@ -1,44 +1,54 @@
-<%= form_with model: @garden do |f| %>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-    <%= f.fields_for :location do |l| %>
+<div class="container garden_modification">
+  <h2><%= t('garden.submits.edit_garden') %></h2>
+  <%= form_with model: @garden do |f| %>
     <div class="field">
-      <%= l.label :house_number %><br>
-      <%= l.text_field :house_number %>
+      <%= f.label :name %><br>
+      <%= f.text_field :name, :required => 'required' %>
     </div>
     <div class="field">
-      <%= l.label :road %><br>
-      <%= l.text_field :road %>
+      <%= f.label :description %><br>
+      <%= f.text_area :description, :required => 'required' %>
     </div>
-    <div class="field">
-      <%= l.label :additional_informations %><br>
-      <%= l.text_field :additional_informations %>
-    </div>
-    <div class="field">
-      <%= l.label :city %><br>
-      <%= l.text_field :city %>
-    </div>
-    <div class="field">
-      <%= l.label :province %><br>
-      <%= l.text_field :province %>
-    </div>
-    <div class="field">
-      <%= l.label :country %><br>
-      <%= l.text_field :country %>
-    </div>
-    <div class="field">
-      <%= l.label :postal_code %><br>
-      <%= l.text_field :postal_code %>
+
+<!--  As discussed, we were unsure if gardens could be moved, since it doesn't really make sense
+      So the moving of gardens was removed for now.
+      However, previous form code is left here, in case the decision is reversed.
+      <%= f.fields_for :location do |l| %>
+      <div class="field">
+        <%= l.label :house_number %><br>
+        <%= l.text_field :house_number %>
+      </div>
+      <div class="field">
+        <%= l.label :road %><br>
+        <%= l.text_field :road %>
+      </div>
+      <div class="field">
+        <%= l.label :additional_informations %><br>
+        <%= l.text_field :additional_informations %>
+      </div>
+      <div class="field">
+        <%= l.label :city %><br>
+        <%= l.text_field :city %>
+      </div>
+      <div class="field">
+        <%= l.label :province %><br>
+        <%= l.text_field :province %>
+      </div>
+      <div class="field">
+        <%= l.label :country %><br>
+        <%= l.text_field :country %>
+      </div>
+      <div class="field">
+        <%= l.label :postal_code %><br>
+        <%= l.text_field :postal_code %>
+      </div>
+    <% end %>
+-->
+    <div class="actions">
+      <%= f.submit t('garden.submits.edit_garden'), :class => "btn btn-success" %>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="direct-back">
+    <%= link_to t('garden.go_back'), garden_path(@garden), class: "btn" %>
   </div>
-<% end %>
+</div>

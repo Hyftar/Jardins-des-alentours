@@ -2,10 +2,10 @@ en:
   market:
     market_email_form_title: "Gardener contact form"
     market_email_form_explanation: "In order to inform the gardener of your interest in those products, please fill this form that will be sent its way."
-    market_email_form_warning: "Caution: Your email address will be transmited to the gardener so taht he can answer you."
+    market_email_form_warning: "Caution: Your email address will be transmited to the gardener so that he can respond."
     market_email_form_notes: "Message to the gardener"
     market_email_form_choices: "Please select produce you're interested in."
     market_email_form_submit: "Send email"
-    market_email_form_email: "Please enter the email address you wish to be contacted on."
+    market_email_form_email: "Please enter the email address you wish to be contacted on:"
     market_email_form_available: "available"
-
+    market_remove: "Remove"
