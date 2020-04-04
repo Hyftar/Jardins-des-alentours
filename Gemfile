@@ -29,6 +29,7 @@ gem "pg", "~> 1.2"
 gem "rubocop-performance", "~> 1.5"
 gem "rubocop-rails", "~> 2.4"
 gem "rubocop", "~> 0.80.0"
+gem 'active_flag'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

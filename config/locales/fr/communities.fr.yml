@@ -1,5 +1,9 @@
 fr:
   communities:
+    new: "Création d'une communauté"
+    submit: "Créer la communauté"
+    select_location_text: Cliquez sur la carte pour sélectionner l'emplacement
+    location_label: "Position selectionnée:"
     home: "accueil"
     communities: "communautés"
     index_title: "Les Communautés des Alentours"

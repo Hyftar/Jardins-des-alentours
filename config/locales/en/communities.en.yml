@@ -1,5 +1,9 @@
 en:
   communities:
+    new: "Community creation"
+    submit: "Create the community"
+    select_location_text: Click on the map to select the community location
+    location_label: "Selected location:"
     home: "home"
     communities: "communities"
     index_title: "Jardin Des Alentour's Communities"
