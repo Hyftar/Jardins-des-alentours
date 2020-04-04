@@ -23,7 +23,7 @@
             <% if role.community.nil? %>
             <label><%= role.name.capitalize %></label>
             <% else %>
-            <label><%= t('roles.name', name: role.name, community_name: role.community.produce.name).capitalize %></label>
+            <label><%= t('roles.name', name: role.name, community_name: role.community.variety.name).capitalize %></label>
             <% end %>
           </div>
           <% end %>

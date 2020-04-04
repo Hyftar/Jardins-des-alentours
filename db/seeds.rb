@@ -6,6 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+roles = Role.create([
+  {
+    name: 'admin'
+  }
+])
+
 users = User.create([
   {
     first_name: "John",
@@ -13,7 +19,8 @@ users = User.create([
     email: "john_doe@example.com",
     password: "test12345",
     password_confirmation: "test12345",
-    confirmed_at: DateTime.now
+    confirmed_at: DateTime.now,
+    roles: [roles.first]
   },
   {
     first_name: "Jane",
@@ -40,12 +47,32 @@ locations = Location.create!([
   }
 ])
 
-regions = Region.create([
-  { name: "Montréal", location: locations.first },
-  { name: "Québec", location: locations.second },
-  { name: "Val-d'Or", location: locations.third },
-  { name: "Paris", location: locations.fourth }
-])
+tomato = Variety.create(
+  {
+    name: "Tomato",
+    description: "The tomato is the edible, often red, berry of the plant Solanum lycopersicum, commonly known as a tomato plant. The species originated in western South America and Central America.",
+    latin_name: "Solanum lycopersicum",
+    family: "Solanaceae",
+    freeze_resistance: false,
+  }
+)
+
+varieties = Variety.create([{
+  name: "Beefsteak Tomatoes",
+  description: "Beefsteak tomatoes are 10 cm (4 in) or more in diameter, often used for sandwiches and similar applications. Their kidney-bean shape, thinner skin, and shorter shelf life makes commercial use impractical.",
+  parent: tomato
+},
+{
+  name: "Plum Tomatoes",
+  description: "Plum tomatoes, or paste tomatoes (including pear tomatoes), are bred with a lower water /higher solids content for use in tomato sauce and paste, for canning and sauces and are usually oblong 7–9 cm (3–4 in) long and 4–5 cm (1.6–2.0 in) diameter; like the Roma-type tomatoes, important cultivars in the Sacramento Valley.",
+  parent: tomato
+},
+{
+  name: "Cherry Tomatoes",
+  description: "Cherry tomatoes are small and round, often sweet tomatoes, about the same 1–2 cm (0.4–0.8 in) size as the wild tomato.",
+  parent: tomato
+}])
+
 
 categories = Category.create([
   {
@@ -58,17 +85,10 @@ categories = Category.create([
   }
 ])
 
-produce = Produce.create([
-  {
-    name: "Tomatoes",
-    description: "Glossy red, or occasionally yellow, pulpy edible fruits that are eaten as vegetables or in salads.",
-    categories: [categories.first, categories.second]
-  }
-])
 
 communities = Community.create([
-  region: regions.first,
-  produce: produce.first
+  location: locations.first,
+  variety: tomato
 ])
 
 questions = Question.create([
@@ -110,21 +130,7 @@ gardens = Garden.create([{
   location: locations.second
 }])
 
-varieties = Variety.create([{
-  name: "Beefsteak Tomatoes",
-  description: "Beefsteak tomatoes are 10 cm (4 in) or more in diameter, often used for sandwiches and similar applications. Their kidney-bean shape, thinner skin, and shorter shelf life makes commercial use impractical.",
-  produce: produce.first
-},
-{
-  name: "Plum Tomatoes",
-  description: "Plum tomatoes, or paste tomatoes (including pear tomatoes), are bred with a lower water /higher solids content for use in tomato sauce and paste, for canning and sauces and are usually oblong 7–9 cm (3–4 in) long and 4–5 cm (1.6–2.0 in) diameter; like the Roma-type tomatoes, important cultivars in the Sacramento Valley.",
-  produce: produce.first
-},
-{
-  name: "Cherry Tomatoes",
-  description: "Cherry tomatoes are small and round, often sweet tomatoes, about the same 1–2 cm (0.4–0.8 in) size as the wild tomato.",
-  produce: produce.first
-}])
+
 
 garden_varieties = GardenVariety.create([{
   garden: gardens.first,

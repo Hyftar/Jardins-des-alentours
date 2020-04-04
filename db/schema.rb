@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_11_033809) do
+ActiveRecord::Schema.define(version: 2020_04_04_044000) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,21 +75,21 @@ ActiveRecord::Schema.define(version: 2020_03_11_033809) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "categories_produce", force: :cascade do |t|
-    t.bigint "produce_id", null: false
+  create_table "categories_varieties", force: :cascade do |t|
+    t.bigint "variety_id", null: false
     t.bigint "category_id", null: false
-    t.index ["category_id"], name: "index_categories_produce_on_category_id"
-    t.index ["produce_id"], name: "index_categories_produce_on_produce_id"
+    t.index ["category_id"], name: "index_categories_varieties_on_category_id"
+    t.index ["variety_id"], name: "index_categories_varieties_on_variety_id"
   end
 
   create_table "communities", force: :cascade do |t|
-    t.bigint "region_id", null: false
-    t.bigint "produce_id", null: false
     t.integer "score", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["produce_id"], name: "index_communities_on_produce_id"
-    t.index ["region_id"], name: "index_communities_on_region_id"
+    t.bigint "location_id", null: false
+    t.bigint "variety_id", null: false
+    t.index ["location_id"], name: "index_communities_on_location_id"
+    t.index ["variety_id"], name: "index_communities_on_variety_id"
   end
 
   create_table "communities_users", force: :cascade do |t|
@@ -168,14 +169,6 @@ ActiveRecord::Schema.define(version: 2020_03_11_033809) do
     t.index ["garden_variety_id"], name: "index_markets_on_garden_variety_id"
   end
 
-  create_table "produce", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description"
-    t.integer "score", default: 0, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "question_votes", force: :cascade do |t|
     t.bigint "question_id", null: false
     t.bigint "user_id", null: false
@@ -213,15 +206,6 @@ ActiveRecord::Schema.define(version: 2020_03_11_033809) do
     t.bigint "variety_id"
     t.index ["question_id"], name: "index_questions_varieties_on_question_id"
     t.index ["variety_id"], name: "index_questions_varieties_on_variety_id"
-  end
-
-  create_table "regions", force: :cascade do |t|
-    t.bigint "location_id", null: false
-    t.string "name", null: false
-    t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["location_id"], name: "index_regions_on_location_id"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -297,11 +281,24 @@ ActiveRecord::Schema.define(version: 2020_03_11_033809) do
   create_table "varieties", force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
-    t.bigint "produce_id", null: false
     t.integer "score", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["produce_id"], name: "index_varieties_on_produce_id"
+    t.string "latin_name"
+    t.float "spacing"
+    t.float "height"
+    t.string "family"
+    t.integer "hardiness_zone"
+    t.integer "germination_time"
+    t.date "culture_start"
+    t.boolean "freeze_resistance"
+    t.date "culture_end"
+    t.integer "sun_exposure"
+    t.integer "planting_method", default: 0, null: false
+    t.bigint "origin_id"
+    t.bigint "parent_id"
+    t.index ["origin_id"], name: "index_varieties_on_origin_id"
+    t.index ["parent_id"], name: "index_varieties_on_parent_id"
   end
 
   create_table "visitor_emails", force: :cascade do |t|
@@ -343,10 +340,10 @@ ActiveRecord::Schema.define(version: 2020_03_11_033809) do
   add_foreign_key "answer_votes", "users"
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
-  add_foreign_key "categories_produce", "categories"
-  add_foreign_key "categories_produce", "produce"
-  add_foreign_key "communities", "produce"
-  add_foreign_key "communities", "regions"
+  add_foreign_key "categories_varieties", "categories"
+  add_foreign_key "categories_varieties", "varieties"
+  add_foreign_key "communities", "locations"
+  add_foreign_key "communities", "varieties"
   add_foreign_key "communities_users", "communities"
   add_foreign_key "communities_users", "users"
   add_foreign_key "email_bans", "users"
@@ -360,14 +357,14 @@ ActiveRecord::Schema.define(version: 2020_03_11_033809) do
   add_foreign_key "question_votes", "users"
   add_foreign_key "questions", "communities"
   add_foreign_key "questions", "users"
-  add_foreign_key "regions", "locations"
   add_foreign_key "reports", "users"
   add_foreign_key "roles", "communities"
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
   add_foreign_key "user_messages", "users", column: "recipient_user_id"
   add_foreign_key "user_messages", "users", column: "source_user_id"
-  add_foreign_key "varieties", "produce"
+  add_foreign_key "varieties", "locations", column: "origin_id"
+  add_foreign_key "varieties", "varieties", column: "parent_id"
   add_foreign_key "visitor_emails", "visitors"
   add_foreign_key "visitor_locations", "visitors"
   add_foreign_key "visitor_messages", "users", column: "recipient_user_id"

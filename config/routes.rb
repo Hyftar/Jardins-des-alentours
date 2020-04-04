@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   post "/email_bans/create", to: "email_bans#create"
 
-  resources :communities, only: %i( index show ) do
+  resources :communities, only: %i( index show new create destroy ) do
     resources :questions, only: %i( index show new create update destroy ) do
       post "vote_up", to: "questions#vote_up"
       post "vote_down", to: "questions#vote_down"

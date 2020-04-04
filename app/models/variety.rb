@@ -1,11 +1,20 @@
 class Variety < ApplicationRecord
-  belongs_to :produce
-
-  validates :name, presence: true, length: { minimum: 2, maximum: 120 }
-  validates :produce, presence: true
-
+  has_many :communities
   has_many :garden_varieties
   has_many :gardens, through: :garden_varieties
+  belongs_to :origin, class_name: "Location", optional: true
+  belongs_to :parent, class_name: "Variety", optional: true
+
+  enum sun_exposure: %i( shadow half_exposed fully_exposed )
+  flag :planting_method, %i( direct_seeding sowing poting )
+
+  validates(:name,
+    presence: true,
+    length: { minimum: 2, maximum: 120 },
+    uniqueness: true
+  )
+
+  validates :description, length: { maximum: 10_000 }, presence: true
 
   private
     # Get varieties not presently in the garden

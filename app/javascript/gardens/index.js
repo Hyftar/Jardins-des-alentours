@@ -98,12 +98,12 @@ $(document).on('turbolinks:load', () => {
     }
   }
 
-  const locate_garden = document.querySelector('#locate-me-gardens')
+  const locate_garden = document.getElementById('locate-me-gardens')
   if (locate_garden !== null){
     locate_garden.addEventListener('click', findMeDistance)
   }
 
-  const search_button_garden = document.querySelector("#search-button-gardens")
+  const search_button_garden = document.getElementById("search-button-gardens")
   if (search_button_garden !== null){
     search_button_garden.addEventListener("click", findAddressDistance)
   }
