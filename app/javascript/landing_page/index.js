@@ -169,5 +169,10 @@ $(document).on('turbolinks:load', () => {
       })
     }
   }
+  $('#blinking').click(() => {
+    $('html, body').animate({
+      scrollTop: $('#first-slide').offset().top
+    }, 'slow')
+  })
 
 })

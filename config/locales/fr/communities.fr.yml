@@ -12,3 +12,4 @@ fr:
     asia: "Asie"
     australia: "Australie"
     enter: "Entrer"
+    community_name: "%{community} des %{name}"

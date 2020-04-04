@@ -1,9 +1,3 @@
-<% @communities.each do |community| %>
-  <div>
-    Communauté des <%= community.produce.name %> de <%= community.region.name %>
-    <%= link_to 'lien', community_path(community) %>
-  </div>
-<% end %>
 <div class="columns bread-container">
   <div class="column col-2">
     <ul class="breadcrumb">
@@ -84,28 +78,38 @@
       </div>
 
       <div class="filter-body flex-centered">
-        <div class="filter-item card col-2 popover" data-season="winter fall" data-tag="tag-1 tag-2 tag-6">
-          <div class="card-image"><%= image_tag('citrouille.jpg', :class => "img-responsive") %></div>
-          <div class="card-footer">
-            <a class="btn btn-link" href="#">Pumpkin <%= Community.model_name.human.capitalize %></a>
-          </div>
-          <div class="popover-container">
-            <div class="card">
-              <div class="card-header">
-                <div class="card-title h5">Citrouille</div>
-                <div class="card-subtitle text-gray">Cucurbitaceae</div>
-              </div>
-              <div class="card-body">Planeta, vox, et cannabis. Homo de flavum poeta, reperire cannabis!</div>
-              <div class="card-footer">
-                <button class="btn btn-primary">Enter</button>
+
+
+        <% @communities.each do |community| %>
+
+          <div class="filter-item card col-2 popover" data-season="winter fall" data-tag="tag-1 tag-2 tag-6">
+            <div class="card-image"><%= image_tag('citrouille.jpg', :class => "img-responsive") %></div>
+            <div class="card-footer">
+              <%= link_to t('communities.community_name',
+                            name: community.produce.name,
+                            community: Community.model_name.human.capitalize),
+                          community_path(community), class: 'btn btn-link' %>
+            </div>
+            <div class="popover-container">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title h5"><%= community.produce.name %></div>
+                  <div class="card-subtitle text-gray">Cucurbitaceae</div>
+                </div>
+                <div class="card-body"><%= community.produce.description %></div>
+                <div class="card-footer">
+                  <button class="btn btn-primary">
+                    <%= link_to t('communities.enter'), community_path(community), class: 'text-light' %>
+                  </button>
+                </div>
               </div>
             </div>
+            <div class="card-body">
+              Domus velox vita est.
+            </div>
           </div>
-          <div class="card-body">
-            Domus velox vita est.
-          </div>
+        <% end %>
 
-        </div>
         <div class="filter-item card col-2 popover" data-season="fall summer" data-tag="tag-1 tag-2 tag-3 tag-4 tag-5 tag-6" style="color: #2E2F30">
           <div class="card-image"><%= image_tag('poivrons.jpg', :class => "img-responsive") %></div>
           <div class="card-footer">

@@ -3,8 +3,8 @@
   const error_location = "<%= t("landing_page.error_location") %>"
   const visit_garden = "<%= t("garden.visit_garden") %>"
 </script>
-<div id="right-veggie"></div>
-<div id="left-veggie"></div>
+<div id="right-veggie" style="background-image: url(<%= image_path @img1 %>);"></div>
+<div id="left-veggie" style="background-image: url(<%= image_path @img2 %>);"></div>
 <div class="columns">
   <div class="column col-1 flex-centered lp_pics">
     <i class="fas fa-carrot"></i>
@@ -18,10 +18,14 @@
         <div class="input-group">
           <div class="has-icon-left has-icon-right">
             <i class="form-icon icon icon-arrow-right"></i>
-            <input type="text" class="form-input input-lg"
-                   placeholder="<%= t('landing_page.look_for_veggie').capitalize %>">
+            <div class="form-group">
+              <div class="form-autocomplete">
+                <input type="text" id="find-favorite" class="form-input form-autocomplete-input input-lg"
+                      placeholder="<%= t('landing_page.look_for_veggie').capitalize %>">
+              </div>
+            </div>
           </div>
-          <button class="btn btn-primary input-group-btn btn-lg">
+          <button id="search_veggie" class="btn btn-primary input-group-btn btn-lg">
             <i class="icon icon-search"></i>
           </button>
         </div>
@@ -34,7 +38,7 @@
     <i class="fas fa-lemon"></i>
   </div>
 </div>
-<div class="columns p_info_1">
+<div id="first-slide" class="columns p_info_1">
   <div class="column col-6">
     <h2><%= t('landing_page.info1_title') %></h2>
     <p>
@@ -158,61 +162,39 @@
       </p>
     </div>
   </div>
-  <div class="columns">
-    <div class="column col-3">
-      <div class="card">
-        <div class="card-image"><%= image_tag('citrouille.jpg', :class => "img-responsive") %></div>
-        <div class="card-footer">
-          <a class="btn btn-primary" href="#"><%= t('landing_page.find_this_veggie') %></a>
-          <a class="btn btn-link" href="#">Pumpkin <%= Community.model_name.human.capitalize %></a>
-        </div>
-        <div class="card-body">
-          Domus velox vita est. Cum sectam manducare, omnes tumultumquees examinare secundus,
-          gratis orexises.
-          hilotae, habena, et accola.
-        </div>
-      </div>
-    </div>
-    <div class="column col-3">
-      <div class="card">
-        <div class="card-image"><%= image_tag('poivrons.jpg', :class => "img-responsive") %></div>
-        <div class="card-footer">
-          <a class="btn btn-primary" href="#cards"><%= t('landing_page.find_this_veggie') %></a>
-          <a class="btn btn-link" href="#cards">Bell Pepper <%= Community.model_name.human.capitalize %></a>
-        </div>
-        <div class="card-body">
-          Est altus nixus, cesaris. Cum particula ortum, omnes bullaes visum peritus, bassus
-          nixuses.
-          est pius mens, cesaris.
+    <% @communities.each do |community| %>
+      <div class="column col-3">
+        <div class="card">
+          <div class="card-image">
+            <%= image_tag('poivrons.jpg', class: 'img-responsive') %>
+          </div>
+          <div class="card-footer">
+            <%= link_to t('landing_page.find_this_veggie'), community_path(community), class: 'btn btn-primary' %>
+            <%= link_to t('communities.community_name',
+                          name: community.produce.name,
+                          community: Community.model_name.human.capitalize),
+                        community_path(community), class: 'btn btn-link' %>
+          </div>
+          <div class="card-body">
+            <%= community.produce.description %>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="column col-3">
-      <div class="card">
-        <div class="card-image"><%= image_tag('asparagus.jpg', :class => "img-responsive") %></div>
-        <div class="card-footer">
-          <a class="btn btn-primary" href="#cards"><%= t('landing_page.find_this_veggie') %></a>
-          <a class="btn btn-link" href="#cards">Asparagus <%= Community.model_name.human.capitalize %></a>
-        </div>
-        <div class="card-body">
-          Nunquam visum historia. Cum domina crescere, omnes eleateses prensionem superbus,
-          barbatus victrixes.
-          fluctus, scutum, et usus.
-        </div>
-      </div>
-    </div>
-    <div class="column col-3">
-      <div class="card">
-        <div class="card-image"><%= image_tag('oranges.jpg', :class => "img-responsive") %></div>
-        <div class="card-footer">
-          <a class="btn btn-primary" href="#cards"><%= t('landing_page.find_this_veggie') %></a>
-          <a class="btn btn-link" href="#cards">Orange <%= Community.model_name.human.capitalize %></a>
-        </div>
-        <div class="card-body">
-          Primus bursas ducunt ad visus. Manducare hic ducunt ad magnum abaculus.
-          est fidelis poeta, cesaris.
-        </div>
-      </div>
-    </div>
-  </div>
+    <% end %>
 </div>
+<script>
+  $(".form-autocomplete").autoComplete({
+    source: function (inputValue, callback) {
+      // Do something like fetch data with xhr
+      let veggie_list = <%= @veggies.map { |veggie| veggie.name }.to_json.html_safe %>;
+      let data = [];
+      for (const e of veggie_list) {
+        if (e.includes(inputValue)) {
+          data.push(e)
+        }
+      }
+
+      callback(data, null) // If error, you can use callback(null, error); . Error will passed as argument to error handler
+    }
+  });
+</script>

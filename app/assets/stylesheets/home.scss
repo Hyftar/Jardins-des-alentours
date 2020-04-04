@@ -50,17 +50,19 @@ html {
     a {
       font-size: 1.3em !important;
       margin: 0 3%;
-    }
 
-    i {
-      &:hover {
-        opacity: 0.8;
+      i {
+        &:hover {
+          opacity: 0.8;
+        }
+
+        font-size: 2em;
+        cursor: pointer;
+        transition-duration: 0.5s;
       }
-
-      font-size: 3em;
-      cursor: pointer;
-      transition-duration: 0.5s;
     }
+
+
 
     .navbar-center {
       i {
@@ -75,7 +77,6 @@ html {
 
   // split images ---------
   #right-veggie {
-    background-image: url("carrots.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 1;
@@ -88,7 +89,6 @@ html {
   }
 
   #left-veggie {
-    background-image: url("tomatoes.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 1;
@@ -161,6 +161,16 @@ html {
 
         div > i {
           color: #2E2F30;
+        }
+
+        input {
+          height: 40px !important;
+          width: 300px !important;
+          padding-left: 28px !important;
+        }
+
+        .menu-item {
+          color: #2E2F30 !important;
         }
 
         button {
@@ -394,4 +404,8 @@ html {
 @media screen and (max-width: 800px) {
 
 
+}
+
+.menu {
+  display: none;
 }
