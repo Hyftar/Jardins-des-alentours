@@ -32,13 +32,13 @@ class EmailBanTest < ActiveSupport::TestCase
     assert_not b.save
   end
 
-  test "should not be able to save email ban without future banned_date" do
+  test "should be able to save email ban without future banned_date" do
     b = EmailBan.new(
       email: "labernois123@test.ca",
       banned_until: 1.day.ago,
       user: users(:one)
     )
-    assert_not b.save
+    assert b.save
   end
 
   test "should not be able to save email ban without email" do
