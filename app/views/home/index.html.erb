@@ -171,12 +171,12 @@
           <div class="card-footer">
             <%= link_to t('landing_page.find_this_veggie'), community_path(community), class: 'btn btn-primary' %>
             <%= link_to t('communities.community_name',
-                          name: community.produce.name,
+                          name: community.variety.name,
                           community: Community.model_name.human.capitalize),
                         community_path(community), class: 'btn btn-link' %>
           </div>
           <div class="card-body">
-            <%= community.produce.description %>
+            <%= community.variety.description %>
           </div>
         </div>
       </div>

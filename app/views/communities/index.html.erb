@@ -86,17 +86,17 @@
             <div class="card-image"><%= image_tag('citrouille.jpg', :class => "img-responsive") %></div>
             <div class="card-footer">
               <%= link_to t('communities.community_name',
-                            name: community.produce.name,
+                            name: community.variety.name,
                             community: Community.model_name.human.capitalize),
                           community_path(community), class: 'btn btn-link' %>
             </div>
             <div class="popover-container">
               <div class="card">
                 <div class="card-header">
-                  <div class="card-title h5"><%= community.produce.name %></div>
+                  <div class="card-title h5"><%= community.variety.name %></div>
                   <div class="card-subtitle text-gray">Cucurbitaceae</div>
                 </div>
-                <div class="card-body"><%= community.produce.description %></div>
+                <div class="card-body"><%= community.variety.description %></div>
                 <div class="card-footer">
                   <button class="btn btn-primary">
                     <%= link_to t('communities.enter'), community_path(community), class: 'text-light' %>

@@ -14,6 +14,6 @@ class HomeController < ApplicationController
     @veggies = Variety.all
   end
   def get_community_demos
-    @communities = Community.joins(:produce).all.first(4)
+    @communities = Community.joins(:variety).all.first(4)
   end
 end
