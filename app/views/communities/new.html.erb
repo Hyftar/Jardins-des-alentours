@@ -1,0 +1,26 @@
+<h1><%= t('communities.new')%></h1>
+<%= form_with model: @community do |f| %>
+  <div class="field">
+      <%= f.select(:variety_id, @varities.map { |p| [p.name, p.id] }) %>
+  </div>
+
+  <div class="column col-12">
+    <div><%= t('communities.select_location_text') %></div>
+    <div id="map_location_selector"></div>
+    <div class="field">
+      <div class="">
+        <%= t('communities.location_label')%>
+      </div>
+      <%= f.fields_for @location do |l|%>
+        <%= l.label :latitude %>
+        <%= l.number_field(:latitude, in: -90.0..90.0, readonly: true, required: true) %>
+        <%= l.label :longitude %>
+        <%= l.number_field(:longitude, in: -180.0..180.0, readonly: true, required: true) %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t('communities.submit') %>
+  </div>
+<% end %>

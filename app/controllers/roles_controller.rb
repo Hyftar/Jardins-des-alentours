@@ -56,7 +56,7 @@ class RolesController < ApplicationController
           search: "%#{@search}%"
         )
         .order(score: :desc)
-        .includes(roles: [{ community: :produce }])
+        .includes(roles: [{ community: :variety }])
         .paginate(page: params[:page], per_page: 10)
     end
 end
