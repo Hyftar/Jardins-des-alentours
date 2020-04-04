@@ -48,3 +48,36 @@ fr:
     address_not_found: "L'adresse n'a pas été trouvée. Veuillez essayer une autre ortographe."
     geo_not_supported: "La géolocalisation n'est pas supportée par votre navigateur"
     error_location: "Incapable d'obtenir votre position"
+    what_is_jda1: "Jardins Des Alentours est le point de rencontre pour tous ceux qui s'intéressent à
+                  la culture de fruits & légumes hyperlocaux. Que vous désiriez vous procurer des aliments
+                  qui poussent proche de chez vous, que vous soyez un amateur de jardinage ou simplement
+                  pour utiliser l'application comme un outil d'information, Jardins Des Alentours vous offre
+                  la possibilité de partager, d'échanger ou d'entrer en contacts avec vos voisins
+                  qui ont le pouce vert."
+    what_is_jda2: "Ce faisant, vous promouvez à la fois l'intérêt de votre entourage pour l'agriculture,
+                  vous posez un geste pour l'environnement, mais surtout, vous le faites en y prenant plaisir !"
+    a_gesture1: "Bien que certains d'entre nous privilégient les marchés locaux quand vient le temps de se procurer
+                des fruits & des légumes de saison, tout le monde n'a pas toujours cette possibilité et c'est pourquoi
+                nous vous aidons à poser ces gestes vous-même."
+    a_gesture2: "Les fruits & légumes exotiques, et même souvent ceux d'ici, qui sont offerts dans les épiceries
+                conventionnelles ont une empreinte carbone beaucoup plus élevée et ils ne font pas toujours l'objet
+                d'une culture saine. C'est pourquoi il est beaucoup plus avantageux pour la planète, et ô combien
+                récompensant pour soi !"
+    a_community_matter1: "Jardins Des Alentours se compose d'une multitude de 'communautés' qui rassemblent les gens
+                          en plusieurs points, notamment par l'intérêt qu'ils portent pour un légume ou un fruits en
+                          particulier, ainsi que par leur position géographique, qui détermine un grand nombre de
+                          facteurs quant à la culture de ceux-ci."
+    a_community_matter2: "Visitez-en une pour voir !"
+
+  jan: "janvier"
+  feb: "février"
+  mar: "mars"
+  apr: "avril"
+  may: "mai"
+  jun: "juin"
+  jul: "juillet"
+  aug: "août"
+  sep: "septembre"
+  oct: "octobre"
+  nov: "novembre"
+  dec: "décembre"

@@ -17,7 +17,10 @@
 </div>
 <div class="column community_title">
   <h1>
-    Bienvenue dans la communauté de la Tomate !
+    <%= t('communities.community_show_title',
+          community_name: t('communities.community_name',
+                            name: @community.variety.name.pluralize,
+                            community: Community.model_name.human.capitalize)) %>
   </h1>
 </div>
 <div class="column veggie-container">
@@ -26,48 +29,48 @@
       <div class="columns">
         <div class="column title_container">
           <h1>
-            Tomato
+            <%= @community.variety.name %>
           </h1>
           <p class="text-italic">
-            Solanum lycopersicum
+            <%= @community.variety.latin_name %>
           </p>
         </div>
       </div>
       <div class="columns flex-centered icons-container">
         <div class="column col-2 icons-info flex-centered">
-          <i class="fas fa-arrows-alt-h tooltip" data-tooltip="Espacement / Hauteur">
-            <span class="tooltip-data">30 cm.</span>
+          <i class="fas fa-arrows-alt-h tooltip" data-tooltip="<%= t('communities.tt_spacing') %>">
+            <span class="tooltip-data"><%= @community.variety.spacing %> cm.</span>
           </i>
-          <i class="fas fa-hands-helping tooltip" data-tooltip="Associations">
-            <span class="tooltip-data">Cucurbitacae</span>
+          <i class="fas fa-hands-helping tooltip" data-tooltip="<%= t('communities.tt_family') %>">
+            <span class="tooltip-data"><%= @community.variety.family %></span>
           </i>
         </div>
         <div class="column col-4 icons-info flex-centered">
-          <i class="fas fa-thermometer-half tooltip" data-tooltip="Rusticité">
-            <span class="tooltip-data">Zone 5</span>
+          <i class="fas fa-thermometer-half tooltip" data-tooltip="<%= t('communities.tt_hardiness') %>">
+            <span class="tooltip-data"><%= @community.variety.hardiness_zone %></span>
           </i>
           <%= image_tag('tomato-logo.jpg', :class => "img-responsive rounded veggie-logo circle") %>
-          <i class="fas fa-seedling tooltip" data-tooltip="Temps de germination">
-            <span class="tooltip-data">10 jours</span>
+          <i class="fas fa-seedling tooltip" data-tooltip="<%= t('communities.tt_germination') %>">
+            <span class="tooltip-data"><%= @community.variety.germination_time %> <%= t('communities.days') %></span>
           </i>
         </div>
         <div class="column col-2 icons-info flex-centered">
-          <i class="fas fa-calendar-alt tooltip" data-tooltip="Saison de culture">
-            <span class="tooltip-data">Mars - Septembre</span>
+          <i class="fas fa-calendar-alt tooltip" data-tooltip="<%= t('communities.tt_season') %>">
+            <span class="tooltip-data"><%= @s_start.capitalize %> - <%= @s_end.capitalize %></span>
           </i>
-          <i class="fas fa-sun tooltip" data-tooltip="Ensoleillement">
-            <span class="tooltip-data">Ensoleillé</span>
+          <i class="fas <%= @e_icon %> tooltip" data-tooltip="<%= t('communities.tt_exposure') %>">
+            <span class="tooltip-data"><%= @exposure %></span>
           </i>
         </div>
       </div>
-      <p><a>En savoir plus sur la culture de la tomate</a> <i class="fas fa-info-circle"></i></p>
+      <p><a><%= t('communities.variety_info', name: @community.variety.name.pluralize.downcase) %></a> <i class="fas fa-info-circle"></i></p>
     </div>
     <div class="column col-4 did-you-know">
       <div class="columns">
         <div class="column text-left">
-          <h3>Did you know ?</h3>
-          <p>Nunquam quaestio mensa? Favere semper ducunt ad brevis aonides. Domesticus spatiis ducunt ad torquis.
-            Ubi est salvus armarium? Est germanus nix, cesaris. Cacula de magnum decor, consumere idoleum!
+          <h3><%= t('communities.didyouknow') %></h3>
+          <p>
+          <%= @community.variety.description %>
           <p>
         </div>
       </div>

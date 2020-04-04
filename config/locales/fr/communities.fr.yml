@@ -17,3 +17,20 @@ fr:
     australia: "Australie"
     enter: "Entrer"
     community_name: "%{community} des %{name}"
+    community_show_title: "Bienvenue dans la %{community_name} !"
+    days: "jours"
+    tt_spacing: "Espacement"
+    tt_family: "Famille"
+    tt_germination: "Temps de germination"
+    tt_exposure: "Ensoleillement"
+    tt_season: "Saison de culture"
+    tt_hardiness: "Zone de rusticité"
+    variety_info: "Obtenez plus d'information sur la culture des %{name}"
+    didyouknow: "Le saviez-vous ?"
+    index_p: "Un grand nombre de communautés existent au sein de Jardins Des Alentours.
+    La plupart regroupent des amateurs de jardinage par intérêt pour un fruit ou un légume spécifique,
+    ou encore par rapport à l'endroit où ils se situent."
+
+  shadow: "Ombre"
+  half_exposed: "Mi-Ombre"
+  fully_exposed: "Soleil"

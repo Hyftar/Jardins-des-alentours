@@ -69,9 +69,6 @@
     </ul>
   </section>
   <section class="navbar-section">
-    <%= link_to communities_path, class: 'btn btn-link text-light' do %>
-      <%= Community.model_name.human.pluralize.titleize %>
-    <% end %>
     <%= render 'devise/menu/navbar_section_items' %>
   </section>
 </header>

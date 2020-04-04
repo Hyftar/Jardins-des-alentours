@@ -48,14 +48,73 @@ locations = Location.create!([
 ])
 
 tomato = Variety.create(
-  {
-    name: "Tomato",
-    description: "The tomato is the edible, often red, berry of the plant Solanum lycopersicum, commonly known as a tomato plant. The species originated in western South America and Central America.",
-    latin_name: "Solanum lycopersicum",
-    family: "Solanaceae",
-    freeze_resistance: false,
-  }
+    {
+        name: "Tomato",
+        description: "The tomato is the edible, often red, berry of the plant Solanum lycopersicum, commonly known as a tomato plant. The species originated in western South America and Central America.",
+        latin_name: "Solanum lycopersicum",
+        family: "Solanaceae",
+        freeze_resistance: false,
+        culture_start: Date.parse('2000-03-01'),
+        culture_end: Date.parse('2000-09-01'),
+        spacing: 60,
+        height: 120,
+        hardiness_zone: 4,
+        germination_time: 5,
+        sun_exposure: 2
+    }
 )
+
+pepper = Variety.create(
+    {
+        name: "Pepper",
+        description: "Bell peppers, Capsicum annuum are a cultivar group of annual or perennial plants in the family Solanaceae grown for their edible fruits. Bell pepper plants are short bushes with woody stems that grow brightly colored fruits.",
+        latin_name: "Capsicum annuum",
+        family: "Solanaceae",
+        freeze_resistance: false,
+        culture_start: Date.parse('2000-05-01'),
+        culture_end: Date.parse('2000-08-01'),
+        spacing: 40,
+        height: 100,
+        hardiness_zone: 5,
+        germination_time: 14,
+        sun_exposure: 2
+    }
+)
+
+pumpkin = Variety.create(
+    {
+        name: "Pumpkin",
+        description: "A pumpkin is a cultivar of winter squash that is round with smooth, slightly ribbed skin, and most often deep yellow to orange in coloration. The thick shell contains the seeds and pulp.",
+        latin_name: "Cucurbita pepo",
+        family: "Cucurbita",
+        freeze_resistance: false,
+        culture_start: Date.parse('2000-05-01'),
+        culture_end: Date.parse('2000-10-01'),
+        spacing: 150,
+        height: 30,
+        hardiness_zone: 3,
+        germination_time: 10,
+        sun_exposure: 2
+    }
+)
+
+sunchoke = Variety.create(
+    {
+        name: "Jerusalem Artichoke",
+        description: "The Jerusalem artichoke, also called sunroot, sunchoke, or earth apple, is a species of sunflower native to central North America. It grows wild in eastern and western North America but is considered an introduced species.",
+        latin_name: "Helianthus tuberosus",
+        family: "Asteraceae",
+        freeze_resistance: false,
+        culture_start: Date.parse('2000-05-01'),
+        culture_end: Date.parse('2000-12-01'),
+        spacing: 40,
+        height: 240,
+        hardiness_zone: 2,
+        germination_time: 14,
+        sun_exposure: 1
+    }
+)
+
 
 varieties = Variety.create([{
   name: "Beefsteak Tomatoes",
@@ -87,8 +146,26 @@ categories = Category.create([
 
 
 communities = Community.create([
-  location: locations.first,
-  variety: tomato
+                                   {
+                                       location: locations.first,
+                                       variety: tomato,
+                                       description: "A place where tomato-lovers reunite, at last"
+                                   },
+                                   {
+                                       location: locations.second,
+                                       variety: pepper,
+                                       description: "World-wide hot people"
+                                   },
+                                   {
+                                       location: locations.third,
+                                       variety: pumpkin,
+                                       description: "Spooky community for praised pumpkins"
+                                   },
+                                   {
+                                       location: locations.fourth,
+                                       variety: sunchoke,
+                                       description: "What's a Jerusalem Artichoke anyway?"
+                                   }
 ])
 
 questions = Question.create([
