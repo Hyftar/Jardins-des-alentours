@@ -1,25 +1,30 @@
-<h2><%= t('market.market_email_form_title') %></h2>
-<p><%= t('market.market_email_form_explanation') %></p>
-<%= form_with url: garden_send_email_path(@garden.id), method: :post, local: true do |f| %>
-  <% @garden.garden_varieties.each do |garden_variety| %>
-    <% if garden_variety.markets.length > 0  %>
+<div class="container market_mailer">
+  <h2><%= t('market.market_email_form_title') %></h2>
+  <p><%= t('market.market_email_form_explanation') %></p>
+  <%= form_with url: garden_send_email_path(@garden.id), method: :post, local: true do |f| %>
+    <% @garden.garden_varieties.each do |garden_variety| %>
+      <% if garden_variety.markets.length > 0  %>
+        <div>
+          <%= check_box_tag("checkbox[" + garden_variety.id.to_s + "]") %>
+          <%= label_tag("checkbox[" + garden_variety.id.to_s + "]", garden_variety.variety[:name]) %>
+          : <%= garden_variety.markets.first.quantity%> <%= garden_variety.markets.first.unit%> <%= t('market.market_email_form_available')%>
+        </div>
+      <% end %>
+    <% end %>
+    <% if user_signed_in? %>
+      <%= hidden_field_tag("email", current_user.email) %>
+    <% else %>
       <div>
-        <%= check_box_tag("checkbox[" + garden_variety.id.to_s + "]") %>
-        <%= label_tag("checkbox[" + garden_variety.id.to_s + "]", garden_variety.variety[:name]) %>
-         : <%= garden_variety.markets.first.quantity%> <%= garden_variety.markets.first.unit%> <%= t('market.market_email_form_available')%>
+        <%= label_tag("email", t('market.market_email_form_email')) %>
+        <%= email_field "email", "user", :required => 'required' %>
       </div>
     <% end %>
+    <%= label_tag("description", t('market.market_email_form_notes'))%><br>
+    <%= text_area_tag "description", nil, size: "24x6", :required => 'required'%>
+    <div><%= t('market.market_email_form_warning') %></div>
+    <%= f.submit t('market.market_email_form_submit'), class: "btn btn-success" %>
   <% end %>
-  <% if user_signed_in? %>
-    <%= hidden_field_tag("email", current_user.email) %>
-  <% else %>
-    <div>
-      <%= label_tag("email", t('market.market_email_form_email')) %>
-      <%= email_field("email", "user") %>
-    </div>
-  <% end %>
-  <%= label_tag("description", t('market.market_email_form_notes'))%><br>
-  <%= text_area_tag("description", nil, size: "24x6") %>
-  <div><%= t('market.market_email_form_warning') %></div>
-  <%= f.submit t('market.market_email_form_submit') %>
-<% end %>
+  <div class="direct-back">
+    <%= link_to t('garden.go_back'), garden_path(@garden), class: "btn" %>
+  </div>
+</div>

@@ -43,3 +43,17 @@ en:
     contact_gardener: Contact the gardener about these produce
     market_price: at price of
     market_unit: per
+    address_research_results: Address search results
+    address_research_results_description: Based on your indications, please select the correct address. If the correct address hasn't been found, please press cancel and try another address or spelling
+    creation_error: Sorry, but there was an error in the creation of this garden. Please try again later.
+    cancel: Cancel
+    placeholder_unit: Please enter an unit type
+    go_back: Return to the garden
+    set_price: Price per unit. Optional
+    add_variety_to: Add this variety to
+    be_notified: "Be informed of a change in availability of:"
+    enter_email: Enter an email address here
+    for_garden: "for garden:"
+    go_back_index: Return to your own gardens index
+    modify_informations: Modify those informations
+    search_page: Search for gardens

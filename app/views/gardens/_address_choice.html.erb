@@ -1,0 +1,7 @@
+<% @locations.each do |location|%>
+<button class="address-button" value="<%= location.id %>">
+  <%= location.house_number %> <%= location.road %><br>
+  <%= location.city %>, <%= location.province %><br>
+  <%= location.country %> <%= location.additional_informations %>
+</button>
+<% end %>

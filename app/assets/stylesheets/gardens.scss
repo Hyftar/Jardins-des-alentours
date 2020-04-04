@@ -28,6 +28,10 @@ input[type='number']{
   }
 }
 
+.own_gardens-name {
+  width: 40%;
+}
+
 .table-gardens{
   width: 80%;
   margin: 0 auto;
@@ -64,5 +68,181 @@ input[type='number']{
 }
 
 .spacer-garden{
+  margin-top: 1em;
+}
+
+#modal-addresses{
+  color: black;
+  p{
+    text-align: left;
+  }
+}
+
+.address-button{
+  background-color: #3b2918;
+  border: none;
+  color: white;
+  width: 80%;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.address-buttonLhover{
+  background-color: #22180e;
+  padding: 5px 10px;
+}
+
+.garden_creation {
+  padding: 10vh 20vw 30vh;
+  background-color: #08271f;
+  height: fit-content;
+  clip-path: polygon(0 3%, 0 95%, 100% 100%, 100% 0%);
+
+  .columns:first-of-type .column:first-of-type {
+    margin: 10vh;
+    text-align: left;
+    color: #2E2F30;
+  }
+
+  input {
+    width: 80%;
+    max-width: 500px;
+    margin-top: 5px;
+    text-align: center;
+    padding: 5px 10px;
+  }
+
+  textarea{
+    resize: none;
+    width: 80%;
+    max-width: 500px;
+    margin-top: 5px;
+    padding: 5px 10px;
+  }
+
+  .field {
+    margin-bottom: 1em;
+  }
+
+  input[type=submit]{
+    max-width: 250px;
+  }
+}
+
+.garden_modification {
+  padding: 10vh 20vw 30vh;
+  background-color: #270908;
+  height: fit-content;
+  clip-path: polygon(0 3%, 0 95%, 100% 100%, 100% 0%);
+
+  .columns:first-of-type .column:first-of-type {
+    margin: 10vh;
+    text-align: left;
+    color: #2E2F30;
+  }
+
+  input {
+    width: 80%;
+    max-width: 500px;
+    margin-top: 5px;
+    text-align: center;
+    padding: 5px 10px;
+  }
+
+  textarea{
+    resize: none;
+    width: 80%;
+    max-width: 500px;
+    margin-top: 5px;
+    padding: 5px 10px;
+  }
+
+  .field {
+    margin-bottom: 1em;
+  }
+
+  input[type=submit]{
+    max-width: 250px;
+  }
+}
+
+.market_creation{
+  background-color: #223f11;
+}
+
+.market_update,
+.market_notification_create {
+  background-color: #3f2011;
+}
+
+.market_mailer{
+  background-color: #161022;
+}
+
+.garden_variety_create{
+  background-color: #221016;
+}
+
+.market_creation,
+.market_update,
+.market_mailer,
+.garden_variety_create,
+.market_notification_create {
+  padding: 10vh 20vw 30vh;
+  height: fit-content;
+  clip-path: polygon(0 3%, 0 95%, 100% 100%, 100% 0%);
+
+  .columns:first-of-type .column:first-of-type {
+    margin: 10vh;
+    text-align: left;
+    color: #2E2F30;
+  }
+
+  input {
+    width: 80%;
+    max-width: 500px;
+    margin-top: 5px;
+    text-align: center;
+    padding: 5px 10px;
+  }
+
+  textarea{
+    resize: none;
+    width: 80%;
+    max-width: 500px;
+    margin-top: 5px;
+    padding: 5px 10px;
+  }
+
+  .field {
+    margin-bottom: 1em;
+  }
+
+  input[type=submit]{
+    max-width: 250px;
+  }
+
+  input[type=checkbox]{
+    max-width: 25px;
+  }
+
+  select{
+    margin-bottom: 1em;
+  }
+}
+
+.direct-back{
+margin-top: 1em;
+}
+
+.market-item,
+.contact-gardener{
+  max-width: 70%;
+  margin: 1em auto;
+}
+
+.em_top{
   margin-top: 1em;
 }

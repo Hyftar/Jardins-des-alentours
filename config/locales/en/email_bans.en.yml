@@ -1,0 +1,19 @@
+en:
+  email_bans:
+    title_show: Email ban
+    title_index: Email bans management
+    table_email: Email address
+    table_date: Banned until
+    table_actions: Actions
+    table_no_result: No email bans found! Everything is going perfectly!
+    create_email_ban: Add a new email ban
+    for_email: for email
+    created_on: created on
+    banned_until: banned until
+    last_updated_by: last updated by admin
+    return_index: Return to the index
+    create: Add a new email ban
+    submit_create: Add
+    detail: Detail
+    update: Update
+    update_ban: Modify the email ban
