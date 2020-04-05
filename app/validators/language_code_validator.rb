@@ -1,6 +1,6 @@
 class LanguageCodeValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    unless I18nData.languages.key?(value.upcase)
+    unless value.to_sym.in? I18n.available_locales
       record.errors.add(
         attribute,
         :invalid,
