@@ -59,18 +59,21 @@ class VarietyTest < ActiveSupport::TestCase
     assert_not v.save
   end
 
-  test "should be able to save variety with only a name and description" do
-    v = Variety.new(
-      name: "Cherry tomatoes",
-      description: "Small round tomatoes"
-    )
-    assert v.save
-  end
-
   test "parent should not be self" do
     v = Variety.new(
-      name: "Cherry tomatoes",
-      description: "Small round tomatoes"
+      name: "Cucumbers",
+      description: "Cucumbers are green elongated vegetables",
+      latin_name: "Cucumis sativus",
+      spacing: 1,
+      height: 50,
+      family: "Gourds",
+      hardiness_zone: 3,
+      germination_time: 5,
+      culture_start: "2000-06-11",
+      freeze_resistance: 0,
+      culture_end: "2000-09-11",
+      sun_exposure: 0,
+      planting_method: 3,
     )
     assert v.save
 

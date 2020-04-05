@@ -1,4 +1,5 @@
-<h1><%= t('communities.new')%></h1>
+<div class="container community-creation">
+<h2><%= t('communities.new')%></h2>
 <%= form_with model: @community do |f| %>
   <div class="field">
       <%= f.select(:variety_id, @varities.map { |p| [p.name, p.id] }) %>
@@ -12,15 +13,20 @@
         <%= t('communities.location_label')%>
       </div>
       <%= f.fields_for @location do |l|%>
-        <%= l.label :latitude %>
-        <%= l.number_field(:latitude, in: -90.0..90.0, readonly: true, required: true) %>
-        <%= l.label :longitude %>
-        <%= l.number_field(:longitude, in: -180.0..180.0, readonly: true, required: true) %>
+        <div class="field">
+          <%= l.label :latitude %>
+          <%= l.number_field(:latitude, in: -90.0..90.0, readonly: true, required: true) %>
+        </div>
+        <div class="field">
+          <%= l.label :longitude %>
+          <%= l.number_field(:longitude, in: -180.0..180.0, readonly: true, required: true) %>
+        </div>
       <% end %>
     </div>
   </div>
 
   <div class="actions">
-    <%= f.submit t('communities.submit') %>
+    <%= f.submit t('communities.submit'), class: "btn btn-success"%>
   </div>
 <% end %>
+</div>

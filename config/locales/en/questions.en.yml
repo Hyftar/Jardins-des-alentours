@@ -1,6 +1,6 @@
 en:
   questions:
-    ask: Ask Question
+    ask: Ask a question
     answer: Post your answer
     answers:
       zero: 'No answer yet'
@@ -10,6 +10,8 @@ en:
     report: Report question
     edit: Edit
     delete: Delete
+    go_back_questions: Go back to the questions
+    go_back_communities: Go back to the communities index
 
   answers:
     submit: Submit the answer

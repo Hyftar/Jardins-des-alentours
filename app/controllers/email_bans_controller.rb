@@ -1,4 +1,5 @@
 class EmailBansController < ApplicationController
+  before_action { authorize_user! "admin" }
 
   # Email bans are verified before sending emails
   def show

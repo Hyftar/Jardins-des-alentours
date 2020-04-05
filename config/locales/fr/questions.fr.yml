@@ -10,6 +10,8 @@ fr:
     report: Signaler la question
     edit: Modifier
     delete: Supprimer
+    go_back_questions: Retourner aux questions
+    go_back_communities: Retourner aux communautés
 
   answers:
     submit: Envoyer la réponse

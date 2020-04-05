@@ -5,3 +5,10 @@ fr:
     search: Rechercher
     change_successful: Les rôles de %{name} ont été changés avec succès
     error: Une erreur est survenue empêchant le changement de rôles
+  admin:
+    title: Options administratives
+    return_root: Retour à l'accueil
+    manage_roles: Gestion des rôles
+    manage_communities: Gestions des communautés
+    manage_varieties: Gestions des variétés
+    manage_email_bans: Gestion des adresses bannies

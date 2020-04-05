@@ -15,7 +15,7 @@ class RoleTest < ActiveSupport::TestCase
 
   test "Jane Doe should have two valid roles" do
     user = users(:two)
-    assert_equal ["Admin", "Curator"], user.roles.map(&:name)
+    assert_equal ["admin", "curator"], user.roles.map(&:name)
   end
 
   test "should not be able to save role with name shorter than 3 characters" do

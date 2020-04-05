@@ -19,6 +19,13 @@ module SignInHelper
     post "/auth/sign_in", params: {'user': {'email': users(:one).email, 'password': "test12345"}}
     follow_redirect!
   end
+
+  def sign_in_admin()
+    get "/auth/sign_in"
+    assert_response :success
+    post "/auth/sign_in", params: {'user': {'email': users(:two).email, 'password': "test12345"}}
+    follow_redirect!
+  end
 end
 
 class ActionDispatch::IntegrationTest
