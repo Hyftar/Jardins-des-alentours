@@ -1,0 +1,71 @@
+<h1>New variety</h1>
+<% if @variety.errors.any? %>
+  <ul>
+    <% @variety.errors.each do |k, v| %>
+      <li><%= "#{k.capitalize} #{v}" %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @variety do |f| %>
+  <div class="form-group">
+    <%= f.label :parent_id %>
+    <%= f.select :parent_id, @available_varieties.map { |variety| [variety.name, variety.id] }.append(["None", nil]) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div class="form-group">
+    <%= f.label :spacing %>
+    <%= f.number_field :spacing %>
+  </div>
+  <div class="form-group">
+    <%= f.label :height %>
+    <%= f.number_field :height %>
+  </div>
+  <div class="form-group">
+    <%= f.label :family %>
+    <%= f.text_field :family %>
+  </div>
+  <div class="form-group">
+    <%= f.label :hardiness_zone %>
+    <%= f.number_field :hardiness_zone %>
+  </div>
+  <div class="form-group">
+    <%= f.label :germination_time %>
+    <%= f.number_field :germination_time %>
+  </div>
+  <div class="form-group">
+    <%= f.label :freeze_resistance %>
+    <%= f.check_box :freeze_resistance %>
+  </div>
+  <div class="form-group">
+    <%= f.label :culture_start %>
+    <%= f.datetime_field :culture_start %>
+  </div>
+  <div class="form-group">
+    <%= f.label :culture_end %>
+    <%= f.datetime_field :culture_end %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sun_exposure %>
+    <%= f.select :sun_exposure, Variety.sun_exposures.map { |k, v| [k.humanize, k] }.append(['Unknown', nil]) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.collection_check_boxes :planting_method, Variety.planting_methods.pairs, :first, :last %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+  <%= f.submit %>
+<% end %>

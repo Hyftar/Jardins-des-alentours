@@ -1,0 +1,26 @@
+
+<h1><%= t('varieties.index_title')%></h1>
+<%= link_to t('varieties.create'), new_variety_path, class: 'btn btn-primary'%>
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Parent</th>
+    <th>Description</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+
+    <% @varieties.each do |variety| %>
+    <tr>
+      <td><%= variety.name %></td>
+      <td><%= variety.parent&.name %></td>
+      <td><%= variety.description %></td>
+      <td>
+        <%= link_to 'show', variety_path(variety) %>
+        <%= link_to 'edit', edit_variety_path(variety) %>
+        <%= link_to 'destroy', variety_path(variety), method: :delete, data: { confirm: t('confirm_before_delete') } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
