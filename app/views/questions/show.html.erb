@@ -50,7 +50,7 @@
     <div class="answer__actions">
       <% if answer.user == current_user %>
       <div class="edit_answer actions__edit" data-answer-id="<%= answer.id %>"><%= t('questions.edit') %></div>
-      <%= link_to t('questions.delete'), community_question_answer_path(question_id: @question.id, id: answer.id), method: :delete, class: 'actions__delete', confirm: 'Are you sure?' %>
+      <%= link_to t('questions.delete'), community_question_answer_path(question_id: @question.id, id: answer.id), method: :delete, class: 'actions__delete', data: { confirm: t('confirm_before_delete') } %>
       <% end %>
     </div>
 

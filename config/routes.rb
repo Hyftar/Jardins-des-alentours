@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   scope "admin" do
     get "", to: "admin#home", as: "admin"
+    resources :varieties
     scope "roles" do
       get "", to: "roles#index", as: "roles"
       post "", to: "roles#search"

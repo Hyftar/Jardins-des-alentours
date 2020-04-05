@@ -77,3 +77,5 @@ gem "geocoder", "~> 1.6"
 gem "counter_culture", "~> 2.3"
 
 gem "leaflet-rails", "~> 1.6"
+
+gem "activestorage-validator", "~> 0.1.3"
