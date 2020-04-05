@@ -2,7 +2,6 @@
 
 Un projet web conçu avec Ruby on Rails afin de promouvoir la culture et la consommation de légumes hyperlocaux afin d'en faire bénéficier l'environnement.
 
-
 ## Table des matières
 
 ---
@@ -10,7 +9,6 @@ Un projet web conçu avec Ruby on Rails afin de promouvoir la culture et la cons
 * [Installation](#installation)
 * [Organisation du projet](#organisation-du-projet)
 * [Utilisation](#utilisation)
-
 
 ## Installation
 
@@ -42,12 +40,15 @@ Pour générer la base de données, veuillez utiliser les commandes suivantes :
 
   `rails db:seed`
 
-Pour lancer le projet, utilisez le commande :
+Pour lancer les tests, utilisez la commande :
+
+  `rails t`
+
+Pour lancer le projet, utilisez la commande :
 
   `rails s`
 
 Le site sera disponible à l'adresse localhost:3000
-
 
 ## Organisation du projet
 
