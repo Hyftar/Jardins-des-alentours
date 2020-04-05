@@ -27,11 +27,7 @@
 
       <div class="field form-group">
         <%= f.label :language, t('devise.registrations.langue'), :class => 'form-label' %>
-        <% if @user.language == "fr" %>
-          <%= select(:user, :language, options_for_select([[t('devise.registrations.french'), "fr"], [t('devise.registrations.english'), "en"]],"fr")) %>
-        <% else %>
-          <%= select(:user, :language, options_for_select([[t('devise.registrations.french'), "fr"], [t('devise.registrations.english'), "en"]],"en")) %>
-        <% end %>
+          <%= select(:user, :language, options_for_select([[t('devise.registrations.french'), "fr"], [t('devise.registrations.english'), "en"]], @user.language)) %>
       </div>
 
       <div class="field form-group">
@@ -66,5 +62,4 @@
     <%= link_to t('devise.registrations.back'), :back, :class => 'text-light' %>
   </div>
 </div>
-
 
