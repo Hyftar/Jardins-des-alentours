@@ -6,11 +6,11 @@
   <div class="column col-2">
     <ul class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="#" class="text-light"><%= t('communities.home').titleize %></a>
+        <%= link_to t('communities.home').titleize, '/', class: 'text-light' %>
       </li>
       <li class="breadcrumb-item text-light">
-        <%= link_to t('communities.communities').titleize, "#", class: 'text-light' %>:
-        <%= link_to "Tomato", "#", class: 'text-light' %>
+        <%= link_to t('communities.communities').titleize, communities_path, class: 'text-light' %>:
+        <%= link_to @community.variety.name, community_path(@community.id), class: 'text-light' %>
       </li>
     </ul>
   </div>
@@ -122,7 +122,7 @@
   <div class="flex-centered columns">
     <div class="column">
       <h2 class="veggie-sub">
-        La tomate de votre voisin est meilleure que la vôtre
+        <%= t('communities.show_sub1', veggie: @community.variety.name.pluralize.downcase) %>
       </h2>
       <i class="icon icon-arrow-down"></i>
     </div>
@@ -134,90 +134,45 @@
           <figure class="avatar avatar-xl">
             <%= image_tag('forum.png', :class => "img-responsive rounded") %>
           </figure>
-          <div class="panel-title h5">Talk about it</div>
+          <div class="panel-title h5"><%= t('communities.talk_title') %></div>
         </div>
         <div class="panel-body">
-          <div class="tile">
-            <div class="tile-icon">
-              <figure class="avatar avatar-xl">
-                <%= image_tag('avatar.png', :class => "img-responsive rounded") %>
-              </figure>
-            </div>
-            <div class="tile-content">
-              <p class="tile-title text-bold">Thor Odinson</p>
-              <p class="tile-subtitle">Earth's Mightiest Heroes joined forces to take on threats that were too big for
-                any one hero to tackle...</p>
-              <div class="text-right">
-                <button class="btn text-light">See conversation</button>
-              </div>
-            </div>
-          </div>
+          <a class="twitter-timeline" href="https://twitter.com/JAlentours?ref_src=twsrc%5Etfw">Tweets by JAlentours</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           <div class="divider"></div>
-          <div class="tile">
-            <div class="tile-icon">
-              <figure class="avatar avatar-xl">
-                <%= image_tag('avatar.png', :class => "img-responsive rounded") %>
-              </figure>
-            </div>
-            <div class="tile-content">
-              <p class="tile-title text-bold">Bruce Banner</p>
-              <p class="tile-subtitle">The Strategic Homeland Intervention, Enforcement, and Logistics Division...</p>
-              <div class="text-right">
-                <button class="btn text-light">See conversation</button>
-              </div>
-            </div>
-          </div>
-          <div class="divider"></div>
-          <div class="tile">
-            <div class="tile-icon">
-              <figure class="avatar avatar-xl">
-                <%= image_tag('avatar.png', :class => "img-responsive rounded") %>
-              </figure>
-            </div>
-            <div class="tile-content">
-              <p class="tile-title text-bold">Tony Stark</p>
-              <p class="tile-subtitle">Earth's Mightiest Heroes joined forces to take on threats that were too big for
-                any one hero to tackle...</p>
-              <div class="text-right">
-                <button class="btn text-light">See conversation</button>
-              </div>
-            </div>
-          </div>
-          <div class="divider"></div>
-          <div class="tile">
-            <div class="tile-icon">
-              <figure class="avatar avatar-xl">
-                <%= image_tag('avatar.png', :class => "img-responsive rounded") %>
-              </figure>
-            </div>
-            <div class="tile-content">
-              <p class="tile-title text-bold">Steve Rogers</p>
-              <p class="tile-subtitle">The Strategic Homeland Intervention, Enforcement, and Logistics Division...</p>
-              <div class="text-right">
-                <button class="btn text-light">See conversation</button>
-              </div>
-            </div>
-          </div>
-          <div class="divider"></div>
-          <div class="tile">
-            <div class="tile-icon">
-              <figure class="avatar avatar-xl">
-                <%= image_tag('avatar.png', :class => "img-responsive rounded") %>
-              </figure>
-            </div>
-            <div class="tile-content">
-              <p class="tile-title text-bold">Natasha Romanoff</p>
-              <p class="tile-subtitle">Earth's Mightiest Heroes joined forces to take on threats that were too big for
-                any one hero to tackle...</p>
-              <div class="text-right">
-                <button class="btn text-light">See conversation</button>
-              </div>
-            </div>
-          </div>
+<!--          <div class="tile">-->
+<!--            <div class="tile-icon">-->
+<!--              <figure class="avatar avatar-xl">-->
+                <%#= image_tag('avatar.png', :class => "img-responsive rounded") %>
+<!--              </figure>-->
+<!--            </div>-->
+<!--            <div class="tile-content">-->
+<!--              <p class="tile-title text-bold">Bruce Banner</p>-->
+<!--              <p class="tile-subtitle">The Strategic Homeland Intervention, Enforcement, and Logistics Division...</p>-->
+<!--              <div class="text-right">-->
+<!--                <button class="btn text-light">See conversation</button>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="divider"></div>-->
+<!--          <div class="tile">-->
+<!--            <div class="tile-icon">-->
+<!--              <figure class="avatar avatar-xl">-->
+                <%#= image_tag('avatar.png', :class => "img-responsive rounded") %>
+<!--              </figure>-->
+<!--            </div>-->
+<!--            <div class="tile-content">-->
+<!--              <p class="tile-title text-bold">Tony Stark</p>-->
+<!--              <p class="tile-subtitle">Earth's Mightiest Heroes joined forces to take on threats that were too big for-->
+<!--                any one hero to tackle...</p>-->
+<!--              <div class="text-right">-->
+<!--                <button class="btn text-light">See conversation</button>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
         </div>
         <div class="panel-footer flex-centered col-8">
           <i class="icon icon-arrow-down"></i>
-          <button class="btn btn-primary btn-block wrap">See more conversations about Tomatoes</button>
+          <a href="https://twitter.com/intent/tweet?button_hashtag=jardinsdesalentours&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-text="#jardinsdesalentours" data-show-count="false">Tweet #jardinsdesalentours</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
       </div>
     </div>
@@ -227,7 +182,7 @@
           <figure class="avatar avatar-xl">
             <%= image_tag('cutlery.jpg', :class => "img-responsive rounded") %>
           </figure>
-          <div class="panel-title"><h5>Cook it</h5></div>
+          <div class="panel-title"><h5><%= t('communities.cook_title') %></h5></div>
         </div>
         <div class="panel-nav">
           <!-- navigation components: tabs, breadcrumbs or pagination -->
@@ -281,7 +236,7 @@
           <figure class="avatar avatar-xl">
             <%= image_tag('market.jpg', :class => "img-responsive rounded") %>
           </figure>
-          <div class="panel-title"><h5>Find it</h5></div>
+          <div class="panel-title"><h5><%= t('communities.garden_title') %></h5></div>
         </div>
         <div class="panel-nav">
           <p>Trouvez la tomate dans les jardins de vos alentours !</p>

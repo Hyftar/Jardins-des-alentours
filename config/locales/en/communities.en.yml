@@ -28,6 +28,10 @@ en:
     variety_info: "Get more information on how to harvest %{name}"
     didyouknow: "Did you know ?"
     index_p: ""
+    show_sub1: "Look around, you might find some %{veggie}!"
+    talk_title: "Talk about it"
+    cook_title: "Cook it"
+    garden_title: "Find it"
 
   shadow: "Shadow"
   half_exposed: "Half Exposure"

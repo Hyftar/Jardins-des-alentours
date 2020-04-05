@@ -30,6 +30,10 @@ fr:
     index_p: "Un grand nombre de communautés existent au sein de Jardins Des Alentours.
     La plupart regroupent des amateurs de jardinage par intérêt pour un fruit ou un légume spécifique,
     ou encore par rapport à l'endroit où ils se situent."
+    show_sub1: "Les %{veggie} de vos voisin sont meilleures que les vôtres"
+    talk_title: "Parlez-en"
+    cook_title: "Mangez-en"
+    garden_title: "Trouvez-en"
 
   shadow: "Ombre"
   half_exposed: "Mi-Ombre"

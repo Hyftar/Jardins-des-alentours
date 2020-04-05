@@ -45,7 +45,7 @@ class CommunitiesController < ApplicationController
                      .where("lower(varieties.name) LIKE ?", "%#{search_string}%")
                      .order(score: :desc)
                      .first
-    if @community.blank?
+    if @community.blank? | search_string.empty?
       redirect_to communities_path
     else
       redirect_to community_path(@community)
@@ -92,5 +92,16 @@ class CommunitiesController < ApplicationController
         seasons.push('fall') if (months & [8, 9, 10, 11]).any?
         [community, seasons]
       }]
+      @communities_continents = Hash[@communities.map { |community|
+        continent = Country.find_by(name: community.location.country).continent
+        [community, continent]
+      }]
+      @continents = Hash.new
+      @continents["North America"] = "tag-1"
+      @continents["Europe"] = "tag-2"
+      @continents["South America"] = "tag-3"
+      @continents["Africa"] = "tag-4"
+      @continents["Asia"] = "tag-5"
+      @continents["Oceania"] = "tag-6"
     end
 end

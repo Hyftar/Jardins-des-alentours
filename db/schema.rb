@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_04_211753) do
+ActiveRecord::Schema.define(version: 2020_04_05_015028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,13 @@ ActiveRecord::Schema.define(version: 2020_04_04_211753) do
     t.bigint "community_id"
     t.index ["community_id"], name: "index_communities_users_on_community_id"
     t.index ["user_id"], name: "index_communities_users_on_user_id"
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name"
+    t.string "continent"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "email_bans", force: :cascade do |t|

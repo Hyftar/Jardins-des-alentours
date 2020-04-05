@@ -2,10 +2,10 @@
   <div class="column col-2">
     <ul class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="#" class="text-light"><%= t('communities.home').titleize %></a>
+        <%= link_to t('communities.home').titleize, '/', class: 'text-light' %>
       </li>
-      <li class="breadcrumb-item text-light">
-        <%= t('communities.communities').titleize %>
+      <li class="breadcrumb-item">
+        <%= link_to t('communities.communities').titleize, communities_path, class: 'text-light' %>
       </li>
     </ul>
   </div>
@@ -83,7 +83,7 @@
           <div class="filter-item card col-2 popover" data-season="
             <% @seasons[community].each do |season| %><%= season %>
             <% end %>"
-               data-tag="tag-1 tag-2 tag-6">
+               data-tag="<%= @continents[@communities_continents[community]] %>">
             <div class="card-image"><%= image_tag('citrouille.jpg', :class => "img-responsive") %></div>
             <div class="card-footer">
               <%= link_to t('communities.community_name',
