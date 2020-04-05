@@ -3,8 +3,8 @@
   const error_location = "<%= t("landing_page.error_location") %>"
   const visit_garden = "<%= t("garden.visit_garden") %>"
 </script>
-<div id="right-veggie"></div>
-<div id="left-veggie"></div>
+<div id="right-veggie" style="background-image: url(<%= image_path @img1 %>);"></div>
+<div id="left-veggie" style="background-image: url(<%= image_path @img2 %>);"></div>
 <div class="columns">
   <div class="column col-1 flex-centered lp_pics">
     <i class="fas fa-carrot"></i>
@@ -15,16 +15,22 @@
       <h1><%= t('landing_page.app_title').titleize %></h1>
       <p class="p_subtitle"><%= t('landing_page.slogan').capitalize %></p>
       <div class="columns below_title">
-        <div class="input-group">
-          <div class="has-icon-left has-icon-right">
-            <i class="form-icon icon icon-arrow-right"></i>
-            <input type="text" class="form-input input-lg"
-                   placeholder="<%= t('landing_page.look_for_veggie').capitalize %>">
+        <%= form_with(url: "/communities/search_veggie", method: "get", local: true) do %>
+          <div class="input-group">
+            <div class="has-icon-left has-icon-right">
+              <i class="form-icon icon icon-arrow-right"></i>
+              <div class="form-group">
+                <div class="form-autocomplete">
+                  <input type="text" id="find-favorite" name="find-favorite" class="form-input form-autocomplete-input input-lg"
+                         placeholder="<%= t('landing_page.look_for_veggie').capitalize %>">
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary input-group-btn btn-lg">
+              <i class="icon icon-search"></i>
+            </button>
           </div>
-          <button class="btn btn-primary input-group-btn btn-lg">
-            <i class="icon icon-search"></i>
-          </button>
-        </div>
+        <% end %>
       </div>
       <i id="blinking" class="icon icon-arrow-down"></i>
     </div>
@@ -34,16 +40,14 @@
     <i class="fas fa-lemon"></i>
   </div>
 </div>
-<div class="columns p_info_1">
+<div id="first-slide" class="columns p_info_1">
   <div class="column col-6">
     <h2><%= t('landing_page.info1_title') %></h2>
     <p>
-      Sunt eraes dignus domesticus, castus guttuses. Consilium de regius demissio, acquirere racana!
-      Ortum inciviliter ducunt ad albus mons. Ferox, velox imbers foris resuscitabo de barbatus, altus lactea. Historia
-      mirabilis triticum est.
-      Planeta, liberi, et bubo. Equiso magnum medicina est. Audax, lotus contencios aegre pugna de magnum, fortis torus.
-      Rumors sunt diatrias de peritus uria. Cum stella experimentum, omnes ollaes pugna primus, brevis elogiumes.
-      ridetis saepe ducunt ad domesticus deus.
+      <%= t('landing_page.what_is_jda1') %>
+    </p>
+    <p>
+      <%= t('landing_page.what_is_jda2') %>
     </p>
   </div>
   <div class="column col-6">
@@ -99,14 +103,10 @@
   <div class="column col-8 col-ml-auto">
     <h2><%= t('landing_page.info2_title') %></h2>
     <p>
-      Sunt imberes pugna fortis, ferox barcases. Cantare virtualiter ducunt ad albus cannabis.
-      Hercle, compater superbus!, festus ignigena! Cum olla ire, omnes danistaes vitare grandis, azureus rumores. Saga,
-      castor, et habena.
-      Tabess tolerare in amivadum! Messors cadunt! Cum imber cantare, omnes toruses perdere nobilis, varius sagaes. Vox,
-      bubo, et mineralis.
-      Usus teres cobaltum est. Est brevis xiphias, cesaris. Cum glos assimilant, omnes stellaes visum placidus, salvus
-      gemnaes.
-      sunt valebates captis fidelis, magnum vigiles.
+      <%= t('landing_page.a_gesture1') %>
+    </p>
+    <p>
+      <%= t('landing_page.a_gesture2') %>
     </p>
   </div>
 </div>
@@ -140,79 +140,57 @@
   </div>
   <div class="my_gardens-container">
     <p>- <%= t('garden.or') %> -</p>
-    <%= link_to t('garden.access_my_gardens'), mygardens_path(), class:"btn btn-primary" %><br>
-    <%= link_to t('garden.add_new'), new_garden_path(), class:"btn btn-primary em_top" %>
+    <%= link_to t('garden.access_my_gardens'), mygardens_path(), class: "btn btn-primary" %><br>
+    <%= link_to t('garden.add_new'), new_garden_path(), class: "btn btn-primary em_top" %>
   </div>
 </div>
 <div class="container communities_container">
   <div class="columns">
     <div class="column col-8 col-ml-auto">
       <h2><%= t('landing_page.communities_title') %></h2>
-      <p>
-        Ridetis grauiter ducunt ad neuter cacula. Deus de regius lanista, talem mortem!
-        Grandis danista sed mire vitares cacula est. Salvus, rusticus poetas velox gratia de fatalis, clemens zirbus.
-        Classis gratis demissio est. Magisters mori! Cur urbs assimilant? Teres, azureus tatas diligenter carpseris de
-        clemens, peritus secula.
-        Cur racana potus? Cum eleates trabem, omnes silvaes contactus clemens, audax solemes. Est ferox saga, cesaris.
-        sunt eposes attrahendam magnum, gratis pulchritudinees.
-      </p>
+      <p><%= t('landing_page.a_community_matter1') %></p>
+      <h6><%= t('landing_page.a_community_matter2') %></h6>
     </div>
   </div>
   <div class="columns">
-    <div class="column col-3">
-      <div class="card">
-        <div class="card-image"><%= image_tag('citrouille.jpg', :class => "img-responsive") %></div>
-        <div class="card-footer">
-          <a class="btn btn-primary" href="#"><%= t('landing_page.find_this_veggie') %></a>
-          <a class="btn btn-link" href="#">Pumpkin <%= Community.model_name.human.capitalize %></a>
-        </div>
-        <div class="card-body">
-          Domus velox vita est. Cum sectam manducare, omnes tumultumquees examinare secundus,
-          gratis orexises.
-          hilotae, habena, et accola.
-        </div>
-      </div>
-    </div>
-    <div class="column col-3">
-      <div class="card">
-        <div class="card-image"><%= image_tag('poivrons.jpg', :class => "img-responsive") %></div>
-        <div class="card-footer">
-          <a class="btn btn-primary" href="#cards"><%= t('landing_page.find_this_veggie') %></a>
-          <a class="btn btn-link" href="#cards">Bell Pepper <%= Community.model_name.human.capitalize %></a>
-        </div>
-        <div class="card-body">
-          Est altus nixus, cesaris. Cum particula ortum, omnes bullaes visum peritus, bassus
-          nixuses.
-          est pius mens, cesaris.
+
+    <!--    for each community, put up a card -->
+
+    <% @communities.each do |community| %>
+      <div class="column col-3">
+        <div class="card">
+          <div class="card-image">
+            <%= image_tag('poivrons.jpg', class: 'img-responsive') %>
+          </div>
+          <div class="card-footer">
+            <%= link_to t('landing_page.find_this_veggie'), community_path(community), class: 'btn btn-primary' %>
+            <%= link_to t('communities.community_name',
+                          name: community.variety.name,
+                          community: Community.model_name.human.capitalize),
+                        community_path(community), class: 'btn btn-link' %>
+          </div>
+          <div class="card-body">
+            <%= community.variety.description %>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="column col-3">
-      <div class="card">
-        <div class="card-image"><%= image_tag('asparagus.jpg', :class => "img-responsive") %></div>
-        <div class="card-footer">
-          <a class="btn btn-primary" href="#cards"><%= t('landing_page.find_this_veggie') %></a>
-          <a class="btn btn-link" href="#cards">Asparagus <%= Community.model_name.human.capitalize %></a>
-        </div>
-        <div class="card-body">
-          Nunquam visum historia. Cum domina crescere, omnes eleateses prensionem superbus,
-          barbatus victrixes.
-          fluctus, scutum, et usus.
-        </div>
-      </div>
-    </div>
-    <div class="column col-3">
-      <div class="card">
-        <div class="card-image"><%= image_tag('oranges.jpg', :class => "img-responsive") %></div>
-        <div class="card-footer">
-          <a class="btn btn-primary" href="#cards"><%= t('landing_page.find_this_veggie') %></a>
-          <a class="btn btn-link" href="#cards">Orange <%= Community.model_name.human.capitalize %></a>
-        </div>
-        <div class="card-body">
-          Primus bursas ducunt ad visus. Manducare hic ducunt ad magnum abaculus.
-          est fidelis poeta, cesaris.
-        </div>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>
+<script>
+  // initialize autoComplete and assign function to execute when changes are made to the input field
+  $(".form-autocomplete").autoComplete({
+    source: function (inputValue, callback) {
+      // get data
+      let veggie_list = <%= @veggies.map { |veggie| veggie.name }.to_json.html_safe %>;
+      let data = [];
+      for (const e of veggie_list) {
+        if (e.includes(inputValue)) {
+          data.push(e)
+        }
+      }
+
+      callback(data, null) // If error, you can use callback(null, error); . Error will passed as argument to error handler
+    }
+  });
+</script>

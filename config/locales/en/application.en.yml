@@ -48,4 +48,35 @@ en:
     address_not_found: "The address wasn't found. Please try a different spelling"
     geo_not_supported: "Geolocalisation is not supported by your browser"
     error_location: "Unable to retrieve your location"
+    what_is_jda1: "Jardin Des Alentours is the meeting grounds of a community interested in the local production of
+                      fruits and vegetables. Whether you are invested in sourcing your produce near home, are an
+                       enthusiastic gardener or simply seek out this platform as an informational tool,
+                       Jardin Des Alentours offers you the possibility to share, exchange and link up with like-minded
+                       individuals around you!"
+    what_is_jda2: "By joining this community, you promote agricultural interest around you and partake in environmentally sustainable practices,
+                      all while enjoying yourself!"
+    a_gesture1: "Many of us try to promote seasonal local food markets whenever possible. However, this isn't always possible and that's why
+                      we want to help! Whether it's to find your place within the agricultural community or to find environmentally friendly actions that
+                      are accessible to you, we've got your back!"
+    a_gesture2: "Most local and foreign fresh produce found in conventional grocery stores, often offered year-round,
+                      leave a sizeable carbon footprint and semi-permanent damage to agricultural land. This is why it remains
+                       at our advantage to produce as locally as possible, in our own backyards even, where we can keep
+                       a watchful eye on our produce and have a good time!"
+    a_community_matter1: "Jardins Des Alentours regroups multiple communities with various interest, whether it is with enthusiasm regarding a specific fruit or vegetable,
+                          or geographic position, which plays a key part in the culture of any produce. "
+    a_community_matter2: "Visit one to see !"
+
+
+  jan: "january"
+  feb: "february"
+  mar: "march"
+  apr: "april"
+  may: "may"
+  jun: "june"
+  jul: "july"
+  aug: "august"
+  sep: "september"
+  oct: "october"
+  nov: "november"
+  dec: "december"
 
