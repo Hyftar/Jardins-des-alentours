@@ -169,6 +169,8 @@ $(document).on('turbolinks:load', () => {
       })
     }
   }
+
+  // Apply blinking effect to the arrow icon on main page
   $('#blinking').click(() => {
     $('html, body').animate({
       scrollTop: $('#first-slide').offset().top

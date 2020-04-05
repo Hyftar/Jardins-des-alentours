@@ -3,6 +3,8 @@ $(document).on('turbolinks:load', () => {
   selectSeason()
 })
 
+// select season from value of slider
+
 function selectSeason() {
   const e = $('#slider')
   e.attr('value', e.val())
@@ -36,10 +38,12 @@ function selectSeason() {
   e.attr('data-tooltip', season)
 }
 
+// for each filtered item we add or remove them from display if they are in season or not
+
 function chooseSeason(season) {
   let items = $('.filter-item')
   items.each((index, elem) => {
-    if (elem.attributes['data-season'].value.indexOf(season) != -1) {
+    if (elem.attributes['data-season'].value.indexOf(season) !== -1) {
       elem.classList.remove('not-in-season')
     } else {
       elem.classList.add('not-in-season')
