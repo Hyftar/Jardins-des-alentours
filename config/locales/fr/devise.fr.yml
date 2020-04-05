@@ -60,6 +60,10 @@ fr:
       leave_blank_if: "laisser vide pour ne pas changer"
       need_current_pass: "afin de confirmer vos changements"
       cancel_btn: "Supprimer mon compte"
+      language: "Langue"
+      french: Français
+      english: Anglais
+      edit: Modifier l'utilisateur
     sessions:
       signed_in: "Connecté."
       signed_out: "Déconnecté."
