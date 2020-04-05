@@ -22,6 +22,11 @@
       </div>
 
       <div class="field form-group">
+        <%= f.label :language, t('devise.registrations.language'), :class => 'form-label' %>
+        <%= select(:user, :language, options_for_select([[t('devise.registrations.french'), "fr"], [t('devise.registrations.english'), "en"]])) %>
+      </div>
+
+      <div class="field form-group">
         <%= f.label :password, t('devise.sessions.password'), :class => 'form-label' %>
         <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> <%= t('devise.registrations.min_char') %>)</em>
