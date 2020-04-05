@@ -32,7 +32,7 @@ class GardenTest < ActiveSupport::TestCase
       varieties: [varieties(:two)]
     )
 
-    assert_equal "Unspecified Tomatoes", g.varieties.first.name
+    assert_equal "Beefsteak Tomatoes", g.varieties.first.name
     assert_equal true, g.garden_varieties.first.is_active
     assert g.save
   end

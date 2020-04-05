@@ -1,17 +1,17 @@
 require "test_helper"
 
 class CommunityTest < ActiveSupport::TestCase
-  test "should not be able to save without region" do
+  test "should not be able to save without location" do
     c = Community.new(
-      produce: produce(:tomatoes)
+      variety: varieties(:one)
     )
 
     assert_not c.save
   end
 
-  test "should not be able to save without produce" do
+  test "should not be able to save without variety" do
     c = Community.new(
-      region: regions(:one)
+      location: locations(:montreal)
     )
 
     assert_not c.save
@@ -19,8 +19,8 @@ class CommunityTest < ActiveSupport::TestCase
 
   test "should automatically create roles after its creation" do
     c = Community.create(
-      produce: produce(:tomatoes),
-      region: regions(:one)
+      variety: varieties(:one),
+      location: locations(:montreal)
     )
 
     roles = Role.where(community: c)
