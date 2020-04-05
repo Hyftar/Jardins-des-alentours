@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_05_015028) do
+ActiveRecord::Schema.define(version: 2020_04_05_211945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,13 +91,6 @@ ActiveRecord::Schema.define(version: 2020_04_05_015028) do
     t.string "description"
     t.index ["location_id"], name: "index_communities_on_location_id"
     t.index ["variety_id"], name: "index_communities_on_variety_id"
-  end
-
-  create_table "communities_users", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "community_id"
-    t.index ["community_id"], name: "index_communities_users_on_community_id"
-    t.index ["user_id"], name: "index_communities_users_on_user_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -352,8 +345,6 @@ ActiveRecord::Schema.define(version: 2020_04_05_015028) do
   add_foreign_key "categories_varieties", "varieties"
   add_foreign_key "communities", "locations"
   add_foreign_key "communities", "varieties"
-  add_foreign_key "communities_users", "communities"
-  add_foreign_key "communities_users", "users"
   add_foreign_key "email_bans", "users"
   add_foreign_key "garden_varieties", "gardens"
   add_foreign_key "garden_varieties", "varieties"

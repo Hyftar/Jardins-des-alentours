@@ -18,6 +18,15 @@ class Variety < ApplicationRecord
   validate :parent_must_not_be_self
   validates :image, blob: { content_type: :image, size_range: 1..100.megabytes}
   validates :description, length: { maximum: 10_000 }, presence: true
+  validates :height, numericality: { only_integer: true, greater_than: 0 }
+  validates :spacing, numericality: { only_integer: true, greater_than: 0 }
+  validates :hardiness_zone, numericality: { only_integer: true, greater_than: 0 }
+  validates :germination_time, numericality: { only_integer: true, greater_than: 0 }
+  validates :culture_start, presence: true
+  validates :culture_end, presence: true
+  validates :latin_name, presence: true
+  validates :family, presence: true
+  validates :sun_exposure, presence: true
 
   def self.find_varieties_unused_in_garden(garden_id)
     query_string = <<-EOF
