@@ -1,48 +1,48 @@
 $(document).on('turbolinks:load', () => {
-  $('#slider').on('input', selectSeason);
-  selectSeason();
-});
+  $('#slider').on('input', selectSeason)
+  selectSeason()
+})
 
 function selectSeason() {
-  let e = $('#slider');
-  e.attr('value', e.val());
-  let season = '';
+  const e = $('#slider')
+  e.attr('value', e.val())
+  let season = ''
 
   switch (e.val()) {
     case '1':
-      season = 'Été';
-      chooseSeason('summer');
-      break;
+      season = 'Été'
+      chooseSeason('summer')
+      break
     case '2':
-      season = 'Automne';
+      season = 'Automne'
       chooseSeason('fall')
-      break;
+      break
     case '3':
-      season = 'Hiver';
+      season = 'Hiver'
       chooseSeason('winter')
-      break;
+      break
     case '4':
-      season = 'Printemps';
+      season = 'Printemps'
       chooseSeason('spring')
-      break;
+      break
     default:
-      season = 'Toutes les saisons';
-      let items = $('.filter-item');
+      season = 'Toutes les saisons' // TODO: I18n this string
+      const items = $('.filter-item')
       items.each((index, elem) => {
-        elem.classList.remove('not-in-season');
-      });
-      break;
+        elem.classList.remove('not-in-season')
+      })
+      break
   }
-  e.attr('data-tooltip', season);
+  e.attr('data-tooltip', season)
 }
 
 function chooseSeason(season) {
-  let items = $('.filter-item');
+  let items = $('.filter-item')
   items.each((index, elem) => {
     if (elem.attributes['data-season'].value.indexOf(season) != -1) {
-      elem.classList.remove('not-in-season');
+      elem.classList.remove('not-in-season')
     } else {
-      elem.classList.add('not-in-season');
+      elem.classList.add('not-in-season')
     }
-  });
+  })
 }

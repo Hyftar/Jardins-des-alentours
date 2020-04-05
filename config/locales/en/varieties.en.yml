@@ -1,0 +1,5 @@
+en:
+  varieties:
+    parent_must_not_be_self: 'The parent must not be the variety itself'
+    create: 'Add a variety'
+    index_title: 'Available varieties'

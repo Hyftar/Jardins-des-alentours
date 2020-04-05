@@ -1,0 +1,9 @@
+<div class="variety">
+<h1><%= @variety.name %> <%= "(#{@variety.latin_name})" if @variety.latin_name.present? %></h1>
+  <div class="variety__description">
+    <%= @variety.description %>
+  </div>
+  <% if @variety.image.attached? %>
+    <%= image_tag(@variety.image) %>
+  <% end %>
+</div>

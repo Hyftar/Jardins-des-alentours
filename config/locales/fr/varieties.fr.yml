@@ -1,0 +1,5 @@
+fr:
+  varieties:
+    parent_must_not_be_self: 'Le parent de la variété doit être une autre variété'
+    create: 'Ajouter une variété'
+    index_title: "Variétés disponibles"
