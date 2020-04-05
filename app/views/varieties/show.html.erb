@@ -6,4 +6,5 @@
   <% if @variety.image.attached? %>
     <%= image_tag(@variety.image) %>
   <% end %>
+  <%= link_to t('go_back'), varieties_path, class: 'btn btn-primary' %>
 </div>

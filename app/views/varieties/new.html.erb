@@ -59,7 +59,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.collection_check_boxes :planting_method, Variety.planting_methods.pairs, :first, :last %>
+    <%= f.collection_check_boxes :planting_method, Variety.planting_methods.pairs, :last, :first %>
   </div>
 
   <div class="form-group">
@@ -69,3 +69,5 @@
 
   <%= f.submit %>
 <% end %>
+
+<%= link_to t('go_back'), varieties_path, class: 'btn btn-primary' %>
