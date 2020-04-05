@@ -200,6 +200,9 @@ a {
     font-size: 10em;
     margin: 2vh 5vw;
     color: rgba(207, 37, 30, 0.83);
+    object-fit: cover;
+    height: 16vw;
+    width: 20vw;
   }
 
   .fa-sun {
@@ -362,4 +365,11 @@ a {
   min-height: 30px;
   min-width: 30px;
 
+}
+
+#btn_qa {
+  background-color: #3a1344 !important;
+  margin-right: 2vw;
+  margin-bottom: 4vh;
+  border-radius: 10px;
 }

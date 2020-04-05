@@ -27,11 +27,13 @@ en:
     tt_hardiness: "Hardiness Zone"
     variety_info: "Get more information on how to harvest %{name}"
     didyouknow: "Did you know ?"
-    index_p: ""
+    index_p: "A great number of communities co-exist within the Jardin des Alentours platform, most of which
+                include budding gardeners from nearby neighborhoods or with a special interest in a certain fruit or vegetable. "
     show_sub1: "Look around, you might find some %{veggie}!"
     talk_title: "Talk about it"
     cook_title: "Cook it"
     garden_title: "Find it"
+    qa_button: "Ask a question to the community"
 
   shadow: "Shadow"
   half_exposed: "Half Exposure"

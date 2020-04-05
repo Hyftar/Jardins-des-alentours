@@ -160,7 +160,9 @@
       <div class="column col-3">
         <div class="card">
           <div class="card-image">
-            <%= image_tag('poivrons.jpg', class: 'img-responsive') %>
+            <%= link_to community_path(community) do %>
+              <%= image_tag(community.variety.image, class: 'img-responsive') %>
+            <% end %>
           </div>
           <div class="card-footer">
             <%= link_to t('landing_page.find_this_veggie'), community_path(community), class: 'btn btn-primary' %>
@@ -185,7 +187,7 @@
       let veggie_list = <%= @veggies.map { |veggie| veggie.name }.to_json.html_safe %>;
       let data = [];
       for (const e of veggie_list) {
-        if (e.includes(inputValue)) {
+        if (e.toLowerCase().includes(inputValue.toLowerCase())) {
           data.push(e)
         }
       }

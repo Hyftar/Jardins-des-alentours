@@ -25,52 +25,59 @@
 </div>
 <div class="column veggie-container">
   <div class="columns">
-    <div class="column col-6 veggie">
-      <div class="columns">
-        <div class="column title_container">
-          <h1>
-            <%= @community.variety.name %>
-          </h1>
-          <p class="text-italic">
-            <%= @community.variety.latin_name %>
-          </p>
+    <%= link_to community_questions_path(@community) do %>
+      <div class="column col-6 veggie">
+        <div class="columns">
+          <div class="column title_container">
+            <h1>
+              <%= @community.variety.name %>
+            </h1>
+            <p class="text-italic">
+              <%= @community.variety.latin_name %>
+            </p>
+          </div>
         </div>
+        <div class="columns flex-centered icons-container">
+          <div class="column col-2 icons-info flex-centered">
+            <i class="fas fa-arrows-alt-h tooltip" data-tooltip="<%= t('communities.tt_spacing') %>">
+              <span class="tooltip-data"><%= @community.variety.spacing %> cm.</span>
+            </i>
+            <i class="fas fa-hands-helping tooltip" data-tooltip="<%= t('communities.tt_family') %>">
+              <span class="tooltip-data"><%= @community.variety.family %></span>
+            </i>
+          </div>
+          <div class="column col-4 icons-info flex-centered">
+            <i class="fas fa-thermometer-half tooltip" data-tooltip="<%= t('communities.tt_hardiness') %>">
+              <span class="tooltip-data"><%= @community.variety.hardiness_zone %></span>
+            </i>
+            <%= image_tag(@community.variety.image, :class => "img-responsive rounded veggie-logo circle") %>
+            <i class="fas fa-seedling tooltip" data-tooltip="<%= t('communities.tt_germination') %>">
+              <span class="tooltip-data"><%= @community.variety.germination_time %> <%= t('communities.days') %></span>
+            </i>
+          </div>
+          <div class="column col-2 icons-info flex-centered">
+            <i class="fas fa-calendar-alt tooltip" data-tooltip="<%= t('communities.tt_season') %>">
+              <span class="tooltip-data"><%= @s_start.capitalize %> - <%= @s_end.capitalize %></span>
+            </i>
+            <i class="fas <%= @e_icon %> tooltip" data-tooltip="<%= t('communities.tt_exposure') %>">
+              <span class="tooltip-data"><%= @exposure %></span>
+            </i>
+          </div>
+        </div>
+        <div class="text-right">
+          <button id="btn_qa" class="btn btn-link btn-lg">
+            <%= link_to t('communities.qa_button'), community_questions_path(@community), class: 'text-light' %>
+          </button>
+        </div>
+        <!--      <p><a><%#= t('communities.variety_info', name: @community.variety.name.pluralize.downcase) %></a> <i class="fas fa-info-circle"></i></p>-->
       </div>
-      <div class="columns flex-centered icons-container">
-        <div class="column col-2 icons-info flex-centered">
-          <i class="fas fa-arrows-alt-h tooltip" data-tooltip="<%= t('communities.tt_spacing') %>">
-            <span class="tooltip-data"><%= @community.variety.spacing %> cm.</span>
-          </i>
-          <i class="fas fa-hands-helping tooltip" data-tooltip="<%= t('communities.tt_family') %>">
-            <span class="tooltip-data"><%= @community.variety.family %></span>
-          </i>
-        </div>
-        <div class="column col-4 icons-info flex-centered">
-          <i class="fas fa-thermometer-half tooltip" data-tooltip="<%= t('communities.tt_hardiness') %>">
-            <span class="tooltip-data"><%= @community.variety.hardiness_zone %></span>
-          </i>
-          <%= image_tag('tomato-logo.jpg', :class => "img-responsive rounded veggie-logo circle") %>
-          <i class="fas fa-seedling tooltip" data-tooltip="<%= t('communities.tt_germination') %>">
-            <span class="tooltip-data"><%= @community.variety.germination_time %> <%= t('communities.days') %></span>
-          </i>
-        </div>
-        <div class="column col-2 icons-info flex-centered">
-          <i class="fas fa-calendar-alt tooltip" data-tooltip="<%= t('communities.tt_season') %>">
-            <span class="tooltip-data"><%= @s_start.capitalize %> - <%= @s_end.capitalize %></span>
-          </i>
-          <i class="fas <%= @e_icon %> tooltip" data-tooltip="<%= t('communities.tt_exposure') %>">
-            <span class="tooltip-data"><%= @exposure %></span>
-          </i>
-        </div>
-      </div>
-      <p><a><%= t('communities.variety_info', name: @community.variety.name.pluralize.downcase) %></a> <i class="fas fa-info-circle"></i></p>
-    </div>
+    <% end %>
     <div class="column col-4 did-you-know">
       <div class="columns">
         <div class="column text-left">
           <h3><%= t('communities.didyouknow') %></h3>
           <p>
-          <%= @community.variety.description %>
+            <%= @community.variety.description %>
           <p>
         </div>
       </div>
@@ -78,41 +85,29 @@
         <div class="column">
           <div class="carousel">
             <!-- carousel locator -->
-            <input class="carousel-locator" id="slide-1" type="radio" name="carousel-radio" hidden="" checked="">
-            <input class="carousel-locator" id="slide-2" type="radio" name="carousel-radio" hidden="">
-            <input class="carousel-locator" id="slide-3" type="radio" name="carousel-radio" hidden="">
-            <input class="carousel-locator" id="slide-4" type="radio" name="carousel-radio" hidden="">
+            <% @subvarieties.each do |variety| %>
+              <input class="carousel-locator" id="slide-<%= @subvarieties.index(variety) + 1 %>" type="radio" name="carousel-radio" hidden=""
+                     <% if @subvarieties.index(variety) == 0 %>checked=""
+                     <% end %>>
+            <% end %>
 
             <!-- carousel container -->
             <div class="carousel-container">
               <!-- carousel item -->
-              <figure class="carousel-item">
-                <label class="item-prev btn btn-action btn-lg" for="slide-4"><i class="icon icon-arrow-left"></i></label>
-                <label class="item-next btn btn-action btn-lg" for="slide-2"><i class="icon icon-arrow-right"></i></label>
-                <%= image_tag('tomato1.jpg', :class => "img-responsive rounded") %>
-              </figure>
-              <figure class="carousel-item">
-                <label class="item-prev btn btn-action btn-lg" for="slide-1"><i class="icon icon-arrow-left"></i></label>
-                <label class="item-next btn btn-action btn-lg" for="slide-3"><i class="icon icon-arrow-right"></i></label>
-                <%= image_tag('tomato2.jpg', :class => "img-responsive rounded") %>
-              </figure>
-              <figure class="carousel-item">
-                <label class="item-prev btn btn-action btn-lg" for="slide-2"><i class="icon icon-arrow-left"></i></label>
-                <label class="item-next btn btn-action btn-lg" for="slide-4"><i class="icon icon-arrow-right"></i></label>
-                <%= image_tag('tomato3.jpg', :class => "img-responsive rounded") %>
-              </figure>
-              <figure class="carousel-item">
-                <label class="item-prev btn btn-action btn-lg" for="slide-3"><i class="icon icon-arrow-left"></i></label>
-                <label class="item-next btn btn-action btn-lg" for="slide-1"><i class="icon icon-arrow-right"></i></label>
-                <%= image_tag('tomato4.jpg', :class => "img-responsive rounded") %>
-              </figure>
+              <% @subvarieties.each do |variety| %>
+                <figure class="carousel-item">
+                  <% i = @subvarieties.index(variety) %>
+                  <label class="item-prev btn btn-action btn-lg" for="slide-<%= i != 0 ? i : @subvarieties.length %>"><i class="icon icon-arrow-left"></i></label>
+                  <label class="item-next btn btn-action btn-lg" for="slide-<%= i != @subvarieties.length - 1 ? i + 2 : 1 %>"><i class="icon icon-arrow-right"></i></label>
+                  <%= image_tag(variety.image, :class => "img-responsive rounded") %>
+                </figure>
+              <% end %>
             </div>
             <!-- carousel navigation -->
             <div class="carousel-nav">
-              <label class="nav-item text-hide c-hand" for="slide-1">1</label>
-              <label class="nav-item text-hide c-hand" for="slide-2">2</label>
-              <label class="nav-item text-hide c-hand" for="slide-3">3</label>
-              <label class="nav-item text-hide c-hand" for="slide-4">4</label>
+              <% @subvarieties.each do |variety| %>
+                <label class="nav-item text-hide c-hand" for="slide-<%= @subvarieties.index(variety) + 1 %>"><%= @subvarieties.index(variety) + 1 %></label>
+              <% end %>
             </div>
           </div>
         </div>
@@ -137,42 +132,45 @@
           <div class="panel-title h5"><%= t('communities.talk_title') %></div>
         </div>
         <div class="panel-body">
-          <a class="twitter-timeline" href="https://twitter.com/JAlentours?ref_src=twsrc%5Etfw">Tweets by JAlentours</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <a class="twitter-timeline" href="https://twitter.com/JAlentours?ref_src=twsrc%5Etfw">Tweets by JAlentours</a>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           <div class="divider"></div>
-<!--          <div class="tile">-->
-<!--            <div class="tile-icon">-->
-<!--              <figure class="avatar avatar-xl">-->
-                <%#= image_tag('avatar.png', :class => "img-responsive rounded") %>
-<!--              </figure>-->
-<!--            </div>-->
-<!--            <div class="tile-content">-->
-<!--              <p class="tile-title text-bold">Bruce Banner</p>-->
-<!--              <p class="tile-subtitle">The Strategic Homeland Intervention, Enforcement, and Logistics Division...</p>-->
-<!--              <div class="text-right">-->
-<!--                <button class="btn text-light">See conversation</button>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="divider"></div>-->
-<!--          <div class="tile">-->
-<!--            <div class="tile-icon">-->
-<!--              <figure class="avatar avatar-xl">-->
-                <%#= image_tag('avatar.png', :class => "img-responsive rounded") %>
-<!--              </figure>-->
-<!--            </div>-->
-<!--            <div class="tile-content">-->
-<!--              <p class="tile-title text-bold">Tony Stark</p>-->
-<!--              <p class="tile-subtitle">Earth's Mightiest Heroes joined forces to take on threats that were too big for-->
-<!--                any one hero to tackle...</p>-->
-<!--              <div class="text-right">-->
-<!--                <button class="btn text-light">See conversation</button>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
+          <!--          <div class="tile">-->
+          <!--            <div class="tile-icon">-->
+          <!--              <figure class="avatar avatar-xl">-->
+          <%#= image_tag('avatar.png', :class => "img-responsive rounded") %>
+          <!--              </figure>-->
+          <!--            </div>-->
+          <!--            <div class="tile-content">-->
+          <!--              <p class="tile-title text-bold">Bruce Banner</p>-->
+          <!--              <p class="tile-subtitle">The Strategic Homeland Intervention, Enforcement, and Logistics Division...</p>-->
+          <!--              <div class="text-right">-->
+          <!--                <button class="btn text-light">See conversation</button>-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--          </div>-->
+          <!--          <div class="divider"></div>-->
+          <!--          <div class="tile">-->
+          <!--            <div class="tile-icon">-->
+          <!--              <figure class="avatar avatar-xl">-->
+          <%#= image_tag('avatar.png', :class => "img-responsive rounded") %>
+          <!--              </figure>-->
+          <!--            </div>-->
+          <!--            <div class="tile-content">-->
+          <!--              <p class="tile-title text-bold">Tony Stark</p>-->
+          <!--              <p class="tile-subtitle">Earth's Mightiest Heroes joined forces to take on threats that were too big for-->
+          <!--                any one hero to tackle...</p>-->
+          <!--              <div class="text-right">-->
+          <!--                <button class="btn text-light">See conversation</button>-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--          </div>-->
         </div>
         <div class="panel-footer flex-centered col-8">
           <i class="icon icon-arrow-down"></i>
-          <a href="https://twitter.com/intent/tweet?button_hashtag=jardinsdesalentours&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-text="#jardinsdesalentours" data-show-count="false">Tweet #jardinsdesalentours</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <a href="https://twitter.com/intent/tweet?button_hashtag=jardinsdesalentours&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-text="#jardinsdesalentours" data-show-count="false">Tweet
+            #jardinsdesalentours</a>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
       </div>
     </div>
