@@ -375,16 +375,18 @@ a {
 }
 
 .panel-body {
-  width:27vw;
+  width: 27vw;
 }
 
 .avatar {
   background-color: white !important;
-.community-creation{
+}
+
+.community-creation {
   background-color: #e2ac6b;
 }
 
-.community-creation{
+.community-creation {
   padding: 10vh 20vw 30vh;
   height: fit-content;
   clip-path: polygon(0 3%, 0 95%, 100% 100%, 100% 0%);
@@ -403,7 +405,7 @@ a {
     padding: 5px 10px;
   }
 
-  textarea{
+  textarea {
     resize: none;
     width: 80%;
     max-width: 500px;
@@ -415,15 +417,15 @@ a {
     margin-bottom: 1em;
   }
 
-  input[type=submit]{
+  input[type=submit] {
     max-width: 250px;
   }
 
-  input[type=checkbox]{
+  input[type=checkbox] {
     max-width: 25px;
   }
 
-  select{
+  select {
     margin-bottom: 1em;
   }
 }
