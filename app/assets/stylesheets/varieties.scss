@@ -1,3 +1,74 @@
-// Place all the styles related to the varieties controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+#new_variety,
+.edit_variety {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2em;
+  width: 60vw;
+}
+
+#new_variety > .form-group,
+.edit_variety > .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+}
+
+#new_variety > .form-group > .checkboxes,
+.edit_variety > .form-group > .checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+#new_variety > .form-group > .checkboxes > label,
+.edit_variety > .form-group > .checkboxes > label {
+  width: 80%;
+  text-align: left;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+#new_variety > .form-group > .checkboxes > input,
+.edit_variety > .form-group > .checkboxes > input {
+  width: 20%;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+table.varieties-table  {
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+  width: 95vw;
+}
+
+.varieties-table table,
+.varieties-table  th,
+.varieties-table  td {
+}
+
+.varieties-table th {
+  background-color: green;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.varieties-table td {
+  padding: 1em;
+}
+
+.varieties-table td:nth-child(3) {
+  max-width: 50vw;
+}
+
+.varieties-table tr:nth-child(odd) {
+  background-color: grey;
+}
+
+.varieties-table tr:nth-child(even) {
+  background: darkgray;
+}

@@ -1,4 +1,9 @@
 <div class="questions-container">
+  <div>
+    <h2> <%= t('questions.community_variety')%> <%=@community.variety.name %><h2>
+    <p><%= @community.description %></p>
+    <hr class="question-community-delimiter">
+  </div>
   <div class="questions__actions">
     <%= link_to t('questions.ask'), new_community_question_path(@community), class: 'btn btn-primary' %>
   </div>
@@ -27,6 +32,9 @@
       </div>
     </div>
   <% end %>
+  <div class="direct-back">
+    <%= link_to t('questions.go_back_communities'), community_path(@community), class: "btn" %>
+  </div>
 </div>
 
 <%= will_paginate @questions %>

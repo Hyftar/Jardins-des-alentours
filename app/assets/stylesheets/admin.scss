@@ -1,3 +1,64 @@
 // Place all the styles related to the admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.admin_index{
+  background-color: #1e5523;
+}
+
+.admin_index {
+  padding: 10vh 20vw 30vh;
+  height: fit-content;
+  clip-path: polygon(0 3%, 0 95%, 100% 100%, 100% 0%);
+
+  .columns:first-of-type .column:first-of-type {
+    margin: 10vh;
+    text-align: left;
+    color: #2E2F30;
+  }
+
+  input {
+    width: 80%;
+    max-width: 500px;
+    margin-top: 5px;
+    text-align: center;
+    padding: 5px 10px;
+  }
+
+  textarea{
+    resize: none;
+    width: 80%;
+    max-width: 500px;
+    margin-top: 5px;
+    padding: 5px 10px;
+  }
+
+  .field {
+    margin-bottom: 1em;
+  }
+
+  input[type=submit]{
+    max-width: 250px;
+  }
+
+  input[type=checkbox]{
+    max-width: 25px;
+  }
+
+  select{
+    margin-bottom: 1em;
+  }
+
+  a{
+    margin-bottom: 1em;
+    display: block;
+  }
+
+
+}
+
+.links{
+  margin: 0 auto;
+  width: 80%;
+  max-width: 400px;
+}

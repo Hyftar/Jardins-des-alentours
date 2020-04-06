@@ -1,1 +1,34 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: "Tomatoes"
+  description: "The tomato is the edible, often red, berry of the plant Solanum lycopersicum, commonly known as a tomato plant."
+  latin_name: "Solanum lycopersicum"
+  spacing: 1
+  height: 50
+  family: "Solanaceae"
+  hardiness_zone: 3
+  germination_time: 5
+  culture_start: "2000-06-11"
+  freeze_resistance: 0
+  culture_end: "2000-09-11"
+  sun_exposure: 2
+  planting_method: 1
+  origin: one
+
+two:
+  name: "Beefsteak Tomatoes"
+  description: "Beefsteak tomatoes are 10 cm (4 in) or more in diameter, often used for sandwiches and similar applications. Their kidney-bean shape, thinner skin, and shorter shelf life makes commercial use impractical"
+  latin_name: "Solanum lycopersicum"
+  spacing: 1
+  height: 50
+  family: "Solanaceae"
+  hardiness_zone: 3
+  germination_time: 5
+  culture_start: "2000-06-11"
+  freeze_resistance: 0
+  culture_end: "2000-08-11"
+  sun_exposure: 0
+  planting_method: 2
+  origin: one
+  parent: one

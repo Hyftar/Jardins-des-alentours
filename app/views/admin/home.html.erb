@@ -1,4 +1,10 @@
-<div class="links">
-  <%= link_to 'Manage roles', roles_path %>
-  <%= link_to 'Manage communities', new_community_path %>
+<div class="container admin_index">
+  <h2><%= t('admin.title')%></h2>
+  <div class="links">
+    <%= link_to t('admin.manage_roles'), roles_path, class: "btn btn-success" %>
+    <%= link_to t('admin.manage_communities'), new_community_path, class: "btn btn-success" %>
+    <%= link_to t('admin.manage_varieties'), varieties_path, class: "btn btn-success" %>
+    <%= link_to t('admin.manage_email_bans'), email_bans_path, class: "btn btn-success" %>
+    <%= link_to t('admin.return_root'), root_path, class: "btn" %>
+  </div>
 </div>

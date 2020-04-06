@@ -43,7 +43,7 @@ class CommunitiesController < ApplicationController
   def search_veggie
     search_string = params['find-favorite'].downcase
     @community = Community
-                     .joins(:variety)
+                     .includes(:variety)
                      .where("lower(varieties.name) LIKE ?", "%#{search_string}%")
                      .order(score: :desc)
                      .first

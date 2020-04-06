@@ -42,7 +42,7 @@ class VarietiesController < ApplicationController
   def destroy
     @variety = Variety.find(params[:id])
     @variety.destroy!
-    redirect_to variety_path
+    redirect_to varieties_path
   end
 
   private

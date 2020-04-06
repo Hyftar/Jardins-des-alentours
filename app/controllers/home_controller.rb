@@ -18,6 +18,6 @@ class HomeController < ApplicationController
   end
 
   def get_community_demos
-    @communities = Community.joins(:variety).all.first(4)
+    @communities = Community.includes(:variety).order(score: :desc).first(4)
   end
 end
