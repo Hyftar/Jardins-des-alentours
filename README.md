@@ -77,3 +77,9 @@ L'utilisateur peut se connecter, et créer son propre jardin. Le jardin est loca
 Il peut poser des questions dans une communauté et répondre aux questions des autres utilisateurs.
 
 S'il a un compte avec un rôle administrateur, il peut accéder à la page */admin* et créer des communautés, des produits et bannir des adresses courriel.
+
+Deux comptes sont créés par défaut dans le seed.
+
+* john_doe@example.com avec le mot de passe test12345 (compte administrateur, en anglais)
+
+* jane_dow@example.com avec le mot de passe test12345 (compte normal en français)
