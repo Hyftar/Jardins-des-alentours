@@ -88,6 +88,8 @@ class CommunitiesController < ApplicationController
       @e_icon = e_icons[@community.variety.sun_exposure_before_type_cast]
 
       @subvarieties = Variety.where(parent_id: params[:id])
+
+      @gardens = Garden.all.first(4)
     end
 
     def get_10_most_relevant_communities

@@ -127,7 +127,7 @@
       <div class="panel text-left flex-centered">
         <div class="panel-header text-center">
           <figure class="avatar avatar-xl">
-            <%= image_tag('forum.png', :class => "img-responsive rounded") %>
+            <%= image_tag('shoutout.png', :class => "img-responsive rounded") %>
           </figure>
           <div class="panel-title h5"><%= t('communities.talk_title') %></div>
         </div>
@@ -178,53 +178,23 @@
       <div class="panel flex-centered">
         <div class="panel-header">
           <figure class="avatar avatar-xl">
-            <%= image_tag('cutlery.jpg', :class => "img-responsive rounded") %>
+            <%= image_tag('tweet.png', :class => "img-responsive rounded") %>
           </figure>
           <div class="panel-title"><h5><%= t('communities.cook_title') %></h5></div>
         </div>
         <div class="panel-nav">
           <!-- navigation components: tabs, breadcrumbs or pagination -->
-          <p>La tomate a un goût sucré et acide. Elle accompagnie bien Talis rumor acceleratrix reperires bubo est.</p>
         </div>
         <div class="panel-body">
           <!-- contents -->
-          <div class="card recipe-card">
-            <div class="card-image">
-              <%= image_tag('tomato2.jpg', :class => "img-responsive rounded") %>
-            </div>
-            <div class="card-header">
-              <div class="card-title h5">Tomates cerises braisées à l'érable</div>
-              <div class="card-subtitle text-gray">3h</div>
-            </div>
-            <div class="card-body">
-              Ces tomates cerises sont délicieuses et parfaites à l'occasion
-              du temps des fêtes. [...]
-            </div>
-            <div class="card-footer">
-              <button class="btn btn-primary">Découvrir</button>
-            </div>
-          </div>
-          <div class="card recipe-card">
-            <div class="card-image">
-              <%= image_tag('tomato-recipe.jpg', :class => "img-responsive rounded") %>
-            </div>
-            <div class="card-header">
-              <div class="card-title h5">Sauce tomate & basilic</div>
-              <div class="card-subtitle text-gray">50 minutes</div>
-            </div>
-            <div class="card-body">
-              Un classique que vous répéterez souvent. Cette
-              sauce tomate & basilic rappelle [...]
-            </div>
-            <div class="card-footer">
-              <button class="btn btn-primary">Découvrir</button>
-            </div>
-          </div>
+          <a class="twitter-timeline" href="https://twitter.com/JAlentours/likes?ref_src=twsrc%5Etfw">Tweets Liked by
+            @JAlentours</a>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
         <div class="panel-footer col-8 flex-centered">
           <!-- buttons or inputs -->
-          <i class="icon icon-arrow-down"></i>
-          <button class="btn btn-primary btn-block wrap">Découvrir plus de recettes avec la Tomate</button>
+          <!--          <i class="icon icon-arrow-down"></i>-->
+          <!--          <button class="btn btn-primary btn-block wrap">Découvrir plus de recettes avec la Tomate</button>-->
         </div>
       </div>
     </div>
@@ -232,66 +202,72 @@
       <div class="panel flex-centered">
         <div class="panel-header">
           <figure class="avatar avatar-xl">
-            <%= image_tag('market.jpg', :class => "img-responsive rounded") %>
+            <%= image_tag('find_it.png', :class => "img-responsive rounded") %>
           </figure>
           <div class="panel-title"><h5><%= t('communities.garden_title') %></h5></div>
         </div>
         <div class="panel-nav">
-          <p>Trouvez la tomate dans les jardins de vos alentours !</p>
+          <p><%= t('communities.find_it_slogan', name: @community.variety.name.downcase.pluralize) %></p>
         </div>
         <div class="panel-body">
           <!-- contents -->
-          <div class="card garden-card">
-            <div class="card-header">
-              <div class="card-title h5">Jardins de l'Amitié</div>
-              <div class="card-subtitle text-gray">Variétés de tomate : 3</div>
-            </div>
-            <div class="card-image"><%= image_tag('garden1.jpg', :class => "img-responsive rounded") %></div>
-            <div class="card-body">To make a contribution to the world by making tools for the mind that advance
-              humankind.
-            </div>
-            <div class="card-footer flex-centered">
-              <div class="btn-group btn-group-block col-6">
-                <button class="btn btn-primary">Visiter</button>
+          <% @gardens.each do |garden| %>
+            <div class="card garden-card">
+              <div class="card-header">
+                <div class="card-title h5"><%= garden.name %></div>
+              </div>
+              <!--              <div class="card-image"><%#= image_tag('garden1.jpg', :class => "img-responsive rounded") %></div>-->
+              <div class="card-body">
+                <%= garden.description %>
+              </div>
+              <div class="card-footer flex-centered">
+                <div class="btn-group btn-group-block col-6 flex-centered">
+                  <%= link_to garden_path(garden) do %>
+                    <button class="btn btn-primary"><%= t('communities.visit') %></button>
+                  <% end %>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="card garden-card">
-            <div class="card-header">
-              <div class="card-title h5">Le Jardin Secret</div>
-              <div class="card-subtitle text-gray">Variétés de tomate : 4</div>
-            </div>
-            <div class="card-image"><%= image_tag('garden2.jpeg', :class => "img-responsive rounded") %></div>
-            <div class="card-body">To make a contribution to the world by making tools for the mind that advance
-              humankind.
-            </div>
-            <div class="card-footer flex-centered">
-              <div class="btn-group btn-group-block col-6">
-                <button class="btn btn-primary">Visiter</button>
-              </div>
-            </div>
-          </div>
-          <div class="card garden-card">
-            <div class="card-header">
-              <div class="card-title h5">Le Bonheur de la Terre</div>
-              <div class="card-subtitle text-gray">Variétés de tomate : 2</div>
-            </div>
-            <div class="card-image"><%= image_tag('garden3.jpg', :class => "img-responsive rounded") %></div>
-            <div class="card-body">To make a contribution to the world by making tools for the mind that advance
-              humankind.
-            </div>
-            <div class="card-footer flex-centered">
-              <div class="btn-group btn-group-block col-6">
-                <button class="btn btn-primary">Visiter</button>
-              </div>
-            </div>
-          </div>
+          <% end %>
+
+          <!--          <div class="card garden-card">-->
+          <!--            <div class="card-header">-->
+          <!--              <div class="card-title h5">Le Jardin Secret</div>-->
+          <!--              <div class="card-subtitle text-gray">Variétés de tomate : 4</div>-->
+          <!--            </div>-->
+          <!--            <div class="card-image"><%#= image_tag('garden2.jpeg', :class => "img-responsive rounded") %></div>-->
+          <!--            <div class="card-body">To make a contribution to the world by making tools for the mind that advance-->
+          <!--              humankind.-->
+          <!--            </div>-->
+          <!--            <div class="card-footer flex-centered">-->
+          <!--              <div class="btn-group btn-group-block col-6">-->
+          <!--                <button class="btn btn-primary">Visiter</button>-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--          </div>-->
+          <!--          <div class="card garden-card">-->
+          <!--            <div class="card-header">-->
+          <!--              <div class="card-title h5">Le Bonheur de la Terre</div>-->
+          <!--              <div class="card-subtitle text-gray">Variétés de tomate : 2</div>-->
+          <!--            </div>-->
+          <!--            <div class="card-image"><%#= image_tag('garden3.jpg', :class => "img-responsive rounded") %></div>-->
+          <!--            <div class="card-body">To make a contribution to the world by making tools for the mind that advance-->
+          <!--              humankind.-->
+          <!--            </div>-->
+          <!--            <div class="card-footer flex-centered">-->
+          <!--              <div class="btn-group btn-group-block col-6">-->
+          <!--                <button class="btn btn-primary">Visiter</button>-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--          </div>-->
 
         </div>
         <div class="panel-footer col-6 flex-centered">
           <!-- buttons or inputs -->
           <i class="icon icon-arrow-down"></i>
-          <button class="btn btn-primary btn-block wrap">Visitez plus de jardins avec des tomates</button>
+          <%= link_to gardens_path do %>
+            <button class="btn btn-primary btn-block wrap"><%= t('communities.find_it_button', name: @community.variety.name.downcase.pluralize) %></button>
+          <% end %>
         </div>
       </div>
     </div>
