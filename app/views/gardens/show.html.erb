@@ -4,7 +4,9 @@
       <h1><%= @garden.name %></h1>
       <h2><%= t('garden.garden_of') %> <%= @garden.user.first_name %> <%= @garden.user.last_name %></h2>
       <p><%= t('garden.description') %> : <%= @garden.description %></p>
-      <%= link_to t('garden.modify_informations'), edit_garden_path(@garden), class: "btn btn-success" %>
+      <% if current_user == @garden.user %>
+        <%= link_to t('garden.modify_informations'), edit_garden_path(@garden), class: "btn btn-success" %>
+      <% end %>
       <address class="em_top">
         <h2><%= t('garden.located_at') %></h2>
         <%= @garden.location.house_number %>, <%= @garden.location.road %><br>
