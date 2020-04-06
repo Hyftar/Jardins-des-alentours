@@ -282,6 +282,15 @@ html {
       white-space: initial;
       text-align: right;
     }
+
+    .btn-primary {
+      white-space: normal;
+      height: fit-content;
+    }
+
+    .card-body {
+      margin-top: 20px;
+    }
   }
 
   // -- footer

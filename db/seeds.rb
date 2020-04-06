@@ -28,7 +28,8 @@ users = User.create([
     email: "jane_doe@example.com",
     password: "test12345",
     password_confirmation: "test12345",
-    confirmed_at: DateTime.now
+    confirmed_at: DateTime.now,
+    language: "fr"
   }
 ])
 
@@ -63,6 +64,7 @@ tomato = Variety.create(
     sun_exposure: 2
   }
 )
+tomato.image.attach(io: File.open("#{Rails.root}/app/assets/images/tomato1.jpg"), filename: 'tomato1.jpg')
 
 pepper = Variety.create(
   {
@@ -80,6 +82,8 @@ pepper = Variety.create(
     sun_exposure: 2
   }
 )
+pepper.image.attach(io: File.open("#{Rails.root}/app/assets/images/poivrons.jpg"), filename: 'poivrons.jpg')
+
 
 pumpkin = Variety.create(
   {
@@ -97,6 +101,7 @@ pumpkin = Variety.create(
     sun_exposure: 2
   }
 )
+pumpkin.image.attach(io: File.open("#{Rails.root}/app/assets/images/citrouille.jpg"), filename: 'citrouille.jpg')
 
 sunchoke = Variety.create(
   {
@@ -114,26 +119,215 @@ sunchoke = Variety.create(
     sun_exposure: 1
   }
 )
+sunchoke.image.attach(io: File.open("#{Rails.root}/app/assets/images/sunchokes.jpg"), filename: 'sunchokes.jpg')
 
+varieties = Variety.create([{
+  name: "Beefsteak Tomatoes",
+  description: "Beefsteak tomatoes are 10 cm (4 in) or more in diameter, often used for sandwiches and similar applications. Their kidney-bean shape, thinner skin, and shorter shelf life makes commercial use impractical.",
+  parent: tomato,
+  latin_name: tomato.latin_name,
+  family: tomato.family,
+  freeze_resistance: tomato.freeze_resistance,
+  culture_start: tomato.culture_start,
+  culture_end: tomato.culture_end,
+  spacing: tomato.spacing,
+  height: tomato.height,
+  hardiness_zone: tomato.hardiness_zone,
+  germination_time: tomato.germination_time,
+  sun_exposure: tomato.sun_exposure
+},
+{
+  name: "Plum Tomatoes",
+  description: "Plum tomatoes, or paste tomatoes (including pear tomatoes), are bred with a lower water, higher solids content for use in tomato sauce and paste, for canning and sauces and are usually oblong 7–9 cm (3–4 in) long and 4–5 cm (1.6–2.0 in) diameter; like the Roma-type tomatoes, important cultivars in the Sacramento Valley.",
+  parent: tomato,
+  latin_name: tomato.latin_name,
+  family: tomato.family,
+  freeze_resistance: tomato.freeze_resistance,
+  culture_start: tomato.culture_start,
+  culture_end: tomato.culture_end,
+  spacing: tomato.spacing,
+  height: tomato.height,
+  hardiness_zone: tomato.hardiness_zone,
+  germination_time: tomato.germination_time,
+  sun_exposure: tomato.sun_exposure
+},
+{
+  name: "Cherry Tomatoes",
+  description: "Cherry tomatoes are small and round, often sweet tomatoes, about the same 1–2 cm (0.4–0.8 in) size as the wild tomato.",
+  parent: tomato,
+  latin_name: tomato.latin_name,
+  family: tomato.family,
+  freeze_resistance: tomato.freeze_resistance,
+  culture_start: tomato.culture_start,
+  culture_end: tomato.culture_end,
+  spacing: tomato.spacing,
+  height: tomato.height,
+  hardiness_zone: tomato.hardiness_zone,
+  germination_time: tomato.germination_time,
+  sun_exposure: tomato.sun_exposure
+}])
 
-varieties = Variety.create([
-  {
-    name: "Beefsteak Tomatoes",
-    description: "Beefsteak tomatoes are 10 cm (4 in) or more in diameter, often used for sandwiches and similar applications. Their kidney-bean shape, thinner skin, and shorter shelf life makes commercial use impractical.",
-    parent: tomato
-  },
-  {
-    name: "Plum Tomatoes",
-    description: "Plum tomatoes, or paste tomatoes (including pear tomatoes), are bred with a lower water /higher solids content for use in tomato sauce and paste, for canning and sauces and are usually oblong 7–9 cm (3–4 in) long and 4–5 cm (1.6–2.0 in) diameter; like the Roma-type tomatoes, important cultivars in the Sacramento Valley.",
-    parent: tomato
-  },
-  {
-    name: "Cherry Tomatoes",
-    description: "Cherry tomatoes are small and round, often sweet tomatoes, about the same 1–2 cm (0.4–0.8 in) size as the wild tomato.",
-    parent: tomato
-  }
-])
+tomato_images = %w(beefsteak plum cherry)
+varieties.each do |variety|
+  image_name = tomato_images.shift
+  variety.image.attach(io: File.open("#{Rails.root}/app/assets/images/#{image_name}.jpg"), filename: '#{image_name}.jpg')
+end
 
+pepper_varieties = Variety.create([{
+                                name: "Habanero",
+                                description: "The habanero is a hot variety of chili pepper. Unripe habaneros are green, and they color as they mature. The most common color variants are orange and red, but the fruit may also be white, brown, yellow, green, or purple. Typically, a ripe habanero is 2–6 cm long.",
+                                parent: pepper,
+                                latin_name: pepper.latin_name,
+                                family: pepper.family,
+                                freeze_resistance: pepper.freeze_resistance,
+                                culture_start: pepper.culture_start,
+                                culture_end: pepper.culture_end,
+                                spacing: pepper.spacing,
+                                height: pepper.height,
+                                hardiness_zone: pepper.hardiness_zone,
+                                germination_time: pepper.germination_time,
+                                sun_exposure: pepper.sun_exposure
+                            },
+                            {
+                                name: "Cayenne",
+                                description: "The cayenne pepper is a type of Capsicum annuum. It is usually a moderately hot chili pepper used to flavor dishes.",
+                                parent: pepper,
+                                latin_name: pepper.latin_name,
+                                family: pepper.family,
+                                freeze_resistance: pepper.freeze_resistance,
+                                culture_start: pepper.culture_start,
+                                culture_end: pepper.culture_end,
+                                spacing: pepper.spacing,
+                                height: pepper.height,
+                                hardiness_zone: pepper.hardiness_zone,
+                                germination_time: pepper.germination_time,
+                                sun_exposure: pepper.sun_exposure
+                            },
+                            {
+                                name: "Paprika",
+                                description: "Paprika is a ground spice made from dried red fruits of sweeter varieties of the plant Capsicum annuum. It is traditionally made from Capsicum annuum varietals in the Longum group, which also includes chili peppers, but the peppers used for paprika tend to be milder and have thinner flesh.",
+                                parent: pepper,
+                                latin_name: pepper.latin_name,
+                                family: pepper.family,
+                                freeze_resistance: pepper.freeze_resistance,
+                                culture_start: pepper.culture_start,
+                                culture_end: pepper.culture_end,
+                                spacing: pepper.spacing,
+                                height: pepper.height,
+                                hardiness_zone: pepper.hardiness_zone,
+                                germination_time: pepper.germination_time,
+                                sun_exposure: pepper.sun_exposure
+                            }])
+
+pepper_images = %w(habanero cayenne paprika)
+pepper_varieties.each do |variety|
+  image_name = pepper_images.shift
+  variety.image.attach(io: File.open("#{Rails.root}/app/assets/images/#{image_name}.jpg"), filename: '#{image_name}.jpg')
+end
+
+pumpkin_varieties = Variety.create([{
+                                name: "Butternut Squash",
+                                description: "Butternut squash, sometimes known in Australia and New Zealand as butternut pumpkin or gramma, is a type of winter squash that grows on a vine. It has a sweet, nutty taste similar to that of a pumpkin. It has tan-yellow skin and orange fleshy pulp with a compartment of seeds in the blossom end.",
+                                parent: pumpkin,
+                                latin_name: pumpkin.latin_name,
+                                family: pumpkin.family,
+                                freeze_resistance: pumpkin.freeze_resistance,
+                                culture_start: pumpkin.culture_start,
+                                culture_end: pumpkin.culture_end,
+                                spacing: pumpkin.spacing,
+                                height: pumpkin.height,
+                                hardiness_zone: pumpkin.hardiness_zone,
+                                germination_time: pumpkin.germination_time,
+                                sun_exposure: pumpkin.sun_exposure
+                            },
+                            {
+                                name: "Acorn Squash",
+                                description: "Acorn squash, also called pepper squash or Des Moines squash, is a winter squash with distinctive longitudinal ridges on its exterior and sweet, yellow-orange flesh inside. Although considered a winter squash, acorn squash belongs to the same species as all summer squashes.",
+                                parent: pumpkin,
+                                latin_name: pumpkin.latin_name,
+                                family: pumpkin.family,
+                                freeze_resistance: pumpkin.freeze_resistance,
+                                culture_start: pumpkin.culture_start,
+                                culture_end: pumpkin.culture_end,
+                                spacing: pumpkin.spacing,
+                                height: pumpkin.height,
+                                hardiness_zone: pumpkin.hardiness_zone,
+                                germination_time: pumpkin.germination_time,
+                                sun_exposure: pumpkin.sun_exposure
+                            },
+                            {
+                                name: "Spaghetti Squash",
+                                description: "Spaghetti squash or vegetable spaghetti is a group of cultivars of Cucurbita pepo subsp. pepo. They are available in a variety of shapes, sizes, and colours, including ivory, yellow and orange, with orange having the highest amount of carotene.",
+                                parent: pumpkin,
+                                latin_name: pumpkin.latin_name,
+                                family: pumpkin.family,
+                                freeze_resistance: pumpkin.freeze_resistance,
+                                culture_start: pumpkin.culture_start,
+                                culture_end: pumpkin.culture_end,
+                                spacing: pumpkin.spacing,
+                                height: pumpkin.height,
+                                hardiness_zone: pumpkin.hardiness_zone,
+                                germination_time: pumpkin.germination_time,
+                                sun_exposure: pumpkin.sun_exposure
+                            }])
+
+pumpkin_images = %w(butternut acorn spaghetti)
+pumpkin_varieties.each do |variety|
+  image_name = pumpkin_images.shift
+  variety.image.attach(io: File.open("#{Rails.root}/app/assets/images/#{image_name}.jpg"), filename: '#{image_name}.jpg')
+end
+
+sunchoke_varieties = Variety.create([{
+                                name: "Sunchoke",
+                                description: "Beefsteak tomatoes are 10 cm (4 in) or more in diameter, often used for sandwiches and similar applications. Their kidney-bean shape, thinner skin, and shorter shelf life makes commercial use impractical.",
+                                parent: sunchoke,
+                                latin_name: sunchoke.latin_name,
+                                family: sunchoke.family,
+                                freeze_resistance: sunchoke.freeze_resistance,
+                                culture_start: sunchoke.culture_start,
+                                culture_end: sunchoke.culture_end,
+                                spacing: sunchoke.spacing,
+                                height: sunchoke.height,
+                                hardiness_zone: sunchoke.hardiness_zone,
+                                germination_time: sunchoke.germination_time,
+                                sun_exposure: sunchoke.sun_exposure
+                            },
+                            {
+                                name: "Artichoke",
+                                description: "Plum tomatoes, or paste tomatoes (including pear tomatoes), are bred with a lower water /higher solids content for use in tomato sauce and paste, for canning and sauces and are usually oblong 7–9 cm (3–4 in) long and 4–5 cm (1.6–2.0 in) diameter; like the Roma-type tomatoes, important cultivars in the Sacramento Valley.",
+                                parent: sunchoke,
+                                latin_name: sunchoke.latin_name,
+                                family: sunchoke.family,
+                                freeze_resistance: sunchoke.freeze_resistance,
+                                culture_start: sunchoke.culture_start,
+                                culture_end: sunchoke.culture_end,
+                                spacing: sunchoke.spacing,
+                                height: sunchoke.height,
+                                hardiness_zone: sunchoke.hardiness_zone,
+                                germination_time: sunchoke.germination_time,
+                                sun_exposure: sunchoke.sun_exposure
+                            },
+                            {
+                                name: "Root Artichoke",
+                                description: "Cherry tomatoes are small and round, often sweet tomatoes, about the same 1–2 cm (0.4–0.8 in) size as the wild tomato.",
+                                parent: sunchoke,
+                                latin_name: sunchoke.latin_name,
+                                family: sunchoke.family,
+                                freeze_resistance: sunchoke.freeze_resistance,
+                                culture_start: sunchoke.culture_start,
+                                culture_end: sunchoke.culture_end,
+                                spacing: sunchoke.spacing,
+                                height: sunchoke.height,
+                                hardiness_zone: sunchoke.hardiness_zone,
+                                germination_time: sunchoke.germination_time,
+                                sun_exposure: sunchoke.sun_exposure
+                            }])
+
+sunchoke_images = %w(sunchokes2 sunchokes3 sunchokes4)
+sunchoke_varieties.each do |variety|
+  image_name = sunchoke_images.shift
+  variety.image.attach(io: File.open("#{Rails.root}/app/assets/images/#{image_name}.jpg"), filename: '#{image_name}.jpg')
+end
 
 categories = Category.create([
   {

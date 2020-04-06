@@ -85,7 +85,11 @@
             <% @seasons[community].each do |season| %><%= season %>
             <% end %>"
                data-tag="<%= @continents[@communities_continents[community]] %>">
-            <div class="card-image"><%= image_tag('citrouille.jpg', :class => "img-responsive") %></div>
+            <div class="card-image">
+              <%= link_to community_path(community) do %>
+                <%= image_tag(community.variety.image, class: 'img-responsive') %>
+              <% end %>
+            </div>
             <div class="card-footer">
               <%= link_to t('communities.community_name',
                             name: community.variety.name,

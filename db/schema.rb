@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_05_211945) do
+ActiveRecord::Schema.define(version: 2020_04_06_014906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -286,8 +286,8 @@ ActiveRecord::Schema.define(version: 2020_04_05_211945) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "latin_name"
-    t.float "spacing"
-    t.float "height"
+    t.integer "spacing"
+    t.integer "height"
     t.string "family"
     t.integer "hardiness_zone"
     t.integer "germination_time"

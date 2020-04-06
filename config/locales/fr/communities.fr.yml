@@ -32,8 +32,12 @@ fr:
     ou encore par rapport à l'endroit où ils se situent."
     show_sub1: "Les %{veggie} de vos voisin sont meilleures que les vôtres"
     talk_title: "Parlez-en"
-    cook_title: "Mangez-en"
+    cook_title: "Parlez-en encore"
     garden_title: "Trouvez-en"
+    qa_button: "Posez une question à la communauté"
+    visit: "Visiter"
+    find_it_slogan: "Trouvez des %{name} dans des jardins près de chez vous !"
+    find_it_button: "Visiter plus de jardins avec des %{name}"
 
   shadow: "Ombre"
   half_exposed: "Mi-Ombre"

@@ -80,11 +80,16 @@ class CommunitiesController < ApplicationController
       s_months = (@community.variety.culture_start.month..@community.variety.culture_end.month).to_a
       @s_start = months[s_months.first - 1]
       @s_end = months[s_months.last - 1]
+
       # define exposures for proper formatting and choose the right one
       exposures = [t('shadow'), t('half_exposed'), t('fully_exposed')]
       e_icons = %w(fa-cloud fa-cloud-sun fa-sun)
       @exposure = exposures[@community.variety.sun_exposure_before_type_cast]
       @e_icon = e_icons[@community.variety.sun_exposure_before_type_cast]
+
+      @subvarieties = Variety.with_attached_image.where(parent_id: params[:id]).select { |x| x.image.attached? }
+
+      @gardens = Garden.all.first(4)
     end
 
     def get_10_most_relevant_communities

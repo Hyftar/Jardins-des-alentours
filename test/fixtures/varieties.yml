@@ -9,12 +9,12 @@ one:
   family: "Solanaceae"
   hardiness_zone: 3
   germination_time: 5
-  culture_start: "2000-06-11"
+  culture_start: "2020-04-06 10:10:10"
   freeze_resistance: 0
-  culture_end: "2000-09-11"
+  culture_end: "2020-08-06 10:10:10"
   sun_exposure: 2
   planting_method: 1
-  origin: one
+  origin: montreal
 
 two:
   name: "Beefsteak Tomatoes"
@@ -25,10 +25,10 @@ two:
   family: "Solanaceae"
   hardiness_zone: 3
   germination_time: 5
-  culture_start: "2000-06-11"
+  culture_start: "2020-04-06 10:10:10"
   freeze_resistance: 0
-  culture_end: "2000-08-11"
-  sun_exposure: 0
+  culture_end: "2020-08-06 10:10:10"
+  sun_exposure: 1
   planting_method: 2
-  origin: one
+  origin: montreal
   parent: one
