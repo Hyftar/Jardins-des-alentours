@@ -28,7 +28,8 @@ users = User.create([
     email: "jane_doe@example.com",
     password: "test12345",
     password_confirmation: "test12345",
-    confirmed_at: DateTime.now
+    confirmed_at: DateTime.now,
+    language: "fr"
   }
 ])
 
