@@ -157,6 +157,7 @@
     <!--    for each community, put up a card -->
 
     <% @communities.each do |community| %>
+      <% next unless community.variety.image.attached? %>
       <div class="column col-3">
         <div class="card">
           <div class="card-image">

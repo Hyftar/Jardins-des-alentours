@@ -87,7 +87,7 @@ class CommunitiesController < ApplicationController
       @exposure = exposures[@community.variety.sun_exposure_before_type_cast]
       @e_icon = e_icons[@community.variety.sun_exposure_before_type_cast]
 
-      @subvarieties = Variety.where(parent_id: params[:id])
+      @subvarieties = Variety.with_attached_image.where(parent_id: params[:id]).select { |x| x.image.attached? }
 
       @gardens = Garden.all.first(4)
     end
