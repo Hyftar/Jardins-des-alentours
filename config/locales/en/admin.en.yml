@@ -5,3 +5,10 @@ en:
     search: Search
     change_successful: Changed %{name}'s roles successfully
     error: An error occurred preventing the role change
+  admin:
+    title: "Admin options"
+    return_root: Return to the landing page
+    manage_roles: Manage roles
+    manage_communities: Manage communities
+    manage_varieties: Manage varieties
+    manage_email_bans: Manage email bans
