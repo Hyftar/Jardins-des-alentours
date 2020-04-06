@@ -29,7 +29,7 @@ class GardenTest < ActiveSupport::TestCase
       name: "test1234",
       description: "My common tomatoes garden",
       location: locations(:montreal),
-      varieties: [varieties(:two)]
+      varieties: [varieties(:one)]
     )
 
     assert_equal "Beefsteak Tomatoes", g.varieties.first.name

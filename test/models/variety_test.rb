@@ -24,10 +24,12 @@ class VarietyTest < ActiveSupport::TestCase
 
   test "should be able to save variety child of other variety" do
     v = Variety.new(
-      name: "Cherry tomatoes",
-      description: "Small round tomatoes",
+      name: "Cucumbers",
+      description: "Cucumbers are green elongated vegetables",
+      latin_name: "Cucumis sativus",
       spacing: 1,
       height: 50,
+      family: "Gourds",
       hardiness_zone: 3,
       germination_time: 5,
       culture_start: "2000-06-11",
@@ -51,7 +53,7 @@ class VarietyTest < ActiveSupport::TestCase
       culture_start: "2000-06-11",
       freeze_resistance: 0,
       culture_end: "2000-09-11",
-      sun_exposure: 0,
+      sun_exposure: 1,
       planting_method: 3,
       origin: locations(:montreal),
       parent: varieties(:one)
@@ -72,8 +74,9 @@ class VarietyTest < ActiveSupport::TestCase
       culture_start: "2000-06-11",
       freeze_resistance: 0,
       culture_end: "2000-09-11",
-      sun_exposure: 0,
+      sun_exposure: 1,
       planting_method: 3,
+      parent: varieties(:one)
     )
     assert v.save
 
