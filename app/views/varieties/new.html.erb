@@ -18,6 +18,10 @@
     <%= f.text_field :name %>
   </div>
   <div class="form-group">
+    <%= f.label :latin_name %>
+    <%= f.text_field :latin_name %>
+  </div>
+  <div class="form-group">
     <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
@@ -47,19 +51,22 @@
   </div>
   <div class="form-group">
     <%= f.label :culture_start %>
-    <%= f.datetime_field :culture_start %>
+    <%= f.date_field :culture_start %>
   </div>
   <div class="form-group">
     <%= f.label :culture_end %>
-    <%= f.datetime_field :culture_end %>
+    <%= f.date_field :culture_end %>
   </div>
   <div class="form-group">
     <%= f.label :sun_exposure %>
-    <%= f.select :sun_exposure, Variety.sun_exposures.map { |k, v| [k.humanize, k] }.append(['Unknown', nil]) %>
+    <%= f.select :sun_exposure, Variety.sun_exposures.map { |k, v| [k.humanize, k] } %>
   </div>
 
   <div class="form-group">
-    <%= f.collection_check_boxes :planting_method, Variety.planting_methods.pairs, :last, :first %>
+    <%= f.label :planting_method %>
+    <div class="checkboxes">
+      <%= f.collection_check_boxes :planting_method, Variety.planting_methods.pairs, :last, :first %>
+    </div>
   </div>
 
   <div class="form-group">
@@ -67,7 +74,7 @@
     <%= f.file_field :image %>
   </div>
 
-  <%= f.submit %>
+  <%= f.submit class: 'btn btn-success' %>
 <% end %>
 
 <%= link_to t('go_back'), varieties_path, class: 'btn btn-primary' %>
